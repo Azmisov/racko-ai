@@ -1,5 +1,6 @@
 package racko;
 
+import interfaces.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,11 +17,7 @@ public class Game {
 	public final boolean bonus_mode;
 	public final Deck deck;
 	private final Player[] players;
-	private final Rack[] racks;
 	private int current_player;
-	
-	//Game statistics
-	private final int[] stat_scores, stat_wins;
 	
 	/**
 	 * Creates a new racko game
@@ -31,17 +28,13 @@ public class Game {
 	 */
 	private Game(Player[] playerList, int rackSize, int minStreak, boolean bonusMode){
 		player_count = playerList.length;
-		this.players = playerList;
-		racks = new Rack[player_count];
+		players = playerList;
 		rack_size = rackSize;
 		min_streak = minStreak;
 		bonus_mode = bonusMode;
 		
-		stat_scores = new int[player_count];
-		stat_wins = new int[player_count];
-		
 		//Create the deck; rack size and player count are validated here
-		deck = new Deck(rackSize, player_count);
+		deck = new Deck(players, rackSize);
 		deck.addDiscardListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -56,7 +49,6 @@ public class Game {
 		for (int i=0; i<player_count; i++){
 			Rack r = new Rack(rack_size);
 			players[i].register(this, r);
-			racks[i] = r;
 		}
 	}
 	/**
@@ -75,7 +67,9 @@ public class Game {
 	 * Starts a new game
 	 */
 	public void play(){
-		deck.deal(racks);
+		//TODO here
+		//Check to see if anyone won the game already
+		deck.deal();
 		current_player = 0;
 		players[0].play();
 	}
@@ -85,24 +79,25 @@ public class Game {
 	private void turn(){
 		boolean new_round = false, new_turn = true;
 		//Check if this player has won
-		Rack cur_rack = racks[current_player];
+		Rack cur_rack = players[current_player].rack;
 		if (cur_rack.isSorted()){
 			if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
 				new_turn = false;
 				//We have a winner
-				stat_wins[current_player]++;
+				players[current_player].wins++;
 				int max_score = 0, max_idx = 0;
 				for (int i=0; i<player_count; i++){
-					int score = racks[i].score(bonus_mode);
-					stat_scores[i] += score;
-					players[i].scoreRound(i == current_player, score);
+					Player p = players[i];
+					int score = p.rack.score(bonus_mode);
+					p.score += score;
+					p.scoreRound(i == current_player, score);
 					//Check if they have greater than "score_win" points
 					//In case of a tie, go for the person that won the most games
 					//TODO: what to do when it is still a tie???
-					if (stat_scores[i] >= score_win &&
-						(stat_scores[i] > max_score || stat_scores[i] == max_score && stat_wins[i] > stat_wins[max_idx]))
+					if (p.score >= score_win &&
+						(p.score > max_score || p.score == max_score && p.wins > players[max_idx].wins))
 					{
-						max_score = stat_scores[i];
+						max_score = p.score;
 						max_idx = i;
 					}
 				}
@@ -111,7 +106,7 @@ public class Game {
 				//Notify players that the game has ended
 				else{
 					for (int i=0; i<player_count; i++)
-						players[i].scoreGame(i == max_idx, stat_scores[i]);
+						players[i].scoreGame(i == max_idx);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package racko;
 
+import interfaces.Player;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,13 +12,13 @@ import java.util.Random;
  */
 public class Deck {
 	//Game constants
-	private final int cards, rack_size, players;
+	private final int cards, rack_size;
+	private final Player[] players;
 	//Deck variables
-	private int draw_count,				//cards in draw pile
-				discard_count;			//cards in discard pile
-	private final int[] draw, discard;	//draw and discard piles
-	private final boolean[] in_play;	//which cards are in play?
-	private boolean action = false;		//false = expect draw, true = expect discard
+	private int draw_count, discard_count;	//cards in draw/discard pile
+	private final int[] draw, discard;		//draw and discard piles
+	private final boolean[] in_play;		//which cards are in play?
+	private boolean action = false;			//false = expect draw, true = expect discard
 	private final ArrayList<ActionListener> discardListeners;
 	//Random number generator:
 	private static final Random rand = new Random();
@@ -27,13 +28,13 @@ public class Deck {
 	 * @param rackSize how many cards per rack; must be greater than 1
 	 * @param players how many players are there; must be greater than 1
 	 */
-	public Deck(int rackSize, int players){
+	public Deck(Player[] players, int rackSize){
 		//Official rules are 2-4 players and rack_size == 10
 		//However, we'll relax these restrictions...
-		assert(players > 1 && rackSize > 1);
+		assert(players.length > 0 && rackSize > 1);
 		this.rack_size = rackSize;
 		this.players = players;
-		cards = rackSize*players + rackSize*2;
+		cards = rackSize*players.length + rackSize*2;
 		discardListeners = new ArrayList();
 		
 		//Initialize deck; counts are all zero, since we haven't called "deal()" yet
@@ -49,8 +50,7 @@ public class Deck {
 	 * @param racks an array of racks; must be equal to the number of players
 	 * and have the correct rack size
 	 */
-	public void deal(Rack[] racks){
-		assert(racks.length == players);
+	protected void deal(){
 		//Create a new deck
 		Arrays.fill(in_play, false);
 		draw_count = 0;
@@ -59,7 +59,7 @@ public class Deck {
 			discard[i] = i+1;
 		shuffle();
 		//Deal out the cards
-		for (int i=0; i<players; i++){
+		for (Player p: players){
 			//Fill each rack from top to bottom
 			int[] hand = new int[rack_size];
 			for (int j=rack_size-1; j>=0; j--){
@@ -67,7 +67,7 @@ public class Deck {
 				hand[j] = draw[--draw_count];
 				in_play[hand[j]-1] = true;
 			}
-			racks[i].deal(hand);
+			p.rack.deal(hand);
 		}
 		action = false;
 	}
@@ -146,7 +146,7 @@ public class Deck {
 	 * Listen for a discard action; this signifies the completion of a player's turn
 	 * @param listener 
 	 */
-	public void addDiscardListener(ActionListener listener){
+	protected void addDiscardListener(ActionListener listener){
 		discardListeners.add(listener);
 	}
 }
