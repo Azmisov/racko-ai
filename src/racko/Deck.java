@@ -143,6 +143,36 @@ public class Deck {
 	}
 	
 	/**
+	 * Returns the probability that a card higher than the number given will be drawn.
+	 * @param cardNumber The card number.
+	 * @param playerRack The rack of the player that called this method.
+	 * @return The probability that a card higher than the input will be drawn.
+	 */
+	public double getProbablityHigher(int cardNumber, Rack playerRack)
+	{
+		double rval = 0.0;
+		
+		
+		
+		return rval;
+	}
+	
+	/**
+	 * Returns the probability that a card lower than the number given will be drawn.
+	 * @param cardNumber The card number.
+	 * @param playerRack The rack of the player that called this method.
+	 * @return The probability that a card lower than the input will be drawn.
+	 */
+	public double getProbablityLower(int cardNumber, Rack playerRack)
+	{
+		double rval = 0.0;
+		
+		
+		
+		return rval;
+	}
+	
+	/**
 	 * Listen for a discard action; this signifies the completion of a player's turn
 	 * @param listener 
 	 */

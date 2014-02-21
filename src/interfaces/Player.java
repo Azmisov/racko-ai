@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.ArrayList;
+
 import racko.Game;
 import racko.Rack;
 
@@ -42,4 +44,9 @@ public abstract class Player {
 	 * @param final their final score for the game
 	 */
 	public abstract void scoreGame(boolean won);
+	
+	public ArrayList<Integer> getPublicCards()
+	{
+		return rack.getVisibleCards();
+	}
 }

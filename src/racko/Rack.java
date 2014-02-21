@@ -1,5 +1,6 @@
 package racko;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -122,5 +123,25 @@ public class Rack {
 		}
 		//This person is a winner! (bonus is 0, if bonusMode is false)
 		return score + score_all + bonus;
+	}
+	
+	
+	/**
+	 * Returns the numbers of the cards that have been picked up from the discard pile.
+	 * @return The list of cards seen by all players.
+	 */
+	public ArrayList<Integer> getVisibleCards()
+	{
+		ArrayList<Integer> rval = new ArrayList<Integer>();
+		
+		for(int i = 0; i < cards.length; i++)
+		{
+			if(exposed[i] == true)
+			{
+				rval.add(cards[i]);
+			}
+		}
+		
+		return rval;
 	}
 }
