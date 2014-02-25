@@ -20,6 +20,7 @@ public class Deck {
 	private final boolean[] in_play;		//which cards are in play?
 	private boolean action = false;			//false = expect draw, true = expect discard
 	private final ArrayList<ActionListener> discardListeners;
+	private final int max_card_number = 30;
 	//Random number generator:
 	private static final Random rand = new Random();
 	
@@ -151,8 +152,30 @@ public class Deck {
 	public double getProbablityHigher(int cardNumber, Rack playerRack)
 	{
 		double rval = 0.0;
+		double baseAccuracy = max_card_number-cardNumber;
+		ArrayList<Integer> visibleCards = new ArrayList<Integer>();
 		
+		//get visible cards from current player
+		for(int i = 0; i < playerRack.getSize(); i++){
+			visibleCards.add(playerRack.getCardAt(i));
+		}
 		
+		//get other players visible cards
+		for(int i = 0; i < players.length; i++){
+			
+			//the player we're looking at is not the player that called the method
+			if(players[i].rack != playerRack){
+				visibleCards.addAll(players[i].getPublicCards());
+			}
+		}
+		
+		for(int i = 0; i < visibleCards.size(); i++){
+			if(visibleCards.get(i) > cardNumber){
+				baseAccuracy--;
+			}
+		}
+		
+		rval = (baseAccuracy/draw.length);
 		
 		return rval;
 	}
@@ -166,8 +189,30 @@ public class Deck {
 	public double getProbablityLower(int cardNumber, Rack playerRack)
 	{
 		double rval = 0.0;
+		double baseAccuracy = cardNumber;
+		ArrayList<Integer> visibleCards = new ArrayList<Integer>();
 		
+		//get visible cards from current player
+		for(int i = 0; i < playerRack.getSize(); i++){
+			visibleCards.add(playerRack.getCardAt(i));
+		}
 		
+		//get other players visible cards
+		for(int i = 0; i < players.length; i++){
+			
+			//the player we're looking at is not the player that called the method
+			if(players[i].rack != playerRack){
+				visibleCards.addAll(players[i].getPublicCards());
+			}
+		}
+		
+		for(int i = 0; i < visibleCards.size(); i++){
+			if(visibleCards.get(i) < cardNumber){
+				baseAccuracy--;
+			}
+		}
+		
+		rval = (baseAccuracy/draw.length);
 		
 		return rval;
 	}

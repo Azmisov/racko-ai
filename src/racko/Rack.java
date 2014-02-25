@@ -130,18 +130,33 @@ public class Rack {
 	 * Returns the numbers of the cards that have been picked up from the discard pile.
 	 * @return The list of cards seen by all players.
 	 */
-	public ArrayList<Integer> getVisibleCards()
-	{
+	public ArrayList<Integer> getVisibleCards(){
 		ArrayList<Integer> rval = new ArrayList<Integer>();
 		
-		for(int i = 0; i < cards.length; i++)
-		{
-			if(exposed[i] == true)
-			{
+		for(int i = 0; i < cards.length; i++){
+			
+			if(exposed[i] == true){
 				rval.add(cards[i]);
 			}
 		}
 		
 		return rval;
+	}
+	
+	/**
+	 * Returns the number of cards in the rack.
+	 * @return The number of cards in the rack
+	 */
+	public int getSize(){
+		return cards.length;
+	}
+	
+	/**
+	 * Gets the card at the specified index.
+	 * @param index The index corresponding to the slot in the rack whose card is returned
+	 * @return The card number at the index
+	 */
+	public int getCardAt(int index){
+		return cards[index];
 	}
 }
