@@ -1,8 +1,13 @@
 package client;
 
+import interfaces.Player;
+
 import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+
+import racko.Game;
 
 /**
  * Human usable interface for playing racko
@@ -49,6 +54,14 @@ public class GUI extends JFrame{
 	}
 	
 	public static void main(String[] args){
+		Player[] players = new Player[2];
 		
+		Player p1 = new PlayerHuman();
+		Player p2 = new PlayerHuman();
+		
+		players[0] = p1;
+		players[1] = p2;
+		
+		Game.create(players, 5, 1, false);
 	}
 }

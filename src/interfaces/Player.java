@@ -15,6 +15,11 @@ public abstract class Player {
 	public Rack rack;
 	public int score, wins;
 	
+	protected Player()
+	{
+		
+	}
+	
 	/**
 	 * Register a game to be played
 	 * @param g a game to register

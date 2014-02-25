@@ -15,7 +15,8 @@ public class Rack {
 		score_bonus = 50,		//bonus score for the minimum streak
 		score_bonus_fac = 2,	//bonus score multiplication factor for each additional card above minimum streak
 		bonus_min = 3,			//minimum streak for bonus
-		bonus_max = 6;			//maximum streak for bonus
+		bonus_max = 6,			//maximum streak for bonus
+		rack_size = 5;
 
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
@@ -157,6 +158,7 @@ public class Rack {
 	 * @return The card number at the index
 	 */
 	public int getCardAt(int index){
+		assert(index >= 0 && index < rack_size);
 		return cards[index];
 	}
 }

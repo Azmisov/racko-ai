@@ -149,8 +149,10 @@ public class Deck {
 	 * @param playerRack The rack of the player that called this method.
 	 * @return The probability that a card higher than the input will be drawn.
 	 */
-	public double getProbablityHigher(int cardNumber, Rack playerRack)
-	{
+	public double getProbablityHigher(int cardNumber, Rack playerRack){
+		assert(cardNumber >= 0);
+		assert(playerRack != null);
+		
 		double rval = 0.0;
 		double baseAccuracy = max_card_number-cardNumber;
 		ArrayList<Integer> visibleCards = new ArrayList<Integer>();
@@ -186,8 +188,10 @@ public class Deck {
 	 * @param playerRack The rack of the player that called this method.
 	 * @return The probability that a card lower than the input will be drawn.
 	 */
-	public double getProbablityLower(int cardNumber, Rack playerRack)
-	{
+	public double getProbablityLower(int cardNumber, Rack playerRack){
+		assert(cardNumber >= 0);
+		assert(playerRack != null);
+		
 		double rval = 0.0;
 		double baseAccuracy = cardNumber;
 		ArrayList<Integer> visibleCards = new ArrayList<Integer>();

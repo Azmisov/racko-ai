@@ -9,6 +9,11 @@ import racko.Rack;
  */
 public class PlayerHuman extends Player{
 
+	public PlayerHuman()
+	{
+		super();
+	}
+	
 	@Override
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet.");
