@@ -16,7 +16,8 @@ public class PlayerHuman extends Player{
 	
 	@Override
 	public void play() {
-		throw new UnsupportedOperationException("Not supported yet.");
+		//throw new UnsupportedOperationException("Not supported yet.");
+		System.out.println("Play");
 	}
 
 	@Override

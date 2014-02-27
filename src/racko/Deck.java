@@ -109,7 +109,7 @@ public class Deck {
 	 * Draw a card
 	 * @param fromDiscard draw from the discard pile
 	 */
-	public int draw(boolean fromDiscard) throws Exception{
+	public int draw(boolean fromDiscard){
 		//Make sure there are the correct number of cards in play
 		assert(draw_count+discard_count == rack_size*2 && !action);
 		action = true;
@@ -177,7 +177,7 @@ public class Deck {
 			}
 		}
 		
-		rval = (baseAccuracy/draw.length);
+		rval = (baseAccuracy/draw_count);
 		
 		return rval;
 	}
@@ -216,7 +216,7 @@ public class Deck {
 			}
 		}
 		
-		rval = (baseAccuracy/draw.length);
+		rval = (baseAccuracy/draw_count);
 		
 		return rval;
 	}

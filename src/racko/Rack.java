@@ -149,7 +149,15 @@ public class Rack {
 	 * @return The number of cards in the rack
 	 */
 	public int getSize(){
-		return cards.length;
+		return rack_size;
+	}
+	
+	/**
+	 * Gets the cards in the rack.
+	 * @return The cards in the rack.
+	 */
+	public int[] getCards(){
+		return cards;
 	}
 	
 	/**
@@ -160,5 +168,10 @@ public class Rack {
 	public int getCardAt(int index){
 		assert(index >= 0 && index < rack_size);
 		return cards[index];
+	}
+	
+	public String toString()
+	{
+		return Arrays.toString(cards);
 	}
 }

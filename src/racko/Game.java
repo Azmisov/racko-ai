@@ -58,9 +58,10 @@ public class Game {
 	 * @param minStreak minimum streak to win the game (use 1 for standard rules)
 	 * @param bonusMode allow bonus points for streaks
 	 */
-	public static void create(Player[] players, int rackSize, int minStreak, boolean bonusMode){
+	public static Game create(Player[] players, int rackSize, int minStreak, boolean bonusMode){
 		Game g = new Game(players, rackSize, minStreak, bonusMode);
 		g.register();
+		return g;
 	}
 	
 	/**

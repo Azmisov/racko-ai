@@ -14,10 +14,12 @@ public abstract class Player {
 	public Game game;
 	public Rack rack;
 	public int score, wins;
+	public static int playerCount = 1;
+	public int playerNumber;
 	
 	protected Player()
 	{
-		
+		playerNumber = playerCount++;
 	}
 	
 	/**
@@ -52,6 +54,7 @@ public abstract class Player {
 	
 	public ArrayList<Integer> getPublicCards()
 	{
+		//change to passing in the card number and returning number of cards higher/lower
 		return rack.getVisibleCards();
 	}
 }
