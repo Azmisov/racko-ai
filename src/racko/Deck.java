@@ -1,7 +1,6 @@
 package racko;
 
 import interfaces.Player;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -12,14 +11,13 @@ import java.util.Random;
  */
 public class Deck {
 	//Game constants
-	private final int cards, rack_size;
-	private final Player[] players;
+	private final int cards, rack_size;		//number of cards & the rack size
+	private final Player[] players;			//list of players
 	//Deck variables
 	private int draw_count, discard_count;	//cards in draw/discard pile
 	private final int[] draw, discard;		//draw and discard piles
 	private final boolean[] in_play;		//which cards are in play?
 	private boolean action = false;			//false = expect draw, true = expect discard
-	private final ArrayList<ActionListener> discardListeners;
 	private final int max_card_number = 30;
 	//Random number generator:
 	private static final Random rand = new Random();
@@ -32,11 +30,10 @@ public class Deck {
 	public Deck(Player[] players, int rackSize){
 		//Official rules are 2-4 players and rack_size == 10
 		//However, we'll relax these restrictions...
-		assert(players.length > 0 && rackSize > 1);
+		assert(players.length > 1 && rackSize > 1);
 		this.rack_size = rackSize;
 		this.players = players;
 		cards = rackSize*players.length + rackSize*2;
-		discardListeners = new ArrayList();
 		
 		//Initialize deck; counts are all zero, since we haven't called "deal()" yet
 		draw_count = 0;
@@ -129,7 +126,7 @@ public class Deck {
 	 * Discard a card that was "in play"; shuffles the deck
 	 * if there are no cards in the draw pile
 	 */
-	public void discard(int card){
+	protected void discard(int card){
 		assert(in_play[card-1] && action);
 		action = false;
 		in_play[card-1] = false;
@@ -138,9 +135,6 @@ public class Deck {
 		//Reshuffle, if no cards in draw pile
 		if (draw_count == 0)
 			shuffle();
-		//Notify discard listeners that the turn has ended
-		for (ActionListener l: discardListeners)
-			l.actionPerformed(null);
 	}
 	
 	/**
@@ -155,7 +149,7 @@ public class Deck {
 		
 		double rval = 0.0;
 		double baseAccuracy = max_card_number-cardNumber;
-		ArrayList<Integer> visibleCards = new ArrayList<Integer>();
+		ArrayList<Integer> visibleCards = new ArrayList();
 		
 		//get visible cards from current player
 		for(int i = 0; i < playerRack.getSize(); i++){
@@ -181,7 +175,6 @@ public class Deck {
 		
 		return rval;
 	}
-	
 	/**
 	 * Returns the probability that a card lower than the number given will be drawn.
 	 * @param cardNumber The card number.
@@ -194,19 +187,17 @@ public class Deck {
 		
 		double rval = 0.0;
 		double baseAccuracy = cardNumber;
-		ArrayList<Integer> visibleCards = new ArrayList<Integer>();
+		ArrayList<Integer> visibleCards = new ArrayList();
 		
 		//get visible cards from current player
-		for(int i = 0; i < playerRack.getSize(); i++){
+		for(int i=0; i<playerRack.getSize(); i++){
 			visibleCards.add(playerRack.getCardAt(i));
 		}
 		
-		//get other players visible cards
-		for(int i = 0; i < players.length; i++){
-			
+		for (Player player: players) {
 			//the player we're looking at is not the player that called the method
-			if(players[i].rack != playerRack){
-				visibleCards.addAll(players[i].getPublicCards());
+			if (player.rack != playerRack) {
+				visibleCards.addAll(player.getPublicCards());
 			}
 		}
 		
@@ -219,13 +210,5 @@ public class Deck {
 		rval = (baseAccuracy/draw_count);
 		
 		return rval;
-	}
-	
-	/**
-	 * Listen for a discard action; this signifies the completion of a player's turn
-	 * @param listener 
-	 */
-	protected void addDiscardListener(ActionListener listener){
-		discardListeners.add(listener);
 	}
 }

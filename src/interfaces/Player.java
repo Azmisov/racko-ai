@@ -14,12 +14,11 @@ public abstract class Player {
 	public Game game;
 	public Rack rack;
 	public int score, wins;
-	public static int playerCount = 1;
+	public static int playerCount = 0;
 	public int playerNumber;
 	
-	protected Player()
-	{
-		playerNumber = playerCount++;
+	protected Player(){
+		playerNumber = ++playerCount;
 	}
 	
 	/**
@@ -35,25 +34,24 @@ public abstract class Player {
 	}
 	/**
 	 * Notifies the player that their turn has arrived; the player must call
-	 * Deck.draw() once, followed by Deck.discard() once (along with any
-	 * calculations)
+	 * Deck.draw() once (along with any calculations); return the card to discard
+	 * @return the card to discard
 	 */
-	public abstract void play();
+	public abstract int play();
 	/**
 	 * Notifies the player of the outcome for each round
 	 * @param won whether this player won the round
 	 * @param score their final score for the round
 	 */
-	public abstract void scoreRound(boolean won, int score);
+	public void scoreRound(boolean won, int score){}
 	/**
 	 * Notifies the player of the outcome for the game
 	 * @param won whether this player won the game
 	 * @param final their final score for the game
 	 */
-	public abstract void scoreGame(boolean won);
+	public void scoreGame(boolean won){}
 	
-	public ArrayList<Integer> getPublicCards()
-	{
+	public ArrayList<Integer> getPublicCards(){
 		//change to passing in the card number and returning number of cards higher/lower
 		return rack.getVisibleCards();
 	}

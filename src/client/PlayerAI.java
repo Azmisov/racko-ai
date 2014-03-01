@@ -25,14 +25,14 @@ public class PlayerAI extends Player{
 	}
 	
 	@Override
-	public void play() {
+	public int play() {
 		//throw new UnsupportedOperationException("Not supported yet.");
 		
 		boolean drawFromDiscard = rand.nextBoolean();
 		
 		int card = game.deck.draw(drawFromDiscard);
 		
-		System.out.println(playerNumber + ": drew card number: " + card);
+		//System.out.println(playerNumber + ": drew card number: " + card);
 		
 		//DataInstance thisMove = new DataInstance(rack.getCards(), );
 		
@@ -40,27 +40,28 @@ public class PlayerAI extends Player{
 		
 		int discard = slot == -1 ? card : rack.swap(card, slot, false);
 		
-		System.out.println(playerNumber + ": rack: " + rack.toString());
+		//System.out.println(playerNumber + ": rack: " + rack.toString());
 		
 		//addMoveToHistory(thisMove);
 		
-		System.out.println(playerNumber + ": discarded card number: " + discard);
+		//System.out.println(playerNumber + ": discarded card number: " + discard);
 		
-		game.deck.discard(discard);
+		return discard;
 	}
 
 	@Override
 	public void scoreRound(boolean won, int score) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
 	}
 
 	@Override
 	public void scoreGame(boolean won) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
-	private void addMoveToHistory(DataInstance move)
-	{
+	
+	
+	private void addMoveToHistory(DataInstance move){
 		playHistory.add(move);
 	}
 	

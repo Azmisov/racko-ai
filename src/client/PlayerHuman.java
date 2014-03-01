@@ -15,19 +15,8 @@ public class PlayerHuman extends Player{
 	}
 	
 	@Override
-	public void play() {
-		//throw new UnsupportedOperationException("Not supported yet.");
+	public int play() {
 		System.out.println("Play");
-	}
-
-	@Override
-	public void scoreRound(boolean won, int score) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public void scoreGame(boolean won) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-	
+		return 0;
+	}	
 }

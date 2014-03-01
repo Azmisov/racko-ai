@@ -35,12 +35,6 @@ public class Game {
 		
 		//Create the deck; rack size and player count are validated here
 		deck = new Deck(players, rackSize);
-		deck.addDiscardListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				turn();
-			}
-		});
 	}
 	/**
 	 * Registers players to the game
@@ -67,57 +61,54 @@ public class Game {
 	/**
 	 * Starts a new game
 	 */
-	public void play(){
-		//TODO here
-		//Check to see if anyone won the game already
-		deck.deal();
-		current_player = 0;
-		players[0].play();
-	}
-	/**
-	 * Compute game logic after each player's turn
-	 */
-	private void turn(){
-		boolean new_round = false, new_turn = true;
-		//Check if this player has won
-		Rack cur_rack = players[current_player].rack;
-		if (cur_rack.isSorted()){
-			if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
-				new_turn = false;
-				//We have a winner
-				players[current_player].wins++;
-				int max_score = 0, max_idx = 0;
-				for (int i=0; i<player_count; i++){
-					Player p = players[i];
-					int score = p.rack.score(bonus_mode);
-					p.score += score;
-					p.scoreRound(i == current_player, score);
-					//Check if they have greater than "score_win" points
-					//In case of a tie, go for the person that won the most games
-					//TODO: what to do when it is still a tie???
-					if (p.score >= score_win &&
-						(p.score > max_score || p.score == max_score && p.wins > players[max_idx].wins))
-					{
-						max_score = p.score;
-						max_idx = i;
+	public void play(){		
+		//Outer loop sets up games for each new round
+		while (true){
+			//Deal out a new deck; setup variables for the game loop
+			deck.deal();
+			current_player = -1;	
+			boolean new_turn = true;
+			
+			//Inner loop goes through each player, starting with 0
+			while (true){
+				//Get next player to play
+				current_player = (current_player+1) % player_count;
+				deck.discard(players[current_player].play());
+
+				//Check if this player has won
+				Rack cur_rack = players[current_player].rack;
+				if (cur_rack.isSorted()){
+					if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
+						new_turn = false;
+						//We have a winner
+						players[current_player].wins++;
+						int max_score = 0, max_idx = 0;
+						for (int i=0; i<player_count; i++){
+							Player p = players[i];
+							int score = p.rack.score(bonus_mode);
+							p.score += score;
+							p.scoreRound(i == current_player, score);
+							//Check if they have greater than "score_win" points
+							//In case of a tie, go for the person that won the most games
+							//TODO: what to do when it is still a tie???
+							if (p.score >= score_win &&
+								(p.score > max_score || p.score == max_score && p.wins > players[max_idx].wins))
+							{
+								max_score = p.score;
+								max_idx = i;
+							}
+						}
+						//No one has reached "score_win" points; play next round
+						if (max_score == 0) break;
+						//Notify players that the game has ended
+						else{
+							for (int i=0; i<player_count; i++)
+								players[i].scoreGame(i == max_idx);
+							return;
+						}
 					}
-				}
-				if (max_score == 0)
-					new_round = true;
-				//Notify players that the game has ended
-				else{
-					for (int i=0; i<player_count; i++)
-						players[i].scoreGame(i == max_idx);
 				}
 			}
 		}
-		//Get next player to play
-		if (new_turn){
-			current_player = (current_player+1) % player_count;
-			players[current_player].play();
-		}
-		//Start a new round
-		else if (new_round)
-			play();
 	}
 }
