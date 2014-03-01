@@ -1,5 +1,6 @@
 package racko;
 
+import interfaces.Distribution;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -45,7 +46,6 @@ public class Rack {
 		exposed_count = 0;
 		Arrays.fill(exposed, false);
 	}
-	
 	/**
 	 * Swaps a drawn card with one in the rack
 	 * @param card a card to insert
@@ -93,43 +93,6 @@ public class Rack {
 		}
 		return max_streak;
 	}
-	/**
-	 * Scores the rack for points
-	 * @param bonusMode allows bonus points for consecutive cards, provided all
-	 * the cards are in order; each consecutive card beyond "bonus_min", up to
-	 * "bonus_max" will multiply "score_bonus" by "score_bonus_fac"
-	 * (see static Rack variables)
-	 * @return the score
-	 */
-	public int score(boolean bonusMode){
-		int score = score_single,
-			bonus = 0, cur_streak = 1;
-		for (int i=1; i<cards.length; i++){
-			//Not all are sorted
-			if (cards[i] < cards[i-1])
-				return score;
-			else{
-				score += score_single;
-				//Calculate streaks, for bonus mode
-				if (bonusMode){
-					if (cards[i] == cards[i-1]+1)
-						cur_streak++;
-					else{
-						if (cur_streak >= bonus_min){
-							if (cur_streak > bonus_max)
-								cur_streak = bonus_max;
-							cur_streak -= bonus_min;
-							bonus += Math.pow(score_bonus_fac, cur_streak)*score_bonus;
-						}
-						cur_streak = 1;
-					}
-				}
-			}
-		}
-		//This person is a winner! (bonus is 0, if bonusMode is false)
-		return score + score_all + bonus;
-	}
-	
 	
 	/**
 	 * Returns the numbers of the cards that have been picked up from the discard pile.
@@ -168,6 +131,74 @@ public class Rack {
 	public int getCardAt(int index){
 		assert(index >= 0 && index < cards.length);
 		return cards[index];
+	}
+	
+	//SCORING METRICS
+	/**
+	 * Scores the rack for points; this is the metric used for winning a game/round
+	 * @param bonusMode allows bonus points for consecutive cards, provided all
+	 * the cards are in order; each consecutive card beyond "bonus_min", up to
+	 * "bonus_max" will multiply "score_bonus" by "score_bonus_fac"
+	 * (see static Rack variables)
+	 * @return the score
+	 */
+	public int scorePoints(boolean bonusMode){
+		int score = score_single,
+			bonus = 0, cur_streak = 1;
+		for (int i=1; i<cards.length; i++){
+			//Not all are sorted
+			if (cards[i] < cards[i-1])
+				return score;
+			else{
+				score += score_single;
+				//Calculate streaks, for bonus mode
+				if (bonusMode){
+					if (cards[i] == cards[i-1]+1)
+						cur_streak++;
+					else{
+						if (cur_streak >= bonus_min){
+							if (cur_streak > bonus_max)
+								cur_streak = bonus_max;
+							cur_streak -= bonus_min;
+							bonus += Math.pow(score_bonus_fac, cur_streak)*score_bonus;
+						}
+						cur_streak = 1;
+					}
+				}
+			}
+		}
+		//This person is a winner! (bonus is 0, if bonusMode is false)
+		return score + score_all + bonus;
+	}
+	/**
+	 * Returns the largest sum of all usable sequences
+	 *	"usable" sequences are ones that could be used for a winning rack:
+	 *		{4 1 3 6} gives a score of 2, since the 1 in the {1 3 6} sequence is
+	 *		unusable for a winning rack (e.g. there is no card less than 1 to fill the four's spot)
+	 *  if two usable sequences cannot be used together, the largest one is returned
+	 *  otherwise, if they are both usable, their lengths will be summed
+	 * @return largest usable sequence score
+	 */
+	public int scoreSequence(){
+		//TODO
+		return 0;
+	}
+	/**
+	 * Gives the sum squared error of the rack's distribution
+	 * @return 
+	 */
+	public double scoreSSE(Distribution d){
+		//TODO
+		return 0;
+	}
+	/**
+	 * Gives the sum squared error of the rack's distribution,
+	 * without penalizing for usable sequences
+	 * @return 
+	 */
+	public double scoreAdjustedSSE(Distribution d){
+		//TODO
+		return 0;
 	}
 	
 	public String toString(){

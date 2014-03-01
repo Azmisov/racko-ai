@@ -83,7 +83,7 @@ public class Game {
 						int max_score = 0, max_idx = 0;
 						for (int i=0; i<player_count; i++){
 							Player p = players[i];
-							int score = p.rack.score(bonus_mode);
+							int score = p.rack.scorePoints(bonus_mode);
 							p.score += score;
 							p.scoreRound(i == current_player, score);
 							//Check if they have greater than "score_win" points
