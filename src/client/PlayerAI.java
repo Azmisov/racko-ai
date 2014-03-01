@@ -36,7 +36,7 @@ public class PlayerAI extends Player{
 		
 		//DataInstance thisMove = new DataInstance(rack.getCards(), );
 		
-		int slot = rand.nextInt(Rack.rack_size+1) - 1;
+		int slot = rand.nextInt(game.rack_size+1) - 1;
 		
 		int discard = slot == -1 ? card : rack.swap(card, slot, false);
 		

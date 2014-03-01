@@ -138,77 +138,68 @@ public class Deck {
 	}
 	
 	/**
-	 * Returns the probability that a card higher than the number given will be drawn.
-	 * @param cardNumber The card number.
-	 * @param playerRack The rack of the player that called this method.
-	 * @return The probability that a card higher than the input will be drawn.
+	 * Returns the estimated probability of drawing lower/higher than the given card
+	 * @param card the card
+	 * @param rack the current player's rack
+	 * @param spy use "visible" rack cards (ones that were drawn from discard) in calculations
+	 * @param memory limit of how many cards to remember from the discard pile (use 0 for photographic memory)
+	 * @param higher if true, gets the probability of drawing higher; otherwise, probability of drawing lower
+	 * @return probability of drawing a lower/higher card
 	 */
-	public double getProbablityHigher(int cardNumber, Rack playerRack){
-		assert(cardNumber >= 0);
-		assert(playerRack != null);
+	public double getProbability(int card, Rack rack, boolean spy, int memory, boolean higher){
+		assert(card >= 0 && rack != null);
 		
-		double rval = 0.0;
-		double baseAccuracy = max_card_number-cardNumber;
-		ArrayList<Integer> visibleCards = new ArrayList();
+		/*
+			Without knowing any additional info, what is the probabity of drawing a higher/lower card?
+			We can represent our estimate as:
+				E = (baseline - known) / (total - visible)
+				baseline: number of cards lower/higher than a card in the entire deck  (where hi or lo is user specified)
+				known: number of cards lower/higher we know are not in the draw pile (where hi or lo is user specified)
+				total: number of cards in the deck
+				visible: number of cards that we know the values of (either from people's racks, or from the discard pile)
+		*/
+		int baseline = higher ? cards-card : card-1,
+			total = cards - rack_size;
 		
 		//get visible cards from current player
-		for(int i = 0; i < playerRack.getSize(); i++){
-			visibleCards.add(playerRack.getCardAt(i));
+		int[] players_cards = rack.getCards();
+		for (int i=0; i<rack_size; i++){
+			if (higher ? players_cards[i] > card : players_cards[i] < card)
+				baseline--;
 		}
 		
-		//get other players visible cards
-		for(int i = 0; i < players.length; i++){
-			
-			//the player we're looking at is not the player that called the method
-			if(players[i].rack != playerRack){
-				visibleCards.addAll(players[i].getPublicCards());
+		//get visible cards from other players
+		if (spy){
+			for (Player player: players){
+				total -= player.rack.getVisibleCardCount();
+				baseline -= player.rack.getVisibleCards(card, higher);
 			}
 		}
 		
-		for(int i = 0; i < visibleCards.size(); i++){
-			if(visibleCards.get(i) > cardNumber){
-				baseAccuracy--;
-			}
+		//get memorized cards from discard pile
+		if (memory < 1 || memory > discard_count)
+			memory = discard_count;
+		total -= memory;
+		for (int i=0; i<memory; i++){
+			if (higher ? discard[i] > card : discard[i] < card)
+				baseline--;
 		}
 		
-		rval = (baseAccuracy/draw_count);
-		
-		return rval;
+		assert(baseline >= 0 && total >= draw_count);
+		return baseline / (double) cards;
 	}
 	/**
-	 * Returns the probability that a card lower than the number given will be drawn.
-	 * @param cardNumber The card number.
-	 * @param playerRack The rack of the player that called this method.
-	 * @return The probability that a card lower than the input will be drawn.
+	 * Gets the actual probability of drawing higher/lower than the given card
+	 * @param card the card
+	 * @param higher if true, gets the probability of drawing higher; otherwise, probability of drawing lower
+	 * @return 
 	 */
-	public double getProbablityLower(int cardNumber, Rack playerRack){
-		assert(cardNumber >= 0);
-		assert(playerRack != null);
-		
-		double rval = 0.0;
-		double baseAccuracy = cardNumber;
-		ArrayList<Integer> visibleCards = new ArrayList();
-		
-		//get visible cards from current player
-		for(int i=0; i<playerRack.getSize(); i++){
-			visibleCards.add(playerRack.getCardAt(i));
+	public double getRealProbability(int card, boolean higher){
+		int total = draw_count;
+		for (int i=0; i<draw_count; i++){
+			if (higher ? draw[i] < card : draw[i] > card)
+				total--;
 		}
-		
-		for (Player player: players) {
-			//the player we're looking at is not the player that called the method
-			if (player.rack != playerRack) {
-				visibleCards.addAll(player.getPublicCards());
-			}
-		}
-		
-		for(int i = 0; i < visibleCards.size(); i++){
-			if(visibleCards.get(i) < cardNumber){
-				baseAccuracy--;
-			}
-		}
-		
-		rval = (baseAccuracy/draw_count);
-		
-		return rval;
+		return total / (double) draw_count;
 	}
 }

@@ -50,9 +50,4 @@ public abstract class Player {
 	 * @param final their final score for the game
 	 */
 	public void scoreGame(boolean won){}
-	
-	public ArrayList<Integer> getPublicCards(){
-		//change to passing in the card number and returning number of cards higher/lower
-		return rack.getVisibleCards();
-	}
 }

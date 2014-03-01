@@ -66,8 +66,7 @@ public class Game {
 		while (true){
 			//Deal out a new deck; setup variables for the game loop
 			deck.deal();
-			current_player = -1;	
-			boolean new_turn = true;
+			current_player = -1;
 			
 			//Inner loop goes through each player, starting with 0
 			while (true){
@@ -79,7 +78,6 @@ public class Game {
 				Rack cur_rack = players[current_player].rack;
 				if (cur_rack.isSorted()){
 					if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
-						new_turn = false;
 						//We have a winner
 						players[current_player].wins++;
 						int max_score = 0, max_idx = 0;

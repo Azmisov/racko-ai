@@ -15,12 +15,12 @@ public class Rack {
 		score_bonus = 50,		//bonus score for the minimum streak
 		score_bonus_fac = 2,	//bonus score multiplication factor for each additional card above minimum streak
 		bonus_min = 3,			//minimum streak for bonus
-		bonus_max = 6,			//maximum streak for bonus
-		rack_size = 5;
+		bonus_max = 6;			//maximum streak for bonus
 
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
 	//cards are known to other players
+	private int exposed_count;
 	private final boolean[] exposed;
 	private final int[] cards;
 	
@@ -29,6 +29,7 @@ public class Rack {
 	 * @param size the number of cards in a rack
 	 */
 	public Rack(int size){
+		exposed_count = 0;
 		exposed = new boolean[size];
 		cards = new int[size];
 	}
@@ -41,6 +42,7 @@ public class Rack {
 		assert(cards.length == this.cards.length);
 		System.arraycopy(cards, 0, this.cards, 0, cards.length);
 		//at start of game, all cards are secret
+		exposed_count = 0;
 		Arrays.fill(exposed, false);
 	}
 	
@@ -56,6 +58,8 @@ public class Rack {
 		assert(position > 0 && position < cards.length);
 		int old = cards[position];
 		cards[position] = card;
+		if (exposed[position] != fromDiscard)
+			exposed_count += fromDiscard ? 1 : -1;
 		exposed[position] = fromDiscard;
 		return old;
 	}
@@ -129,27 +133,24 @@ public class Rack {
 	
 	/**
 	 * Returns the numbers of the cards that have been picked up from the discard pile.
-	 * @return The list of cards seen by all players.
+	 * @param splitCard only consider cards higher/lower than this card
+	 * @param splitHigher if true, considers only higher cards; false, only lower cards
+	 * @return number of cards seen by all players.
 	 */
-	public ArrayList<Integer> getVisibleCards(){
-		ArrayList<Integer> rval = new ArrayList<Integer>();
-		
-		for(int i = 0; i < cards.length; i++){
-			
-			if(exposed[i] == true){
-				rval.add(cards[i]);
-			}
+	public int getVisibleCards(int splitCard, boolean splitHigher){
+		int count = 0;
+		for (int i=0; i < cards.length; i++){
+			if (exposed[i] && (splitHigher ? cards[i] > splitCard : cards[i] < splitCard))
+				count++;
 		}
-		
-		return rval;
+		return count;
 	}
-	
 	/**
-	 * Returns the number of cards in the rack.
-	 * @return The number of cards in the rack
+	 * Returns the number of cards that are visible
+	 * @return exposed card count
 	 */
-	public int getSize(){
-		return rack_size;
+	public int getVisibleCardCount(){
+		return exposed_count;
 	}
 	
 	/**
@@ -159,19 +160,17 @@ public class Rack {
 	public int[] getCards(){
 		return cards;
 	}
-	
 	/**
 	 * Gets the card at the specified index.
 	 * @param index The index corresponding to the slot in the rack whose card is returned
 	 * @return The card number at the index
 	 */
 	public int getCardAt(int index){
-		assert(index >= 0 && index < rack_size);
+		assert(index >= 0 && index < cards.length);
 		return cards[index];
 	}
 	
-	public String toString()
-	{
+	public String toString(){
 		return Arrays.toString(cards);
 	}
 }
