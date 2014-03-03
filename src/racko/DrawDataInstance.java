@@ -1,29 +1,34 @@
 package racko;
 
-public class DataInstance
+/**
+ * Represents a data instance used by the machine learner to learn whether to draw from the discard pile or from the draw pile.
+ * @author Chris
+ *
+ */
+public class DrawDataInstance
 {
 	private int[] rack;
-	double[] probabilityHigher;
-	double[] probabilityLower;
-	int drawDiscard;
-	int output;
+	private double[] probabilityHigher;
+	private double[] probabilityLower;
+	private int drawDiscard;
+	private boolean output;
 	
-	public DataInstance()
+	public DrawDataInstance()
 	{
 		rack = null;
 		probabilityHigher = null;
 		probabilityLower = null;
 		drawDiscard = -1;
-		output = -1;
+		output = false;
 	}
 	
-	public DataInstance(int[] currentRack, double[] pHigh, double[] pLow, int drawDiscard)
+	public DrawDataInstance(int[] currentRack, double[] pHigh, double[] pLow, int drawDiscard)
 	{	
 		setRack(currentRack);
 		setProbabilityHigher(pHigh);
 		setProbabilityLower(pLow);
 		setDrawDiscard(drawDiscard);
-		setOutput(-1);
+		setOutput(false);
 	}
 	
 	public int[] getRack()
@@ -78,12 +83,17 @@ public class DataInstance
 		drawDiscard = newDrawDiscard;
 	}
 	
-	public int getOutput()
+	/**
+	 * Gets the classification of the data instance.
+	 * True = Draw from draw pile. False = Draw from the discard pile.
+	 * @return
+	 */
+	public boolean getOutput()
 	{
 		return output;
 	}
 	
-	public void setOutput(int newOutput)
+	public void setOutput(boolean newOutput)
 	{
 		output = newOutput;
 	}
