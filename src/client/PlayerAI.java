@@ -7,6 +7,8 @@ import interfaces.Player;
 import racko.DrawDataInstance;
 import racko.Deck;
 import racko.Game;
+import racko.MoveHistory;
+import racko.PlayDataInstance;
 import racko.Rack;
 
 /**
@@ -14,25 +16,29 @@ import racko.Rack;
  */
 public class PlayerAI extends Player{
 
-	ArrayList<DrawDataInstance> playHistory;
+	private MoveHistory drawHistory;
+	private MoveHistory playHistory;
+	
 	Random rand;
 	
 	public PlayerAI(){
 		super();
 		
-		playHistory = new ArrayList<DrawDataInstance>();
+		drawHistory = new MoveHistory();
+		playHistory = new MoveHistory();
 		rand = new Random();
 	}
 	
 	public int play() {
-		boolean drawFromDiscard = decideDraw();//
+		boolean drawFromDiscard = decideDraw();
 		
 		int card = game.deck.draw(drawFromDiscard);
 		
 		System.out.println(playerNumber + ": drew card number: " + card);
+		
 		int slot = decidePlay(rack, card);
 		
-		int discard = slot == -1 ? card : rack.swap(card, slot, false);
+		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
 		
 		System.out.println(playerNumber + ": rack: " + rack.toString());
 		System.out.println(playerNumber + ": discarded card number: " + discard);
@@ -40,19 +46,24 @@ public class PlayerAI extends Player{
 		return discard;
 	}
 
+	private boolean decideDraw(){
+		boolean rval = false;
+		
+		int topOfDiscard = game.deck.peek(true);
+		
+		rval = rand.nextBoolean();
+		
+		addDrawToHistory(rval, topOfDiscard);
+		
+		return rval;
+	}
+	
 	private int decidePlay(Rack rack, int card) {
 		int rval = -1;
 		
 		rval = rand.nextInt(Rack.rack_size+1) - 1;
 		
-		return rval;
-	}
-
-	private boolean decideDraw()
-	{
-		boolean rval = false;
-		
-		rval = rand.nextBoolean();
+		addPlayToHistory(rval);
 		
 		return rval;
 	}
@@ -67,9 +78,19 @@ public class PlayerAI extends Player{
 		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
-	private void addMoveToHistory(DrawDataInstance move)
+	private void addDrawToHistory(boolean card, int topOfDiscard)
 	{
-		playHistory.add(move);
+		//create a DrawDataInstance and fill it with the information
+		
+		
+		drawHistory.addTemp(new DrawDataInstance());
+	}
+	
+	private void addPlayToHistory(int slot)
+	{
+		
+		
+		playHistory.addTemp(new PlayDataInstance(rack.getCards(), slot));
 	}
 	
 }

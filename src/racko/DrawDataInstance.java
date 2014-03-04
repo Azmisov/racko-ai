@@ -5,7 +5,7 @@ package racko;
  * @author Chris
  *
  */
-public class DrawDataInstance
+public class DrawDataInstance implements DataInstance
 {
 	private int[] rack;
 	private double[] probabilityHigher;

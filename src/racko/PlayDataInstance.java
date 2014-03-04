@@ -1,6 +1,6 @@
 package racko;
 
-public class PlayDataInstance
+public class PlayDataInstance implements DataInstance
 {
 	private int[] rack;
 	private int card;
