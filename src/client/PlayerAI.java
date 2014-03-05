@@ -81,9 +81,18 @@ public class PlayerAI extends Player{
 	private void addDrawToHistory(boolean card, int topOfDiscard)
 	{
 		//create a DrawDataInstance and fill it with the information
+		int [] currentRack = rack.getCards();
+		double [] pHigh = new double[currentRack.length];
+		double [] pLow = new double[currentRack.length];
+		for (int i=0; i < currentRack.length; i++)
+		{
+			pHigh[i] = game.deck.getProbability(currentRack[i], rack, true, 0, true);
+			pLow[i] = game.deck.getProbability(currentRack[i], rack, true, 0, false);
+		}
+		int discard = game.deck.peek(true);
+		DrawDataInstance DDI = new DrawDataInstance(currentRack, pHigh, pLow, discard);
 		
-		
-		drawHistory.addTemp(new DrawDataInstance());
+		drawHistory.addTemp(DDI);
 	}
 	
 	private void addPlayToHistory(int slot)
