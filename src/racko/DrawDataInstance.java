@@ -1,5 +1,7 @@
 package racko;
 
+import interfaces.DataInstance;
+
 /**
  * Represents a data instance used by the machine learner to learn whether to draw from the discard pile or from the draw pile.
  * @author Chris

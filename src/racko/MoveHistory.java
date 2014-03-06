@@ -1,5 +1,6 @@
 package racko;
 
+import interfaces.DataInstance;
 import java.util.HashMap;
 
 /**

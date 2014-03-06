@@ -1,5 +1,7 @@
 package racko;
 
+import interfaces.DataInstance;
+
 public class PlayDataInstance implements DataInstance
 {
 	private int[] rack;

@@ -16,8 +16,7 @@ public class Rack {
 		score_bonus = 50,		//bonus score for the minimum streak
 		score_bonus_fac = 2,	//bonus score multiplication factor for each additional card above minimum streak
 		bonus_min = 3,			//minimum streak for bonus
-		bonus_max = 6,			//maximum streak for bonus
-		rack_size = 5;
+		bonus_max = 6;			//maximum streak for bonus
 
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which

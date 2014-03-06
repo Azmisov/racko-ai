@@ -1,7 +1,6 @@
 package racko;
 
 import interfaces.Player;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -18,7 +17,12 @@ public class Deck {
 	private final int[] draw, discard;		//draw and discard piles
 	private final boolean[] in_play;		//which cards are in play?
 	private boolean action = false;			//false = expect draw, true = expect discard
-	private final int max_card_number = 30;
+	//Memory variables
+	private final int[] memory,				//keeps track of which cards were drawn last; 0 values should be ignored
+		memory_hash;						//where each card is located in the memory array; -1, if it isn't in memory
+	private int memory_head,				//memory[] is a circular buffer; where does it start?
+		memory_count;						//how many cards are stored in memory? (non-zero entries)
+	private boolean has_shuffled;			//have we gone through all the cards in the draw pile?
 	//Random number generator:
 	private static final Random rand = new Random();
 	
@@ -41,6 +45,12 @@ public class Deck {
 		draw = new int[cards];
 		discard = new int[cards];
 		in_play = new boolean[cards];
+		//Initialize memory
+		memory = new int[cards];
+		memory_hash = new int[cards];
+		memory_head = 0;
+		memory_count = 0;
+		has_shuffled = false;
 	}
 	
 	/**
@@ -50,12 +60,19 @@ public class Deck {
 	 */
 	protected void deal(){
 		//Create a new deck
+		//First, reset all deck variables
 		Arrays.fill(in_play, false);
+		Arrays.fill(memory, 0);
 		draw_count = 0;
 		discard_count = cards;
 		for (int i=0; i<cards; i++)
 			discard[i] = i+1;
 		shuffle();
+		//Reset memory variables
+		Arrays.fill(memory_hash, -1);
+		memory_head = 0;
+		memory_count = 0;
+		has_shuffled = false;
 		//Deal out the cards
 		for (Player p: players){
 			//Fill each rack from top to bottom
@@ -86,9 +103,7 @@ public class Deck {
 			draw[i] = temp;
 		}
 		//Put first draw card in discard pile
-		draw_count = discard_count-1;
-		discard_count = 1;
-		discard[0] = draw[draw_count];
+		discard(draw(false));
 	}
 	
 	/**
@@ -133,21 +148,37 @@ public class Deck {
 		//Push to stack
 		discard[discard_count++] = card;
 		//Reshuffle, if no cards in draw pile
-		if (draw_count == 0)
+		if (draw_count == 0){
+			has_shuffled = true;
 			shuffle();
+		}
+		//Remove old reference to this card in memory
+		int old_loc = memory_hash[card-1];
+		if (old_loc >= 0)
+			memory[old_loc] = 0;
+		else if (memory_count < rack_size*2)
+			memory_count++;
+		//Add new reference to memory
+		memory_hash[card-1] = memory_head;
+		memory[memory_head] = card;
+		memory_head = (memory_head + 1) % cards;
 	}
 	
 	/**
 	 * Returns the estimated probability of drawing lower/higher than the given card
 	 * @param card the card
-	 * @param rack the current player's rack
-	 * @param spy use "visible" rack cards (ones that were drawn from discard) in calculations
-	 * @param memory limit of how many cards to remember from the discard pile (use 0 for photographic memory)
 	 * @param higher if true, gets the probability of drawing higher; otherwise, probability of drawing lower
 	 * @return probability of drawing a lower/higher card
+	 * @param rack the current player's rack
+	 * @param mem_limit limit of how many cards to remember from the discard pile
+	 *	(use 0 for photographic memory; use 1 for no memory; otherwise, integer > 1 for specific memory limit)
 	 */
-	public double getProbability(int card, Rack rack, boolean spy, int memory, boolean higher){
+	public double getProbability(int card, boolean higher, Rack rack, int mem_limit){
 		assert(card >= 0 && rack != null);
+		
+		//If we've seen every card, we know exactly what the probabilities should be
+		if ((mem_limit < 1 || mem_limit >= rack_size*2) && has_shuffled)
+			return getRealProbability(card, higher);
 		
 		/*
 			Without knowing any additional info, what is the probabity of drawing a higher/lower card?
@@ -168,21 +199,19 @@ public class Deck {
 				baseline--;
 		}
 		
-		//get visible cards from other players
-		if (spy){
-			for (Player player: players){
-				total -= player.rack.getVisibleCardCount();
-				baseline -= player.rack.getVisibleCards(card, higher);
-			}
-		}
-		
 		//get memorized cards from discard pile
-		if (memory < 1 || memory > discard_count)
-			memory = discard_count;
-		total -= memory;
-		for (int i=0; i<memory; i++){
-			if (higher ? discard[i] > card : discard[i] < card)
-				baseline--;
+		if (mem_limit > memory_count)
+			mem_limit = memory_count;
+		total -= mem_limit;
+		int viewed = 0, i = memory_head;
+		while (true){
+			if (memory[i] != 0){
+				if (higher ? memory[i] > card : memory[i] < card)
+					baseline--;
+				if (++viewed == mem_limit)
+					break;
+			}
+			i = i == 0 ? memory.length : i-1;
 		}
 		
 		assert(baseline >= 0 && total >= draw_count);
