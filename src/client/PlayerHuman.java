@@ -18,5 +18,5 @@ public class PlayerHuman extends Player{
 	public int play() {
 		System.out.println("Play");
 		return 0;
-	}	
+	}
 }

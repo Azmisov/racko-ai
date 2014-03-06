@@ -62,7 +62,7 @@ public class GUI extends JFrame{
 		players[0] = p1;
 		players[1] = p2;
 		
-		Game g = Game.create(players, 5, 1, false);
+		Game g = Game.create(players, 5, 3, false);
 		g.play();
 	}
 }

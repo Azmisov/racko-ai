@@ -76,6 +76,8 @@ public class PlayerAI extends Player{
 	@Override
 	public void scoreGame(boolean won) {
 		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
+		
+		saveMoveHistory(won);
 	}
 	
 	private void addDrawToHistory(boolean card, int topOfDiscard)
@@ -101,5 +103,11 @@ public class PlayerAI extends Player{
 		
 		playHistory.addTemp(new PlayDataInstance(rack.getCards(), slot));
 	}
+	
+	private void saveMoveHistory(boolean won)
+	{
+		
+	}
+	
 	
 }
