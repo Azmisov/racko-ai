@@ -1,8 +1,11 @@
 package client;
 
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.util.Random;
 
+import NeuralNetworks.Network;
+import interfaces.DataInstance;
 import interfaces.Player;
 import racko.DrawDataInstance;
 import racko.Deck;
@@ -18,6 +21,10 @@ public class PlayerAI extends Player{
 
 	private MoveHistory drawHistory;
 	private MoveHistory playHistory;
+	private static Network drawNet = new Network(new int[]{16, 32, 1}),
+			playNet = new Network(new int[]{16, 32, 6});
+	
+	private int initialScore;
 	
 	Random rand;
 	
@@ -80,6 +87,12 @@ public class PlayerAI extends Player{
 		saveMoveHistory(won);
 	}
 	
+	@Override
+	public void beginRound()
+	{
+		initialScore = rack.scoreSequence();
+	}
+	
 	private void addDrawToHistory(boolean card, int topOfDiscard)
 	{
 		//create a DrawDataInstance and fill it with the information
@@ -106,7 +119,24 @@ public class PlayerAI extends Player{
 	
 	private void saveMoveHistory(boolean won)
 	{
+		int endScore = rack.scoreSequence();
 		
+		if(numberOfMoves == 0)
+			return;
+		
+		double learningRateFactor = ((double)(endScore-initialScore)/(double)game.rack_size)/(double)numberOfMoves;
+		
+		for(Entry<DataInstance, Integer> d: drawHistory.tempMoveHistory.entrySet())
+		{
+			DrawDataInstance draw = (DrawDataInstance)d.getKey();
+			int num = d.getValue();
+			int target = draw.getOutput() ? 1 : 0;
+			
+			double[] inputs = draw.getInputs();
+			
+			drawNet.compute(inputs);
+			drawNet.trainBackprop(.1*learningRateFactor*num, 0, target);
+		}
 	}
 	
 	

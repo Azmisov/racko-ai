@@ -18,9 +18,9 @@ public class Network extends Node{
 	 * @param layers node counts for each layer
 	 * @throws Exception if there are no layers or a layer has non-positive nodes
 	 */
-	public Network(int[] layers) throws Exception{
+	public Network(int[] layers){
 		super();
-		
+		try{
 		if (layers == null || layers.length == 0)
 			throw new Exception("Network must have at least one layer");
 		
@@ -64,6 +64,9 @@ public class Network extends Node{
 			last.addOutlink(this);
 		*/
 		frozen = 0;
+		} catch (Exception e){
+			assert(false);
+		}
 	}
 	
 	/**
@@ -116,7 +119,8 @@ public class Network extends Node{
 	 * @param data the input data
 	 * @throws Exception if the data is ill-formed
 	 */
-	public void compute(double[] data) throws Exception{
+	public void compute(double[] data){
+		try{
 		if (data.length != input_nodes){
 			System.out.println(data.length+" does not match "+input_nodes);
 			throw new Exception("Invalid data size");
@@ -159,6 +163,10 @@ public class Network extends Node{
 					in.links_out.get(i).net += in.out*in.weights.get(i);
 			}
 			first = false;
+		}
+		
+		} catch (Exception e){
+			assert(false);
 		}
 	}
 	/**
@@ -214,7 +222,9 @@ public class Network extends Node{
 	 * @param targets an array of target values, corresponding to the output nodes
 	 * @throws Exception if the targets don't match the output nodes
 	 */
-	public void trainBackprop(double rate, double momentum, double[] targets) throws Exception{
+	public void trainBackprop(double rate, double momentum, double[] targets){
+		try{
+		
 		//TODO: what if we have nested networks?
 		int layer_count = layers.size();
 		ArrayList<Node> layer = layers.get(layer_count-1);
@@ -254,6 +264,10 @@ public class Network extends Node{
 				}
 			}
 		}
+		
+		} catch (Exception e){
+			assert(false);
+		}
 	}
 	/**
 	 * Train with backpropagation, using classification
@@ -261,7 +275,7 @@ public class Network extends Node{
 	 * @param target the target class
 	 * @throws Exception 
 	 */
-	public void trainBackprop(double rate, double momentum, int target) throws Exception{
+	public void trainBackprop(double rate, double momentum, int target){
 		int outputs = layers.get(layers.size()-1).size();
 		double[] targets;
 		targets = new double[outputs];

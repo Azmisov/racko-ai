@@ -31,6 +31,8 @@ public class DrawDataInstance implements DataInstance
 		setProbabilityLower(pLow);
 		setDrawDiscard(drawDiscard);
 		setOutput(false);
+		
+		
 	}
 	
 	public int[] getRack()
@@ -98,6 +100,18 @@ public class DrawDataInstance implements DataInstance
 	public void setOutput(boolean newOutput)
 	{
 		output = newOutput;
+	}
+	
+	public double[] getInputs()
+	{
+		double[] rval = new double[rack.length+probabilityHigher.length+probabilityLower.length+1];
+		
+		System.arraycopy(rack, 0, rval, 0, rack.length);
+		System.arraycopy(probabilityHigher, 0, rval, rack.length, probabilityHigher.length);
+		System.arraycopy(probabilityLower, 0, rval, rack.length+probabilityHigher.length, probabilityLower.length);
+		rval[rval.length-1] = drawDiscard; 
+		
+		return rval;
 	}
 	
 	public String toString()

@@ -12,12 +12,17 @@ import java.util.HashMap;
 public class MoveHistory
 {
 	private HashMap<DataInstance, Integer> moveHistory;
-	private HashMap<DataInstance, Integer> tempMoveHistory;
+	public HashMap<DataInstance, Integer> tempMoveHistory;
 	
 	public MoveHistory()
 	{
 		moveHistory = new HashMap<DataInstance, Integer>();
 		tempMoveHistory = new HashMap<DataInstance, Integer>();
+	}
+	
+	public int tempSize()
+	{
+		return tempMoveHistory.size();
 	}
 	
 	public void add(DataInstance instance)

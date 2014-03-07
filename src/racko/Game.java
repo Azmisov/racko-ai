@@ -73,6 +73,7 @@ public class Game {
 				//Get next player to play
 				current_player = (current_player+1) % player_count;
 				deck.discard(players[current_player].play());
+				players[current_player].numberOfMoves++;
 
 				//Check if this player has won
 				Rack cur_rack = players[current_player].rack;

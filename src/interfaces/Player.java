@@ -13,7 +13,7 @@ import racko.Rack;
 public abstract class Player {
 	public Game game;
 	public Rack rack;
-	public int score, wins;
+	public int score, wins, numberOfMoves;
 	public static int playerCount = 0;
 	public int playerNumber;
 	
@@ -50,4 +50,6 @@ public abstract class Player {
 	 * @param final their final score for the game
 	 */
 	public void scoreGame(boolean won){}
+	
+	public void beginRound(){}
 }
