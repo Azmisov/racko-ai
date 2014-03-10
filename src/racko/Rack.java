@@ -180,8 +180,30 @@ public class Rack {
 	 * @return largest usable sequence score
 	 */
 	public int scoreSequence(){
-		//TODO
-		return 0;
+		//TODO Check if cards are too high to be used in a sequence
+		// Not sure where to find the maximum card value in the deck.
+		int bestScore = 0;
+		int score = 0;
+		int prev = -1;
+		for (int j=0; j < cards.length; j++)
+		{
+			for (int i=j; i < cards.length; i++)
+			{
+				if (prev == -1 && cards[i] > i)
+				{
+					prev = i;
+					score++;
+				}
+				else if (cards[i] > i && cards[i] > cards[prev])
+				{
+					prev = i;
+					score++;
+				}
+			}
+			if (score > bestScore)
+				bestScore = score;
+		}		
+		return bestScore;
 	}
 	/**
 	 * Gives the sum squared error of the rack's distribution
