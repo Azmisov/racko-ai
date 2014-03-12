@@ -16,13 +16,15 @@ public class Deck {
 	private int draw_count, discard_count;	//cards in draw/discard pile
 	private final int[] draw, discard;		//draw and discard piles
 	private final boolean[] in_play;		//which cards are in play?
-	private boolean action = false;			//false = expect draw, true = expect discard
+	private boolean
+		action = false,						//false = expect draw, true = expect discard
+		dealing = false,					//remove assertions if dealing cards
+		has_shuffled = false;				//have we gone through all the cards in the draw pile?
 	//Memory variables
 	private final int[] memory,				//keeps track of which cards were drawn last; 0 values should be ignored
 		memory_hash;						//where each card is located in the memory array; -1, if it isn't in memory
 	private int memory_head,				//memory[] is a circular buffer; where does it start?
 		memory_count;						//how many cards are stored in memory? (non-zero entries)
-	private boolean has_shuffled;			//have we gone through all the cards in the draw pile?
 	//Random number generator:
 	private static final Random rand = new Random();
 	
@@ -60,6 +62,7 @@ public class Deck {
 	 */
 	protected void deal(){
 		//Create a new deck
+		dealing = true;
 		//First, reset all deck variables
 		Arrays.fill(in_play, false);
 		Arrays.fill(memory, 0);
@@ -87,6 +90,7 @@ public class Deck {
 			p.beginRound();
 		}
 		action = false;
+		dealing = false;
 	}
 	/**
 	 * Shuffle the discard pile; replaces draw pile
@@ -105,6 +109,8 @@ public class Deck {
 			draw[i] = temp;
 		}
 		//Put first draw card in discard pile
+		draw_count = discard_count;
+		discard_count = 0;
 		discard(draw(false));
 	}
 	
@@ -125,7 +131,7 @@ public class Deck {
 	 */
 	public int draw(boolean fromDiscard){
 		//Make sure there are the correct number of cards in play
-		assert(draw_count+discard_count == rack_size*2 && !action);
+		assert(dealing || (draw_count+discard_count == rack_size*2 && !action));
 		action = true;
 		int card;
 		if (fromDiscard){
@@ -177,6 +183,10 @@ public class Deck {
 	 */
 	public double getProbability(int card, boolean higher, Rack rack, int mem_limit){
 		assert(card >= 0 && rack != null);
+		
+		//TODO: fix the probability calculator
+		if (true)
+			return getRealProbability(card, higher);
 		
 		//If we've seen every card, we know exactly what the probabilities should be
 		if ((mem_limit < 1 || mem_limit >= rack_size*2) && has_shuffled)

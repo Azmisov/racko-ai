@@ -1,7 +1,6 @@
 package racko;
 
 import interfaces.Distribution;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -56,7 +55,7 @@ public class Rack {
 	 * @return a card to discard (the old card at "position")
 	 */
 	public int swap(int card, int position, boolean fromDiscard){
-		assert(position > 0 && position < cards.length);
+		assert(position >= 0 && position < cards.length);
 		int old = cards[position];
 		cards[position] = card;
 		if (exposed[position] != fromDiscard)
