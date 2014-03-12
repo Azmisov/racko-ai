@@ -21,7 +21,7 @@ public class Rack {
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
 	//cards are known to other players
-	private int exposed_count;
+	private int exposed_count, maxCard;
 	private final boolean[] exposed;
 	private final int[] cards;
 	
@@ -29,10 +29,11 @@ public class Rack {
 	 * Initializes a rack
 	 * @param size the number of cards in a rack
 	 */
-	public Rack(int size){
+	public Rack(int size, int max){
 		exposed_count = 0;
 		exposed = new boolean[size];
 		cards = new int[size];
+		maxCard = max;
 	}
 	
 	/**
@@ -189,12 +190,13 @@ public class Rack {
 		{
 			for (int i=j; i < cards.length; i++)
 			{
-				if (prev == -1 && cards[i] > i)
+				if (prev == -1 && cards[i] > i && cards[i] < (maxCard - (cards.length - i)))
 				{
 					prev = i;
 					score++;
 				}
-				else if (cards[i] > i && cards[i] > cards[prev])
+				else if (cards[i] > i && cards[i] > cards[prev] && 
+						cards[i] < (maxCard - (cards.length - i)))
 				{
 					prev = i;
 					score++;

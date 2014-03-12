@@ -233,4 +233,13 @@ public class Deck {
 		}
 		return total / (double) draw_count;
 	}
+	/**
+	 * Gets the total number of cards in the deck, or synonymously, 
+	 * gets the value of the highest numbered card in the deck
+	 * @return Number of cards
+	 */
+	public int getMaxCard()
+	{
+		return cards;
+	}
 }

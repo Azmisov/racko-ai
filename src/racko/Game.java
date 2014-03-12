@@ -41,7 +41,7 @@ public class Game {
 	 */
 	private void register(){
 		for (int i=0; i<player_count; i++){
-			Rack r = new Rack(rack_size);
+			Rack r = new Rack(rack_size, deck.getMaxCard());
 			players[i].register(this, r);
 		}
 	}
