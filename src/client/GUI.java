@@ -57,14 +57,16 @@ public class GUI extends JFrame{
 		Player[] players = new Player[2];
 		
 		Player p1 = new PlayerRandom();
-		Player p2 = new PlayerRandom();
+		Player p2 = new PlayerAI();
 		
 		players[0] = p1;
 		players[1] = p2;
 		
 		Game g = Game.create(players, 5, 3, false);
-		for(int i = 0; i < 30; i++){
+		for (int i = 0; i < 30; i++){
 			g.play();
+			if (i % 5 == 0)
+				System.out.println("finished game #"+i);
 		}
 		
 		System.out.println("Player AI = "+p1.wins);
