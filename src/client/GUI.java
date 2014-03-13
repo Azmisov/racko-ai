@@ -54,22 +54,33 @@ public class GUI extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		Player[] players = new Player[2];
-		
-		Player p1 = new PlayerRandom();
-		Player p2 = new PlayerAI();
-		
-		players[0] = p1;
-		players[1] = p2;
-		
+		//Setup the game
+		Player[] players = new Player[]{
+			new PlayerRandom(),
+			new PlayerAI()
+		};
+		Player p_rand = players[0], p_ai = players[1];
 		Game g = Game.create(players, 5, 3, false);
-		for (int i = 0; i < 30; i++){
-			g.play();
-			if (i % 5 == 0)
-				System.out.println("finished game #"+i);
-		}
 		
-		System.out.println("Player AI = "+p1.wins);
-		System.out.println("Player Random = "+p2.wins);
+		//Play games
+		double round = 100;
+		int epoch_every = 10, epochs = 0;
+		for (int i = 0; i < 500; i++){
+			g.play();
+			//Print statistics to console
+			if (i % epoch_every == 0){
+				epochs++;
+				System.out.println("Epoch #"+epochs);
+				System.out.println("\t"+p_ai.wins+" to "+p_rand.wins);
+				double wins = 100 * p_ai.wins / (double) (p_rand.wins + p_ai.wins),
+						score = 100 * p_ai.score / (double) (p_rand.score + p_ai.score);
+				for (int j=0; j<players.length; j++){
+					players[j].wins = 0;
+					players[j].score = 0;
+				}
+				System.out.println("\tAI wins = "+(Math.round(wins*round)/round)+"%");
+				System.out.println("\tAI score = "+(Math.round(score*round)/round)+"%");
+			}
+		}
 	}
 }

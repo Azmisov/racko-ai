@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Deck {
 	//Game constants
-	private final int cards, rack_size;		//number of cards & the rack size
+	protected final int cards, rack_size;	//number of cards & the rack size
 	private final Player[] players;			//list of players
 	//Deck variables
 	private int draw_count, discard_count;	//cards in draw/discard pile

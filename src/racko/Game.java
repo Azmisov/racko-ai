@@ -13,7 +13,7 @@ public class Game {
 		score_win = 500;	//score needed to win the game
 	
 	//Game management
-	public final int rack_size, min_streak, player_count;
+	public final int rack_size, min_streak, player_count, card_count;
 	public final boolean bonus_mode;
 	public final Deck deck;
 	private final Player[] players;
@@ -35,6 +35,7 @@ public class Game {
 		
 		//Create the deck; rack size and player count are validated here
 		deck = new Deck(players, rackSize);
+		card_count = deck.cards;
 	}
 	/**
 	 * Registers players to the game

@@ -10,23 +10,25 @@ import java.util.Random;
 public class Node{
 	private static final double ADJUST = 10;
 	private static final Random ran = new Random();
-	protected double net, out, err, weight_delta;
+	protected double net, out, err;
+	protected final boolean is_bias;
 	//Links
-	protected ArrayList<Node> links_out, links_in;
-	protected ArrayList<Double> weights;
+	protected final ArrayList<Node> links_out;
+	protected final ArrayList<Double> weights;
 	
-	public Node(){
+	public Node(boolean bias){
 		links_out = new ArrayList();
-		links_in = new ArrayList();
 		weights = new ArrayList();
-		weight_delta = 0;
+		is_bias = bias;
 	}
 	
 	public void addOutlink(Node n){
-		links_out.add(n);
-		n.links_in.add(this);
-		double weight = ran.nextDouble()/ADJUST - 1/ADJUST/2;
-		weights.add(weight);
+		//Ignore bias weights as outputs
+		if (!n.is_bias){
+			links_out.add(n);
+			double weight = ran.nextDouble()/ADJUST - 1/ADJUST/2;
+			weights.add(weight);
+		}
 	}
 	
 	public double getNetValue(){

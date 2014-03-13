@@ -3,24 +3,24 @@ package client;
 import java.util.ArrayList;
 import java.util.Random;
 import NeuralNetworks.Network;
-import interfaces.DataInstance;
 import interfaces.Player;
-import racko.DrawDataInstance;
-import racko.PlayDataInstance;
+import racko.DataInstance;
 import racko.Rack;
 
 /**
  * Plays the game as an artificial intelligence
  */
 public class PlayerAI extends Player{
-	private static final Random rand = new Random();
+	private static final double LEARN_RATE = .1;
+	private static final Random RAND = new Random();
 	//Playing history
 	private final ArrayList<DataInstance> drawHistory;
 	private final ArrayList<DataInstance> playHistory;
 	//Learning model
+	private static final int RAND_LIMIT = 250;
 	private static final Network
 		drawNet = new Network(new int[]{16, 32, 1}),
-		playNet = new Network(new int[]{16, 32, 6});
+		playNet = new Network(new int[]{6, 32, 6});
 	//Statistics
 	private int initialScore;
 	private int games_played = 0;
@@ -35,15 +35,15 @@ public class PlayerAI extends Player{
 	public int play() {
 		boolean drawFromDiscard = decideDraw();
 		
-		int card = game.deck.draw(drawFromDiscard);
-		
-		//System.out.println(playerNumber + ": drew card number: " + card);
-		
+		int card = game.deck.draw(drawFromDiscard);		
 		int slot = decidePlay(rack, card);
 		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
 		
-		//System.out.println(playerNumber + ": rack: " + rack.toString());
-		//System.out.println(playerNumber + ": discarded card number: " + discard);
+		if (games_played == 251){
+			System.out.println(playerNumber + ": drew card number: " + card);
+			System.out.println(playerNumber + ": rack: " + rack.toString());
+			System.out.println(playerNumber + ": discarded card number: " + discard);
+		}
 		
 		return discard;
 	}
@@ -51,13 +51,13 @@ public class PlayerAI extends Player{
 	private boolean decideDraw(){
 		boolean rval;
 
-		DrawDataInstance ddi = addDrawToHistory();
-		if (games_played > 4){
-			drawNet.compute(ddi.getInputs());
+		DataInstance ddi = addDrawToHistory();
+		if (games_played > RAND_LIMIT){
+			drawNet.compute(ddi.inputs);
 			rval = drawNet.getOutput() > .5;
 		}
 		else{
-			rval = rand.nextBoolean();
+			rval = RAND.nextBoolean();
 		}
 		ddi.setOutput(rval);
 		
@@ -66,9 +66,17 @@ public class PlayerAI extends Player{
 	private int decidePlay(Rack rack, int card) {
 		int rval = -1;
 		
-		rval = rand.nextInt(game.rack_size+1) - 1;
-		
-		addPlayToHistory(rval);
+		DataInstance pdi = addPlayToHistory(card);
+		if (games_played > RAND_LIMIT){
+			playNet.compute(pdi.inputs);
+			rval = playNet.getOutput()-1;
+		}
+		else{
+			rval = RAND.nextInt(game.rack_size+1) - 1;
+		}
+		//We use -1 to represent a discard action
+		//The neural network needs a value between 0 to rack_size+1
+		pdi.setOutput(rval+1, 1);
 		
 		return rval;
 	}
@@ -92,26 +100,35 @@ public class PlayerAI extends Player{
 		playHistory.clear();
 	}
 	
-	private DrawDataInstance addDrawToHistory(){
-		//create a DrawDataInstance and fill it with the information
-		int [] currentRack = rack.getCards();
-		double [] pHigh = new double[currentRack.length];
-		double [] pLow = new double[currentRack.length];
-		for (int i=0; i < currentRack.length; i++)
-		{
-			pHigh[i] = game.deck.getProbability(currentRack[i], true, rack, 0);
-			pLow[i] = game.deck.getProbability(currentRack[i], false, rack, 0);
+	private DataInstance addDrawToHistory(){		
+		//Calculate features
+		int[] cur_rack = rack.getCards();
+		double[] pHigh = new double[game.rack_size],
+				pLow = new double[game.rack_size];
+		for (int i=0; i < game.rack_size; i++){
+			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
 		}
 		int discard = game.deck.peek(true);
-		DrawDataInstance DDI = new DrawDataInstance(currentRack, pHigh, pLow, discard);
 		
-		drawHistory.add(DDI);
+		//Create the history
+		DataInstance ddi = new DataInstance(game.rack_size*3 + 1);
+		ddi.addFeature(cur_rack, game.card_count);
+		ddi.addFeature(pHigh, 1);
+		ddi.addFeature(pLow, 1);
+		ddi.addFeature(discard, game.card_count);
+		drawHistory.add(ddi);
 		
-		return DDI;
+		return ddi;
 	}
-	
-	private void addPlayToHistory(int slot){
-		playHistory.add(new PlayDataInstance(rack.getCards(), slot));
+	private DataInstance addPlayToHistory(int drawnCard){
+		//Create the history
+		DataInstance pdi = new DataInstance(game.rack_size + 1);
+		pdi.addFeature(rack.getCards(), game.card_count);
+		pdi.addFeature(drawnCard, game.card_count);
+		playHistory.add(pdi);
+		
+		return pdi;
 	}
 	
 	private void saveMoveHistory(boolean won){
@@ -121,30 +138,19 @@ public class PlayerAI extends Player{
 		
 		//Score how well the AI did this round
 		int endScore = rack.scoreSequence();
-		double learningRateFactor = (endScore-initialScore) / (double) game.rack_size / (double) numberOfMoves;
+		double rate = LEARN_RATE * (endScore-initialScore) / (double) game.rack_size / (double) numberOfMoves;
+		
 		
 		//Train for drawing
 		for (DataInstance d: drawHistory){
-			DrawDataInstance draw = (DrawDataInstance) d;
-
-			drawNet.compute(draw.getInputs());
-			drawNet.trainBackprop(
-				.1*learningRateFactor,
-				draw.getOutput() ? 1 : 0
-			);
+			drawNet.compute(d.inputs);
+			drawNet.trainBackprop(rate, (int) d.output);
 		}
 		
 		//Train for playing
-		/*
-		for (DataInstance p: playHistory){
-			PlayDataInstance play = (PlayDataInstance) p;
-			
-			playNet.compute(play.getInputs());
-			playNet.trainBackprop(
-				.1*learningRateFactor,
-				play.getOutput()
-			);
+		for (DataInstance p: playHistory){			
+			playNet.compute(p.inputs);
+			playNet.trainBackprop(rate, (int) p.output);
 		}
-		*/
 	}	
 }

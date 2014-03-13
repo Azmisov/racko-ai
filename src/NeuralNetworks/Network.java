@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class Network{
 	//Input nodes for data features; 
 	private final ArrayList<Node[]> layers;
-	private int input_nodes, frozen;
+	private final int input_nodes;
+	private int frozen;
 	
 	/**
 	 * Builds a standard multi-layered network
@@ -27,13 +28,14 @@ public class Network{
 			count = layers[i];
 			//Layers must have positive node count
 			assert(count > 0);
-			//Extra node for bias
-			if (i != layers.length-1)
-				count++;
+			boolean hidden = i != layers.length-1;
 			//Create the actual nodes
-			Node[] layer = new Node[count];
+			Node[] layer = new Node[count+(hidden ? 1 : 0)];
 			for (int j=0; j<count; j++)
-				layer[j] = new Node();
+				layer[j] = new Node(false);
+			//Extra node for bias
+			if (hidden)
+				layer[count] = new Node(true);
 			this.layers.add(layer);
 		}
 		
@@ -65,35 +67,33 @@ public class Network{
 	/**
 	 * Inserts another hidden layer
 	 * @param nodes 
-	 
+	 */
 	public void addHiddenLayer(int nodes){
-		//Create hidden layer
-		ArrayList<Node> hidden = new ArrayList();
-		for (int i=0; i<nodes; i++)
-			hidden.add(new Node());
-		//Remove old connections
 		int layer_count = layers.size();
-		ArrayList<Node> last = layers.get(layer_count-2), output = layers.get(layer_count-1);
+		Node[] last = layers.get(layer_count-2),
+				output = layers.get(layer_count-1);
+		//Create hidden layer
+		Node[] hidden = new Node[nodes+1];
+		for (int i=0; i<nodes; i++)
+			hidden[i] = new Node(false);
+		//Bias weight
+		hidden[nodes] = new Node(true);
+		
+		//Connect last (old last hidden layer) to the new hidden layer
 		for (Node n: last){
 			n.links_out.clear();
 			n.weights.clear();
-			n.weight_delta = 0;
-			//Connect the new hidden layer
 			for (Node h: hidden)
 				n.addOutlink(h);
 		}
-		//Create bias for hidden layer (must come after connecting "last")
-		hidden.add(new Node());
+		//Connect the new hidden layer to the output layer
 		for (Node n: output){
-			n.links_in.clear();
-			//Connect the new hidden layer
 			for (Node h: hidden)
 				h.addOutlink(n);
 		}
 		//Add the hidden layer to layers
 		layers.add(layer_count-1, hidden);
 	}
-	*/
 	
 	/**
 	 * Computes the output of this neural network. The output for each
@@ -113,8 +113,8 @@ public class Network{
 				//Input node
 				if (first && j < data.length)
 					temp.net = data[j];
-				//No in-links = bias node
-				else if (temp.links_in.isEmpty())
+				//Bias node
+				else if (temp.is_bias)
 					temp.net = 1;
 				//Default node, reset net value
 				else temp.net = 0;
