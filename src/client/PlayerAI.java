@@ -25,6 +25,7 @@ public class PlayerAI extends Player{
 			playNet = new Network(new int[]{16, 32, 6});
 	
 	private int initialScore;
+	private int games_played = 0;
 	
 	Random rand;
 	
@@ -41,26 +42,28 @@ public class PlayerAI extends Player{
 		
 		int card = game.deck.draw(drawFromDiscard);
 		
-		System.out.println(playerNumber + ": drew card number: " + card);
+		//System.out.println(playerNumber + ": drew card number: " + card);
 		
 		int slot = decidePlay(rack, card);
 		
 		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
 		
-		System.out.println(playerNumber + ": rack: " + rack.toString());
-		System.out.println(playerNumber + ": discarded card number: " + discard);
+	//	System.out.println(playerNumber + ": rack: " + rack.toString());
+	//	System.out.println(playerNumber + ": discarded card number: " + discard);
 		
 		return discard;
 	}
 
 	private boolean decideDraw(){
 		boolean rval = false;
-		
-		int topOfDiscard = game.deck.peek(true);
-		
-		rval = rand.nextBoolean();
-		
-		addDrawToHistory(rval, topOfDiscard);
+
+		DrawDataInstance ddi = addDrawToHistory();
+		if (games_played > 1){
+			drawNet.compute(ddi.getInputs());
+			rval = drawNet.getOutput() > .5;
+		}
+		else {rval = rand.nextBoolean();}
+		ddi.setOutput(rval);
 		
 		return rval;
 	}
@@ -77,13 +80,13 @@ public class PlayerAI extends Player{
 
 	@Override
 	public void scoreRound(boolean won, int score) {
-		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
+		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
 	}
 
 	@Override
 	public void scoreGame(boolean won) {
-		System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
-		
+		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
+		games_played++;
 		saveMoveHistory(won);
 	}
 	
@@ -93,7 +96,7 @@ public class PlayerAI extends Player{
 		initialScore = rack.scoreSequence();
 	}
 	
-	private void addDrawToHistory(boolean card, int topOfDiscard)
+	private DrawDataInstance addDrawToHistory()
 	{
 		//create a DrawDataInstance and fill it with the information
 		int [] currentRack = rack.getCards();
@@ -108,6 +111,8 @@ public class PlayerAI extends Player{
 		DrawDataInstance DDI = new DrawDataInstance(currentRack, pHigh, pLow, discard);
 		
 		drawHistory.addTemp(DDI);
+		
+		return DDI;
 	}
 	
 	private void addPlayToHistory(int slot)

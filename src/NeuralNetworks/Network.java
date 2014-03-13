@@ -173,7 +173,7 @@ public class Network extends Node{
 	 * Gets the output of the network; probably only works for backprop
 	 * @return the output node with greatest net value
 	 */
-	public int getOutput(int target){
+	public int getOutput(){
 		int l = layers.size();
 		ArrayList<Node> last = layers.get(l-1);
 		//If only one output node, return binary answer (1/0)

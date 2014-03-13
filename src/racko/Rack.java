@@ -194,7 +194,7 @@ public class Rack {
 					prev = i;
 					score++;
 				}
-				else if (cards[i] > i && cards[i] > cards[prev] && 
+				else if (i != -1 && prev != -1 && cards[i] > i && cards[i] > cards[prev] && 
 						cards[i] < (maxCard - (cards.length - i)))
 				{
 					prev = i;

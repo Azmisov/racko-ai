@@ -9,7 +9,7 @@ import interfaces.DataInstance;
  */
 public class DrawDataInstance implements DataInstance
 {
-	private int[] rack;
+	private double[] rack;
 	private double[] probabilityHigher;
 	private double[] probabilityLower;
 	private int drawDiscard;
@@ -35,14 +35,14 @@ public class DrawDataInstance implements DataInstance
 		
 	}
 	
-	public int[] getRack()
+	public double[] getRack()
 	{
 		return rack;
 	}
 	
 	public void setRack(int[] newRack)
 	{
-		rack = new int[newRack.length];
+		rack = new double[newRack.length];
 		for(int i = 0; i < newRack.length; i++)
 		{
 			rack[i] = newRack[i];
