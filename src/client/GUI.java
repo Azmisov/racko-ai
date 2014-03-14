@@ -97,7 +97,7 @@ public class GUI extends JFrame{
 					100 * p_ai.ALL_wins / (double) p_ai.ALL_rounds
 				};
 				for (int j=0; j<stats_cur.length; j++){
-					double temp = (1-creep)*stats_cur[j] + creep*stats_new[j];
+					double temp = (1.0-creep)*stats_cur[j] + creep*stats_new[j];
 					if (stats_min[j] && temp < stats_best[j] || !stats_min[j] && temp > stats_best[j]){
 						DL_noimprove = 0;
 						stats_best[j] = temp;
@@ -109,14 +109,15 @@ public class GUI extends JFrame{
 				System.out.println("\tMoves:\t\t"+GUI.round(stats_new[0]));
 				System.out.println("\tRandom:\t\t"+GUI.round(stats_new[1])+"%");
 				System.out.println("\tWins:\t\t"+GUI.round(stats_new[2])+"%");
-				System.out.println("\tMoves All:\t"+GUI.round(stats_best[0]));
-				System.out.println("\tRandom All:\t"+GUI.round(stats_best[1])+"%");
-				System.out.println("\tWins All:\t"+GUI.round(stats_best[2])+"%");
+				System.out.println("\tMoves All:\t"+GUI.round(stats_cur[0]));
+				System.out.println("\tRandom All:\t"+GUI.round(stats_cur[1])+"%");
+				System.out.println("\tWins All:\t"+GUI.round(stats_cur[2])+"%");
 				
 				//Once it stops learning, add another deep learning layer
 				if (use_DL && ++DL_noimprove > DL_noimprove_max){
 					use_DL = PlayerAI.deepLearn();
 					System.arraycopy(stats_start, 0, stats_cur, 0, 3);
+					System.arraycopy(stats_start, 0, stats_best, 0, 3);
 					DL_noimprove = 0;
 				}
 				
