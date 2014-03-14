@@ -1,6 +1,7 @@
 package racko;
 
 import interfaces.Distribution;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -180,31 +181,62 @@ public class Rack {
 	 * @return largest usable sequence score
 	 */
 	public int scoreSequence(){
-		//TODO Check if cards are too high to be used in a sequence
-		// Not sure where to find the maximum card value in the deck.
-		int bestScore = 0;
-		int score = 0;
-		int prev = -1;
-		for (int j=0; j < cards.length; j++)
-		{
-			for (int i=j; i < cards.length; i++)
-			{
-				if (prev == -1 && cards[i] > i && cards[i] < (maxCard - (cards.length - i)))
-				{
-					prev = i;
-					score++;
-				}
-				else if (i != -1 && prev != -1 && cards[i] > i && cards[i] > cards[prev] && 
-						cards[i] < (maxCard - (cards.length - i)))
-				{
-					prev = i;
-					score++;
+		int s = cards.length;
+		//Hold cards in each sequence we're considering
+		int[][] seq_cards = new int[s][s];
+		//For each sequence, where each card lies in the rack (necessary to filter for "usable" sequences)
+		int[][] seq_idx = new int[s][s];
+		//Length of each sequence
+		int[] seq_len = new int[s];
+		//How many sequences are we considering and the max sequence length
+		int seq_count = 0, max_len = 0;
+		
+		//Check each next card to see if it can be added to a sequence
+		//If it cannot, create a new sequence (we only care about the "maximum" subsequences, so
+		//there will only be one branch per added card; e.g. [5,6,7] and [1,2,7] are treated the same
+		//since they both end in 7 and have length of three; we branch on the one with largest length)
+		for (int i=0; i<s; i++){
+			int card = cards[i];
+			//Make sure there is enough "usable" space above this 
+			if (maxCard-card < s-i-1)
+				continue;
+			//If we can't find any sequences that can prepend this card, we create a new branch
+			//(hence the initial new_len/seq vars)
+			int new_len = 0, new_seq = 0;
+			for (int j=0; j<seq_count; j++){
+				//Find the longest subset of the sequence that can be used
+				//with this card; since the sequence is sorted, this is O(n) worst case
+				//We only care about sequences greater than what we've seen already, hence the "k>new_len"
+				for (int k = seq_len[j]; k>new_len; k--){
+					int comp = seq_cards[j][k-1];
+					//When we encounter a zero, this part of the sequence is the same as one we saw
+					//earlier; we don't copy the earlier sequence to this one, because it would be redundant
+					if (comp == 0) break;
+					//This card is in ascending order in position "k"
+					//Also make sure there is enough "usable" space in between the two cards
+					if (comp < card && card-comp >= i-seq_idx[j][k-1]){
+						new_seq = j;
+						new_len = k;
+						break;
+					}
 				}
 			}
-			if (score > bestScore)
-				bestScore = score;
-		}		
-		return bestScore;
+			//If this is the first item in the sequence, check for "usable" space below this
+			if (card-1 < i)
+				continue;
+			//Create a new sequence, if we couldn't add it to the end of one
+			if (seq_len[new_seq] > new_len)
+				new_seq = seq_count++;
+			//Add the card to the appropriate sequence
+			seq_cards[new_seq][new_len] = card;
+			seq_idx[new_seq][new_len] = i;
+			if (++new_len > max_len)
+				max_len = new_len;
+			seq_len[new_seq] = new_len;
+		}
+		
+		//Return the maximum usable sequence size
+		return max_len;
 	}
 	/**
 	 * Gives the sum squared error of the rack's distribution

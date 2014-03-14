@@ -13,7 +13,7 @@ import racko.Rack;
 public abstract class Player {
 	public Game game;
 	public Rack rack;
-	public int score, wins, numberOfMoves;
+	public int score, wins, movesInGame, movesInRound;
 	public static int playerCount = 0;
 	public int playerNumber;
 	

@@ -17,13 +17,15 @@ public class PlayerAI extends Player{
 	private final ArrayList<DataInstance> drawHistory;
 	private final ArrayList<DataInstance> playHistory;
 	//Learning model
-	private static final int RAND_LIMIT = 250;
+	private static final int RAND_LIMIT = 20;
 	private static final Network
 		drawNet = new Network(new int[]{16, 32, 1}),
 		playNet = new Network(new int[]{6, 32, 6});
 	//Statistics
-	private int initialScore;
-	private int games_played = 0;
+	private int initialScore,
+		games_played = 0,
+		net_play_count;
+	public int rand_count = 0;
 	
 	public PlayerAI(){
 		super();
@@ -33,17 +35,20 @@ public class PlayerAI extends Player{
 	
 	@Override
 	public int play() {
+		net_play_count++;
 		boolean drawFromDiscard = decideDraw();
 		
 		int card = game.deck.draw(drawFromDiscard);		
 		int slot = decidePlay(rack, card);
 		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
 		
+		/*
 		if (games_played == 251){
 			System.out.println(playerNumber + ": drew card number: " + card);
 			System.out.println(playerNumber + ": rack: " + rack.toString());
 			System.out.println(playerNumber + ": discarded card number: " + discard);
 		}
+		*/
 		
 		return discard;
 	}
@@ -52,11 +57,12 @@ public class PlayerAI extends Player{
 		boolean rval;
 
 		DataInstance ddi = addDrawToHistory();
-		if (games_played > RAND_LIMIT){
+		if (net_play_count < RAND_LIMIT && games_played > 1000){
 			drawNet.compute(ddi.inputs);
 			rval = drawNet.getOutput() > .5;
 		}
 		else{
+			//Wait until decidePlay before resetting play_count
 			rval = RAND.nextBoolean();
 		}
 		ddi.setOutput(rval);
@@ -67,11 +73,13 @@ public class PlayerAI extends Player{
 		int rval = -1;
 		
 		DataInstance pdi = addPlayToHistory(card);
-		if (games_played > RAND_LIMIT){
+		if (net_play_count < RAND_LIMIT && games_played > 1000){
 			playNet.compute(pdi.inputs);
 			rval = playNet.getOutput()-1;
 		}
 		else{
+			rand_count++;
+			net_play_count = 0;
 			rval = RAND.nextInt(game.rack_size+1) - 1;
 		}
 		//We use -1 to represent a discard action
@@ -83,21 +91,22 @@ public class PlayerAI extends Player{
 
 	@Override
 	public void beginRound(){
+		net_play_count = 0;
 		initialScore = rack.scoreSequence();
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
-	}
-	@Override
-	public void scoreGame(boolean won) {
-		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 		games_played++;
 		saveMoveHistory(won);
 		
 		//Reset history
 		drawHistory.clear();
 		playHistory.clear();
+	}
+	@Override
+	public void scoreGame(boolean won) {
+		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
 	private DataInstance addDrawToHistory(){		
@@ -133,13 +142,13 @@ public class PlayerAI extends Player{
 	
 	private void saveMoveHistory(boolean won){
 		//Disregard games that didn't have any moves
-		if (numberOfMoves == 0)
+		if (movesInRound == 0)
 			return;
 		
 		//Score how well the AI did this round
 		int endScore = rack.scoreSequence();
-		double rate = LEARN_RATE * (endScore-initialScore) / (double) game.rack_size / (double) numberOfMoves;
-		
+		double fac = (endScore-initialScore) / (double) game.rack_size / (movesInRound/100.0);
+		double rate = LEARN_RATE * fac;		
 		
 		//Train for drawing
 		for (DataInstance d: drawHistory){

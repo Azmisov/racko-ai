@@ -41,8 +41,9 @@ public class Game {
 	 * Registers players to the game
 	 */
 	private void register(){
+		int max = deck.getMaxCard();
 		for (int i=0; i<player_count; i++){
-			Rack r = new Rack(rack_size, deck.getMaxCard());
+			Rack r = new Rack(rack_size, max);
 			players[i].register(this, r);
 		}
 	}
@@ -62,7 +63,10 @@ public class Game {
 	/**
 	 * Starts a new game
 	 */
-	public void play(){		
+	public void play(){
+		for (int i=0; i<players.length; i++)
+			players[i].movesInGame = 0;
+		
 		//Outer loop sets up games for each new round
 		while (true){
 			//Deal out a new deck; setup variables for the game loop
@@ -73,8 +77,9 @@ public class Game {
 			while (true){
 				//Get next player to play
 				current_player = (current_player+1) % player_count;
+				players[current_player].movesInRound++;
+				players[current_player].movesInGame++;
 				deck.discard(players[current_player].play());
-				players[current_player].numberOfMoves++;
 
 				//Check if this player has won
 				Rack cur_rack = players[current_player].rack;
