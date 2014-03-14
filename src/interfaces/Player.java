@@ -52,4 +52,5 @@ public abstract class Player {
 	public void scoreGame(boolean won){}
 	
 	public void beginRound(){}
+	public void beginGame(){}
 }

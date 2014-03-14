@@ -16,19 +16,30 @@ public class PlayerAI extends Player{
 	//Playing history
 	private final ArrayList<DataInstance> drawHistory;
 	private final ArrayList<DataInstance> playHistory;
+	private DataInstance draw_instance, play_instance;
 	//Learning model
-	private static final int RAND_LIMIT = 20;
+	private final boolean use_random;
+	private static final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
+	private static final int[]
+		drawNet_layers = new int[]{16, 32, 1},
+		playNet_layers = new int[]{6, 32, 6};
 	private static final Network
-		drawNet = new Network(new int[]{16, 32, 1}),
-		playNet = new Network(new int[]{6, 32, 6});
+		drawNet = new Network(drawNet_layers),
+		playNet = new Network(playNet_layers);
+	//Deep learning
+	private static final int
+		DL_maxlayers = 10,
+		DL_drawdelta = (drawNet_layers[1]-drawNet_layers[2])/DL_maxlayers,
+		DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
+	private static int DL_layers = 0;
 	//Statistics
-	private int initialScore,
-		games_played = 0,
-		net_play_count;
+	private double initialScore, currentScore;
+	private int games_played = 0, net_play_count;
 	public int rand_count = 0;
 	
-	public PlayerAI(){
+	public PlayerAI(boolean random){
 		super();
+		use_random = random;
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
 	}
@@ -41,6 +52,14 @@ public class PlayerAI extends Player{
 		int card = game.deck.draw(drawFromDiscard);		
 		int slot = decidePlay(rack, card);
 		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
+		
+		//If we think this move was good, we'll keep it
+		double newScore = scoreMetric();
+		if (newScore-currentScore > 0){
+			drawHistory.add(draw_instance);
+			playHistory.add(play_instance);
+		}
+		currentScore = newScore;
 		
 		/*
 		if (games_played == 251){
@@ -56,25 +75,26 @@ public class PlayerAI extends Player{
 	private boolean decideDraw(){
 		boolean rval;
 
-		DataInstance ddi = addDrawToHistory();
-		if (net_play_count < RAND_LIMIT && games_played > 1000){
-			drawNet.compute(ddi.inputs);
+		//We only add the draw instnace if the decidePlay outcome is good
+		createDrawHistory();
+		if (!use_random && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
+			drawNet.compute(draw_instance.inputs);
 			rval = drawNet.getOutput() > .5;
 		}
 		else{
 			//Wait until decidePlay before resetting play_count
 			rval = RAND.nextBoolean();
 		}
-		ddi.setOutput(rval);
+		draw_instance.setOutput(rval);
 		
 		return rval;
 	}
 	private int decidePlay(Rack rack, int card) {
 		int rval = -1;
 		
-		DataInstance pdi = addPlayToHistory(card);
-		if (net_play_count < RAND_LIMIT && games_played > 1000){
-			playNet.compute(pdi.inputs);
+		createPlayHistory(card);
+		if (!use_random && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
+			playNet.compute(play_instance.inputs);
 			rval = playNet.getOutput()-1;
 		}
 		else{
@@ -84,7 +104,7 @@ public class PlayerAI extends Player{
 		}
 		//We use -1 to represent a discard action
 		//The neural network needs a value between 0 to rack_size+1
-		pdi.setOutput(rval+1, 1);
+		play_instance.setOutput(rval+1, 1);
 		
 		return rval;
 	}
@@ -92,7 +112,8 @@ public class PlayerAI extends Player{
 	@Override
 	public void beginRound(){
 		net_play_count = 0;
-		initialScore = rack.scoreSequence();
+		initialScore = scoreMetric();
+		currentScore = initialScore;
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
@@ -105,11 +126,15 @@ public class PlayerAI extends Player{
 		playHistory.clear();
 	}
 	@Override
+	public void beginGame(){
+		rand_count = 0;
+	}
+	@Override
 	public void scoreGame(boolean won) {
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
-	private DataInstance addDrawToHistory(){		
+	private void createDrawHistory(){		
 		//Calculate features
 		int[] cur_rack = rack.getCards();
 		double[] pHigh = new double[game.rack_size],
@@ -126,18 +151,16 @@ public class PlayerAI extends Player{
 		ddi.addFeature(pHigh, 1);
 		ddi.addFeature(pLow, 1);
 		ddi.addFeature(discard, game.card_count);
-		drawHistory.add(ddi);
 		
-		return ddi;
+		draw_instance = ddi;
 	}
-	private DataInstance addPlayToHistory(int drawnCard){
+	private void createPlayHistory(int drawnCard){
 		//Create the history
 		DataInstance pdi = new DataInstance(game.rack_size + 1);
 		pdi.addFeature(rack.getCards(), game.card_count);
-		pdi.addFeature(drawnCard, game.card_count);
-		playHistory.add(pdi);
+		pdi.addFeature(drawnCard, game.card_count);		
 		
-		return pdi;
+		play_instance = pdi;
 	}
 	
 	private void saveMoveHistory(boolean won){
@@ -146,20 +169,48 @@ public class PlayerAI extends Player{
 			return;
 		
 		//Score how well the AI did this round
-		int endScore = rack.scoreSequence();
-		double fac = (endScore-initialScore) / (double) game.rack_size / (movesInRound/100.0);
-		double rate = LEARN_RATE * fac;		
+		double fac = scoreMetric() - initialScore;
+		double rate = LEARN_RATE * fac;
 		
-		//Train for drawing
-		for (DataInstance d: drawHistory){
-			drawNet.compute(d.inputs);
-			drawNet.trainBackprop(rate, (int) d.output);
+		if (rate > .00001){
+			//System.out.println("Training with "+drawHistory.size()+" instances");
+			//Train for drawing
+			for (DataInstance d: drawHistory){
+				drawNet.compute(d.inputs);
+				drawNet.trainBackprop(rate, (int) d.output);
+			}
+			//Train for playing
+			for (DataInstance p: playHistory){			
+				playNet.compute(p.inputs);
+				playNet.trainBackprop(rate, (int) p.output);
+			}
 		}
-		
-		//Train for playing
-		for (DataInstance p: playHistory){			
-			playNet.compute(p.inputs);
-			playNet.trainBackprop(rate, (int) p.output);
+	}
+	
+	/**
+	 * Scores close to 1 are really good moves; 0 is really bad moves
+	 * @return the score
+	 */
+	private double scoreMetric(){
+		return rack.scoreSequence() / (double) game.rack_size;
+	}
+	
+	public static void deepLearn(){
+		if (DL_layers < DL_maxlayers){
+			DL_layers++;
+			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
+				pl = playNet_layers[1] - DL_layers*DL_playdelta;
+			System.out.println("Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+", "+pl+" nodes)");
+			drawNet.addHiddenLayer(dl);
+			playNet.addHiddenLayer(pl);
+			drawNet.freeze(DL_layers);
+			playNet.freeze(DL_layers);
 		}
-	}	
+		//Unfreeze all layers
+		else if (DL_layers == DL_maxlayers){
+			drawNet.freeze(0);
+			playNet.freeze(0);
+			System.out.println("Beginning DEEP LEARNING refinement stage");
+		}
+	}
 }

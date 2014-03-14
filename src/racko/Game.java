@@ -64,8 +64,12 @@ public class Game {
 	 * Starts a new game
 	 */
 	public void play(){
-		for (int i=0; i<players.length; i++)
+		for (int i=0; i<players.length; i++){
 			players[i].movesInGame = 0;
+			players[i].wins = 0;
+			players[i].score = 0;
+			players[i].beginGame();
+		}
 		
 		//Outer loop sets up games for each new round
 		while (true){
