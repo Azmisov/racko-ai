@@ -1,0 +1,7154 @@
+ant -f /home/isaac/Programming/School/Racko -Dnb.internal.action.name=run run
+init:
+Deleting: /home/isaac/Programming/School/Racko/build/built-jar.properties
+deps-jar:
+Updating property file: /home/isaac/Programming/School/Racko/build/built-jar.properties
+Compiling 1 source file to /home/isaac/Programming/School/Racko/build/classes
+compile:
+run:
+Note: epoch statistics are only snapshots, not averages
+Epoch #1
+	Moves per round = 943
+	Random moves = 4.96%
+	AI wins = 55.56%
+	Overall random moves = 4.96%
+	Overall wins = 55.56%
+Epoch #2
+	Moves per round = 627
+	Random moves = 4.94%
+	AI wins = 47.06%
+	Overall random moves = 4.96%
+	Overall wins = 55.22%
+Epoch #3
+	Moves per round = 736
+	Random moves = 4.93%
+	AI wins = 76.92%
+	Overall random moves = 4.96%
+	Overall wins = 56.08%
+Epoch #4
+	Moves per round = 313
+	Random moves = 4.81%
+	AI wins = 81.82%
+	Overall random moves = 4.96%
+	Overall wins = 57.11%
+Epoch #5
+	Moves per round = 334
+	Random moves = 4.88%
+	AI wins = 83.33%
+	Overall random moves = 4.95%
+	Overall wins = 58.16%
+Epoch #6
+	Moves per round = 356
+	Random moves = 4.85%
+	AI wins = 81.82%
+	Overall random moves = 4.95%
+	Overall wins = 59.11%
+Epoch #7
+	Moves per round = 326
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.94%
+	Overall wins = 60.38%
+Epoch #8
+	Moves per round = 228
+	Random moves = 4.86%
+	AI wins = 75.0%
+	Overall random moves = 4.94%
+	Overall wins = 60.97%
+Epoch #9
+	Moves per round = 174
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.93%
+	Overall wins = 62.53%
+Epoch #10
+	Moves per round = 264
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.93%
+	Overall wins = 63.66%
+Epoch #11
+	Moves per round = 294
+	Random moves = 4.79%
+	AI wins = 83.33%
+	Overall random moves = 4.92%
+	Overall wins = 64.45%
+Epoch #12
+	Moves per round = 378
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.92%
+	Overall wins = 65.87%
+Epoch #13
+	Moves per round = 276
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.92%
+	Overall wins = 67.24%
+Epoch #14
+	Moves per round = 440
+	Random moves = 4.88%
+	AI wins = 76.92%
+	Overall random moves = 4.91%
+	Overall wins = 67.62%
+Epoch #15
+	Moves per round = 151
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.91%
+	Overall wins = 68.92%
+Epoch #16
+	Moves per round = 185
+	Random moves = 4.78%
+	AI wins = 71.43%
+	Overall random moves = 4.9%
+	Overall wins = 69.02%
+Epoch #17
+	Moves per round = 176
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.89%
+	Overall wins = 70.26%
+Epoch #18
+	Moves per round = 183
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.89%
+	Overall wins = 71.45%
+Epoch #19
+	Moves per round = 230
+	Random moves = 4.77%
+	AI wins = 81.82%
+	Overall random moves = 4.88%
+	Overall wins = 71.86%
+Epoch #20
+	Moves per round = 316
+	Random moves = 4.86%
+	AI wins = 81.82%
+	Overall random moves = 4.88%
+	Overall wins = 72.26%
+Epoch #21
+	Moves per round = 493
+	Random moves = 4.88%
+	AI wins = 90.91%
+	Overall random moves = 4.88%
+	Overall wins = 73.01%
+Epoch #22
+	Moves per round = 216
+	Random moves = 4.8%
+	AI wins = 90.91%
+	Overall random moves = 4.88%
+	Overall wins = 73.72%
+Epoch #23
+	Moves per round = 198
+	Random moves = 4.78%
+	AI wins = 71.43%
+	Overall random moves = 4.88%
+	Overall wins = 73.63%
+Epoch #24
+	Moves per round = 194
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.87%
+	Overall wins = 74.69%
+Epoch #25
+	Moves per round = 284
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.87%
+	Overall wins = 75.7%
+Epoch #26
+	Moves per round = 256
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.87%
+	Overall wins = 76.67%
+Epoch #27
+	Moves per round = 231
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.86%
+	Overall wins = 77.24%
+Epoch #28
+	Moves per round = 309
+	Random moves = 4.87%
+	AI wins = 69.23%
+	Overall random moves = 4.86%
+	Overall wins = 76.92%
+Epoch #29
+	Moves per round = 178
+	Random moves = 4.82%
+	AI wins = 69.23%
+	Overall random moves = 4.86%
+	Overall wins = 76.61%
+Epoch #30
+	Moves per round = 143
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.86%
+	Overall wins = 77.18%
+Epoch #31
+	Moves per round = 273
+	Random moves = 4.82%
+	AI wins = 75.0%
+	Overall random moves = 4.86%
+	Overall wins = 77.1%
+Epoch #32
+	Moves per round = 349
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.86%
+	Overall wins = 77.35%
+Epoch #33
+	Moves per round = 217
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.85%
+	Overall wins = 77.52%
+Epoch #34
+	Moves per round = 322
+	Random moves = 4.85%
+	AI wins = 90.91%
+	Overall random moves = 4.85%
+	Overall wins = 78.06%
+Epoch #35
+	Moves per round = 224
+	Random moves = 4.83%
+	AI wins = 83.33%
+	Overall random moves = 4.85%
+	Overall wins = 78.27%
+Epoch #36
+	Moves per round = 311
+	Random moves = 4.88%
+	AI wins = 69.23%
+	Overall random moves = 4.85%
+	Overall wins = 77.91%
+Epoch #37
+	Moves per round = 420
+	Random moves = 4.87%
+	AI wins = 66.67%
+	Overall random moves = 4.85%
+	Overall wins = 77.46%
+Epoch #38
+	Moves per round = 146
+	Random moves = 4.77%
+	AI wins = 90.0%
+	Overall random moves = 4.85%
+	Overall wins = 77.96%
+Epoch #39
+	Moves per round = 267
+	Random moves = 4.86%
+	AI wins = 81.82%
+	Overall random moves = 4.85%
+	Overall wins = 78.12%
+Epoch #40
+	Moves per round = 284
+	Random moves = 4.82%
+	AI wins = 90.0%
+	Overall random moves = 4.85%
+	Overall wins = 78.59%
+Epoch #41
+	Moves per round = 398
+	Random moves = 4.9%
+	AI wins = 76.92%
+	Overall random moves = 4.85%
+	Overall wins = 78.52%
+Epoch #42
+	Moves per round = 272
+	Random moves = 4.84%
+	AI wins = 81.82%
+	Overall random moves = 4.85%
+	Overall wins = 78.66%
+Epoch #43
+	Moves per round = 231
+	Random moves = 4.78%
+	AI wins = 76.92%
+	Overall random moves = 4.85%
+	Overall wins = 78.59%
+Epoch #44
+	Moves per round = 236
+	Random moves = 4.83%
+	AI wins = 81.82%
+	Overall random moves = 4.85%
+	Overall wins = 78.72%
+Epoch #45
+	Moves per round = 278
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.85%
+	Overall wins = 79.57%
+Epoch #46
+	Moves per round = 318
+	Random moves = 4.85%
+	AI wins = 90.91%
+	Overall random moves = 4.85%
+	Overall wins = 80.02%
+Epoch #47
+	Moves per round = 403
+	Random moves = 4.86%
+	AI wins = 80.0%
+	Overall random moves = 4.85%
+	Overall wins = 80.02%
+Epoch #48
+	Moves per round = 316
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.85%
+	Overall wins = 80.46%
+Epoch #49
+	Moves per round = 201
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 81.24%
+Epoch #50
+	Moves per round = 141
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 81.99%
+Epoch #51
+	Moves per round = 328
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 82.34%
+Epoch #52
+	Moves per round = 265
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.83%
+	Overall wins = 82.38%
+Epoch #53
+	Moves per round = 223
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 82.73%
+Epoch #54
+	Moves per round = 307
+	Random moves = 4.82%
+	AI wins = 90.0%
+	Overall random moves = 4.83%
+	Overall wins = 83.02%
+Epoch #55
+	Moves per round = 261
+	Random moves = 4.84%
+	AI wins = 71.43%
+	Overall random moves = 4.83%
+	Overall wins = 82.55%
+Epoch #56
+	Moves per round = 208
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 83.25%
+Epoch #57
+	Moves per round = 171
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.82%
+	Overall wins = 83.56%
+Epoch #58
+	Moves per round = 155
+	Random moves = 4.61%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 83.85%
+Epoch #59
+	Moves per round = 246
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 84.13%
+Epoch #60
+	Moves per round = 305
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 84.77%
+Epoch #61
+	Moves per round = 192
+	Random moves = 4.62%
+	AI wins = 90.0%
+	Overall random moves = 4.81%
+	Overall wins = 84.98%
+Epoch #62
+	Moves per round = 432
+	Random moves = 4.88%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 85.58%
+Epoch #63
+	Moves per round = 185
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 86.16%
+Epoch #64
+	Moves per round = 249
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 86.71%
+Epoch #65
+	Moves per round = 206
+	Random moves = 4.77%
+	AI wins = 83.33%
+	Overall random moves = 4.81%
+	Overall wins = 86.57%
+Epoch #66
+	Moves per round = 178
+	Random moves = 4.74%
+	AI wins = 76.92%
+	Overall random moves = 4.8%
+	Overall wins = 86.19%
+Epoch #67
+	Moves per round = 319
+	Random moves = 4.82%
+	AI wins = 80.0%
+	Overall random moves = 4.8%
+	Overall wins = 85.94%
+Epoch #68
+	Moves per round = 190
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.8%
+	Overall wins = 86.14%
+Epoch #69
+	Moves per round = 199
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 86.69%
+Epoch #70
+	Moves per round = 209
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.8%
+	Overall wins = 86.86%
+Epoch #71
+	Moves per round = 347
+	Random moves = 4.9%
+	AI wins = 90.0%
+	Overall random moves = 4.8%
+	Overall wins = 86.99%
+Epoch #72
+	Moves per round = 174
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.8%
+	Overall wins = 87.14%
+Epoch #73
+	Moves per round = 522
+	Random moves = 4.93%
+	AI wins = 83.33%
+	Overall random moves = 4.8%
+	Overall wins = 86.99%
+Epoch #74
+	Moves per round = 304
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 87.15%
+Epoch #75
+	Moves per round = 171
+	Random moves = 4.71%
+	AI wins = 76.92%
+	Overall random moves = 4.8%
+	Overall wins = 86.74%
+Epoch #76
+	Moves per round = 293
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 87.27%
+Epoch #77
+	Moves per round = 378
+	Random moves = 4.88%
+	AI wins = 76.92%
+	Overall random moves = 4.81%
+	Overall wins = 86.86%
+Epoch #78
+	Moves per round = 212
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 87.38%
+Epoch #79
+	Moves per round = 152
+	Random moves = 4.73%
+	AI wins = 90.0%
+	Overall random moves = 4.8%
+	Overall wins = 87.49%
+Epoch #80
+	Moves per round = 105
+	Random moves = 4.59%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 87.62%
+Epoch #81
+	Moves per round = 215
+	Random moves = 4.75%
+	AI wins = 75.0%
+	Overall random moves = 4.79%
+	Overall wins = 87.12%
+Epoch #82
+	Moves per round = 190
+	Random moves = 4.77%
+	AI wins = 76.92%
+	Overall random moves = 4.79%
+	Overall wins = 86.71%
+Epoch #83
+	Moves per round = 148
+	Random moves = 4.65%
+	AI wins = 75.0%
+	Overall random moves = 4.78%
+	Overall wins = 86.24%
+Epoch #84
+	Moves per round = 215
+	Random moves = 4.77%
+	AI wins = 66.67%
+	Overall random moves = 4.78%
+	Overall wins = 85.46%
+Epoch #85
+	Moves per round = 243
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 85.68%
+Epoch #86
+	Moves per round = 151
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 85.89%
+Epoch #87
+	Moves per round = 115
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 86.09%
+Epoch #88
+	Moves per round = 257
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 86.28%
+Epoch #89
+	Moves per round = 102
+	Random moves = 4.55%
+	AI wins = 83.33%
+	Overall random moves = 4.77%
+	Overall wins = 86.16%
+Epoch #90
+	Moves per round = 304
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 86.72%
+Epoch #91
+	Moves per round = 201
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 86.88%
+Epoch #92
+	Moves per round = 159
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 87.41%
+Epoch #93
+	Moves per round = 322
+	Random moves = 4.86%
+	AI wins = 83.33%
+	Overall random moves = 4.77%
+	Overall wins = 87.25%
+Epoch #94
+	Moves per round = 163
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 87.39%
+Epoch #95
+	Moves per round = 200
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 87.53%
+Epoch #96
+	Moves per round = 274
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 87.67%
+Epoch #97
+	Moves per round = 129
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 88.16%
+Epoch #98
+	Moves per round = 290
+	Random moves = 4.85%
+	AI wins = 83.33%
+	Overall random moves = 4.77%
+	Overall wins = 87.97%
+Epoch #99
+	Moves per round = 237
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 88.45%
+Epoch #100
+	Moves per round = 111
+	Random moves = 4.47%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 88.91%
+Epoch #101
+	Moves per round = 254
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 89.35%
+Epoch #102
+	Moves per round = 193
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 89.78%
+Epoch #103
+	Moves per round = 135
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 89.83%
+Epoch #104
+	Moves per round = 223
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.23%
+Epoch #105
+	Moves per round = 157
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.62%
+Epoch #106
+	Moves per round = 179
+	Random moves = 4.77%
+	AI wins = 81.82%
+	Overall random moves = 4.75%
+	Overall wins = 90.27%
+Epoch #107
+	Moves per round = 285
+	Random moves = 4.84%
+	AI wins = 90.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.26%
+Epoch #108
+	Moves per round = 324
+	Random moves = 4.82%
+	AI wins = 75.0%
+	Overall random moves = 4.75%
+	Overall wins = 89.65%
+Epoch #109
+	Moves per round = 135
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.06%
+Epoch #110
+	Moves per round = 179
+	Random moves = 4.77%
+	AI wins = 76.92%
+	Overall random moves = 4.75%
+	Overall wins = 89.54%
+Epoch #111
+	Moves per round = 216
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 89.96%
+Epoch #112
+	Moves per round = 146
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.36%
+Epoch #113
+	Moves per round = 252
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.74%
+Epoch #114
+	Moves per round = 116
+	Random moves = 4.55%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.71%
+Epoch #115
+	Moves per round = 186
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 91.09%
+Epoch #116
+	Moves per round = 242
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 91.08%
+Epoch #117
+	Moves per round = 122
+	Random moves = 4.54%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.07%
+Epoch #118
+	Moves per round = 158
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.43%
+Epoch #119
+	Moves per round = 203
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.77%
+Epoch #120
+	Moves per round = 329
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 92.1%
+Epoch #121
+	Moves per round = 70
+	Random moves = 4.29%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.42%
+Epoch #122
+	Moves per round = 256
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 92.05%
+Epoch #123
+	Moves per round = 228
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.37%
+Epoch #124
+	Moves per round = 226
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 92.31%
+Epoch #125
+	Moves per round = 178
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.62%
+Epoch #126
+	Moves per round = 183
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 92.55%
+Epoch #127
+	Moves per round = 119
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.85%
+Epoch #128
+	Moves per round = 201
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 93.14%
+Epoch #129
+	Moves per round = 163
+	Random moves = 4.65%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 93.01%
+Epoch #130
+	Moves per round = 112
+	Random moves = 4.58%
+	AI wins = 57.14%
+	Overall random moves = 4.72%
+	Overall wins = 91.58%
+Epoch #131
+	Moves per round = 230
+	Random moves = 4.85%
+	AI wins = 81.82%
+	Overall random moves = 4.73%
+	Overall wins = 91.19%
+Epoch #132
+	Moves per round = 304
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.17%
+Epoch #133
+	Moves per round = 197
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.53%
+Epoch #134
+	Moves per round = 125
+	Random moves = 4.66%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 91.2%
+Epoch #135
+	Moves per round = 284
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 91.55%
+Epoch #136
+	Moves per round = 151
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 91.53%
+Epoch #137
+	Moves per round = 138
+	Random moves = 4.69%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 91.2%
+Epoch #138
+	Moves per round = 197
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.55%
+Epoch #139
+	Moves per round = 223
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.89%
+Epoch #140
+	Moves per round = 118
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.85%
+Epoch #141
+	Moves per round = 307
+	Random moves = 4.9%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 91.51%
+Epoch #142
+	Moves per round = 365
+	Random moves = 4.87%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 91.45%
+Epoch #143
+	Moves per round = 143
+	Random moves = 4.76%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 91.12%
+Epoch #144
+	Moves per round = 201
+	Random moves = 4.76%
+	AI wins = 76.92%
+	Overall random moves = 4.75%
+	Overall wins = 90.56%
+Epoch #145
+	Moves per round = 144
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 90.57%
+Epoch #146
+	Moves per round = 211
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.95%
+Epoch #147
+	Moves per round = 287
+	Random moves = 4.86%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 90.64%
+Epoch #148
+	Moves per round = 171
+	Random moves = 4.72%
+	AI wins = 81.82%
+	Overall random moves = 4.75%
+	Overall wins = 90.29%
+Epoch #149
+	Moves per round = 147
+	Random moves = 4.74%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.28%
+Epoch #150
+	Moves per round = 206
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.67%
+Epoch #151
+	Moves per round = 230
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 90.68%
+Epoch #152
+	Moves per round = 144
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 91.05%
+Epoch #153
+	Moves per round = 159
+	Random moves = 4.64%
+	AI wins = 76.92%
+	Overall random moves = 4.74%
+	Overall wins = 90.48%
+Epoch #154
+	Moves per round = 209
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.86%
+Adding DEEP LEARNING layer #1 (29, 30 nodes)
+Epoch #155
+	Moves per round = 353
+	Random moves = 4.91%
+	AI wins = 83.33%
+	Overall random moves = 4.91%
+	Overall wins = 83.33%
+Epoch #156
+	Moves per round = 176
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.9%
+	Overall wins = 83.64%
+Epoch #157
+	Moves per round = 221
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.9%
+	Overall wins = 84.29%
+Epoch #158
+	Moves per round = 171
+	Random moves = 4.63%
+	AI wins = 83.33%
+	Overall random moves = 4.89%
+	Overall wins = 84.25%
+Epoch #159
+	Moves per round = 207
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.89%
+	Overall wins = 84.52%
+Epoch #160
+	Moves per round = 332
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.88%
+	Overall wins = 84.47%
+Epoch #161
+	Moves per round = 186
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.88%
+	Overall wins = 84.73%
+Epoch #162
+	Moves per round = 127
+	Random moves = 4.57%
+	AI wins = 90.91%
+	Overall random moves = 4.87%
+	Overall wins = 84.98%
+Epoch #163
+	Moves per round = 160
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.86%
+	Overall wins = 85.21%
+Epoch #164
+	Moves per round = 133
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.85%
+	Overall wins = 85.8%
+Epoch #165
+	Moves per round = 204
+	Random moves = 4.75%
+	AI wins = 90.0%
+	Overall random moves = 4.85%
+	Overall wins = 85.97%
+Epoch #166
+	Moves per round = 128
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 86.53%
+Epoch #167
+	Moves per round = 181
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 86.71%
+Epoch #168
+	Moves per round = 161
+	Random moves = 4.71%
+	AI wins = 83.33%
+	Overall random moves = 4.83%
+	Overall wins = 86.57%
+Epoch #169
+	Moves per round = 305
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 87.11%
+Epoch #170
+	Moves per round = 92
+	Random moves = 4.35%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 87.26%
+Epoch #171
+	Moves per round = 225
+	Random moves = 4.8%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 87.41%
+Epoch #172
+	Moves per round = 193
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 87.91%
+Epoch #173
+	Moves per round = 134
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 88.4%
+Epoch #174
+	Moves per round = 241
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 88.86%
+Epoch #175
+	Moves per round = 196
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.8%
+	Overall wins = 88.91%
+Epoch #176
+	Moves per round = 109
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 89.35%
+Epoch #177
+	Moves per round = 76
+	Random moves = 4.3%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 89.41%
+Epoch #178
+	Moves per round = 199
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 89.47%
+Epoch #179
+	Moves per round = 171
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 89.53%
+Epoch #180
+	Moves per round = 183
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 89.95%
+Epoch #181
+	Moves per round = 106
+	Random moves = 4.55%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 89.68%
+Epoch #182
+	Moves per round = 270
+	Random moves = 4.81%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 89.73%
+Epoch #183
+	Moves per round = 182
+	Random moves = 4.75%
+	AI wins = 75.0%
+	Overall random moves = 4.76%
+	Overall wins = 89.14%
+Epoch #184
+	Moves per round = 195
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 89.58%
+Epoch #185
+	Moves per round = 146
+	Random moves = 4.61%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 89.33%
+Epoch #186
+	Moves per round = 224
+	Random moves = 4.78%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 89.09%
+Epoch #187
+	Moves per round = 186
+	Random moves = 4.77%
+	AI wins = 81.82%
+	Overall random moves = 4.76%
+	Overall wins = 88.8%
+Epoch #188
+	Moves per round = 86
+	Random moves = 4.51%
+	AI wins = 90.0%
+	Overall random moves = 4.75%
+	Overall wins = 88.85%
+Epoch #189
+	Moves per round = 285
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 88.62%
+Epoch #190
+	Moves per round = 114
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 89.08%
+Epoch #191
+	Moves per round = 125
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 89.52%
+Epoch #192
+	Moves per round = 328
+	Random moves = 4.85%
+	AI wins = 90.0%
+	Overall random moves = 4.75%
+	Overall wins = 89.54%
+Epoch #193
+	Moves per round = 84
+	Random moves = 4.5%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 89.95%
+Epoch #194
+	Moves per round = 152
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.36%
+Epoch #195
+	Moves per round = 143
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.38%
+Epoch #196
+	Moves per round = 211
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.76%
+Epoch #197
+	Moves per round = 161
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.13%
+Epoch #198
+	Moves per round = 218
+	Random moves = 4.82%
+	AI wins = 81.82%
+	Overall random moves = 4.74%
+	Overall wins = 90.76%
+Epoch #199
+	Moves per round = 213
+	Random moves = 4.74%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.73%
+Epoch #200
+	Moves per round = 143
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.1%
+Epoch #201
+	Moves per round = 156
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 90.79%
+Epoch #202
+	Moves per round = 268
+	Random moves = 4.85%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.79%
+Epoch #203
+	Moves per round = 161
+	Random moves = 4.79%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 90.5%
+Epoch #204
+	Moves per round = 263
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 90.51%
+Epoch #205
+	Moves per round = 207
+	Random moves = 4.7%
+	AI wins = 75.0%
+	Overall random moves = 4.74%
+	Overall wins = 89.89%
+Epoch #206
+	Moves per round = 192
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 89.93%
+Epoch #207
+	Moves per round = 117
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.34%
+Epoch #208
+	Moves per round = 157
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 90.36%
+Epoch #209
+	Moves per round = 193
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.74%
+Epoch #210
+	Moves per round = 251
+	Random moves = 4.8%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.71%
+Epoch #211
+	Moves per round = 183
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 91.09%
+Epoch #212
+	Moves per round = 280
+	Random moves = 4.85%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 90.78%
+Epoch #213
+	Moves per round = 175
+	Random moves = 4.71%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 90.48%
+Epoch #214
+	Moves per round = 164
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 90.5%
+Epoch #215
+	Moves per round = 209
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.88%
+Epoch #216
+	Moves per round = 208
+	Random moves = 4.71%
+	AI wins = 90.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.84%
+Epoch #217
+	Moves per round = 255
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.75%
+	Overall wins = 90.48%
+Epoch #218
+	Moves per round = 87
+	Random moves = 4.39%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 90.19%
+Epoch #219
+	Moves per round = 127
+	Random moves = 4.57%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 89.92%
+Epoch #220
+	Moves per round = 159
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.32%
+Epoch #221
+	Moves per round = 213
+	Random moves = 4.82%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.31%
+Epoch #222
+	Moves per round = 110
+	Random moves = 4.51%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 90.33%
+Epoch #223
+	Moves per round = 90
+	Random moves = 4.43%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 90.72%
+Adding DEEP LEARNING layer #2 (26, 28 nodes)
+Epoch #224
+	Moves per round = 292
+	Random moves = 4.82%
+	AI wins = 83.33%
+	Overall random moves = 4.82%
+	Overall wins = 83.33%
+Epoch #225
+	Moves per round = 81
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 84.0%
+Epoch #226
+	Moves per round = 135
+	Random moves = 4.62%
+	AI wins = 90.91%
+	Overall random moves = 4.8%
+	Overall wins = 84.28%
+Epoch #227
+	Moves per round = 133
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 84.54%
+Epoch #228
+	Moves per round = 138
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 84.8%
+Epoch #229
+	Moves per round = 197
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 85.04%
+Epoch #230
+	Moves per round = 187
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 85.64%
+Epoch #231
+	Moves per round = 144
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 85.85%
+Epoch #232
+	Moves per round = 122
+	Random moves = 4.72%
+	AI wins = 90.0%
+	Overall random moves = 4.78%
+	Overall wins = 86.02%
+Epoch #233
+	Moves per round = 95
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 86.58%
+Epoch #234
+	Moves per round = 68
+	Random moves = 4.5%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 87.11%
+Epoch #235
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.76%
+	Overall wins = 87.23%
+Epoch #236
+	Moves per round = 194
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.76%
+	Overall wins = 87.34%
+Epoch #237
+	Moves per round = 129
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 87.85%
+Epoch #238
+	Moves per round = 116
+	Random moves = 4.46%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 87.97%
+Epoch #239
+	Moves per round = 108
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 88.45%
+Epoch #240
+	Moves per round = 158
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.75%
+	Overall wins = 88.51%
+Epoch #241
+	Moves per round = 100
+	Random moves = 4.46%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 88.57%
+Epoch #242
+	Moves per round = 101
+	Random moves = 4.45%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 88.36%
+Epoch #243
+	Moves per round = 153
+	Random moves = 4.73%
+	AI wins = 81.82%
+	Overall random moves = 4.72%
+	Overall wins = 88.1%
+Epoch #244
+	Moves per round = 126
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 88.58%
+Epoch #245
+	Moves per round = 162
+	Random moves = 4.73%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 88.63%
+Epoch #246
+	Moves per round = 98
+	Random moves = 4.53%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 88.36%
+Epoch #247
+	Moves per round = 119
+	Random moves = 4.48%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 88.1%
+Epoch #248
+	Moves per round = 178
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.57%
+Epoch #249
+	Moves per round = 156
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 89.03%
+Epoch #250
+	Moves per round = 176
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 89.47%
+Epoch #251
+	Moves per round = 214
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 89.89%
+Epoch #252
+	Moves per round = 152
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.3%
+Epoch #253
+	Moves per round = 107
+	Random moves = 4.65%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.28%
+Epoch #254
+	Moves per round = 217
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.67%
+Epoch #255
+	Moves per round = 190
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 90.68%
+Epoch #256
+	Moves per round = 95
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.05%
+Epoch #257
+	Moves per round = 161
+	Random moves = 4.64%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.01%
+Epoch #258
+	Moves per round = 191
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 91.01%
+Epoch #259
+	Moves per round = 95
+	Random moves = 4.5%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.37%
+Epoch #260
+	Moves per round = 87
+	Random moves = 4.37%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.35%
+Epoch #261
+	Moves per round = 114
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.7%
+Epoch #262
+	Moves per round = 291
+	Random moves = 4.88%
+	AI wins = 83.33%
+	Overall random moves = 4.68%
+	Overall wins = 91.36%
+Epoch #263
+	Moves per round = 110
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.71%
+Epoch #264
+	Moves per round = 194
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 91.67%
+Epoch #265
+	Moves per round = 236
+	Random moves = 4.8%
+	AI wins = 81.82%
+	Overall random moves = 4.68%
+	Overall wins = 91.28%
+Epoch #266
+	Moves per round = 150
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.63%
+Epoch #267
+	Moves per round = 187
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.96%
+Epoch #268
+	Moves per round = 158
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 91.92%
+Epoch #269
+	Moves per round = 140
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.25%
+Epoch #270
+	Moves per round = 123
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.16%
+Epoch #271
+	Moves per round = 58
+	Random moves = 4.19%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 91.74%
+Epoch #272
+	Moves per round = 132
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.07%
+Epoch #273
+	Moves per round = 131
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.03%
+Epoch #274
+	Moves per round = 91
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 92.34%
+Epoch #275
+	Moves per round = 131
+	Random moves = 4.65%
+	AI wins = 90.0%
+	Overall random moves = 4.65%
+	Overall wins = 92.25%
+Epoch #276
+	Moves per round = 224
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.56%
+Epoch #277
+	Moves per round = 148
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.49%
+Epoch #278
+	Moves per round = 156
+	Random moves = 4.69%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 92.07%
+Epoch #279
+	Moves per round = 157
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.38%
+Epoch #280
+	Moves per round = 231
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 92.33%
+Epoch #281
+	Moves per round = 118
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.63%
+Epoch #282
+	Moves per round = 121
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.56%
+Epoch #283
+	Moves per round = 137
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.86%
+Epoch #284
+	Moves per round = 173
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.67%
+	Overall wins = 92.42%
+Epoch #285
+	Moves per round = 199
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.72%
+Epoch #286
+	Moves per round = 131
+	Random moves = 4.5%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.61%
+Epoch #287
+	Moves per round = 210
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.91%
+Epoch #288
+	Moves per round = 178
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 93.19%
+Epoch #289
+	Moves per round = 175
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 93.1%
+Epoch #290
+	Moves per round = 174
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.01%
+Epoch #291
+	Moves per round = 160
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.29%
+Epoch #292
+	Moves per round = 162
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.56%
+Epoch #293
+	Moves per round = 245
+	Random moves = 4.81%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.46%
+Epoch #294
+	Moves per round = 223
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.72%
+Epoch #295
+	Moves per round = 123
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.97%
+Epoch #296
+	Moves per round = 143
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.21%
+Epoch #297
+	Moves per round = 68
+	Random moves = 4.09%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 94.08%
+Epoch #298
+	Moves per round = 161
+	Random moves = 4.73%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 93.65%
+Epoch #299
+	Moves per round = 173
+	Random moves = 4.73%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 93.17%
+Epoch #300
+	Moves per round = 135
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.45%
+Epoch #301
+	Moves per round = 234
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.71%
+Epoch #302
+	Moves per round = 145
+	Random moves = 4.64%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 93.23%
+Epoch #303
+	Moves per round = 115
+	Random moves = 4.5%
+	AI wins = 90.0%
+	Overall random moves = 4.65%
+	Overall wins = 93.1%
+Epoch #304
+	Moves per round = 224
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 93.02%
+Epoch #305
+	Moves per round = 213
+	Random moves = 4.77%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 92.57%
+Epoch #306
+	Moves per round = 104
+	Random moves = 4.4%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 92.87%
+Epoch #307
+	Moves per round = 150
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 93.15%
+Epoch #308
+	Moves per round = 303
+	Random moves = 4.85%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 93.06%
+Epoch #309
+	Moves per round = 221
+	Random moves = 4.81%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 92.98%
+Epoch #310
+	Moves per round = 123
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.26%
+Epoch #311
+	Moves per round = 127
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.53%
+Epoch #312
+	Moves per round = 127
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.79%
+Epoch #313
+	Moves per round = 231
+	Random moves = 4.76%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 93.37%
+Epoch #314
+	Moves per round = 124
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.63%
+Epoch #315
+	Moves per round = 88
+	Random moves = 4.3%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 93.89%
+Epoch #316
+	Moves per round = 162
+	Random moves = 4.7%
+	AI wins = 81.82%
+	Overall random moves = 4.65%
+	Overall wins = 93.4%
+Epoch #317
+	Moves per round = 250
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.67%
+Epoch #318
+	Moves per round = 199
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 93.56%
+Epoch #319
+	Moves per round = 120
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.82%
+Epoch #320
+	Moves per round = 161
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 94.06%
+Epoch #321
+	Moves per round = 103
+	Random moves = 4.74%
+	AI wins = 75.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.3%
+Epoch #322
+	Moves per round = 194
+	Random moves = 4.75%
+	AI wins = 75.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.57%
+Adding DEEP LEARNING layer #3 (23, 26 nodes)
+Epoch #323
+	Moves per round = 209
+	Random moves = 4.77%
+	AI wins = 81.82%
+	Overall random moves = 4.77%
+	Overall wins = 81.82%
+Epoch #324
+	Moves per round = 281
+	Random moves = 4.83%
+	AI wins = 90.0%
+	Overall random moves = 4.78%
+	Overall wins = 82.15%
+Epoch #325
+	Moves per round = 127
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 82.5%
+Epoch #326
+	Moves per round = 103
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 82.83%
+Epoch #327
+	Moves per round = 90
+	Random moves = 4.4%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 83.16%
+Epoch #328
+	Moves per round = 90
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 83.83%
+Epoch #329
+	Moves per round = 86
+	Random moves = 4.33%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 84.11%
+Epoch #330
+	Moves per round = 164
+	Random moves = 4.63%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 84.35%
+Epoch #331
+	Moves per round = 138
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 84.97%
+Epoch #332
+	Moves per round = 135
+	Random moves = 4.79%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 84.91%
+Epoch #333
+	Moves per round = 192
+	Random moves = 4.84%
+	AI wins = 76.92%
+	Overall random moves = 4.73%
+	Overall wins = 84.59%
+Epoch #334
+	Moves per round = 162
+	Random moves = 4.77%
+	AI wins = 75.0%
+	Overall random moves = 4.73%
+	Overall wins = 84.21%
+Epoch #335
+	Moves per round = 160
+	Random moves = 4.73%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 84.44%
+Epoch #336
+	Moves per round = 112
+	Random moves = 4.59%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 84.39%
+Epoch #337
+	Moves per round = 167
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 85.02%
+Epoch #338
+	Moves per round = 102
+	Random moves = 4.44%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 85.25%
+Epoch #339
+	Moves per round = 277
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 85.84%
+Epoch #340
+	Moves per round = 207
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 86.41%
+Epoch #341
+	Moves per round = 134
+	Random moves = 4.66%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 86.23%
+Epoch #342
+	Moves per round = 291
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 86.41%
+Epoch #343
+	Moves per round = 129
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 86.96%
+Epoch #344
+	Moves per round = 121
+	Random moves = 4.51%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 87.11%
+Epoch #345
+	Moves per round = 126
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 87.63%
+Epoch #346
+	Moves per round = 133
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.12%
+Epoch #347
+	Moves per round = 149
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.6%
+Epoch #348
+	Moves per round = 236
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 88.69%
+Epoch #349
+	Moves per round = 158
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 89.14%
+Epoch #350
+	Moves per round = 226
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 89.58%
+Epoch #351
+	Moves per round = 191
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 90.0%
+Epoch #352
+	Moves per round = 203
+	Random moves = 4.79%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 89.73%
+Epoch #353
+	Moves per round = 45
+	Random moves = 4.14%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.14%
+Epoch #354
+	Moves per round = 139
+	Random moves = 4.72%
+	AI wins = 83.33%
+	Overall random moves = 4.69%
+	Overall wins = 89.87%
+Epoch #355
+	Moves per round = 181
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.27%
+Epoch #356
+	Moves per round = 222
+	Random moves = 4.77%
+	AI wins = 76.92%
+	Overall random moves = 4.7%
+	Overall wins = 89.74%
+Epoch #357
+	Moves per round = 165
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.15%
+Epoch #358
+	Moves per round = 115
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 89.88%
+Epoch #359
+	Moves per round = 99
+	Random moves = 4.41%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.28%
+Epoch #360
+	Moves per round = 324
+	Random moves = 4.9%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.31%
+Epoch #361
+	Moves per round = 115
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.69%
+Epoch #362
+	Moves per round = 121
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.07%
+Epoch #363
+	Moves per round = 203
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.06%
+Epoch #364
+	Moves per round = 138
+	Random moves = 4.56%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.02%
+Epoch #365
+	Moves per round = 135
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 91.01%
+Epoch #366
+	Moves per round = 146
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.69%
+	Overall wins = 90.71%
+Epoch #367
+	Moves per round = 98
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.71%
+Epoch #368
+	Moves per round = 140
+	Random moves = 4.68%
+	AI wins = 81.82%
+	Overall random moves = 4.69%
+	Overall wins = 90.36%
+Epoch #369
+	Moves per round = 107
+	Random moves = 4.48%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 90.74%
+Epoch #370
+	Moves per round = 104
+	Random moves = 4.43%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 90.75%
+Epoch #371
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.12%
+Epoch #372
+	Moves per round = 112
+	Random moves = 4.59%
+	AI wins = 76.92%
+	Overall random moves = 4.67%
+	Overall wins = 90.55%
+Epoch #373
+	Moves per round = 245
+	Random moves = 4.86%
+	AI wins = 83.33%
+	Overall random moves = 4.68%
+	Overall wins = 90.26%
+Epoch #374
+	Moves per round = 193
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 90.65%
+Epoch #375
+	Moves per round = 203
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 90.66%
+Epoch #376
+	Moves per round = 202
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.04%
+Epoch #377
+	Moves per round = 159
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.4%
+Epoch #378
+	Moves per round = 191
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.74%
+Epoch #379
+	Moves per round = 184
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.07%
+Epoch #380
+	Moves per round = 230
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.39%
+Epoch #381
+	Moves per round = 153
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.33%
+Epoch #382
+	Moves per round = 207
+	Random moves = 4.76%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.24%
+Epoch #383
+	Moves per round = 294
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 91.88%
+Epoch #384
+	Moves per round = 180
+	Random moves = 4.72%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 91.54%
+Epoch #385
+	Moves per round = 141
+	Random moves = 4.81%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.48%
+Epoch #386
+	Moves per round = 198
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.82%
+Epoch #387
+	Moves per round = 231
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.14%
+Epoch #388
+	Moves per round = 270
+	Random moves = 4.81%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 91.79%
+Epoch #389
+	Moves per round = 170
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.12%
+Epoch #390
+	Moves per round = 179
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.07%
+Epoch #391
+	Moves per round = 150
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.39%
+Epoch #392
+	Moves per round = 179
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.33%
+Epoch #393
+	Moves per round = 143
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.64%
+Epoch #394
+	Moves per round = 271
+	Random moves = 4.87%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.93%
+Epoch #395
+	Moves per round = 157
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.21%
+Epoch #396
+	Moves per round = 80
+	Random moves = 4.5%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.49%
+Epoch #397
+	Moves per round = 67
+	Random moves = 4.28%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.75%
+Epoch #398
+	Moves per round = 169
+	Random moves = 4.66%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.63%
+Epoch #399
+	Moves per round = 209
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 93.52%
+Epoch #400
+	Moves per round = 184
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 93.42%
+Epoch #401
+	Moves per round = 90
+	Random moves = 4.42%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.32%
+Epoch #402
+	Moves per round = 117
+	Random moves = 4.53%
+	AI wins = 90.0%
+	Overall random moves = 4.67%
+	Overall wins = 93.19%
+Epoch #403
+	Moves per round = 133
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 93.46%
+Epoch #404
+	Moves per round = 149
+	Random moves = 4.7%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 93.05%
+Epoch #405
+	Moves per round = 196
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 92.97%
+Epoch #406
+	Moves per round = 118
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.25%
+Epoch #407
+	Moves per round = 125
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 93.52%
+Epoch #408
+	Moves per round = 82
+	Random moves = 4.38%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.38%
+Epoch #409
+	Moves per round = 167
+	Random moves = 4.71%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 92.92%
+Epoch #410
+	Moves per round = 103
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.84%
+Epoch #411
+	Moves per round = 147
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.76%
+Epoch #412
+	Moves per round = 221
+	Random moves = 4.78%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.65%
+Epoch #413
+	Moves per round = 120
+	Random moves = 4.62%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.58%
+Epoch #414
+	Moves per round = 46
+	Random moves = 4.34%
+	AI wins = 90.91%
+	Overall random moves = 4.65%
+	Overall wins = 92.51%
+Epoch #415
+	Moves per round = 62
+	Random moves = 4.48%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 92.81%
+Epoch #416
+	Moves per round = 117
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 93.1%
+Epoch #417
+	Moves per round = 216
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 93.37%
+Epoch #418
+	Moves per round = 230
+	Random moves = 4.78%
+	AI wins = 90.0%
+	Overall random moves = 4.65%
+	Overall wins = 93.24%
+Epoch #419
+	Moves per round = 178
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.65%
+	Overall wins = 93.15%
+Epoch #420
+	Moves per round = 107
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.65%
+	Overall wins = 93.06%
+Epoch #421
+	Moves per round = 263
+	Random moves = 4.89%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.93%
+Epoch #422
+	Moves per round = 68
+	Random moves = 4.39%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 93.22%
+Epoch #423
+	Moves per round = 88
+	Random moves = 4.41%
+	AI wins = 90.91%
+	Overall random moves = 4.64%
+	Overall wins = 93.13%
+Adding DEEP LEARNING layer #4 (20, 24 nodes)
+Epoch #424
+	Moves per round = 161
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 100.0%
+Epoch #425
+	Moves per round = 171
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 100.0%
+Epoch #426
+	Moves per round = 143
+	Random moves = 4.64%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 99.33%
+Epoch #427
+	Moves per round = 97
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 99.36%
+Epoch #428
+	Moves per round = 144
+	Random moves = 4.71%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 98.99%
+Epoch #429
+	Moves per round = 108
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 99.03%
+Epoch #430
+	Moves per round = 188
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 98.7%
+Epoch #431
+	Moves per round = 187
+	Random moves = 4.69%
+	AI wins = 70.0%
+	Overall random moves = 4.7%
+	Overall wins = 97.55%
+Epoch #432
+	Moves per round = 130
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 97.29%
+Epoch #433
+	Moves per round = 72
+	Random moves = 4.5%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 97.03%
+Epoch #434
+	Moves per round = 312
+	Random moves = 4.86%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 96.79%
+Epoch #435
+	Moves per round = 238
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 96.92%
+Epoch #436
+	Moves per round = 155
+	Random moves = 4.75%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 96.31%
+Epoch #437
+	Moves per round = 192
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 96.46%
+Epoch #438
+	Moves per round = 210
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 96.24%
+Epoch #439
+	Moves per round = 146
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 96.39%
+Epoch #440
+	Moves per round = 174
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 96.53%
+Epoch #441
+	Moves per round = 208
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 96.67%
+Epoch #442
+	Moves per round = 127
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 96.8%
+Epoch #443
+	Moves per round = 246
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 96.27%
+Epoch #444
+	Moves per round = 173
+	Random moves = 4.71%
+	AI wins = 81.82%
+	Overall random moves = 4.72%
+	Overall wins = 95.69%
+Epoch #445
+	Moves per round = 248
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 95.46%
+Epoch #446
+	Moves per round = 118
+	Random moves = 4.44%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 95.28%
+Epoch #447
+	Moves per round = 160
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 95.47%
+Epoch #448
+	Moves per round = 95
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 95.28%
+Epoch #449
+	Moves per round = 138
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 95.47%
+Epoch #450
+	Moves per round = 255
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 95.65%
+Adding DEEP LEARNING layer #5 (17, 22 nodes)
+Epoch #451
+	Moves per round = 231
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.84%
+	Overall wins = 90.91%
+Epoch #452
+	Moves per round = 210
+	Random moves = 4.79%
+	AI wins = 81.82%
+	Overall random moves = 4.83%
+	Overall wins = 90.55%
+Epoch #453
+	Moves per round = 108
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.82%
+	Overall wins = 90.92%
+Epoch #454
+	Moves per round = 118
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 91.29%
+Epoch #455
+	Moves per round = 193
+	Random moves = 4.72%
+	AI wins = 90.0%
+	Overall random moves = 4.81%
+	Overall wins = 91.24%
+Epoch #456
+	Moves per round = 125
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.8%
+	Overall wins = 91.22%
+Epoch #457
+	Moves per round = 134
+	Random moves = 4.66%
+	AI wins = 81.82%
+	Overall random moves = 4.8%
+	Overall wins = 90.85%
+Epoch #458
+	Moves per round = 71
+	Random moves = 4.34%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 90.85%
+Epoch #459
+	Moves per round = 149
+	Random moves = 4.64%
+	AI wins = 76.92%
+	Overall random moves = 4.77%
+	Overall wins = 90.29%
+Epoch #460
+	Moves per round = 146
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 90.32%
+Epoch #461
+	Moves per round = 243
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 90.7%
+Epoch #462
+	Moves per round = 158
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.08%
+Epoch #463
+	Moves per round = 184
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 91.07%
+Epoch #464
+	Moves per round = 171
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.43%
+Epoch #465
+	Moves per round = 311
+	Random moves = 4.88%
+	AI wins = 83.33%
+	Overall random moves = 4.78%
+	Overall wins = 91.1%
+Epoch #466
+	Moves per round = 107
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.46%
+Epoch #467
+	Moves per round = 150
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 91.44%
+Epoch #468
+	Moves per round = 177
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.78%
+Epoch #469
+	Moves per round = 97
+	Random moves = 4.43%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 92.11%
+Epoch #470
+	Moves per round = 92
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 92.42%
+Epoch #471
+	Moves per round = 108
+	Random moves = 4.55%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 92.06%
+Epoch #472
+	Moves per round = 174
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 92.38%
+Epoch #473
+	Moves per round = 195
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 92.32%
+Epoch #474
+	Moves per round = 92
+	Random moves = 4.33%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.63%
+Epoch #475
+	Moves per round = 97
+	Random moves = 4.52%
+	AI wins = 76.92%
+	Overall random moves = 4.72%
+	Overall wins = 92.0%
+Epoch #476
+	Moves per round = 134
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.32%
+Epoch #477
+	Moves per round = 281
+	Random moves = 4.86%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 91.96%
+Epoch #478
+	Moves per round = 130
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.28%
+Epoch #479
+	Moves per round = 178
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.23%
+Epoch #480
+	Moves per round = 155
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.54%
+Epoch #481
+	Moves per round = 129
+	Random moves = 4.69%
+	AI wins = 71.43%
+	Overall random moves = 4.72%
+	Overall wins = 91.69%
+Epoch #482
+	Moves per round = 159
+	Random moves = 4.77%
+	AI wins = 76.92%
+	Overall random moves = 4.72%
+	Overall wins = 91.1%
+Epoch #483
+	Moves per round = 134
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.09%
+Epoch #484
+	Moves per round = 155
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.09%
+Epoch #485
+	Moves per round = 162
+	Random moves = 4.77%
+	AI wins = 76.92%
+	Overall random moves = 4.72%
+	Overall wins = 90.52%
+Epoch #486
+	Moves per round = 143
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 90.9%
+Epoch #487
+	Moves per round = 144
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.26%
+Epoch #488
+	Moves per round = 161
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.25%
+Epoch #489
+	Moves per round = 205
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 90.93%
+Epoch #490
+	Moves per round = 73
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.29%
+Epoch #491
+	Moves per round = 160
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 90.92%
+Epoch #492
+	Moves per round = 174
+	Random moves = 4.79%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 90.61%
+Epoch #493
+	Moves per round = 131
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 90.99%
+Epoch #494
+	Moves per round = 180
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.35%
+Epoch #495
+	Moves per round = 176
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.33%
+Epoch #496
+	Moves per round = 220
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.68%
+Epoch #497
+	Moves per round = 137
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.01%
+Epoch #498
+	Moves per round = 213
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.33%
+Epoch #499
+	Moves per round = 113
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.27%
+Epoch #500
+	Moves per round = 132
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.58%
+Adding DEEP LEARNING layer #6 (14, 20 nodes)
+Epoch #501
+	Moves per round = 251
+	Random moves = 4.85%
+	AI wins = 90.0%
+	Overall random moves = 4.85%
+	Overall wins = 90.0%
+Epoch #502
+	Moves per round = 233
+	Random moves = 4.78%
+	AI wins = 83.33%
+	Overall random moves = 4.85%
+	Overall wins = 89.73%
+Epoch #503
+	Moves per round = 264
+	Random moves = 4.78%
+	AI wins = 81.82%
+	Overall random moves = 4.84%
+	Overall wins = 89.42%
+Epoch #504
+	Moves per round = 209
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 89.84%
+Epoch #505
+	Moves per round = 245
+	Random moves = 4.8%
+	AI wins = 76.92%
+	Overall random moves = 4.84%
+	Overall wins = 89.32%
+Epoch #506
+	Moves per round = 284
+	Random moves = 4.87%
+	AI wins = 90.91%
+	Overall random moves = 4.84%
+	Overall wins = 89.39%
+Epoch #507
+	Moves per round = 193
+	Random moves = 4.74%
+	AI wins = 75.0%
+	Overall random moves = 4.84%
+	Overall wins = 88.81%
+Epoch #508
+	Moves per round = 138
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 89.26%
+Epoch #509
+	Moves per round = 220
+	Random moves = 4.76%
+	AI wins = 90.0%
+	Overall random moves = 4.82%
+	Overall wins = 89.29%
+Epoch #510
+	Moves per round = 130
+	Random moves = 4.51%
+	AI wins = 90.91%
+	Overall random moves = 4.81%
+	Overall wins = 89.35%
+Epoch #511
+	Moves per round = 216
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 89.78%
+Epoch #512
+	Moves per round = 144
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 90.19%
+Epoch #513
+	Moves per round = 111
+	Random moves = 4.47%
+	AI wins = 83.33%
+	Overall random moves = 4.79%
+	Overall wins = 89.91%
+Epoch #514
+	Moves per round = 165
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 90.32%
+Epoch #515
+	Moves per round = 198
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 90.7%
+Epoch #516
+	Moves per round = 164
+	Random moves = 4.6%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 90.71%
+Epoch #517
+	Moves per round = 96
+	Random moves = 4.45%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 91.08%
+Epoch #518
+	Moves per round = 181
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.44%
+Epoch #519
+	Moves per round = 121
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 91.12%
+Epoch #520
+	Moves per round = 197
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 91.47%
+Epoch #521
+	Moves per round = 106
+	Random moves = 4.53%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 91.15%
+Epoch #522
+	Moves per round = 120
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 91.14%
+Epoch #523
+	Moves per round = 161
+	Random moves = 4.64%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 90.82%
+Epoch #524
+	Moves per round = 273
+	Random moves = 4.85%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 90.53%
+Epoch #525
+	Moves per round = 250
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.75%
+	Overall wins = 90.9%
+Epoch #526
+	Moves per round = 152
+	Random moves = 4.7%
+	AI wins = 72.73%
+	Overall random moves = 4.75%
+	Overall wins = 90.18%
+Epoch #527
+	Moves per round = 76
+	Random moves = 4.4%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 90.21%
+Epoch #528
+	Moves per round = 94
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.23%
+Epoch #529
+	Moves per round = 143
+	Random moves = 4.54%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.63%
+Epoch #530
+	Moves per round = 231
+	Random moves = 4.78%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 90.33%
+Epoch #531
+	Moves per round = 231
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.72%
+Epoch #532
+	Moves per round = 132
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.09%
+Epoch #533
+	Moves per round = 149
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.45%
+Epoch #534
+	Moves per round = 184
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.43%
+Epoch #535
+	Moves per round = 119
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.77%
+Epoch #536
+	Moves per round = 164
+	Random moves = 4.75%
+	AI wins = 80.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.3%
+Epoch #537
+	Moves per round = 231
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.65%
+Epoch #538
+	Moves per round = 141
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.98%
+Epoch #539
+	Moves per round = 192
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.94%
+Epoch #540
+	Moves per round = 137
+	Random moves = 4.74%
+	AI wins = 76.92%
+	Overall random moves = 4.73%
+	Overall wins = 91.34%
+Epoch #541
+	Moves per round = 143
+	Random moves = 4.6%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.28%
+Epoch #542
+	Moves per round = 236
+	Random moves = 4.77%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.23%
+Epoch #543
+	Moves per round = 217
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.58%
+Epoch #544
+	Moves per round = 205
+	Random moves = 4.74%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 91.25%
+Epoch #545
+	Moves per round = 301
+	Random moves = 4.8%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 91.24%
+Epoch #546
+	Moves per round = 119
+	Random moves = 4.64%
+	AI wins = 81.82%
+	Overall random moves = 4.73%
+	Overall wins = 90.86%
+Epoch #547
+	Moves per round = 150
+	Random moves = 4.59%
+	AI wins = 69.23%
+	Overall random moves = 4.72%
+	Overall wins = 90.0%
+Epoch #548
+	Moves per round = 254
+	Random moves = 4.79%
+	AI wins = 81.82%
+	Overall random moves = 4.73%
+	Overall wins = 89.67%
+Epoch #549
+	Moves per round = 184
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.08%
+Epoch #550
+	Moves per round = 134
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.48%
+Epoch #551
+	Moves per round = 190
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.5%
+Epoch #552
+	Moves per round = 236
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.73%
+	Overall wins = 90.15%
+Epoch #553
+	Moves per round = 84
+	Random moves = 4.37%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 90.54%
+Epoch #554
+	Moves per round = 178
+	Random moves = 4.77%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 90.52%
+Epoch #555
+	Moves per round = 127
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 90.54%
+Epoch #556
+	Moves per round = 187
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 90.55%
+Epoch #557
+	Moves per round = 141
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 90.57%
+Epoch #558
+	Moves per round = 201
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 90.94%
+Epoch #559
+	Moves per round = 170
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.31%
+Epoch #560
+	Moves per round = 141
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.65%
+Epoch #561
+	Moves per round = 191
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.99%
+Epoch #562
+	Moves per round = 245
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.31%
+Epoch #563
+	Moves per round = 170
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.25%
+Epoch #564
+	Moves per round = 239
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.56%
+Epoch #565
+	Moves per round = 124
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.86%
+Epoch #566
+	Moves per round = 184
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.78%
+Epoch #567
+	Moves per round = 114
+	Random moves = 4.44%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.71%
+Epoch #568
+	Moves per round = 96
+	Random moves = 4.45%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 92.27%
+Epoch #569
+	Moves per round = 137
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.58%
+Epoch #570
+	Moves per round = 154
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.88%
+Epoch #571
+	Moves per round = 243
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.16%
+Epoch #572
+	Moves per round = 145
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 93.07%
+Epoch #573
+	Moves per round = 294
+	Random moves = 4.89%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.35%
+Epoch #574
+	Moves per round = 113
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.62%
+Epoch #575
+	Moves per round = 226
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.87%
+Epoch #576
+	Moves per round = 135
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 93.75%
+Epoch #577
+	Moves per round = 206
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.6%
+Epoch #578
+	Moves per round = 174
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.86%
+Epoch #579
+	Moves per round = 144
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.1%
+Epoch #580
+	Moves per round = 178
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.34%
+Epoch #581
+	Moves per round = 284
+	Random moves = 4.89%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 94.2%
+Epoch #582
+	Moves per round = 165
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.43%
+Epoch #583
+	Moves per round = 99
+	Random moves = 4.54%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.66%
+Epoch #584
+	Moves per round = 93
+	Random moves = 4.39%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 94.87%
+Epoch #585
+	Moves per round = 140
+	Random moves = 4.66%
+	AI wins = 81.82%
+	Overall random moves = 4.69%
+	Overall wins = 94.35%
+Epoch #586
+	Moves per round = 178
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 94.57%
+Epoch #587
+	Moves per round = 152
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.79%
+Epoch #588
+	Moves per round = 139
+	Random moves = 4.73%
+	AI wins = 75.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.0%
+Epoch #589
+	Moves per round = 236
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.24%
+Epoch #590
+	Moves per round = 145
+	Random moves = 4.61%
+	AI wins = 76.92%
+	Overall random moves = 4.7%
+	Overall wins = 93.55%
+Epoch #591
+	Moves per round = 199
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.81%
+Epoch #592
+	Moves per round = 188
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 93.69%
+Epoch #593
+	Moves per round = 125
+	Random moves = 4.54%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.94%
+Epoch #594
+	Moves per round = 256
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.18%
+Epoch #595
+	Moves per round = 88
+	Random moves = 4.29%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.42%
+Epoch #596
+	Moves per round = 154
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 94.28%
+Epoch #597
+	Moves per round = 165
+	Random moves = 4.74%
+	AI wins = 81.82%
+	Overall random moves = 4.69%
+	Overall wins = 93.78%
+Epoch #598
+	Moves per round = 89
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.66%
+Epoch #599
+	Moves per round = 182
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.55%
+Epoch #600
+	Moves per round = 147
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.81%
+Epoch #601
+	Moves per round = 230
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.06%
+Epoch #602
+	Moves per round = 150
+	Random moves = 4.62%
+	AI wins = 76.92%
+	Overall random moves = 4.68%
+	Overall wins = 93.37%
+Epoch #603
+	Moves per round = 87
+	Random moves = 4.47%
+	AI wins = 75.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.64%
+Epoch #604
+	Moves per round = 121
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.93%
+Epoch #605
+	Moves per round = 102
+	Random moves = 4.4%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.22%
+Epoch #606
+	Moves per round = 97
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 93.49%
+Epoch #607
+	Moves per round = 144
+	Random moves = 4.73%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 93.08%
+Epoch #608
+	Moves per round = 133
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 92.69%
+Epoch #609
+	Moves per round = 144
+	Random moves = 4.71%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 92.26%
+Epoch #610
+	Moves per round = 113
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.2%
+Adding DEEP LEARNING layer #7 (11, 18 nodes)
+Epoch #611
+	Moves per round = 228
+	Random moves = 4.81%
+	AI wins = 83.33%
+	Overall random moves = 4.81%
+	Overall wins = 83.33%
+Epoch #612
+	Moves per round = 287
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 84.0%
+Epoch #613
+	Moves per round = 230
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 84.64%
+Epoch #614
+	Moves per round = 171
+	Random moves = 4.67%
+	AI wins = 83.33%
+	Overall random moves = 4.8%
+	Overall wins = 84.59%
+Epoch #615
+	Moves per round = 184
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 85.2%
+Epoch #616
+	Moves per round = 241
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.8%
+	Overall wins = 85.13%
+Epoch #617
+	Moves per round = 73
+	Random moves = 4.2%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 85.72%
+Epoch #618
+	Moves per round = 94
+	Random moves = 4.5%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 85.93%
+Epoch #619
+	Moves per round = 141
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 86.49%
+Epoch #620
+	Moves per round = 201
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 87.03%
+Epoch #621
+	Moves per round = 144
+	Random moves = 4.63%
+	AI wins = 80.0%
+	Overall random moves = 4.76%
+	Overall wins = 86.75%
+Epoch #622
+	Moves per round = 182
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 86.92%
+Epoch #623
+	Moves per round = 179
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 87.44%
+Epoch #624
+	Moves per round = 131
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 87.58%
+Epoch #625
+	Moves per round = 223
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 87.71%
+Epoch #626
+	Moves per round = 133
+	Random moves = 4.67%
+	AI wins = 83.33%
+	Overall random moves = 4.75%
+	Overall wins = 87.54%
+Epoch #627
+	Moves per round = 156
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 87.67%
+Epoch #628
+	Moves per round = 104
+	Random moves = 4.61%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 87.5%
+Epoch #629
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 87.64%
+Epoch #630
+	Moves per round = 114
+	Random moves = 4.58%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 87.46%
+Epoch #631
+	Moves per round = 168
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 87.6%
+Epoch #632
+	Moves per round = 180
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 88.1%
+Epoch #633
+	Moves per round = 185
+	Random moves = 4.73%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 88.17%
+Epoch #634
+	Moves per round = 177
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 88.65%
+Epoch #635
+	Moves per round = 159
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 89.1%
+Epoch #636
+	Moves per round = 164
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 89.54%
+Epoch #637
+	Moves per round = 237
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 89.96%
+Epoch #638
+	Moves per round = 295
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.36%
+Epoch #639
+	Moves per round = 93
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.74%
+Epoch #640
+	Moves per round = 115
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 91.11%
+Epoch #641
+	Moves per round = 145
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.47%
+Epoch #642
+	Moves per round = 138
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.81%
+Epoch #643
+	Moves per round = 144
+	Random moves = 4.61%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.77%
+Epoch #644
+	Moves per round = 216
+	Random moves = 4.8%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.74%
+Epoch #645
+	Moves per round = 102
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.07%
+Epoch #646
+	Moves per round = 178
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.02%
+Epoch #647
+	Moves per round = 144
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.98%
+Epoch #648
+	Moves per round = 181
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.3%
+Epoch #649
+	Moves per round = 264
+	Random moves = 4.86%
+	AI wins = 76.92%
+	Overall random moves = 4.72%
+	Overall wins = 91.68%
+Epoch #650
+	Moves per round = 103
+	Random moves = 4.42%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 91.35%
+Epoch #651
+	Moves per round = 248
+	Random moves = 4.79%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 90.97%
+Epoch #652
+	Moves per round = 117
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.33%
+Epoch #653
+	Moves per round = 307
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.68%
+Epoch #654
+	Moves per round = 219
+	Random moves = 4.82%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 91.34%
+Epoch #655
+	Moves per round = 212
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.69%
+Epoch #656
+	Moves per round = 141
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.66%
+Epoch #657
+	Moves per round = 204
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.99%
+Epoch #658
+	Moves per round = 165
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.31%
+Epoch #659
+	Moves per round = 173
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.26%
+Epoch #660
+	Moves per round = 204
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.57%
+Epoch #661
+	Moves per round = 166
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.86%
+Epoch #662
+	Moves per round = 110
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.15%
+Epoch #663
+	Moves per round = 210
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.42%
+Epoch #664
+	Moves per round = 187
+	Random moves = 4.71%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 92.96%
+Epoch #665
+	Moves per round = 157
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.88%
+Epoch #666
+	Moves per round = 182
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.8%
+Epoch #667
+	Moves per round = 142
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.72%
+Epoch #668
+	Moves per round = 148
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.01%
+Epoch #669
+	Moves per round = 220
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.93%
+Epoch #670
+	Moves per round = 157
+	Random moves = 4.58%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.81%
+Epoch #671
+	Moves per round = 200
+	Random moves = 4.83%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.7%
+Epoch #672
+	Moves per round = 131
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.99%
+Epoch #673
+	Moves per round = 175
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 93.27%
+Epoch #674
+	Moves per round = 325
+	Random moves = 4.88%
+	AI wins = 72.73%
+	Overall random moves = 4.72%
+	Overall wins = 92.45%
+Epoch #675
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.39%
+Epoch #676
+	Moves per round = 228
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.69%
+Epoch #677
+	Moves per round = 320
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.99%
+Epoch #678
+	Moves per round = 116
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 93.27%
+Epoch #679
+	Moves per round = 81
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 93.54%
+Epoch #680
+	Moves per round = 104
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 93.43%
+Epoch #681
+	Moves per round = 142
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.69%
+Epoch #682
+	Moves per round = 62
+	Random moves = 4.47%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.95%
+Epoch #683
+	Moves per round = 139
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.19%
+Epoch #684
+	Moves per round = 105
+	Random moves = 4.46%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 94.42%
+Epoch #685
+	Moves per round = 210
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 94.64%
+Epoch #686
+	Moves per round = 236
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.86%
+Epoch #687
+	Moves per round = 170
+	Random moves = 4.69%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 94.4%
+Epoch #688
+	Moves per round = 268
+	Random moves = 4.81%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 94.22%
+Epoch #689
+	Moves per round = 103
+	Random moves = 4.4%
+	AI wins = 76.92%
+	Overall random moves = 4.7%
+	Overall wins = 93.53%
+Epoch #690
+	Moves per round = 111
+	Random moves = 4.49%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.79%
+Epoch #691
+	Moves per round = 174
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 93.67%
+Epoch #692
+	Moves per round = 190
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 93.56%
+Epoch #693
+	Moves per round = 133
+	Random moves = 4.57%
+	AI wins = 81.82%
+	Overall random moves = 4.69%
+	Overall wins = 93.09%
+Epoch #694
+	Moves per round = 136
+	Random moves = 4.61%
+	AI wins = 90.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.97%
+Epoch #695
+	Moves per round = 212
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.89%
+Epoch #696
+	Moves per round = 191
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.81%
+Epoch #697
+	Moves per round = 145
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.09%
+Epoch #698
+	Moves per round = 112
+	Random moves = 4.6%
+	AI wins = 75.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.37%
+Epoch #699
+	Moves per round = 181
+	Random moves = 4.74%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.28%
+Epoch #700
+	Moves per round = 135
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.59%
+Epoch #701
+	Moves per round = 128
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.88%
+Epoch #702
+	Moves per round = 140
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.17%
+Epoch #703
+	Moves per round = 205
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 93.08%
+Epoch #704
+	Moves per round = 152
+	Random moves = 4.79%
+	AI wins = 76.92%
+	Overall random moves = 4.69%
+	Overall wins = 92.43%
+Epoch #705
+	Moves per round = 134
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.37%
+Epoch #706
+	Moves per round = 214
+	Random moves = 4.8%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.27%
+Epoch #707
+	Moves per round = 181
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.22%
+Epoch #708
+	Moves per round = 272
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.53%
+Epoch #709
+	Moves per round = 165
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 92.47%
+Epoch #710
+	Moves per round = 157
+	Random moves = 4.67%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 92.1%
+Epoch #711
+	Moves per round = 319
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.42%
+Epoch #712
+	Moves per round = 255
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.72%
+Adding DEEP LEARNING layer #8 (8, 16 nodes)
+Epoch #713
+	Moves per round = 321
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.84%
+	Overall wins = 90.91%
+Epoch #714
+	Moves per round = 197
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 91.27%
+Epoch #715
+	Moves per round = 281
+	Random moves = 4.86%
+	AI wins = 83.33%
+	Overall random moves = 4.84%
+	Overall wins = 90.96%
+Epoch #716
+	Moves per round = 162
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 90.95%
+Epoch #717
+	Moves per round = 159
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 91.32%
+Epoch #718
+	Moves per round = 306
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.83%
+	Overall wins = 91.66%
+Epoch #719
+	Moves per round = 172
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 91.63%
+Epoch #720
+	Moves per round = 207
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 91.6%
+Epoch #721
+	Moves per round = 146
+	Random moves = 4.64%
+	AI wins = 90.0%
+	Overall random moves = 4.82%
+	Overall wins = 91.54%
+Epoch #722
+	Moves per round = 180
+	Random moves = 4.76%
+	AI wins = 71.43%
+	Overall random moves = 4.82%
+	Overall wins = 90.73%
+Epoch #723
+	Moves per round = 128
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 91.11%
+Epoch #724
+	Moves per round = 104
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 91.46%
+Epoch #725
+	Moves per round = 99
+	Random moves = 4.38%
+	AI wins = 83.33%
+	Overall random moves = 4.78%
+	Overall wins = 91.14%
+Epoch #726
+	Moves per round = 118
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 91.13%
+Epoch #727
+	Moves per round = 197
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.78%
+	Overall wins = 91.12%
+Epoch #728
+	Moves per round = 141
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 91.11%
+Epoch #729
+	Moves per round = 204
+	Random moves = 4.85%
+	AI wins = 90.0%
+	Overall random moves = 4.78%
+	Overall wins = 91.07%
+Epoch #730
+	Moves per round = 132
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 91.42%
+Epoch #731
+	Moves per round = 148
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 91.4%
+Epoch #732
+	Moves per round = 134
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 91.38%
+Epoch #733
+	Moves per round = 197
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 91.36%
+Epoch #734
+	Moves per round = 122
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 91.71%
+Epoch #735
+	Moves per round = 191
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 92.04%
+Epoch #736
+	Moves per round = 80
+	Random moves = 4.35%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 92.36%
+Epoch #737
+	Moves per round = 95
+	Random moves = 4.39%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.66%
+Epoch #738
+	Moves per round = 152
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.96%
+Epoch #739
+	Moves per round = 222
+	Random moves = 4.74%
+	AI wins = 81.82%
+	Overall random moves = 4.72%
+	Overall wins = 92.51%
+Epoch #740
+	Moves per round = 181
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.41%
+Epoch #741
+	Moves per round = 187
+	Random moves = 4.74%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 92.32%
+Epoch #742
+	Moves per round = 153
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 92.26%
+Epoch #743
+	Moves per round = 139
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.21%
+Epoch #744
+	Moves per round = 93
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.52%
+Epoch #745
+	Moves per round = 120
+	Random moves = 4.7%
+	AI wins = 83.33%
+	Overall random moves = 4.72%
+	Overall wins = 92.15%
+Epoch #746
+	Moves per round = 171
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.1%
+Epoch #747
+	Moves per round = 147
+	Random moves = 4.62%
+	AI wins = 75.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.42%
+Epoch #748
+	Moves per round = 248
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.4%
+Epoch #749
+	Moves per round = 99
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.74%
+Epoch #750
+	Moves per round = 173
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.07%
+Epoch #751
+	Moves per round = 136
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.02%
+Epoch #752
+	Moves per round = 164
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.98%
+Epoch #753
+	Moves per round = 161
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 91.94%
+Epoch #754
+	Moves per round = 131
+	Random moves = 4.7%
+	AI wins = 75.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.26%
+Epoch #755
+	Moves per round = 115
+	Random moves = 4.6%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.21%
+Epoch #756
+	Moves per round = 95
+	Random moves = 4.4%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.56%
+Epoch #757
+	Moves per round = 183
+	Random moves = 4.75%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.5%
+Epoch #758
+	Moves per round = 134
+	Random moves = 4.61%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.47%
+Epoch #759
+	Moves per round = 176
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.45%
+Epoch #760
+	Moves per round = 248
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.43%
+Epoch #761
+	Moves per round = 227
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.77%
+Epoch #762
+	Moves per round = 132
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.1%
+Epoch #763
+	Moves per round = 176
+	Random moves = 4.68%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 91.75%
+Epoch #764
+	Moves per round = 160
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.08%
+Adding DEEP LEARNING layer #9 (5, 14 nodes)
+Epoch #765
+	Moves per round = 274
+	Random moves = 4.83%
+	AI wins = 66.67%
+	Overall random moves = 4.83%
+	Overall wins = 66.67%
+Epoch #766
+	Moves per round = 256
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.83%
+	Overall wins = 67.64%
+Epoch #767
+	Moves per round = 269
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.82%
+	Overall wins = 68.93%
+Epoch #768
+	Moves per round = 121
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.82%
+	Overall wins = 70.17%
+Epoch #769
+	Moves per round = 165
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.81%
+	Overall wins = 71.37%
+Epoch #770
+	Moves per round = 221
+	Random moves = 4.74%
+	AI wins = 90.0%
+	Overall random moves = 4.81%
+	Overall wins = 72.11%
+Epoch #771
+	Moves per round = 134
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 73.23%
+Epoch #772
+	Moves per round = 101
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 74.3%
+Epoch #773
+	Moves per round = 186
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 75.33%
+Epoch #774
+	Moves per round = 167
+	Random moves = 4.62%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 75.95%
+Epoch #775
+	Moves per round = 134
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 76.91%
+Epoch #776
+	Moves per round = 190
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 77.84%
+Epoch #777
+	Moves per round = 136
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 78.72%
+Epoch #778
+	Moves per round = 82
+	Random moves = 4.35%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 79.57%
+Epoch #779
+	Moves per round = 208
+	Random moves = 4.77%
+	AI wins = 75.0%
+	Overall random moves = 4.76%
+	Overall wins = 79.39%
+Epoch #780
+	Moves per round = 175
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 79.85%
+Epoch #781
+	Moves per round = 189
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 80.29%
+Epoch #782
+	Moves per round = 174
+	Random moves = 4.64%
+	AI wins = 76.92%
+	Overall random moves = 4.75%
+	Overall wins = 80.16%
+Epoch #783
+	Moves per round = 162
+	Random moves = 4.6%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 80.29%
+Epoch #784
+	Moves per round = 168
+	Random moves = 4.75%
+	AI wins = 81.82%
+	Overall random moves = 4.74%
+	Overall wins = 80.35%
+Epoch #785
+	Moves per round = 176
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 81.13%
+Epoch #786
+	Moves per round = 197
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 81.89%
+Epoch #787
+	Moves per round = 170
+	Random moves = 4.74%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 81.95%
+Epoch #788
+	Moves per round = 138
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 82.3%
+Epoch #789
+	Moves per round = 126
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 83.01%
+Epoch #790
+	Moves per round = 143
+	Random moves = 4.75%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 83.02%
+Epoch #791
+	Moves per round = 239
+	Random moves = 4.81%
+	AI wins = 83.33%
+	Overall random moves = 4.74%
+	Overall wins = 83.04%
+Epoch #792
+	Moves per round = 160
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 83.72%
+Epoch #793
+	Moves per round = 191
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 84.37%
+Epoch #794
+	Moves per round = 90
+	Random moves = 4.54%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 84.59%
+Epoch #795
+	Moves per round = 146
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 85.21%
+Epoch #796
+	Moves per round = 231
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 85.8%
+Epoch #797
+	Moves per round = 129
+	Random moves = 4.57%
+	AI wins = 81.82%
+	Overall random moves = 4.73%
+	Overall wins = 85.64%
+Epoch #798
+	Moves per round = 153
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 85.85%
+Epoch #799
+	Moves per round = 185
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 86.05%
+Epoch #800
+	Moves per round = 158
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 86.25%
+Epoch #801
+	Moves per round = 338
+	Random moves = 4.89%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 86.43%
+Epoch #802
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 80.0%
+	Overall random moves = 4.73%
+	Overall wins = 86.18%
+Epoch #803
+	Moves per round = 177
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 86.73%
+Epoch #804
+	Moves per round = 160
+	Random moves = 4.64%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 86.59%
+Epoch #805
+	Moves per round = 216
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 86.73%
+Epoch #806
+	Moves per round = 182
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 86.9%
+Epoch #807
+	Moves per round = 107
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 87.42%
+Epoch #808
+	Moves per round = 158
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 87.56%
+Epoch #809
+	Moves per round = 145
+	Random moves = 4.75%
+	AI wins = 90.0%
+	Overall random moves = 4.72%
+	Overall wins = 87.66%
+Epoch #810
+	Moves per round = 125
+	Random moves = 4.57%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 87.79%
+Epoch #811
+	Moves per round = 159
+	Random moves = 4.69%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 87.91%
+Epoch #812
+	Moves per round = 50
+	Random moves = 4.17%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.4%
+Epoch #813
+	Moves per round = 193
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.86%
+Epoch #814
+	Moves per round = 256
+	Random moves = 4.81%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 88.58%
+Epoch #815
+	Moves per round = 127
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 88.67%
+Epoch #816
+	Moves per round = 112
+	Random moves = 4.51%
+	AI wins = 75.0%
+	Overall random moves = 4.69%
+	Overall wins = 88.13%
+Epoch #817
+	Moves per round = 215
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 88.6%
+Epoch #818
+	Moves per round = 127
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 89.06%
+Epoch #819
+	Moves per round = 161
+	Random moves = 4.8%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 88.83%
+Epoch #820
+	Moves per round = 198
+	Random moves = 4.81%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 88.91%
+Epoch #821
+	Moves per round = 158
+	Random moves = 4.72%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 88.95%
+Epoch #822
+	Moves per round = 169
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 89.03%
+Epoch #823
+	Moves per round = 165
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 89.11%
+Epoch #824
+	Moves per round = 140
+	Random moves = 4.69%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 89.14%
+Epoch #825
+	Moves per round = 183
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 89.21%
+Epoch #826
+	Moves per round = 247
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 89.65%
+Epoch #827
+	Moves per round = 128
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.06%
+Epoch #828
+	Moves per round = 161
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 90.46%
+Epoch #829
+	Moves per round = 180
+	Random moves = 4.63%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 90.11%
+Epoch #830
+	Moves per round = 136
+	Random moves = 4.66%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 90.14%
+Epoch #831
+	Moves per round = 237
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 90.54%
+Epoch #832
+	Moves per round = 109
+	Random moves = 4.49%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.55%
+Epoch #833
+	Moves per round = 169
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.57%
+Epoch #834
+	Moves per round = 133
+	Random moves = 4.64%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.54%
+Epoch #835
+	Moves per round = 90
+	Random moves = 4.55%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.92%
+Epoch #836
+	Moves per round = 217
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.29%
+Epoch #837
+	Moves per round = 129
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 91.27%
+Epoch #838
+	Moves per round = 187
+	Random moves = 4.8%
+	AI wins = 69.23%
+	Overall random moves = 4.69%
+	Overall wins = 90.39%
+Epoch #839
+	Moves per round = 192
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.77%
+Epoch #840
+	Moves per round = 108
+	Random moves = 4.62%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.78%
+Epoch #841
+	Moves per round = 95
+	Random moves = 4.32%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.15%
+Epoch #842
+	Moves per round = 226
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.5%
+Epoch #843
+	Moves per round = 108
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.84%
+Epoch #844
+	Moves per round = 96
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.17%
+Epoch #845
+	Moves per round = 142
+	Random moves = 4.62%
+	AI wins = 83.33%
+	Overall random moves = 4.68%
+	Overall wins = 91.81%
+Epoch #846
+	Moves per round = 102
+	Random moves = 4.54%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.48%
+Epoch #847
+	Moves per round = 124
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.82%
+Epoch #848
+	Moves per round = 215
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.14%
+Epoch #849
+	Moves per round = 244
+	Random moves = 4.77%
+	AI wins = 83.33%
+	Overall random moves = 4.68%
+	Overall wins = 91.79%
+Epoch #850
+	Moves per round = 160
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.12%
+Epoch #851
+	Moves per round = 306
+	Random moves = 4.9%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.07%
+Epoch #852
+	Moves per round = 257
+	Random moves = 4.86%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.39%
+Epoch #853
+	Moves per round = 149
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.69%
+Epoch #854
+	Moves per round = 175
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 92.62%
+Epoch #855
+	Moves per round = 121
+	Random moves = 4.62%
+	AI wins = 81.82%
+	Overall random moves = 4.7%
+	Overall wins = 92.19%
+Epoch #856
+	Moves per round = 112
+	Random moves = 4.62%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 92.14%
+Epoch #857
+	Moves per round = 190
+	Random moves = 4.78%
+	AI wins = 75.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.45%
+Epoch #858
+	Moves per round = 114
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.79%
+Epoch #859
+	Moves per round = 97
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.12%
+Epoch #860
+	Moves per round = 112
+	Random moves = 4.6%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 92.07%
+Epoch #861
+	Moves per round = 172
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.39%
+Epoch #862
+	Moves per round = 201
+	Random moves = 4.78%
+	AI wins = 76.92%
+	Overall random moves = 4.69%
+	Overall wins = 91.77%
+Epoch #863
+	Moves per round = 154
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.1%
+Epoch #864
+	Moves per round = 129
+	Random moves = 4.55%
+	AI wins = 81.82%
+	Overall random moves = 4.69%
+	Overall wins = 91.69%
+Epoch #865
+	Moves per round = 150
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.02%
+Epoch #866
+	Moves per round = 78
+	Random moves = 4.36%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.34%
+Epoch #867
+	Moves per round = 157
+	Random moves = 4.65%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.98%
+Epoch #868
+	Moves per round = 165
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.3%
+Epoch #869
+	Moves per round = 90
+	Random moves = 4.42%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.61%
+Epoch #870
+	Moves per round = 123
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.54%
+Epoch #871
+	Moves per round = 142
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 92.48%
+Epoch #872
+	Moves per round = 253
+	Random moves = 4.88%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 92.41%
+Epoch #873
+	Moves per round = 215
+	Random moves = 4.82%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 92.35%
+Epoch #874
+	Moves per round = 171
+	Random moves = 4.63%
+	AI wins = 71.43%
+	Overall random moves = 4.67%
+	Overall wins = 91.52%
+Epoch #875
+	Moves per round = 179
+	Random moves = 4.69%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.19%
+Epoch #876
+	Moves per round = 165
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.54%
+Epoch #877
+	Moves per round = 144
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.88%
+Epoch #878
+	Moves per round = 107
+	Random moves = 4.42%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 91.54%
+Epoch #879
+	Moves per round = 221
+	Random moves = 4.85%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.51%
+Adding DEEP LEARNING layer #10 (2, 12 nodes)
+Epoch #880
+	Moves per round = 490
+	Random moves = 4.89%
+	AI wins = 90.91%
+	Overall random moves = 4.89%
+	Overall wins = 90.91%
+Epoch #881
+	Moves per round = 118
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.88%
+	Overall wins = 91.27%
+Epoch #882
+	Moves per round = 194
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.87%
+	Overall wins = 91.62%
+Epoch #883
+	Moves per round = 126
+	Random moves = 4.58%
+	AI wins = 100.0%
+	Overall random moves = 4.86%
+	Overall wins = 91.96%
+Epoch #884
+	Moves per round = 73
+	Random moves = 4.48%
+	AI wins = 100.0%
+	Overall random moves = 4.85%
+	Overall wins = 92.28%
+Epoch #885
+	Moves per round = 216
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 92.59%
+Epoch #886
+	Moves per round = 251
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 92.88%
+Epoch #887
+	Moves per round = 175
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.84%
+	Overall wins = 93.17%
+Epoch #888
+	Moves per round = 215
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.84%
+	Overall wins = 93.08%
+Epoch #889
+	Moves per round = 175
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.84%
+	Overall wins = 92.99%
+Epoch #890
+	Moves per round = 92
+	Random moves = 4.45%
+	AI wins = 90.91%
+	Overall random moves = 4.82%
+	Overall wins = 92.91%
+Epoch #891
+	Moves per round = 137
+	Random moves = 4.73%
+	AI wins = 71.43%
+	Overall random moves = 4.82%
+	Overall wins = 92.05%
+Epoch #892
+	Moves per round = 191
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.82%
+	Overall wins = 92.37%
+Epoch #893
+	Moves per round = 126
+	Random moves = 4.56%
+	AI wins = 83.33%
+	Overall random moves = 4.81%
+	Overall wins = 92.01%
+Epoch #894
+	Moves per round = 140
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.8%
+	Overall wins = 92.33%
+Epoch #895
+	Moves per round = 81
+	Random moves = 4.41%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.63%
+Epoch #896
+	Moves per round = 286
+	Random moves = 4.81%
+	AI wins = 80.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.13%
+Epoch #897
+	Moves per round = 248
+	Random moves = 4.78%
+	AI wins = 90.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.04%
+Epoch #898
+	Moves per round = 261
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.36%
+Epoch #899
+	Moves per round = 200
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.27%
+Epoch #900
+	Moves per round = 212
+	Random moves = 4.8%
+	AI wins = 100.0%
+	Overall random moves = 4.79%
+	Overall wins = 92.58%
+Epoch #901
+	Moves per round = 170
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.79%
+	Overall wins = 92.51%
+Epoch #902
+	Moves per round = 130
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.78%
+	Overall wins = 92.81%
+Epoch #903
+	Moves per round = 110
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.77%
+	Overall wins = 93.1%
+Epoch #904
+	Moves per round = 129
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 93.01%
+Epoch #905
+	Moves per round = 148
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 93.29%
+Epoch #906
+	Moves per round = 169
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 93.56%
+Epoch #907
+	Moves per round = 190
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 93.45%
+Epoch #908
+	Moves per round = 208
+	Random moves = 4.83%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 93.05%
+Epoch #909
+	Moves per round = 231
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.76%
+	Overall wins = 92.96%
+Epoch #910
+	Moves per round = 266
+	Random moves = 4.81%
+	AI wins = 90.91%
+	Overall random moves = 4.77%
+	Overall wins = 92.88%
+Epoch #911
+	Moves per round = 97
+	Random moves = 4.49%
+	AI wins = 100.0%
+	Overall random moves = 4.76%
+	Overall wins = 93.16%
+Epoch #912
+	Moves per round = 110
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 93.07%
+Epoch #913
+	Moves per round = 157
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 92.99%
+Epoch #914
+	Moves per round = 92
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 92.9%
+Epoch #915
+	Moves per round = 188
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 93.19%
+Epoch #916
+	Moves per round = 144
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 93.46%
+Epoch #917
+	Moves per round = 62
+	Random moves = 4.37%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 93.36%
+Epoch #918
+	Moves per round = 84
+	Random moves = 4.52%
+	AI wins = 75.0%
+	Overall random moves = 4.72%
+	Overall wins = 92.62%
+Epoch #919
+	Moves per round = 151
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.55%
+Epoch #920
+	Moves per round = 163
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 92.49%
+Epoch #921
+	Moves per round = 84
+	Random moves = 4.46%
+	AI wins = 75.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.79%
+Epoch #922
+	Moves per round = 205
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.75%
+Epoch #923
+	Moves per round = 155
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.08%
+Epoch #924
+	Moves per round = 54
+	Random moves = 4.44%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.4%
+Epoch #925
+	Moves per round = 244
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 92.34%
+Epoch #926
+	Moves per round = 175
+	Random moves = 4.76%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 91.98%
+Epoch #927
+	Moves per round = 176
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.94%
+Epoch #928
+	Moves per round = 138
+	Random moves = 4.61%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 91.9%
+Epoch #929
+	Moves per round = 199
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.22%
+Epoch #930
+	Moves per round = 115
+	Random moves = 4.68%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.13%
+Epoch #931
+	Moves per round = 261
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.08%
+Epoch #932
+	Moves per round = 195
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.4%
+Beginning DEEP LEARNING refinement stage
+Epoch #933
+	Moves per round = 104
+	Random moves = 4.42%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 100.0%
+Epoch #934
+	Moves per round = 93
+	Random moves = 4.5%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 100.0%
+Epoch #935
+	Moves per round = 75
+	Random moves = 4.49%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 100.0%
+Epoch #936
+	Moves per round = 240
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.44%
+	Overall wins = 100.0%
+Epoch #937
+	Moves per round = 158
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.45%
+	Overall wins = 99.27%
+Epoch #938
+	Moves per round = 182
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.46%
+	Overall wins = 99.3%
+Epoch #939
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.47%
+	Overall wins = 99.33%
+Epoch #940
+	Moves per round = 181
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.48%
+	Overall wins = 98.99%
+Epoch #941
+	Moves per round = 83
+	Random moves = 4.35%
+	AI wins = 90.91%
+	Overall random moves = 4.48%
+	Overall wins = 98.67%
+Epoch #942
+	Moves per round = 157
+	Random moves = 4.76%
+	AI wins = 100.0%
+	Overall random moves = 4.49%
+	Overall wins = 98.72%
+Epoch #943
+	Moves per round = 87
+	Random moves = 4.4%
+	AI wins = 83.33%
+	Overall random moves = 4.49%
+	Overall wins = 98.11%
+Epoch #944
+	Moves per round = 111
+	Random moves = 4.64%
+	AI wins = 83.33%
+	Overall random moves = 4.49%
+	Overall wins = 97.52%
+Epoch #945
+	Moves per round = 200
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.5%
+	Overall wins = 96.89%
+Epoch #946
+	Moves per round = 112
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.51%
+	Overall wins = 97.01%
+Epoch #947
+	Moves per round = 98
+	Random moves = 4.35%
+	AI wins = 100.0%
+	Overall random moves = 4.5%
+	Overall wins = 97.13%
+Epoch #948
+	Moves per round = 203
+	Random moves = 4.76%
+	AI wins = 76.92%
+	Overall random moves = 4.51%
+	Overall wins = 96.32%
+Epoch #949
+	Moves per round = 116
+	Random moves = 4.54%
+	AI wins = 90.91%
+	Overall random moves = 4.52%
+	Overall wins = 96.11%
+Epoch #950
+	Moves per round = 177
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.52%
+	Overall wins = 96.26%
+Epoch #951
+	Moves per round = 136
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.53%
+	Overall wins = 96.05%
+Epoch #952
+	Moves per round = 143
+	Random moves = 4.6%
+	AI wins = 76.92%
+	Overall random moves = 4.53%
+	Overall wins = 95.28%
+Epoch #953
+	Moves per round = 282
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.54%
+	Overall wins = 95.47%
+Epoch #954
+	Moves per round = 110
+	Random moves = 4.54%
+	AI wins = 100.0%
+	Overall random moves = 4.54%
+	Overall wins = 95.65%
+Epoch #955
+	Moves per round = 173
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.55%
+	Overall wins = 95.83%
+Epoch #956
+	Moves per round = 111
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.55%
+	Overall wins = 95.63%
+Epoch #957
+	Moves per round = 194
+	Random moves = 4.78%
+	AI wins = 64.29%
+	Overall random moves = 4.56%
+	Overall wins = 94.38%
+Epoch #958
+	Moves per round = 110
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.57%
+	Overall wins = 94.6%
+Epoch #959
+	Moves per round = 189
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.57%
+	Overall wins = 94.45%
+Beginning DEEP LEARNING refinement stage
+Epoch #960
+	Moves per round = 104
+	Random moves = 4.42%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 100.0%
+Epoch #961
+	Moves per round = 78
+	Random moves = 4.4%
+	AI wins = 90.91%
+	Overall random moves = 4.42%
+	Overall wins = 99.64%
+Epoch #962
+	Moves per round = 43
+	Random moves = 4.36%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 99.65%
+Epoch #963
+	Moves per round = 118
+	Random moves = 4.47%
+	AI wins = 100.0%
+	Overall random moves = 4.42%
+	Overall wins = 99.66%
+Epoch #964
+	Moves per round = 197
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.43%
+	Overall wins = 99.28%
+Epoch #965
+	Moves per round = 107
+	Random moves = 4.47%
+	AI wins = 100.0%
+	Overall random moves = 4.43%
+	Overall wins = 99.31%
+Epoch #966
+	Moves per round = 169
+	Random moves = 4.78%
+	AI wins = 90.0%
+	Overall random moves = 4.44%
+	Overall wins = 98.93%
+Epoch #967
+	Moves per round = 187
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.46%
+	Overall wins = 98.98%
+Epoch #968
+	Moves per round = 165
+	Random moves = 4.71%
+	AI wins = 90.0%
+	Overall random moves = 4.47%
+	Overall wins = 98.62%
+Epoch #969
+	Moves per round = 201
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.48%
+	Overall wins = 98.31%
+Epoch #970
+	Moves per round = 250
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.49%
+	Overall wins = 98.38%
+Epoch #971
+	Moves per round = 106
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.49%
+	Overall wins = 98.44%
+Epoch #972
+	Moves per round = 170
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.5%
+	Overall wins = 98.5%
+Epoch #973
+	Moves per round = 220
+	Random moves = 4.76%
+	AI wins = 80.0%
+	Overall random moves = 4.51%
+	Overall wins = 97.76%
+Epoch #974
+	Moves per round = 137
+	Random moves = 4.58%
+	AI wins = 90.0%
+	Overall random moves = 4.52%
+	Overall wins = 97.45%
+Epoch #975
+	Moves per round = 127
+	Random moves = 4.63%
+	AI wins = 90.0%
+	Overall random moves = 4.52%
+	Overall wins = 97.16%
+Epoch #976
+	Moves per round = 204
+	Random moves = 4.79%
+	AI wins = 81.82%
+	Overall random moves = 4.53%
+	Overall wins = 96.54%
+Epoch #977
+	Moves per round = 91
+	Random moves = 4.29%
+	AI wins = 100.0%
+	Overall random moves = 4.52%
+	Overall wins = 96.68%
+Epoch #978
+	Moves per round = 88
+	Random moves = 4.34%
+	AI wins = 83.33%
+	Overall random moves = 4.51%
+	Overall wins = 96.15%
+Epoch #979
+	Moves per round = 169
+	Random moves = 4.76%
+	AI wins = 66.67%
+	Overall random moves = 4.52%
+	Overall wins = 94.97%
+Epoch #980
+	Moves per round = 184
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.53%
+	Overall wins = 94.81%
+Epoch #981
+	Moves per round = 126
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.54%
+	Overall wins = 95.01%
+Epoch #982
+	Moves per round = 114
+	Random moves = 4.59%
+	AI wins = 90.91%
+	Overall random moves = 4.54%
+	Overall wins = 94.85%
+Epoch #983
+	Moves per round = 84
+	Random moves = 4.41%
+	AI wins = 90.91%
+	Overall random moves = 4.53%
+	Overall wins = 94.69%
+Epoch #984
+	Moves per round = 132
+	Random moves = 4.6%
+	AI wins = 90.91%
+	Overall random moves = 4.53%
+	Overall wins = 94.54%
+Epoch #985
+	Moves per round = 162
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.54%
+	Overall wins = 94.39%
+Epoch #986
+	Moves per round = 131
+	Random moves = 4.56%
+	AI wins = 81.82%
+	Overall random moves = 4.54%
+	Overall wins = 93.89%
+Beginning DEEP LEARNING refinement stage
+Epoch #987
+	Moves per round = 139
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 100.0%
+Epoch #988
+	Moves per round = 73
+	Random moves = 4.33%
+	AI wins = 100.0%
+	Overall random moves = 4.63%
+	Overall wins = 100.0%
+Epoch #989
+	Moves per round = 127
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 100.0%
+Epoch #990
+	Moves per round = 177
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.64%
+	Overall wins = 100.0%
+Epoch #991
+	Moves per round = 215
+	Random moves = 4.78%
+	AI wins = 90.0%
+	Overall random moves = 4.65%
+	Overall wins = 99.6%
+Epoch #992
+	Moves per round = 352
+	Random moves = 4.88%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.62%
+Epoch #993
+	Moves per round = 167
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 99.63%
+Epoch #994
+	Moves per round = 135
+	Random moves = 4.66%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.25%
+Epoch #995
+	Moves per round = 108
+	Random moves = 4.51%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.28%
+Epoch #996
+	Moves per round = 203
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.31%
+Epoch #997
+	Moves per round = 112
+	Random moves = 4.53%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.33%
+Epoch #998
+	Moves per round = 150
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.36%
+Epoch #999
+	Moves per round = 166
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.39%
+Epoch #1000
+	Moves per round = 189
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 99.41%
+Epoch #1001
+	Moves per round = 102
+	Random moves = 4.63%
+	AI wins = 76.92%
+	Overall random moves = 4.66%
+	Overall wins = 98.51%
+Epoch #1002
+	Moves per round = 98
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 98.57%
+Epoch #1003
+	Moves per round = 145
+	Random moves = 4.57%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 98.26%
+Epoch #1004
+	Moves per round = 112
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.65%
+	Overall wins = 98.33%
+Epoch #1005
+	Moves per round = 180
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 98.4%
+Epoch #1006
+	Moves per round = 140
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 98.46%
+Epoch #1007
+	Moves per round = 153
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 98.53%
+Epoch #1008
+	Moves per round = 186
+	Random moves = 4.78%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 97.92%
+Epoch #1009
+	Moves per round = 199
+	Random moves = 4.73%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 97.27%
+Epoch #1010
+	Moves per round = 146
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 97.02%
+Epoch #1011
+	Moves per round = 134
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 97.14%
+Epoch #1012
+	Moves per round = 129
+	Random moves = 4.56%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 96.89%
+Epoch #1013
+	Moves per round = 150
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 97.01%
+Beginning DEEP LEARNING refinement stage
+Epoch #1014
+	Moves per round = 175
+	Random moves = 4.76%
+	AI wins = 83.33%
+	Overall random moves = 4.76%
+	Overall wins = 83.33%
+Epoch #1015
+	Moves per round = 148
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.75%
+	Overall wins = 83.64%
+Epoch #1016
+	Moves per round = 52
+	Random moves = 3.84%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 84.29%
+Epoch #1017
+	Moves per round = 245
+	Random moves = 4.84%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 84.92%
+Epoch #1018
+	Moves per round = 107
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 85.16%
+Epoch #1019
+	Moves per round = 175
+	Random moves = 4.63%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 85.35%
+Epoch #1020
+	Moves per round = 121
+	Random moves = 4.71%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 85.54%
+Epoch #1021
+	Moves per round = 187
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 85.39%
+Epoch #1022
+	Moves per round = 107
+	Random moves = 4.38%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 85.57%
+Epoch #1023
+	Moves per round = 156
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 85.79%
+Epoch #1024
+	Moves per round = 165
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 85.99%
+Epoch #1025
+	Moves per round = 192
+	Random moves = 4.79%
+	AI wins = 80.0%
+	Overall random moves = 4.71%
+	Overall wins = 85.75%
+Epoch #1026
+	Moves per round = 117
+	Random moves = 4.54%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 85.66%
+Epoch #1027
+	Moves per round = 230
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 86.23%
+Epoch #1028
+	Moves per round = 248
+	Random moves = 4.87%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 86.11%
+Epoch #1029
+	Moves per round = 225
+	Random moves = 4.81%
+	AI wins = 75.0%
+	Overall random moves = 4.72%
+	Overall wins = 85.67%
+Epoch #1030
+	Moves per round = 193
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 85.88%
+Epoch #1031
+	Moves per round = 115
+	Random moves = 4.6%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 86.04%
+Epoch #1032
+	Moves per round = 234
+	Random moves = 4.84%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 86.24%
+Epoch #1033
+	Moves per round = 88
+	Random moves = 4.51%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 86.12%
+Epoch #1034
+	Moves per round = 123
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 86.68%
+Epoch #1035
+	Moves per round = 224
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 87.21%
+Epoch #1036
+	Moves per round = 119
+	Random moves = 4.58%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 87.36%
+Epoch #1037
+	Moves per round = 166
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 87.86%
+Epoch #1038
+	Moves per round = 174
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 88.35%
+Epoch #1039
+	Moves per round = 231
+	Random moves = 4.76%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 88.09%
+Epoch #1040
+	Moves per round = 48
+	Random moves = 4.16%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 88.56%
+Epoch #1041
+	Moves per round = 202
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 89.02%
+Epoch #1042
+	Moves per round = 129
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 89.46%
+Epoch #1043
+	Moves per round = 172
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 89.88%
+Epoch #1044
+	Moves per round = 124
+	Random moves = 4.6%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 90.29%
+Epoch #1045
+	Moves per round = 177
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.31%
+Epoch #1046
+	Moves per round = 233
+	Random moves = 4.83%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 90.3%
+Epoch #1047
+	Moves per round = 94
+	Random moves = 4.54%
+	AI wins = 90.91%
+	Overall random moves = 4.69%
+	Overall wins = 90.32%
+Epoch #1048
+	Moves per round = 86
+	Random moves = 4.43%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 90.35%
+Epoch #1049
+	Moves per round = 88
+	Random moves = 4.54%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 90.73%
+Epoch #1050
+	Moves per round = 167
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.1%
+Epoch #1051
+	Moves per round = 156
+	Random moves = 4.59%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.1%
+Epoch #1052
+	Moves per round = 107
+	Random moves = 4.56%
+	AI wins = 90.0%
+	Overall random moves = 4.66%
+	Overall wins = 91.05%
+Epoch #1053
+	Moves per round = 145
+	Random moves = 4.68%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.05%
+Epoch #1054
+	Moves per round = 115
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.4%
+Epoch #1055
+	Moves per round = 124
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.39%
+Epoch #1056
+	Moves per round = 232
+	Random moves = 4.83%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.06%
+Epoch #1057
+	Moves per round = 113
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.06%
+Epoch #1058
+	Moves per round = 92
+	Random moves = 4.51%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 91.05%
+Epoch #1059
+	Moves per round = 132
+	Random moves = 4.73%
+	AI wins = 83.33%
+	Overall random moves = 4.66%
+	Overall wins = 90.74%
+Epoch #1060
+	Moves per round = 114
+	Random moves = 4.62%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 91.11%
+Epoch #1061
+	Moves per round = 199
+	Random moves = 4.72%
+	AI wins = 71.43%
+	Overall random moves = 4.66%
+	Overall wins = 90.33%
+Epoch #1062
+	Moves per round = 137
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 90.71%
+Epoch #1063
+	Moves per round = 130
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.08%
+Epoch #1064
+	Moves per round = 244
+	Random moves = 4.84%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 90.77%
+Epoch #1065
+	Moves per round = 185
+	Random moves = 4.79%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 90.78%
+Epoch #1066
+	Moves per round = 192
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.15%
+Epoch #1067
+	Moves per round = 208
+	Random moves = 4.79%
+	AI wins = 90.0%
+	Overall random moves = 4.69%
+	Overall wins = 91.1%
+Epoch #1068
+	Moves per round = 95
+	Random moves = 4.49%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.46%
+Epoch #1069
+	Moves per round = 96
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.8%
+Epoch #1070
+	Moves per round = 128
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.13%
+Epoch #1071
+	Moves per round = 118
+	Random moves = 4.57%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.78%
+Epoch #1072
+	Moves per round = 101
+	Random moves = 4.54%
+	AI wins = 83.33%
+	Overall random moves = 4.67%
+	Overall wins = 91.44%
+Epoch #1073
+	Moves per round = 239
+	Random moves = 4.84%
+	AI wins = 90.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.38%
+Epoch #1074
+	Moves per round = 205
+	Random moves = 4.78%
+	AI wins = 81.82%
+	Overall random moves = 4.68%
+	Overall wins = 91.0%
+Epoch #1075
+	Moves per round = 105
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.36%
+Epoch #1076
+	Moves per round = 207
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 91.7%
+Epoch #1077
+	Moves per round = 135
+	Random moves = 4.64%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.67%
+Epoch #1078
+	Moves per round = 182
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 91.64%
+Epoch #1079
+	Moves per round = 156
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 91.61%
+Epoch #1080
+	Moves per round = 204
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 91.58%
+Epoch #1081
+	Moves per round = 108
+	Random moves = 4.63%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 91.92%
+Epoch #1082
+	Moves per round = 113
+	Random moves = 4.74%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.24%
+Epoch #1083
+	Moves per round = 178
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.55%
+Epoch #1084
+	Moves per round = 166
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 92.49%
+Epoch #1085
+	Moves per round = 127
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 92.79%
+Epoch #1086
+	Moves per round = 127
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.08%
+Epoch #1087
+	Moves per round = 171
+	Random moves = 4.78%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.35%
+Epoch #1088
+	Moves per round = 213
+	Random moves = 4.82%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 93.62%
+Epoch #1089
+	Moves per round = 191
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 93.88%
+Epoch #1090
+	Moves per round = 122
+	Random moves = 4.67%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.12%
+Epoch #1091
+	Moves per round = 153
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.36%
+Epoch #1092
+	Moves per round = 274
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 94.58%
+Epoch #1093
+	Moves per round = 132
+	Random moves = 4.54%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 94.43%
+Epoch #1094
+	Moves per round = 109
+	Random moves = 4.48%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.66%
+Epoch #1095
+	Moves per round = 86
+	Random moves = 4.32%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 94.51%
+Epoch #1096
+	Moves per round = 163
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 94.36%
+Epoch #1097
+	Moves per round = 131
+	Random moves = 4.73%
+	AI wins = 90.0%
+	Overall random moves = 4.67%
+	Overall wins = 94.19%
+Epoch #1098
+	Moves per round = 113
+	Random moves = 4.51%
+	AI wins = 90.91%
+	Overall random moves = 4.66%
+	Overall wins = 94.06%
+Epoch #1099
+	Moves per round = 164
+	Random moves = 4.75%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 93.93%
+Epoch #1100
+	Moves per round = 128
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 94.17%
+Epoch #1101
+	Moves per round = 111
+	Random moves = 4.66%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 94.04%
+Epoch #1102
+	Moves per round = 222
+	Random moves = 4.81%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 94.28%
+Epoch #1103
+	Moves per round = 177
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 94.15%
+Epoch #1104
+	Moves per round = 234
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.68%
+	Overall wins = 94.38%
+Epoch #1105
+	Moves per round = 175
+	Random moves = 4.72%
+	AI wins = 76.92%
+	Overall random moves = 4.68%
+	Overall wins = 93.68%
+Epoch #1106
+	Moves per round = 69
+	Random moves = 4.32%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.94%
+Epoch #1107
+	Moves per round = 109
+	Random moves = 4.66%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 94.18%
+Epoch #1108
+	Moves per round = 110
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 94.05%
+Epoch #1109
+	Moves per round = 148
+	Random moves = 4.64%
+	AI wins = 81.82%
+	Overall random moves = 4.66%
+	Overall wins = 93.56%
+Epoch #1110
+	Moves per round = 186
+	Random moves = 4.77%
+	AI wins = 90.91%
+	Overall random moves = 4.67%
+	Overall wins = 93.45%
+Epoch #1111
+	Moves per round = 233
+	Random moves = 4.87%
+	AI wins = 90.91%
+	Overall random moves = 4.68%
+	Overall wins = 93.35%
+Epoch #1112
+	Moves per round = 90
+	Random moves = 4.32%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.62%
+Epoch #1113
+	Moves per round = 133
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.87%
+Epoch #1114
+	Moves per round = 119
+	Random moves = 4.62%
+	AI wins = 70.0%
+	Overall random moves = 4.66%
+	Overall wins = 92.92%
+Epoch #1115
+	Moves per round = 168
+	Random moves = 4.75%
+	AI wins = 90.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.8%
+Epoch #1116
+	Moves per round = 187
+	Random moves = 4.81%
+	AI wins = 81.82%
+	Overall random moves = 4.67%
+	Overall wins = 92.36%
+Epoch #1117
+	Moves per round = 127
+	Random moves = 4.57%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.67%
+Epoch #1118
+	Moves per round = 175
+	Random moves = 4.72%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 92.96%
+Epoch #1119
+	Moves per round = 108
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.66%
+	Overall wins = 93.24%
+Epoch #1120
+	Moves per round = 204
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.67%
+	Overall wins = 93.51%
+Beginning DEEP LEARNING refinement stage
+Epoch #1121
+	Moves per round = 74
+	Random moves = 4.44%
+	AI wins = 100.0%
+	Overall random moves = 4.44%
+	Overall wins = 100.0%
+Epoch #1122
+	Moves per round = 205
+	Random moves = 4.77%
+	AI wins = 90.0%
+	Overall random moves = 4.45%
+	Overall wins = 99.6%
+Epoch #1123
+	Moves per round = 127
+	Random moves = 4.64%
+	AI wins = 100.0%
+	Overall random moves = 4.46%
+	Overall wins = 99.62%
+Epoch #1124
+	Moves per round = 85
+	Random moves = 4.45%
+	AI wins = 90.91%
+	Overall random moves = 4.46%
+	Overall wins = 99.27%
+Epoch #1125
+	Moves per round = 162
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.47%
+	Overall wins = 99.3%
+Epoch #1126
+	Moves per round = 54
+	Random moves = 4.04%
+	AI wins = 100.0%
+	Overall random moves = 4.45%
+	Overall wins = 99.33%
+Epoch #1127
+	Moves per round = 156
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.46%
+	Overall wins = 98.99%
+Epoch #1128
+	Moves per round = 145
+	Random moves = 4.69%
+	AI wins = 100.0%
+	Overall random moves = 4.47%
+	Overall wins = 99.03%
+Epoch #1129
+	Moves per round = 106
+	Random moves = 4.49%
+	AI wins = 100.0%
+	Overall random moves = 4.47%
+	Overall wins = 99.07%
+Epoch #1130
+	Moves per round = 300
+	Random moves = 4.82%
+	AI wins = 90.0%
+	Overall random moves = 4.49%
+	Overall wins = 98.71%
+Epoch #1131
+	Moves per round = 228
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.5%
+	Overall wins = 98.76%
+Epoch #1132
+	Moves per round = 119
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.51%
+	Overall wins = 98.81%
+Epoch #1133
+	Moves per round = 202
+	Random moves = 4.76%
+	AI wins = 90.91%
+	Overall random moves = 4.52%
+	Overall wins = 98.49%
+Epoch #1134
+	Moves per round = 69
+	Random moves = 4.35%
+	AI wins = 66.67%
+	Overall random moves = 4.51%
+	Overall wins = 97.22%
+Epoch #1135
+	Moves per round = 69
+	Random moves = 4.33%
+	AI wins = 90.91%
+	Overall random moves = 4.51%
+	Overall wins = 96.97%
+Epoch #1136
+	Moves per round = 179
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.52%
+	Overall wins = 97.09%
+Epoch #1137
+	Moves per round = 136
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.52%
+	Overall wins = 97.2%
+Epoch #1138
+	Moves per round = 98
+	Random moves = 4.56%
+	AI wins = 100.0%
+	Overall random moves = 4.52%
+	Overall wins = 97.32%
+Epoch #1139
+	Moves per round = 213
+	Random moves = 4.72%
+	AI wins = 76.92%
+	Overall random moves = 4.53%
+	Overall wins = 96.5%
+Epoch #1140
+	Moves per round = 183
+	Random moves = 4.71%
+	AI wins = 90.91%
+	Overall random moves = 4.54%
+	Overall wins = 96.28%
+Epoch #1141
+	Moves per round = 150
+	Random moves = 4.72%
+	AI wins = 90.91%
+	Overall random moves = 4.54%
+	Overall wins = 96.06%
+Epoch #1142
+	Moves per round = 188
+	Random moves = 4.77%
+	AI wins = 100.0%
+	Overall random moves = 4.55%
+	Overall wins = 96.22%
+Epoch #1143
+	Moves per round = 115
+	Random moves = 4.63%
+	AI wins = 90.91%
+	Overall random moves = 4.56%
+	Overall wins = 96.01%
+Epoch #1144
+	Moves per round = 171
+	Random moves = 4.7%
+	AI wins = 83.33%
+	Overall random moves = 4.56%
+	Overall wins = 95.5%
+Epoch #1145
+	Moves per round = 194
+	Random moves = 4.75%
+	AI wins = 75.0%
+	Overall random moves = 4.57%
+	Overall wins = 94.68%
+Epoch #1146
+	Moves per round = 293
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.58%
+	Overall wins = 94.53%
+Epoch #1147
+	Moves per round = 88
+	Random moves = 4.55%
+	AI wins = 90.91%
+	Overall random moves = 4.58%
+	Overall wins = 94.38%
+Beginning DEEP LEARNING refinement stage
+Epoch #1148
+	Moves per round = 195
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.74%
+	Overall wins = 90.91%
+Epoch #1149
+	Moves per round = 201
+	Random moves = 4.81%
+	AI wins = 90.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.87%
+Epoch #1150
+	Moves per round = 141
+	Random moves = 4.68%
+	AI wins = 69.23%
+	Overall random moves = 4.74%
+	Overall wins = 90.01%
+Epoch #1151
+	Moves per round = 134
+	Random moves = 4.53%
+	AI wins = 90.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.01%
+Epoch #1152
+	Moves per round = 273
+	Random moves = 4.78%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.04%
+Epoch #1153
+	Moves per round = 227
+	Random moves = 4.83%
+	AI wins = 100.0%
+	Overall random moves = 4.74%
+	Overall wins = 90.44%
+Epoch #1154
+	Moves per round = 114
+	Random moves = 4.67%
+	AI wins = 90.91%
+	Overall random moves = 4.73%
+	Overall wins = 90.46%
+Epoch #1155
+	Moves per round = 219
+	Random moves = 4.7%
+	AI wins = 83.33%
+	Overall random moves = 4.73%
+	Overall wins = 90.17%
+Epoch #1156
+	Moves per round = 143
+	Random moves = 4.61%
+	AI wins = 100.0%
+	Overall random moves = 4.73%
+	Overall wins = 90.57%
+Epoch #1157
+	Moves per round = 118
+	Random moves = 4.47%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 90.58%
+Epoch #1158
+	Moves per round = 286
+	Random moves = 4.85%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 90.96%
+Epoch #1159
+	Moves per round = 140
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.72%
+	Overall wins = 90.96%
+Epoch #1160
+	Moves per round = 169
+	Random moves = 4.73%
+	AI wins = 100.0%
+	Overall random moves = 4.72%
+	Overall wins = 91.32%
+Epoch #1161
+	Moves per round = 99
+	Random moves = 4.4%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.3%
+Epoch #1162
+	Moves per round = 180
+	Random moves = 4.73%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 91.29%
+Epoch #1163
+	Moves per round = 98
+	Random moves = 4.59%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 91.63%
+Epoch #1164
+	Moves per round = 141
+	Random moves = 4.82%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 91.3%
+Epoch #1165
+	Moves per round = 140
+	Random moves = 4.7%
+	AI wins = 83.33%
+	Overall random moves = 4.71%
+	Overall wins = 90.98%
+Epoch #1166
+	Moves per round = 204
+	Random moves = 4.72%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 90.62%
+Epoch #1167
+	Moves per round = 166
+	Random moves = 4.68%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 90.99%
+Epoch #1168
+	Moves per round = 143
+	Random moves = 4.74%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 90.99%
+Epoch #1169
+	Moves per round = 167
+	Random moves = 4.65%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.35%
+Epoch #1170
+	Moves per round = 325
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.7%
+Epoch #1171
+	Moves per round = 145
+	Random moves = 4.75%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.03%
+Epoch #1172
+	Moves per round = 161
+	Random moves = 4.58%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 91.95%
+Epoch #1173
+	Moves per round = 157
+	Random moves = 4.7%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.27%
+Epoch #1174
+	Moves per round = 148
+	Random moves = 4.65%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 92.21%
+Epoch #1175
+	Moves per round = 192
+	Random moves = 4.83%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.16%
+Epoch #1176
+	Moves per round = 196
+	Random moves = 4.79%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.48%
+Epoch #1177
+	Moves per round = 155
+	Random moves = 4.69%
+	AI wins = 90.0%
+	Overall random moves = 4.71%
+	Overall wins = 92.38%
+Epoch #1178
+	Moves per round = 132
+	Random moves = 4.66%
+	AI wins = 90.91%
+	Overall random moves = 4.71%
+	Overall wins = 92.32%
+Epoch #1179
+	Moves per round = 83
+	Random moves = 4.45%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.63%
+Epoch #1180
+	Moves per round = 117
+	Random moves = 4.52%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.92%
+Epoch #1181
+	Moves per round = 178
+	Random moves = 4.85%
+	AI wins = 83.33%
+	Overall random moves = 4.7%
+	Overall wins = 92.54%
+Epoch #1182
+	Moves per round = 55
+	Random moves = 4.48%
+	AI wins = 100.0%
+	Overall random moves = 4.69%
+	Overall wins = 92.84%
+Epoch #1183
+	Moves per round = 283
+	Random moves = 4.87%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.12%
+Epoch #1184
+	Moves per round = 177
+	Random moves = 4.7%
+	AI wins = 90.91%
+	Overall random moves = 4.7%
+	Overall wins = 93.03%
+Epoch #1185
+	Moves per round = 199
+	Random moves = 4.7%
+	AI wins = 90.0%
+	Overall random moves = 4.7%
+	Overall wins = 92.91%
+Epoch #1186
+	Moves per round = 251
+	Random moves = 4.88%
+	AI wins = 100.0%
+	Overall random moves = 4.7%
+	Overall wins = 93.2%
+Epoch #1187
+	Moves per round = 168
+	Random moves = 4.75%
+	AI wins = 81.82%
+	Overall random moves = 4.71%
+	Overall wins = 92.74%
+Epoch #1188
+	Moves per round = 163
+	Random moves = 4.71%
+	AI wins = 100.0%
+	Overall random moves = 4.71%
+	Overall wins = 93.03%
+BUILD STOPPED (total time: 464 minutes 0 seconds)

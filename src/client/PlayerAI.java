@@ -195,7 +195,7 @@ public class PlayerAI extends Player{
 		return rack.scoreSequence() / (double) game.rack_size;
 	}
 	
-	public static void deepLearn(){
+	public static boolean deepLearn(){
 		if (DL_layers < DL_maxlayers){
 			DL_layers++;
 			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
@@ -205,6 +205,7 @@ public class PlayerAI extends Player{
 			playNet.addHiddenLayer(pl);
 			drawNet.freeze(DL_layers);
 			playNet.freeze(DL_layers);
+			return true;
 		}
 		//Unfreeze all layers
 		else if (DL_layers == DL_maxlayers){
@@ -212,5 +213,6 @@ public class PlayerAI extends Player{
 			playNet.freeze(0);
 			System.out.println("Beginning DEEP LEARNING refinement stage");
 		}
+		return false;
 	}
 }

@@ -1,8 +1,6 @@
 package racko;
 
 import interfaces.Player;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Controls a Racko game with fixed settings

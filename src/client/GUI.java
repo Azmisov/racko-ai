@@ -68,8 +68,9 @@ public class GUI extends JFrame{
 		
 		//Play games
 		System.out.println("Note: epoch statistics are only snapshots, not averages");
-		int epoch_every = 100, epochs = 0, games = 1000000, no_improve = 0;
-		double round = 100, wins_ALL = -1, rand_ALL = -1, wins_ALL_MAX = 0;
+		boolean use_DL = true;
+		int epoch_every = 150, epochs = 0, games = 1000000, no_improve = 0;
+		double round = 100, wins_ALL = 50, rand_ALL = 5, wins_ALL_MAX = 50;
 		for (int i = 0; i < games; i++){
 			g.play();
 			//Print statistics to console
@@ -86,33 +87,23 @@ public class GUI extends JFrame{
 				System.out.println("\tAI wins = "+(Math.round(wins*round)/round)+"%");
 				//System.out.println("\tAI score = "+(Math.round(score*round)/round)+"%");
 				
-				//Reset counters
-				for (int j=0; j<players.length; j++){
-					players[j].wins = 0;
-					players[j].score = 0;
-					players[j].rand_count = 0;
-				}
+				wins_ALL = .96*wins_ALL + .04*wins;
+				rand_ALL = .96*rand_ALL + .04*rand;
+
+				System.out.println("\tOverall random moves = "+(Math.round(rand_ALL*round)/round)+"%");
+				System.out.println("\tOverall wins = "+(Math.round(wins_ALL*round)/round)+"%");
 				
 				//Once it stops learning, add another deep learning layer
-				if (wins_ALL == -1){
-					wins_ALL = wins;
-					rand_ALL = rand;
-				}
-				else{
-					wins_ALL = .96*wins_ALL + .04*wins;
-					rand_ALL = .96*rand_ALL + .04*rand;
-				}
 				if (wins_ALL > wins_ALL_MAX){
 					wins_ALL_MAX = wins_ALL;
 					no_improve = 0;
 				}
-				else if (++no_improve > 5){
-					PlayerAI.deepLearn();
+				else if (use_DL && ++no_improve > 25){
+					use_DL = PlayerAI.deepLearn();
+					wins_ALL = 50;
+					wins_ALL_MAX = 50;
 					no_improve = 0;
 				}
-				
-				System.out.println("\tOverall random moves = "+(Math.round(rand_ALL*round)/round)+"%");
-				System.out.println("\tOverall wins = "+(Math.round(wins_ALL*round)/round)+"%");
 			}
 		}
 		//*/
