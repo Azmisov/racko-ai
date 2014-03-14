@@ -172,13 +172,13 @@ public class Rack {
 		return score + score_all + bonus;
 	}
 	/**
-	 * Returns the largest sum of all usable sequences
+	 * Returns the largest ascending subset that is usable
 	 *	"usable" sequences are ones that could be used for a winning rack:
 	 *		{4 1 3 6} gives a score of 2, since the 1 in the {1 3 6} sequence is
 	 *		unusable for a winning rack (e.g. there is no card less than 1 to fill the four's spot)
 	 *  if two usable sequences cannot be used together, the largest one is returned
 	 *  otherwise, if they are both usable, their lengths will be summed
-	 * @return largest usable sequence score
+	 * @return length of largest ascending subset
 	 */
 	public int scoreSequence(){
 		int s = cards.length;
