@@ -36,12 +36,19 @@ public class PlayerAI extends Player{
 	private double initialScore, currentScore;
 	private int games_played = 0, net_play_count;
 	public int rand_count = 0;
+	//Overall statistics
+	public int ALL_rand_count, ALL_wins, ALL_moves, ALL_rounds;
 	
 	public PlayerAI(boolean random){
 		super();
 		use_random = random;
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
+		
+		ALL_rand_count = 0;
+		ALL_wins = 0;
+		ALL_moves = 0;
+		ALL_rounds = 0;
 	}
 	
 	@Override
@@ -112,12 +119,17 @@ public class PlayerAI extends Player{
 	@Override
 	public void beginRound(){
 		net_play_count = 0;
+		rand_count = 0;
 		initialScore = scoreMetric();
 		currentScore = initialScore;
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
+		if (won) ALL_wins++;
+		ALL_rand_count += rand_count;
+		ALL_moves += movesInRound;
+		ALL_rounds++;
 		games_played++;
 		saveMoveHistory(won);
 		
@@ -127,7 +139,7 @@ public class PlayerAI extends Player{
 	}
 	@Override
 	public void beginGame(){
-		rand_count = 0;
+		
 	}
 	@Override
 	public void scoreGame(boolean won) {
