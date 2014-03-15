@@ -1,7 +1,6 @@
 package racko;
 
 import interfaces.Distribution;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -133,6 +132,18 @@ public class Rack {
 		assert(index >= 0 && index < cards.length);
 		return cards[index];
 	}
+	/**
+	 * Does the rack contain this card?
+	 * @param card the card to check for
+	 * @return whether the rack contains this card
+	 */
+	public boolean contains(int card){
+		for (int i=0; i<cards.length; i++){
+			if (cards[i] == card)
+				return true;
+		}
+		return false;
+	}
 	
 	//SCORING METRICS
 	/**
@@ -222,10 +233,10 @@ public class Rack {
 				}
 			}
 			//If this is the first item in the sequence, check for "usable" space below this
-			if (card-1 < i)
+			if (new_len == 0 && card-1 < i)
 				continue;
 			//Create a new sequence, if we couldn't add it to the end of one
-			if (seq_len[new_seq] > new_len)
+			if (new_len == 0 || seq_len[new_seq] > new_len)
 				new_seq = seq_count++;
 			//Add the card to the appropriate sequence
 			seq_cards[new_seq][new_len] = card;

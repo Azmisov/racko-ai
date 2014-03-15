@@ -11,7 +11,7 @@ import racko.Rack;
  * Plays the game as an artificial intelligence
  */
 public class PlayerAI extends Player{
-	private static final double LEARN_RATE = .1;
+	private static final double LEARN_RATE = .15;
 	private static final Random RAND = new Random();
 	//Playing history
 	private final ArrayList<DataInstance> drawHistory;
@@ -33,6 +33,7 @@ public class PlayerAI extends Player{
 		DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
 	private static int DL_layers = 0;
 	//Statistics
+	public static boolean verbose = false;
 	private double initialScore, currentScore;
 	private int games_played = 0, net_play_count;
 	public int rand_count = 0;
@@ -66,15 +67,10 @@ public class PlayerAI extends Player{
 			drawHistory.add(draw_instance);
 			playHistory.add(play_instance);
 		}
-		currentScore = newScore;
+		currentScore = newScore;		
 		
-		/*
-		if (games_played == 251){
-			System.out.println(playerNumber + ": drew card number: " + card);
-			System.out.println(playerNumber + ": rack: " + rack.toString());
-			System.out.println(playerNumber + ": discarded card number: " + discard);
-		}
-		*/
+		if (verbose)
+			System.out.println("\tAI"+(use_random ? "-rand" : "-net")+": "+rack.toString());
 		
 		return discard;
 	}
@@ -226,5 +222,12 @@ public class PlayerAI extends Player{
 			System.out.println("Beginning DEEP LEARNING refinement stage");
 		}
 		return false;
+	}
+	
+	public void resetCounters(){
+		ALL_moves = 0;
+		ALL_rand_count = 0;
+		ALL_rounds = 0;
+		ALL_wins = 0;
 	}
 }

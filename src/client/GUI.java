@@ -57,21 +57,40 @@ public class GUI extends JFrame{
 	
 	public static void main(String[] args){
 		//testSuite();
+		//http://www.spellensite.nl/spellen-spelen.php?type=spellen&spellen=Tower+blaster&id=1291
 		
 		//*
+		boolean PLAY_HUMAN = true;
+		
+		PlayerAI p_rand = new PlayerAI(true),
+				 p_ai = new PlayerAI(false);
+		Player[] players_ai = new Player[]{p_rand, p_ai};
+		Player[] players = new Player[]{new PlayerHuman(), p_rand, p_ai};
+		
+		if (PLAY_HUMAN){
+			//... just testing ... 
+			//train the ai first before playing by hand
+			System.out.println("Training the AI, please wait...");
+			
+			Game train_game = Game.create(players_ai, 5, 1, false);
+			int train_games = 3000;
+			for (int i=0; i<train_games; i++){
+				train_game.play();
+				if (i % 50 == 0)
+					System.out.println(i*100/train_games+"% trained");
+			}
+
+			System.out.println("\n\n/////// BEGINNING TOURNAMENT ///////");
+			PlayerAI.verbose = true;
+		}
+			
 		//SETUP GAME
-		PlayerAI[] players = new PlayerAI[]{
-			new PlayerAI(true),
-			new PlayerAI(false)
-		};
-		PlayerAI p_rand = players[0], p_ai = players[1];
-		Game g = Game.create(players, 5, 1, false);
-		
+		Game g = Game.create(PLAY_HUMAN ? players : players_ai, 5, 1, false);
+
 		//PLAY GAMES
-		
 		//Statistics setup variables:
 		boolean use_DL = true;
-		int games = 1000000,
+		int games = 1,
 			epoch_every = 150,
 			DL_noimprove_max = 25;
 		double creep = .04;
@@ -122,12 +141,8 @@ public class GUI extends JFrame{
 				}
 				
 				//Reset counters
-				for (int j=0; j<players.length; j++){
-					players[j].ALL_moves = 0;
-					players[j].ALL_rand_count = 0;
-					players[j].ALL_rounds = 0;
-					players[j].ALL_wins = 0;
-				}
+				p_rand.resetCounters();
+				p_ai.resetCounters();
 			}
 		}
 		//*/
