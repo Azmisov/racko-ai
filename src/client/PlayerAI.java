@@ -5,6 +5,7 @@ import java.util.Random;
 import NeuralNetworks.Network;
 import interfaces.Player;
 import racko.DataInstance;
+import racko.Game;
 import racko.Rack;
 
 /**
@@ -32,29 +33,29 @@ public class PlayerAI extends Player{
 		DL_drawdelta = (drawNet_layers[1]-drawNet_layers[2])/DL_maxlayers,
 		DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
 	private static int DL_layers = 0;
+	//Stopping criteria for a deep learning layer
+	private static final int DL_noimprove_max = 25;
+	private static final double DL_noimprove_creep = .04;
+	private static boolean DL_layer_start = true;
+	private static int DL_noimprove;
+	private static double
+		DL_max_wins, DL_min_badmoves, DL_min_allmoves;
 	//Statistics
-	public static boolean verbose = false;
 	private double initialScore, currentScore;
-	private int games_played = 0, net_play_count;
+	private int games_played = 0, net_play_count, moves_in_round;
 	public int rand_count = 0;
-	//Overall statistics
-	public int ALL_rand_count, ALL_wins, ALL_moves, ALL_rounds;
 	
 	public PlayerAI(boolean random){
 		super();
 		use_random = random;
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
-		
-		ALL_rand_count = 0;
-		ALL_wins = 0;
-		ALL_moves = 0;
-		ALL_rounds = 0;
 	}
 	
 	@Override
 	public int play() {
 		net_play_count++;
+		moves_in_round++;
 		boolean drawFromDiscard = decideDraw();
 		
 		int card = game.deck.draw(drawFromDiscard);		
@@ -69,7 +70,7 @@ public class PlayerAI extends Player{
 		}
 		currentScore = newScore;		
 		
-		if (verbose)
+		if (Game.verbose)
 			System.out.println("\tAI"+(use_random ? "-rand" : "-net")+": "+rack.toString());
 		
 		return discard;
@@ -115,6 +116,7 @@ public class PlayerAI extends Player{
 	@Override
 	public void beginRound(){
 		net_play_count = 0;
+		moves_in_round = 0;
 		rand_count = 0;
 		initialScore = scoreMetric();
 		currentScore = initialScore;
@@ -122,10 +124,7 @@ public class PlayerAI extends Player{
 	@Override
 	public void scoreRound(boolean won, int score) {
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
-		if (won) ALL_wins++;
-		ALL_rand_count += rand_count;
-		ALL_moves += movesInRound;
-		ALL_rounds++;
+		STAT_badmoves += rand_count;
 		games_played++;
 		saveMoveHistory(won);
 		
@@ -134,9 +133,7 @@ public class PlayerAI extends Player{
 		playHistory.clear();
 	}
 	@Override
-	public void beginGame(){
-		
-	}
+	public void beginGame(){}
 	@Override
 	public void scoreGame(boolean won) {
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
@@ -173,7 +170,7 @@ public class PlayerAI extends Player{
 	
 	private void saveMoveHistory(boolean won){
 		//Disregard games that didn't have any moves
-		if (movesInRound == 0)
+		if (moves_in_round == 0)
 			return;
 		
 		//Score how well the AI did this round
@@ -203,12 +200,53 @@ public class PlayerAI extends Player{
 		return rack.scoreSequence() / (double) game.rack_size;
 	}
 	
-	public static boolean deepLearn(){
+	//DEEP LEARNING
+	@Override
+	public void epoch(){
+		super.epoch();
+		
+		//Deep learning stopping criteria
+		if (DL_layers != DL_maxlayers){
+			//Update our average EPOCH statistics
+			if (!DL_layer_start){				
+				//Update the "noimprove" and DL_max/DL_min variables
+				if (MODEL_allmoves < DL_min_allmoves){
+					DL_min_allmoves = MODEL_allmoves;
+					DL_noimprove = 0;
+				}
+				if (MODEL_badmoves < DL_min_badmoves){
+					DL_min_badmoves = MODEL_badmoves;
+					DL_noimprove = 0;
+				}
+				if (MODEL_wins > DL_max_wins){
+					DL_max_wins = MODEL_wins;
+					DL_noimprove = 0;
+				}
+			}
+			//If it is the start of an epoch, just set averages to current
+			//In most situations, this should work fine, since accuracy is not at it's peak at the start
+			else{
+				DL_layer_start = false;
+				DL_min_allmoves = MODEL_allmoves;
+				DL_min_badmoves = MODEL_badmoves;
+				DL_max_wins = MODEL_wins;
+			}
+
+			//If no improvement, add another deep learning layer
+			if (DL_noimprove == DL_noimprove_max){
+				deepLearn();
+				DL_layer_start = true;
+				DL_noimprove = 0;
+			}
+		}
+	}
+	private static boolean deepLearn(){
 		if (DL_layers < DL_maxlayers){
 			DL_layers++;
 			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
 				pl = playNet_layers[1] - DL_layers*DL_playdelta;
-			System.out.println("Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+", "+pl+" nodes)");
+			if (Game.verbose)
+				System.out.println("Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+", "+pl+" nodes)");
 			drawNet.addHiddenLayer(dl);
 			playNet.addHiddenLayer(pl);
 			drawNet.freeze(DL_layers);
@@ -219,15 +257,9 @@ public class PlayerAI extends Player{
 		else if (DL_layers == DL_maxlayers){
 			drawNet.freeze(0);
 			playNet.freeze(0);
-			System.out.println("Beginning DEEP LEARNING refinement stage");
+			if (Game.verbose)
+				System.out.println("Beginning DEEP LEARNING refinement stage");
 		}
 		return false;
-	}
-	
-	public void resetCounters(){
-		ALL_moves = 0;
-		ALL_rand_count = 0;
-		ALL_rounds = 0;
-		ALL_wins = 0;
 	}
 }

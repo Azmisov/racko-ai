@@ -86,7 +86,6 @@ public class Deck {
 				in_play[hand[j]-1] = true;
 			}
 			p.rack.deal(hand);
-			p.movesInRound = 0;
 			p.beginRound();
 		}
 		action = false;

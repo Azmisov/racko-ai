@@ -63,6 +63,16 @@ public class Rack {
 		exposed[position] = fromDiscard;
 		return old;
 	}
+	/**
+	 * Swaps a drawn card with one in the rack (ignoring "visibility")
+	 * @param card a card to insert
+	 * @param position where to insert the card
+	 * @return a card to discard (the old card at "position")
+	 */
+	public int swap(int card, int position){
+		assert(position >= 0 && position < cards.length);
+		return swap(card, position, exposed[position]);
+	}
 	
 	/**
 	 * Checks if the rack is sorted; standard criteria for winning

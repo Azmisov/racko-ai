@@ -60,20 +60,29 @@ public class GUI extends JFrame{
 		//http://www.spellensite.nl/spellen-spelen.php?type=spellen&spellen=Tower+blaster&id=1291
 		
 		//*
-		boolean PLAY_HUMAN = true;
+		//SETTINGS
+		int rack_size = 5,			//rack size
+			streak_min = 1,			//minimum streak to win
+			stats_player = 0,		//which player to show stats for (after each epoch)
+			train_games = 3000,		//if play_human = true, how many games to train the AI's beforehand
+			play_games = 1,			//how many games to play (after training, if playing a human)
+			epoch_every = 150;		//epoch after how many games?
+		boolean
+			bonus_mode = false,		//use bonus scoring
+			play_human = false;		//play against the AI's in a terminal
 		
-		PlayerAI p_rand = new PlayerAI(true),
-				 p_ai = new PlayerAI(false);
-		Player[] players_ai = new Player[]{p_rand, p_ai};
-		Player[] players = new Player[]{new PlayerHuman(), p_rand, p_ai};
-		
-		if (PLAY_HUMAN){
+		Player[] players = new Player[]{
+			new PlayerAI(true),
+			new PlayerAI(false)
+		};
+				
+		//TRAINING & TESTING
+		if (play_human){
 			//... just testing ... 
 			//train the ai first before playing by hand
-			System.out.println("Training the AI, please wait...");
+			System.out.println("Training the AI's, please wait...");
 			
-			Game train_game = Game.create(players_ai, 5, 1, false);
-			int train_games = 3000;
+			Game train_game = Game.create(players, rack_size, streak_min, bonus_mode);
 			for (int i=0; i<train_games; i++){
 				train_game.play();
 				if (i % 50 == 0)
@@ -81,68 +90,26 @@ public class GUI extends JFrame{
 			}
 
 			System.out.println("\n\n/////// BEGINNING TOURNAMENT ///////");
-			PlayerAI.verbose = true;
+			Game.verbose = true;
+			players = Arrays.copyOf(players, players.length+1);
+			players[players.length-1] = new PlayerHuman();
 		}
 			
-		//SETUP GAME
-		Game g = Game.create(PLAY_HUMAN ? players : players_ai, 5, 1, false);
-
-		//PLAY GAMES
-		//Statistics setup variables:
-		boolean use_DL = true;
-		int games = 1,
-			epoch_every = 150,
-			DL_noimprove_max = 25;
-		double creep = .04;
-		
-		//Private counters (don't touch)
-		int epochs = 0,
-			DL_noimprove = 0;
-		boolean[] stats_min = new boolean[]{true, true, false};
-		double[] stats_start = new double[]{210, 5, 50};
-		double[] stats_cur = Arrays.copyOf(stats_start, 3);
-		double[] stats_best = Arrays.copyOf(stats_cur, 3);
-		
-		for (int i = 0; i < games; i++){
+		Game g = Game.create(players, rack_size, streak_min, bonus_mode);
+		Player pstat = players[stats_player];
+		int epochs = 0;		
+		for (int i = 0; i < play_games; i++){
 			g.play();
 			//Print statistics to console
 			if (i > 0 && i % epoch_every == 0){
 				epochs++;
-				
-				//Compute stats
-				double[] stats_new = new double[]{
-					p_ai.ALL_moves / (double) p_ai.ALL_rounds,
-					100 * p_ai.ALL_rand_count/ (double) p_ai.ALL_moves,
-					100 * p_ai.ALL_wins / (double) p_ai.ALL_rounds
-				};
-				for (int j=0; j<stats_cur.length; j++){
-					double temp = (1.0-creep)*stats_cur[j] + creep*stats_new[j];
-					if (stats_min[j] && temp < stats_best[j] || !stats_min[j] && temp > stats_best[j]){
-						DL_noimprove = 0;
-						stats_best[j] = temp;
-					}
-					stats_cur[j] = temp;
-				}
-				
-				System.out.println("Epoch #"+epochs);
-				System.out.println("\tMoves:\t\t"+GUI.round(stats_new[0]));
-				System.out.println("\tRandom:\t\t"+GUI.round(stats_new[1])+"%");
-				System.out.println("\tWins:\t\t"+GUI.round(stats_new[2])+"%");
-				System.out.println("\tMoves All:\t"+GUI.round(stats_cur[0]));
-				System.out.println("\tRandom All:\t"+GUI.round(stats_cur[1])+"%");
-				System.out.println("\tWins All:\t"+GUI.round(stats_cur[2])+"%");
-				
-				//Once it stops learning, add another deep learning layer
-				if (use_DL && ++DL_noimprove > DL_noimprove_max){
-					use_DL = PlayerAI.deepLearn();
-					System.arraycopy(stats_start, 0, stats_cur, 0, 3);
-					System.arraycopy(stats_start, 0, stats_best, 0, 3);
-					DL_noimprove = 0;
-				}
-				
-				//Reset counters
-				p_rand.resetCounters();
-				p_ai.resetCounters();
+				System.out.println("Epoch #"+			epochs);
+				System.out.println("\tMoves:\t\t"+		GUI.round(pstat.EPOCH_allmoves));
+				System.out.println("\tRandom:\t\t"+		GUI.round(pstat.EPOCH_badmoves*100)+"%");
+				System.out.println("\tWins:\t\t"+		GUI.round(pstat.EPOCH_wins*100)+"%");
+				System.out.println("\tMoves All:\t"+	GUI.round(pstat.MODEL_allmoves));
+				System.out.println("\tRandom All:\t"+	GUI.round(pstat.MODEL_badmoves*100)+"%");
+				System.out.println("\tWins All:\t"+		GUI.round(pstat.MODEL_wins*100)+"%");
 			}
 		}
 		//*/
@@ -156,7 +123,6 @@ public class GUI extends JFrame{
 		int seq = r.scoreSequence();
 		System.out.println(seq);
 	}
-	
 	private static double round(double val){
 		return Math.round(val*100)/100.0;
 	}

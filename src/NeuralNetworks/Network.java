@@ -161,6 +161,15 @@ public class Network{
 			return max_idx;
 		}
 	}
+	/**
+	 * Get the output of a specific output node (zero indexed)
+	 * @param node the output node index
+	 * @return the node's output value
+	 */
+	public double getOutput(int node){
+		Node[] last = layers.get(layers.size()-1);
+		return last[node].out;
+	}
 
 	/**
 	 * Adjusts the network's weights, using the backpropagation rule
