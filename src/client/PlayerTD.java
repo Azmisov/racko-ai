@@ -17,7 +17,7 @@ import racko.DataInstance;
  * TD Backgammon AI (Gerald Tesauro, 1991)
  * @author isaac
  */
-public class PlayerTDAI extends Player{
+public class PlayerTD extends Player{
 	private static final Random RAND = new Random();
 	//TD network
 	private static final double LEARN_RATE = .15;
@@ -28,6 +28,7 @@ public class PlayerTDAI extends Player{
 	//Stored score values
 	private DataInstance data_prev = null, data_cur;
 	private double score_prev, score_cur;
+	private int net_play_count, games_played;
 
 	@Override
 	public int play() {
@@ -59,13 +60,28 @@ public class PlayerTDAI extends Player{
 		data_prev = data_cur;
 		score_prev = score_cur;
 		
+		//If we're stuck, pick a random move
+		if (++net_play_count == 15){
+			net_play_count = 0;
+			STAT_badmoves++;
+			int swap = RAND.nextInt(game.rack_size+1) - 1;
+			return swap == -1 ? drawn : rack.swap(drawn, swap, fromDiscard);
+		}
+		
+		//Use a predefined scoring function as a starting bias
+		if (games_played < 10000){
+			STAT_badmoves++;
+			int swap = PlayerMax.maxSequence(rack, game.rack_size, drawn);
+			return swap == -1 ? drawn : rack.swap(drawn, swap, fromDiscard);
+		}
+		
 		//Find the move that maximizes predicted score
 		int max_slot = 0;
 		double max_score = 0,
 				probHi = game.deck.getRealProbability(drawn, true),
 				probLo = game.deck.getRealProbability(drawn, false);
 		double[] inputs = Arrays.copyOf(data_cur.inputs, data_cur.inputs.length);
-		//Replace the drawn card whith each value in the rack
+		//Replace the drawn card with each value in the rack
 		for (int i=0; i<game.rack_size; i++){
 			int i1 = game.rack_size + i,
 				i2 = game.rack_size*2 + i;
@@ -87,12 +103,18 @@ public class PlayerTDAI extends Player{
 		}
 		
 		//Make the actual move
-		int discard = rack.swap(drawn, max_slot, fromDiscard);
-		return discard;
+		return max_score > score_cur ? rack.swap(drawn, max_slot, fromDiscard) : drawn;
+	}
+
+	@Override
+	public void beginRound() {
+		net_play_count = 0;
 	}
 
 	@Override
 	public void scoreRound(boolean won, int score){
+		games_played++;
+		
 		//Train based on win/loss
 		double[] output = new double[]{won ? 1 : 0};
 		net.compute(data_prev.inputs);

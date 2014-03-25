@@ -18,6 +18,7 @@ public class PlayerRandom extends Player{
 	
 	@Override
 	public int play() {
+		STAT_badmoves++;
 		boolean mary_poppins = rand.nextBoolean();
 		int card = game.deck.draw(mary_poppins);
 		int pos = rand.nextInt(game.rack_size+1);

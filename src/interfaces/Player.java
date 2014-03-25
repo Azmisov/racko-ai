@@ -12,7 +12,8 @@ public abstract class Player {
 	public Game game;
 	public Rack rack;
 	public static int playerCount = 0;
-	public int playerNumber,
+	public final int playerNumber;
+	public int
 		score,	//score for this particular game
 		wins;	//wins (rounds) for this particular game
 	//Overall statistics; these are not reset after each game

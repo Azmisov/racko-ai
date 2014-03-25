@@ -235,6 +235,7 @@ public class PlayerAI extends Player{
 			//If no improvement, add another deep learning layer
 			if (DL_noimprove == DL_noimprove_max){
 				deepLearn();
+				resetModel();
 				DL_layer_start = true;
 				DL_noimprove = 0;
 			}

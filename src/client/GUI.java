@@ -63,9 +63,8 @@ public class GUI extends JFrame{
 		//SETTINGS
 		int rack_size = 5,			//rack size
 			streak_min = 1,			//minimum streak to win
-			stats_player = 0,		//which player to show stats for (after each epoch)
 			train_games = 3000,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 1,			//how many games to play (after training, if playing a human)
+			play_games = 1000000,	//how many games to play (after training, if playing a human)
 			epoch_every = 150;		//epoch after how many games?
 		boolean
 			bonus_mode = false,		//use bonus scoring
@@ -73,9 +72,11 @@ public class GUI extends JFrame{
 		
 		Player[] players = new Player[]{
 			new PlayerAI(true),
-			new PlayerAI(false)
+			new PlayerAI(false),
+			new PlayerMax(),
+			new PlayerTD()
 		};
-				
+
 		//TRAINING & TESTING
 		if (play_human){
 			//... just testing ... 
@@ -95,21 +96,37 @@ public class GUI extends JFrame{
 			players[players.length-1] = new PlayerHuman();
 		}
 			
-		Game g = Game.create(players, rack_size, streak_min, bonus_mode);
-		Player pstat = players[stats_player];
-		int epochs = 0;		
+		Game g = Game.create(players, rack_size, streak_min, bonus_mode);		
+		int epochs = 0;
 		for (int i = 0; i < play_games; i++){
 			g.play();
-			//Print statistics to console
 			if (i > 0 && i % epoch_every == 0){
 				epochs++;
-				System.out.println("Epoch #"+			epochs);
-				System.out.println("\tMoves:\t\t"+		GUI.round(pstat.EPOCH_allmoves));
-				System.out.println("\tRandom:\t\t"+		GUI.round(pstat.EPOCH_badmoves*100)+"%");
-				System.out.println("\tWins:\t\t"+		GUI.round(pstat.EPOCH_wins*100)+"%");
-				System.out.println("\tMoves All:\t"+	GUI.round(pstat.MODEL_allmoves));
-				System.out.println("\tRandom All:\t"+	GUI.round(pstat.MODEL_badmoves*100)+"%");
-				System.out.println("\tWins All:\t"+		GUI.round(pstat.MODEL_wins*100)+"%");
+				//Notify players of epoch
+				for (Player p: players)
+					p.epoch();
+				
+				//Print statistics to console
+				System.out.println("EPOCH #"+epochs+":");
+				System.out.println(
+					"\tMoves:\t\t"+
+					"Random:\t\t"+
+					"Wins:\t\t"+
+					"Moves All:\t"+
+					"Random All:\t"+
+					"Wins All:"
+				);
+				for (Player p: players){
+					System.out.println(
+						"P"+p.playerNumber+"\t"+
+						GUI.round(p.EPOCH_allmoves)+"\t\t"+
+						GUI.round(p.EPOCH_badmoves*100)+"%\t\t"+
+						GUI.round(p.EPOCH_wins*100)+"%\t\t"+
+						GUI.round(p.MODEL_allmoves)+"\t\t"+
+						GUI.round(p.MODEL_badmoves*100)+"%\t\t"+
+						GUI.round(p.MODEL_wins*100)+"%"
+					);
+				}
 			}
 		}
 		//*/
