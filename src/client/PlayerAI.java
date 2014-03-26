@@ -160,9 +160,20 @@ public class PlayerAI extends Player{
 		draw_instance = ddi;
 	}
 	private void createPlayHistory(int drawnCard){
+		
+		int[] cur_rack = rack.getCards();
+		double[] pHigh = new double[game.rack_size],
+				pLow = new double[game.rack_size];
+		for (int i=0; i < game.rack_size; i++){
+			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
+		}
+		
 		//Create the history
-		DataInstance pdi = new DataInstance(game.rack_size + 1);
-		pdi.addFeature(rack.getCards(), game.card_count);
+		DataInstance pdi = new DataInstance(game.rack_size*3 + 1);
+		pdi.addFeature(cur_rack, game.card_count);
+		pdi.addFeature(pHigh, 1);
+		pdi.addFeature(pLow, 1);
 		pdi.addFeature(drawnCard, game.card_count);		
 		
 		play_instance = pdi;
