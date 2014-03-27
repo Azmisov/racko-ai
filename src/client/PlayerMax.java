@@ -13,9 +13,18 @@ public class PlayerMax extends Player{
 	
 	@Override
 	public int play() {
-		boolean fromDiscard = rand.nextBoolean();
+		//Check if taking from the discard pile will improve our score
+		int peek = game.deck.peek(true);
+		int best_pos = maxSequence(rack, game.rack_size, peek, true);
+		
+		//It will improve our score, so we'll just go with the discard pile card
+		boolean fromDiscard = best_pos != -1;
 		int drawn = game.deck.draw(fromDiscard);
-		int best_pos = maxSequence(rack, game.rack_size, drawn);
+		
+		//Otherwise, compute the best position for the newly drawn card
+		if (!fromDiscard)
+			best_pos = maxSequence(rack, game.rack_size, drawn, false);
+		
 		return best_pos == -1 ? drawn : rack.swap(drawn, best_pos, fromDiscard);
 	}
 	
@@ -26,7 +35,7 @@ public class PlayerMax extends Player{
 	 * @param drawn the card that was drawn
 	 * @return the position to swap with or -1, if the card should be discarded
 	 */
-	public static int maxSequence(Rack r, int rack_size, int drawn){
+	public static int maxSequence(Rack r, int rack_size, int drawn, boolean forceBetter){
 		//Replace the drawn card with each value in rack
 		int prev_score = r.scoreSequence();
 		int max_pos = 0, max_score = 0;
@@ -39,6 +48,6 @@ public class PlayerMax extends Player{
 			}
 			r.swap(swapped, i);
 		}
-		return max_score >= prev_score ? max_pos : -1;
+		return max_score > prev_score || (!forceBetter && max_score == prev_score) ? max_pos : -1;
 	}
 }

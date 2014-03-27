@@ -1,0 +1,3470 @@
+PlayerRandom = P1
+PlayerMax = P2
+
+This version of PlayerMax uses random drawing
+
+ant -f /home/isaac/Programming/School/Racko -Dnb.internal.action.name=run run
+init:
+Deleting: /home/isaac/Programming/School/Racko/build/built-jar.properties
+deps-jar:
+Updating property file: /home/isaac/Programming/School/Racko/build/built-jar.properties
+Compiling 1 source file to /home/isaac/Programming/School/Racko/build/classes
+compile:
+run:
+EPOCH #1:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		3.55%		8.2		100.0%		3.55%
+P2	8.69		0.0%		96.45%		8.69		0.0%		96.45%
+EPOCH #2:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		4.67%		8.19		100.0%		3.59%
+P2	8.37		0.0%		95.33%		8.68		0.0%		96.41%
+EPOCH #3:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.01		100.0%		6.0%		8.18		100.0%		3.69%
+P2	8.45		0.0%		94.0%		8.67		0.0%		96.31%
+EPOCH #4:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		2.33%		8.19		100.0%		3.64%
+P2	8.8		0.0%		97.67%		8.67		0.0%		96.36%
+EPOCH #5:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.95		100.0%		4.33%		8.18		100.0%		3.66%
+P2	8.41		0.0%		95.67%		8.66		0.0%		96.34%
+EPOCH #6:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.31		100.0%		4.33%		8.14		100.0%		3.69%
+P2	7.8		0.0%		95.67%		8.63		0.0%		96.31%
+EPOCH #7:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		4.0%		8.14		100.0%		3.7%
+P2	8.59		0.0%		96.0%		8.63		0.0%		96.3%
+EPOCH #8:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.63		100.0%		3.33%		8.12		100.0%		3.69%
+P2	8.14		0.0%		96.67%		8.61		0.0%		96.31%
+EPOCH #9:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		4.67%		8.13		100.0%		3.73%
+P2	8.73		0.0%		95.33%		8.61		0.0%		96.27%
+EPOCH #10:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.71		100.0%		5.0%		8.11		100.0%		3.78%
+P2	8.12		0.0%		95.0%		8.59		0.0%		96.22%
+EPOCH #11:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.69		100.0%		3.0%		8.1		100.0%		3.75%
+P2	8.17		0.0%		97.0%		8.58		0.0%		96.25%
+EPOCH #12:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.72		100.0%		4.33%		8.12		100.0%		3.77%
+P2	9.18		0.0%		95.67%		8.6		0.0%		96.23%
+EPOCH #13:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		100.0%		3.0%		8.16		100.0%		3.74%
+P2	9.61		0.0%		97.0%		8.64		0.0%		96.26%
+EPOCH #14:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		3.33%		8.16		100.0%		3.72%
+P2	8.66		0.0%		96.67%		8.64		0.0%		96.28%
+EPOCH #15:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.07		100.0%		2.67%		8.16		100.0%		3.68%
+P2	8.58		0.0%		97.33%		8.64		0.0%		96.32%
+EPOCH #16:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		3.67%		8.16		100.0%		3.68%
+P2	8.73		0.0%		96.33%		8.64		0.0%		96.32%
+EPOCH #17:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		4.33%		8.18		100.0%		3.71%
+P2	9.0		0.0%		95.67%		8.66		0.0%		96.29%
+EPOCH #18:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.03		100.0%		4.33%		8.21		100.0%		3.73%
+P2	9.49		0.0%		95.67%		8.69		0.0%		96.27%
+EPOCH #19:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		1.33%		8.19		100.0%		3.64%
+P2	8.25		0.0%		98.67%		8.67		0.0%		96.36%
+EPOCH #20:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		2.0%		8.21		100.0%		3.57%
+P2	9.04		0.0%		98.0%		8.69		0.0%		96.43%
+EPOCH #21:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		5.33%		8.23		100.0%		3.64%
+P2	9.03		0.0%		94.67%		8.7		0.0%		96.36%
+EPOCH #22:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.42		100.0%		4.33%		8.23		100.0%		3.67%
+P2	8.89		0.0%		95.67%		8.71		0.0%		96.33%
+EPOCH #23:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		4.67%		8.25		100.0%		3.71%
+P2	8.93		0.0%		95.33%		8.72		0.0%		96.29%
+EPOCH #24:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.14		100.0%		3.33%		8.24		100.0%		3.69%
+P2	8.64		0.0%		96.67%		8.71		0.0%		96.31%
+EPOCH #25:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		3.67%		8.26		100.0%		3.69%
+P2	9.03		0.0%		96.33%		8.73		0.0%		96.31%
+EPOCH #26:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.91		100.0%		3.67%		8.28		100.0%		3.69%
+P2	9.35		0.0%		96.33%		8.75		0.0%		96.31%
+EPOCH #27:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		4.0%		8.26		100.0%		3.7%
+P2	8.28		0.0%		96.0%		8.73		0.0%		96.3%
+EPOCH #28:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.51		100.0%		5.0%		8.27		100.0%		3.76%
+P2	8.96		0.0%		95.0%		8.74		0.0%		96.24%
+EPOCH #29:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		4.0%		8.29		100.0%		3.77%
+P2	8.98		0.0%		96.0%		8.75		0.0%		96.23%
+EPOCH #30:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.31		100.0%		4.0%		8.33		100.0%		3.77%
+P2	9.71		0.0%		96.0%		8.79		0.0%		96.23%
+EPOCH #31:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		1.67%		8.33		100.0%		3.69%
+P2	8.99		0.0%		98.33%		8.8		0.0%		96.31%
+EPOCH #32:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.95		100.0%		2.67%		8.36		100.0%		3.65%
+P2	9.44		0.0%		97.33%		8.82		0.0%		96.35%
+EPOCH #33:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.4		100.0%		3.67%		8.32		100.0%		3.65%
+P2	7.86		0.0%		96.33%		8.78		0.0%		96.35%
+EPOCH #34:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		2.33%		8.31		100.0%		3.6%
+P2	8.41		0.0%		97.67%		8.77		0.0%		96.4%
+EPOCH #35:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		3.0%		8.31		100.0%		3.57%
+P2	8.97		0.0%		97.0%		8.78		0.0%		96.43%
+EPOCH #36:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.28		100.0%		2.0%		8.35		100.0%		3.51%
+P2	9.78		0.0%		98.0%		8.82		0.0%		96.49%
+EPOCH #37:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.55		100.0%		3.67%		8.32		100.0%		3.52%
+P2	8.05		0.0%		96.33%		8.79		0.0%		96.48%
+EPOCH #38:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		3.0%		8.33		100.0%		3.5%
+P2	9.0		0.0%		97.0%		8.8		0.0%		96.5%
+EPOCH #39:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		2.67%		8.32		100.0%		3.46%
+P2	8.67		0.0%		97.33%		8.79		0.0%		96.54%
+EPOCH #40:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		3.0%		8.32		100.0%		3.44%
+P2	8.58		0.0%		97.0%		8.78		0.0%		96.56%
+EPOCH #41:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		4.33%		8.32		100.0%		3.48%
+P2	8.89		0.0%		95.67%		8.79		0.0%		96.52%
+EPOCH #42:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.63		100.0%		2.0%		8.3		100.0%		3.42%
+P2	8.13		0.0%		98.0%		8.76		0.0%		96.58%
+EPOCH #43:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.82		100.0%		4.0%		8.32		100.0%		3.44%
+P2	9.3		0.0%		96.0%		8.78		0.0%		96.56%
+EPOCH #44:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.33%		8.31		100.0%		3.44%
+P2	8.7		0.0%		96.67%		8.78		0.0%		96.56%
+EPOCH #45:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		2.67%		8.28		100.0%		3.41%
+P2	8.0		0.0%		97.33%		8.75		0.0%		96.59%
+EPOCH #46:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		2.33%		8.26		100.0%		3.37%
+P2	8.1		0.0%		97.67%		8.72		0.0%		96.63%
+EPOCH #47:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.54		100.0%		5.67%		8.27		100.0%		3.46%
+P2	9.01		0.0%		94.33%		8.73		0.0%		96.54%
+EPOCH #48:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.51		100.0%		4.0%		8.24		100.0%		3.48%
+P2	7.99		0.0%		96.0%		8.7		0.0%		96.52%
+EPOCH #49:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.87		100.0%		2.67%		8.22		100.0%		3.45%
+P2	8.33		0.0%		97.33%		8.69		0.0%		96.55%
+EPOCH #50:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.86		100.0%		2.33%		8.25		100.0%		3.4%
+P2	9.33		0.0%		97.67%		8.71		0.0%		96.6%
+EPOCH #51:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.35		100.0%		4.0%		8.25		100.0%		3.43%
+P2	8.81		0.0%		96.0%		8.72		0.0%		96.57%
+EPOCH #52:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		4.0%		8.26		100.0%		3.45%
+P2	8.81		0.0%		96.0%		8.72		0.0%		96.55%
+EPOCH #53:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.87		100.0%		2.0%		8.28		100.0%		3.39%
+P2	9.33		0.0%		98.0%		8.75		0.0%		96.61%
+EPOCH #54:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.51		100.0%		6.33%		8.29		100.0%		3.51%
+P2	8.92		0.0%		93.67%		8.75		0.0%		96.49%
+EPOCH #55:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		3.0%		8.28		100.0%		3.49%
+P2	8.44		0.0%		97.0%		8.74		0.0%		96.51%
+EPOCH #56:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.87		100.0%		5.0%		8.3		100.0%		3.55%
+P2	9.31		0.0%		95.0%		8.76		0.0%		96.45%
+EPOCH #57:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.7		100.0%		4.0%		8.32		100.0%		3.57%
+P2	9.19		0.0%		96.0%		8.78		0.0%		96.43%
+EPOCH #58:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		3.67%		8.33		100.0%		3.57%
+P2	9.08		0.0%		96.33%		8.79		0.0%		96.43%
+EPOCH #59:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.45		100.0%		5.0%		8.29		100.0%		3.63%
+P2	7.86		0.0%		95.0%		8.76		0.0%		96.37%
+EPOCH #60:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.18		100.0%		2.0%		8.33		100.0%		3.56%
+P2	9.63		0.0%		98.0%		8.79		0.0%		96.44%
+EPOCH #61:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		5.0%		8.31		100.0%		3.62%
+P2	8.32		0.0%		95.0%		8.77		0.0%		96.38%
+EPOCH #62:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		3.33%		8.3		100.0%		3.61%
+P2	8.66		0.0%		96.67%		8.77		0.0%		96.39%
+EPOCH #63:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.33%		8.29		100.0%		3.6%
+P2	8.35		0.0%		96.67%		8.75		0.0%		96.4%
+EPOCH #64:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		4.67%		8.28		100.0%		3.64%
+P2	8.49		0.0%		95.33%		8.74		0.0%		96.36%
+EPOCH #65:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.03		100.0%		3.33%		8.23		100.0%		3.63%
+P2	7.51		0.0%		96.67%		8.69		0.0%		96.37%
+EPOCH #66:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.79		100.0%		5.67%		8.25		100.0%		3.71%
+P2	9.23		0.0%		94.33%		8.71		0.0%		96.29%
+EPOCH #67:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		4.0%		8.27		100.0%		3.72%
+P2	9.26		0.0%		96.0%		8.73		0.0%		96.28%
+EPOCH #68:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		4.33%		8.27		100.0%		3.75%
+P2	8.67		0.0%		95.67%		8.73		0.0%		96.25%
+EPOCH #69:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		4.67%		8.26		100.0%		3.78%
+P2	8.56		0.0%		95.33%		8.72		0.0%		96.22%
+EPOCH #70:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		4.33%		8.27		100.0%		3.8%
+P2	8.87		0.0%		95.67%		8.73		0.0%		96.2%
+EPOCH #71:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		4.33%		8.26		100.0%		3.83%
+P2	8.48		0.0%		95.67%		8.72		0.0%		96.17%
+EPOCH #72:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		4.0%		8.27		100.0%		3.83%
+P2	8.99		0.0%		96.0%		8.73		0.0%		96.17%
+EPOCH #73:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.46		100.0%		3.67%		8.32		100.0%		3.83%
+P2	9.88		0.0%		96.33%		8.78		0.0%		96.17%
+EPOCH #74:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		4.67%		8.32		100.0%		3.86%
+P2	8.81		0.0%		95.33%		8.78		0.0%		96.14%
+EPOCH #75:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.71		100.0%		2.33%		8.3		100.0%		3.8%
+P2	8.17		0.0%		97.67%		8.75		0.0%		96.2%
+EPOCH #76:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.65		100.0%		5.0%		8.31		100.0%		3.85%
+P2	9.1		0.0%		95.0%		8.77		0.0%		96.15%
+EPOCH #77:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.72		100.0%		3.33%		8.29		100.0%		3.83%
+P2	8.16		0.0%		96.67%		8.74		0.0%		96.17%
+EPOCH #78:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.66		100.0%		5.0%		8.3		100.0%		3.87%
+P2	9.07		0.0%		95.0%		8.76		0.0%		96.13%
+EPOCH #79:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		2.33%		8.29		100.0%		3.81%
+P2	8.35		0.0%		97.67%		8.74		0.0%		96.19%
+EPOCH #80:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.43		100.0%		3.0%		8.29		100.0%		3.78%
+P2	8.92		0.0%		97.0%		8.75		0.0%		96.22%
+EPOCH #81:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.71		100.0%		6.0%		8.31		100.0%		3.87%
+P2	9.17		0.0%		94.0%		8.76		0.0%		96.13%
+EPOCH #82:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.44		100.0%		2.0%		8.31		100.0%		3.79%
+P2	8.93		0.0%		98.0%		8.77		0.0%		96.21%
+EPOCH #83:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.15		100.0%		2.0%		8.27		100.0%		3.72%
+P2	7.68		0.0%		98.0%		8.73		0.0%		96.28%
+EPOCH #84:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		4.33%		8.27		100.0%		3.75%
+P2	8.7		0.0%		95.67%		8.73		0.0%		96.25%
+EPOCH #85:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.84		100.0%		5.0%		8.33		100.0%		3.8%
+P2	10.26		0.0%		95.0%		8.79		0.0%		96.2%
+EPOCH #86:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		1.67%		8.32		100.0%		3.71%
+P2	8.43		0.0%		98.33%		8.77		0.0%		96.29%
+EPOCH #87:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.3		100.0%		5.33%		8.36		100.0%		3.78%
+P2	9.72		0.0%		94.67%		8.81		0.0%		96.22%
+EPOCH #88:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		3.0%		8.35		100.0%		3.74%
+P2	8.72		0.0%		97.0%		8.81		0.0%		96.26%
+EPOCH #89:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.68		100.0%		4.67%		8.36		100.0%		3.78%
+P2	9.09		0.0%		95.33%		8.82		0.0%		96.22%
+EPOCH #90:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		4.0%		8.35		100.0%		3.79%
+P2	8.6		0.0%		96.0%		8.81		0.0%		96.21%
+EPOCH #91:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.18		100.0%		2.67%		8.35		100.0%		3.75%
+P2	8.66		0.0%		97.33%		8.8		0.0%		96.25%
+EPOCH #92:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		3.67%		8.34		100.0%		3.74%
+P2	8.67		0.0%		96.33%		8.8		0.0%		96.26%
+EPOCH #93:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		4.33%		8.32		100.0%		3.77%
+P2	8.34		0.0%		95.67%		8.78		0.0%		96.23%
+EPOCH #94:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		5.33%		8.31		100.0%		3.83%
+P2	8.37		0.0%		94.67%		8.76		0.0%		96.17%
+EPOCH #95:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.88		100.0%		5.67%		8.33		100.0%		3.9%
+P2	9.34		0.0%		94.33%		8.79		0.0%		96.1%
+EPOCH #96:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.25		100.0%		6.0%		8.29		100.0%		3.99%
+P2	7.68		0.0%		94.0%		8.74		0.0%		96.01%
+EPOCH #97:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.54		100.0%		3.67%		8.3		100.0%		3.97%
+P2	9.02		0.0%		96.33%		8.75		0.0%		96.03%
+EPOCH #98:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		4.0%		8.3		100.0%		3.97%
+P2	8.82		0.0%		96.0%		8.76		0.0%		96.03%
+EPOCH #99:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.92		100.0%		3.0%		8.32		100.0%		3.94%
+P2	9.37		0.0%		97.0%		8.78		0.0%		96.06%
+EPOCH #100:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.64		100.0%		3.0%		8.3		100.0%		3.9%
+P2	8.14		0.0%		97.0%		8.76		0.0%		96.1%
+EPOCH #101:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.8		100.0%		4.0%		8.32		100.0%		3.9%
+P2	9.23		0.0%		96.0%		8.77		0.0%		96.1%
+EPOCH #102:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		3.0%		8.29		100.0%		3.87%
+P2	8.24		0.0%		97.0%		8.75		0.0%		96.13%
+EPOCH #103:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		5.67%		8.31		100.0%		3.94%
+P2	9.23		0.0%		94.33%		8.77		0.0%		96.06%
+EPOCH #104:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		3.67%		8.3		100.0%		3.93%
+P2	8.51		0.0%		96.33%		8.76		0.0%		96.07%
+EPOCH #105:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.75		100.0%		3.33%		8.28		100.0%		3.9%
+P2	8.25		0.0%		96.67%		8.74		0.0%		96.1%
+EPOCH #106:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		1.67%		8.28		100.0%		3.81%
+P2	8.76		0.0%		98.33%		8.74		0.0%		96.19%
+EPOCH #107:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		2.33%		8.27		100.0%		3.75%
+P2	8.53		0.0%		97.67%		8.73		0.0%		96.25%
+EPOCH #108:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.66		100.0%		5.33%		8.29		100.0%		3.82%
+P2	9.11		0.0%		94.67%		8.75		0.0%		96.18%
+EPOCH #109:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.73		100.0%		4.67%		8.26		100.0%		3.85%
+P2	8.17		0.0%		95.33%		8.73		0.0%		96.15%
+EPOCH #110:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.41		100.0%		6.67%		8.31		100.0%		3.96%
+P2	9.83		0.0%		93.33%		8.77		0.0%		96.04%
+EPOCH #111:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.28		100.0%		3.0%		8.27		100.0%		3.93%
+P2	7.75		0.0%		97.0%		8.73		0.0%		96.07%
+EPOCH #112:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		3.67%		8.26		100.0%		3.92%
+P2	8.61		0.0%		96.33%		8.72		0.0%		96.08%
+EPOCH #113:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		3.33%		8.27		100.0%		3.89%
+P2	8.98		0.0%		96.67%		8.73		0.0%		96.11%
+EPOCH #114:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.26		100.0%		3.33%		8.31		100.0%		3.87%
+P2	9.71		0.0%		96.67%		8.77		0.0%		96.13%
+EPOCH #115:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.42		100.0%		3.0%		8.32		100.0%		3.84%
+P2	8.89		0.0%		97.0%		8.78		0.0%		96.16%
+EPOCH #116:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.67%		8.32		100.0%		3.83%
+P2	8.71		0.0%		96.33%		8.78		0.0%		96.17%
+EPOCH #117:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.02		100.0%		3.0%		8.26		100.0%		3.8%
+P2	7.49		0.0%		97.0%		8.72		0.0%		96.2%
+EPOCH #118:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.75		100.0%		2.67%		8.24		100.0%		3.75%
+P2	8.23		0.0%		97.33%		8.7		0.0%		96.25%
+EPOCH #119:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.75		100.0%		3.33%		8.22		100.0%		3.73%
+P2	8.21		0.0%		96.67%		8.68		0.0%		96.27%
+EPOCH #120:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		2.67%		8.24		100.0%		3.69%
+P2	9.05		0.0%		97.33%		8.7		0.0%		96.31%
+EPOCH #121:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		2.0%		8.24		100.0%		3.62%
+P2	8.78		0.0%		98.0%		8.7		0.0%		96.38%
+EPOCH #122:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		6.33%		8.26		100.0%		3.73%
+P2	9.0		0.0%		93.67%		8.71		0.0%		96.27%
+EPOCH #123:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.2		100.0%		4.67%		8.29		100.0%		3.77%
+P2	9.63		0.0%		95.33%		8.75		0.0%		96.23%
+EPOCH #124:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.89		100.0%		3.0%		8.28		100.0%		3.74%
+P2	8.38		0.0%		97.0%		8.74		0.0%		96.26%
+EPOCH #125:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.7		100.0%		3.0%		8.25		100.0%		3.71%
+P2	8.18		0.0%		97.0%		8.71		0.0%		96.29%
+EPOCH #126:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		5.0%		8.26		100.0%		3.76%
+P2	8.93		0.0%		95.0%		8.72		0.0%		96.24%
+EPOCH #127:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.95		100.0%		1.67%		8.29		100.0%		3.68%
+P2	9.44		0.0%		98.33%		8.75		0.0%		96.32%
+EPOCH #128:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		3.33%		8.28		100.0%		3.66%
+P2	8.61		0.0%		96.67%		8.75		0.0%		96.34%
+EPOCH #129:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.02		100.0%		4.67%		8.31		100.0%		3.7%
+P2	9.52		0.0%		95.33%		8.78		0.0%		96.3%
+EPOCH #130:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		4.67%		8.3		100.0%		3.74%
+P2	8.53		0.0%		95.33%		8.77		0.0%		96.26%
+EPOCH #131:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.64		100.0%		4.67%		8.27		100.0%		3.78%
+P2	8.12		0.0%		95.33%		8.74		0.0%		96.22%
+EPOCH #132:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.61		100.0%		5.33%		8.29		100.0%		3.84%
+P2	9.03		0.0%		94.67%		8.75		0.0%		96.16%
+EPOCH #133:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.02		100.0%		2.33%		8.28		100.0%		3.78%
+P2	8.5		0.0%		97.67%		8.74		0.0%		96.22%
+EPOCH #134:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		4.67%		8.26		100.0%		3.82%
+P2	8.24		0.0%		95.33%		8.72		0.0%		96.18%
+EPOCH #135:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.61		100.0%		5.67%		8.27		100.0%		3.89%
+P2	9.03		0.0%		94.33%		8.73		0.0%		96.11%
+EPOCH #136:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.44		100.0%		3.67%		8.28		100.0%		3.88%
+P2	8.85		0.0%		96.33%		8.74		0.0%		96.12%
+EPOCH #137:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.31		100.0%		4.33%		8.32		100.0%		3.9%
+P2	9.75		0.0%		95.67%		8.78		0.0%		96.1%
+EPOCH #138:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		4.33%		8.32		100.0%		3.92%
+P2	8.67		0.0%		95.67%		8.78		0.0%		96.08%
+EPOCH #139:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.77		100.0%		4.0%		8.33		100.0%		3.92%
+P2	9.24		0.0%		96.0%		8.79		0.0%		96.08%
+EPOCH #140:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		3.0%		8.33		100.0%		3.88%
+P2	8.8		0.0%		97.0%		8.79		0.0%		96.12%
+EPOCH #141:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		5.67%		8.32		100.0%		3.95%
+P2	8.36		0.0%		94.33%		8.78		0.0%		96.05%
+EPOCH #142:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		4.0%		8.31		100.0%		3.96%
+P2	8.44		0.0%		96.0%		8.76		0.0%		96.04%
+EPOCH #143:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		3.0%		8.31		100.0%		3.92%
+P2	8.98		0.0%		97.0%		8.77		0.0%		96.08%
+EPOCH #144:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		2.33%		8.29		100.0%		3.85%
+P2	8.32		0.0%		97.67%		8.75		0.0%		96.15%
+EPOCH #145:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.16		100.0%		4.33%		8.33		100.0%		3.87%
+P2	9.61		0.0%		95.67%		8.79		0.0%		96.13%
+EPOCH #146:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.81		100.0%		5.0%		8.35		100.0%		3.92%
+P2	9.3		0.0%		95.0%		8.81		0.0%		96.08%
+EPOCH #147:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		4.0%		8.34		100.0%		3.92%
+P2	8.55		0.0%		96.0%		8.8		0.0%		96.08%
+EPOCH #148:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.76		100.0%		4.0%		8.31		100.0%		3.93%
+P2	8.26		0.0%		96.0%		8.78		0.0%		96.07%
+EPOCH #149:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.72		100.0%		5.67%		8.29		100.0%		3.99%
+P2	8.15		0.0%		94.33%		8.75		0.0%		96.01%
+EPOCH #150:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		4.0%		8.28		100.0%		3.99%
+P2	8.66		0.0%		96.0%		8.75		0.0%		96.01%
+EPOCH #151:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		1.67%		8.29		100.0%		3.9%
+P2	8.77		0.0%		98.33%		8.75		0.0%		96.1%
+EPOCH #152:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.69		100.0%		4.33%		8.38		100.0%		3.92%
+P2	11.13		0.0%		95.67%		8.84		0.0%		96.08%
+EPOCH #153:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.37		100.0%		2.67%		8.34		100.0%		3.87%
+P2	7.88		0.0%		97.33%		8.81		0.0%		96.13%
+EPOCH #154:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		4.67%		8.33		100.0%		3.9%
+P2	8.45		0.0%		95.33%		8.79		0.0%		96.1%
+EPOCH #155:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		2.67%		8.31		100.0%		3.85%
+P2	8.4		0.0%		97.33%		8.78		0.0%		96.15%
+EPOCH #156:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		2.67%		8.31		100.0%		3.8%
+P2	8.6		0.0%		97.33%		8.77		0.0%		96.2%
+EPOCH #157:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.7		100.0%		5.33%		8.28		100.0%		3.87%
+P2	8.11		0.0%		94.67%		8.74		0.0%		96.13%
+EPOCH #158:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		5.33%		8.28		100.0%		3.92%
+P2	8.64		0.0%		94.67%		8.74		0.0%		96.08%
+EPOCH #159:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		3.0%		8.29		100.0%		3.89%
+P2	8.97		0.0%		97.0%		8.75		0.0%		96.11%
+EPOCH #160:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		4.0%		8.28		100.0%		3.89%
+P2	8.63		0.0%		96.0%		8.74		0.0%		96.11%
+EPOCH #161:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		4.33%		8.29		100.0%		3.91%
+P2	9.05		0.0%		95.67%		8.76		0.0%		96.09%
+EPOCH #162:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		5.67%		8.29		100.0%		3.98%
+P2	8.65		0.0%		94.33%		8.75		0.0%		96.02%
+EPOCH #163:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		2.33%		8.3		100.0%		3.91%
+P2	9.06		0.0%		97.67%		8.76		0.0%		96.09%
+EPOCH #164:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.12		100.0%		5.67%		8.3		100.0%		3.98%
+P2	8.56		0.0%		94.33%		8.76		0.0%		96.02%
+EPOCH #165:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.8		100.0%		3.33%		8.28		100.0%		3.96%
+P2	8.29		0.0%		96.67%		8.74		0.0%		96.04%
+EPOCH #166:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		5.67%		8.29		100.0%		4.03%
+P2	8.94		0.0%		94.33%		8.75		0.0%		95.97%
+EPOCH #167:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.65		100.0%		2.33%		8.26		100.0%		3.96%
+P2	8.15		0.0%		97.67%		8.72		0.0%		96.04%
+EPOCH #168:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		5.67%		8.26		100.0%		4.03%
+P2	8.72		0.0%		94.33%		8.72		0.0%		95.97%
+EPOCH #169:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		3.67%		8.27		100.0%		4.01%
+P2	9.03		0.0%		96.33%		8.73		0.0%		95.99%
+EPOCH #170:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.8		100.0%		4.33%		8.29		100.0%		4.03%
+P2	9.25		0.0%		95.67%		8.75		0.0%		95.97%
+EPOCH #171:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		5.33%		8.29		100.0%		4.08%
+P2	8.75		0.0%		94.67%		8.75		0.0%		95.92%
+EPOCH #172:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.33%		8.28		100.0%		4.05%
+P2	8.39		0.0%		96.67%		8.74		0.0%		95.95%
+EPOCH #173:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		2.0%		8.28		100.0%		3.97%
+P2	8.89		0.0%		98.0%		8.75		0.0%		96.03%
+EPOCH #174:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.22		100.0%		3.33%		8.24		100.0%		3.94%
+P2	7.66		0.0%		96.67%		8.7		0.0%		96.06%
+EPOCH #175:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		3.67%		8.23		100.0%		3.93%
+P2	8.65		0.0%		96.33%		8.7		0.0%		96.07%
+EPOCH #176:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		1.67%		8.22		100.0%		3.84%
+P2	8.28		0.0%		98.33%		8.68		0.0%		96.16%
+EPOCH #177:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		4.67%		8.22		100.0%		3.87%
+P2	8.66		0.0%		95.33%		8.68		0.0%		96.13%
+EPOCH #178:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.29		100.0%		2.67%		8.26		100.0%		3.82%
+P2	9.76		0.0%		97.33%		8.73		0.0%		96.18%
+EPOCH #179:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.73		100.0%		4.0%		8.24		100.0%		3.83%
+P2	8.18		0.0%		96.0%		8.7		0.0%		96.17%
+EPOCH #180:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.02		100.0%		4.0%		8.23		100.0%		3.84%
+P2	8.46		0.0%		96.0%		8.69		0.0%		96.16%
+EPOCH #181:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		5.0%		8.22		100.0%		3.88%
+P2	8.5		0.0%		95.0%		8.69		0.0%		96.12%
+EPOCH #182:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.51		100.0%		4.67%		8.23		100.0%		3.92%
+P2	8.98		0.0%		95.33%		8.7		0.0%		96.08%
+EPOCH #183:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		4.0%		8.22		100.0%		3.92%
+P2	8.38		0.0%		96.0%		8.69		0.0%		96.08%
+EPOCH #184:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		4.0%		8.22		100.0%		3.92%
+P2	8.7		0.0%		96.0%		8.69		0.0%		96.08%
+EPOCH #185:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.1		100.0%		3.67%		8.26		100.0%		3.91%
+P2	9.59		0.0%		96.33%		8.72		0.0%		96.09%
+EPOCH #186:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.46		100.0%		4.0%		8.23		100.0%		3.92%
+P2	7.91		0.0%		96.0%		8.69		0.0%		96.08%
+EPOCH #187:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		3.0%		8.24		100.0%		3.88%
+P2	9.05		0.0%		97.0%		8.7		0.0%		96.12%
+EPOCH #188:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.29		100.0%		4.33%		8.24		100.0%		3.9%
+P2	8.74		0.0%		95.67%		8.71		0.0%		96.1%
+EPOCH #189:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		3.0%		8.22		100.0%		3.86%
+P2	8.12		0.0%		97.0%		8.68		0.0%		96.14%
+EPOCH #190:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		1.67%		8.21		100.0%		3.77%
+P2	8.47		0.0%		98.33%		8.67		0.0%		96.23%
+EPOCH #191:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		3.0%		8.21		100.0%		3.74%
+P2	8.7		0.0%		97.0%		8.67		0.0%		96.26%
+EPOCH #192:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.02		100.0%		2.67%		8.16		100.0%		3.7%
+P2	7.48		0.0%		97.33%		8.63		0.0%		96.3%
+EPOCH #193:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.59		100.0%		3.67%		8.22		100.0%		3.7%
+P2	10.04		0.0%		96.33%		8.68		0.0%		96.3%
+EPOCH #194:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	12.53		100.0%		5.67%		8.39		100.0%		3.78%
+P2	12.92		0.0%		94.33%		8.85		0.0%		96.22%
+EPOCH #195:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.33		100.0%		3.0%		8.43		100.0%		3.75%
+P2	9.77		0.0%		97.0%		8.89		0.0%		96.25%
+EPOCH #196:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		4.33%		8.42		100.0%		3.77%
+P2	8.63		0.0%		95.67%		8.88		0.0%		96.23%
+EPOCH #197:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.45		100.0%		4.67%		8.42		100.0%		3.81%
+P2	8.93		0.0%		95.33%		8.88		0.0%		96.19%
+EPOCH #198:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.68		100.0%		3.0%		8.43		100.0%		3.77%
+P2	9.11		0.0%		97.0%		8.89		0.0%		96.23%
+EPOCH #199:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		3.67%		8.42		100.0%		3.77%
+P2	8.68		0.0%		96.33%		8.88		0.0%		96.23%
+EPOCH #200:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		4.0%		8.4		100.0%		3.78%
+P2	8.43		0.0%		96.0%		8.86		0.0%		96.22%
+EPOCH #201:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.42		100.0%		3.33%		8.4		100.0%		3.76%
+P2	8.93		0.0%		96.67%		8.87		0.0%		96.24%
+EPOCH #202:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.31		100.0%		3.0%		8.44		100.0%		3.73%
+P2	9.71		0.0%		97.0%		8.9		0.0%		96.27%
+EPOCH #203:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		4.33%		8.42		100.0%		3.75%
+P2	8.38		0.0%		95.67%		8.88		0.0%		96.25%
+EPOCH #204:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.01		100.0%		3.0%		8.44		100.0%		3.72%
+P2	9.49		0.0%		97.0%		8.9		0.0%		96.28%
+EPOCH #205:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.72		100.0%		4.67%		8.45		100.0%		3.76%
+P2	9.2		0.0%		95.33%		8.91		0.0%		96.24%
+EPOCH #206:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		3.0%		8.46		100.0%		3.73%
+P2	9.04		0.0%		97.0%		8.92		0.0%		96.27%
+EPOCH #207:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.31		100.0%		5.33%		8.41		100.0%		3.8%
+P2	7.75		0.0%		94.67%		8.87		0.0%		96.2%
+EPOCH #208:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		2.67%		8.41		100.0%		3.75%
+P2	8.95		0.0%		97.33%		8.88		0.0%		96.25%
+EPOCH #209:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		2.67%		8.4		100.0%		3.71%
+P2	8.53		0.0%		97.33%		8.86		0.0%		96.29%
+EPOCH #210:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		2.33%		8.41		100.0%		3.65%
+P2	9.04		0.0%		97.67%		8.87		0.0%		96.35%
+EPOCH #211:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.42		100.0%		5.33%		8.41		100.0%		3.72%
+P2	8.83		0.0%		94.67%		8.87		0.0%		96.28%
+EPOCH #212:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		2.0%		8.41		100.0%		3.65%
+P2	8.92		0.0%		98.0%		8.87		0.0%		96.35%
+EPOCH #213:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.36		100.0%		2.33%		8.45		100.0%		3.6%
+P2	9.88		0.0%		97.67%		8.91		0.0%		96.4%
+EPOCH #214:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.37		100.0%		4.33%		8.44		100.0%		3.63%
+P2	8.83		0.0%		95.67%		8.91		0.0%		96.37%
+EPOCH #215:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		2.33%		8.42		100.0%		3.58%
+P2	8.22		0.0%		97.67%		8.88		0.0%		96.42%
+EPOCH #216:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.89		100.0%		4.33%		8.4		100.0%		3.61%
+P2	8.35		0.0%		95.67%		8.86		0.0%		96.39%
+EPOCH #217:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		4.33%		8.39		100.0%		3.63%
+P2	8.68		0.0%		95.67%		8.85		0.0%		96.37%
+EPOCH #218:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		4.0%		8.4		100.0%		3.65%
+P2	9.01		0.0%		96.0%		8.86		0.0%		96.35%
+EPOCH #219:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.43		100.0%		4.0%		8.4		100.0%		3.66%
+P2	8.91		0.0%		96.0%		8.86		0.0%		96.34%
+EPOCH #220:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.49		100.0%		4.0%		8.36		100.0%		3.68%
+P2	7.99		0.0%		96.0%		8.83		0.0%		96.32%
+EPOCH #221:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.66		100.0%		3.67%		8.37		100.0%		3.68%
+P2	9.14		0.0%		96.33%		8.84		0.0%		96.32%
+EPOCH #222:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.91		100.0%		2.67%		8.39		100.0%		3.64%
+P2	9.38		0.0%		97.33%		8.86		0.0%		96.36%
+EPOCH #223:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		3.33%		8.39		100.0%		3.62%
+P2	8.69		0.0%		96.67%		8.85		0.0%		96.38%
+EPOCH #224:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.81		100.0%		3.0%		8.4		100.0%		3.6%
+P2	9.27		0.0%		97.0%		8.87		0.0%		96.4%
+EPOCH #225:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.17		100.0%		4.0%		8.35		100.0%		3.61%
+P2	7.62		0.0%		96.0%		8.82		0.0%		96.39%
+EPOCH #226:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.49		100.0%		4.33%		8.32		100.0%		3.64%
+P2	7.92		0.0%		95.67%		8.78		0.0%		96.36%
+EPOCH #227:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		3.0%		8.3		100.0%		3.62%
+P2	8.41		0.0%		97.0%		8.77		0.0%		96.38%
+EPOCH #228:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		5.0%		8.3		100.0%		3.67%
+P2	8.62		0.0%		95.0%		8.76		0.0%		96.33%
+EPOCH #229:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.58		100.0%		5.0%		8.27		100.0%		3.73%
+P2	8.05		0.0%		95.0%		8.73		0.0%		96.27%
+EPOCH #230:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		3.33%		8.28		100.0%		3.71%
+P2	9.1		0.0%		96.67%		8.75		0.0%		96.29%
+EPOCH #231:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		6.67%		8.29		100.0%		3.83%
+P2	8.74		0.0%		93.33%		8.75		0.0%		96.17%
+EPOCH #232:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.45		100.0%		3.33%		8.25		100.0%		3.81%
+P2	7.91		0.0%		96.67%		8.72		0.0%		96.19%
+EPOCH #233:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.91		100.0%		5.67%		8.24		100.0%		3.88%
+P2	8.34		0.0%		94.33%		8.7		0.0%		96.12%
+EPOCH #234:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		4.67%		8.26		100.0%		3.91%
+P2	9.3		0.0%		95.33%		8.72		0.0%		96.09%
+EPOCH #235:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.09		100.0%		4.0%		8.26		100.0%		3.92%
+P2	8.57		0.0%		96.0%		8.72		0.0%		96.08%
+EPOCH #236:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		3.67%		8.24		100.0%		3.91%
+P2	8.34		0.0%		96.33%		8.7		0.0%		96.09%
+EPOCH #237:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		3.33%		8.24		100.0%		3.89%
+P2	8.59		0.0%		96.67%		8.7		0.0%		96.11%
+EPOCH #238:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.34		100.0%		3.0%		8.28		100.0%		3.85%
+P2	9.75		0.0%		97.0%		8.74		0.0%		96.15%
+EPOCH #239:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		6.0%		8.27		100.0%		3.94%
+P2	8.56		0.0%		94.0%		8.73		0.0%		96.06%
+EPOCH #240:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.29		100.0%		3.33%		8.27		100.0%		3.91%
+P2	8.7		0.0%		96.67%		8.73		0.0%		96.09%
+EPOCH #241:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		4.0%		8.27		100.0%		3.92%
+P2	8.68		0.0%		96.0%		8.73		0.0%		96.08%
+EPOCH #242:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.14		100.0%		2.33%		8.27		100.0%		3.85%
+P2	8.56		0.0%		97.67%		8.72		0.0%		96.15%
+EPOCH #243:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.56		100.0%		3.0%		8.24		100.0%		3.82%
+P2	8.03		0.0%		97.0%		8.7		0.0%		96.18%
+EPOCH #244:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.98		100.0%		2.67%		8.23		100.0%		3.77%
+P2	8.48		0.0%		97.33%		8.69		0.0%		96.23%
+EPOCH #245:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.01		100.0%		2.0%		8.22		100.0%		3.7%
+P2	8.48		0.0%		98.0%		8.68		0.0%		96.3%
+EPOCH #246:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		3.33%		8.2		100.0%		3.69%
+P2	8.28		0.0%		96.67%		8.66		0.0%		96.31%
+EPOCH #247:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.75		100.0%		5.0%		8.18		100.0%		3.74%
+P2	8.19		0.0%		95.0%		8.64		0.0%		96.26%
+EPOCH #248:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		3.33%		8.18		100.0%		3.72%
+P2	8.58		0.0%		96.67%		8.64		0.0%		96.28%
+EPOCH #249:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.79		100.0%		4.67%		8.21		100.0%		3.76%
+P2	9.18		0.0%		95.33%		8.66		0.0%		96.24%
+EPOCH #250:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.33		100.0%		4.0%		8.21		100.0%		3.77%
+P2	8.83		0.0%		96.0%		8.67		0.0%		96.23%
+EPOCH #251:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		3.67%		8.21		100.0%		3.77%
+P2	8.7		0.0%		96.33%		8.67		0.0%		96.23%
+EPOCH #252:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.58		100.0%		2.0%		8.19		100.0%		3.7%
+P2	8.05		0.0%		98.0%		8.65		0.0%		96.3%
+EPOCH #253:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		3.67%		8.18		100.0%		3.69%
+P2	8.41		0.0%		96.33%		8.64		0.0%		96.31%
+EPOCH #254:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.18		100.0%		4.33%		8.18		100.0%		3.72%
+P2	8.65		0.0%		95.67%		8.64		0.0%		96.28%
+EPOCH #255:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.91		100.0%		4.33%		8.21		100.0%		3.74%
+P2	9.37		0.0%		95.67%		8.67		0.0%		96.26%
+EPOCH #256:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		1.67%		8.21		100.0%		3.66%
+P2	8.77		0.0%		98.33%		8.67		0.0%		96.34%
+EPOCH #257:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.17		100.0%		4.67%		8.25		100.0%		3.7%
+P2	9.59		0.0%		95.33%		8.71		0.0%		96.3%
+EPOCH #258:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		4.67%		8.24		100.0%		3.74%
+P2	8.37		0.0%		95.33%		8.69		0.0%		96.26%
+EPOCH #259:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.13		100.0%		2.33%		8.27		100.0%		3.68%
+P2	9.64		0.0%		97.67%		8.73		0.0%		96.32%
+EPOCH #260:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.8		100.0%		3.0%		8.29		100.0%		3.66%
+P2	9.27		0.0%		97.0%		8.75		0.0%		96.34%
+EPOCH #261:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.08		100.0%		3.0%		8.28		100.0%		3.63%
+P2	8.57		0.0%		97.0%		8.75		0.0%		96.37%
+EPOCH #262:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		3.33%		8.29		100.0%		3.62%
+P2	8.94		0.0%		96.67%		8.75		0.0%		96.38%
+EPOCH #263:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.44		100.0%		3.33%		8.3		100.0%		3.61%
+P2	8.9		0.0%		96.67%		8.76		0.0%		96.39%
+EPOCH #264:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		100.0%		2.33%		8.33		100.0%		3.56%
+P2	9.6		0.0%		97.67%		8.79		0.0%		96.44%
+EPOCH #265:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		2.67%		8.33		100.0%		3.52%
+P2	8.79		0.0%		97.33%		8.79		0.0%		96.48%
+EPOCH #266:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		3.67%		8.32		100.0%		3.53%
+P2	8.51		0.0%		96.33%		8.78		0.0%		96.47%
+EPOCH #267:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		3.33%		8.29		100.0%		3.52%
+P2	8.11		0.0%		96.67%		8.76		0.0%		96.48%
+EPOCH #268:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.85		100.0%		3.0%		8.31		100.0%		3.5%
+P2	9.34		0.0%		97.0%		8.78		0.0%		96.5%
+EPOCH #269:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		4.67%		8.29		100.0%		3.54%
+P2	8.09		0.0%		95.33%		8.75		0.0%		96.46%
+EPOCH #270:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.98		100.0%		2.33%		8.31		100.0%		3.5%
+P2	9.44		0.0%		97.67%		8.78		0.0%		96.5%
+EPOCH #271:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		5.0%		8.31		100.0%		3.56%
+P2	8.75		0.0%		95.0%		8.78		0.0%		96.44%
+EPOCH #272:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.14		100.0%		5.0%		8.39		100.0%		3.61%
+P2	10.57		0.0%		95.0%		8.85		0.0%		96.39%
+EPOCH #273:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.49		100.0%		2.33%		8.35		100.0%		3.56%
+P2	7.97		0.0%		97.67%		8.81		0.0%		96.44%
+EPOCH #274:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.05		100.0%		3.0%		8.3		100.0%		3.54%
+P2	7.54		0.0%		97.0%		8.76		0.0%		96.46%
+EPOCH #275:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.0%		8.29		100.0%		3.52%
+P2	8.55		0.0%		97.0%		8.75		0.0%		96.48%
+EPOCH #276:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		3.67%		8.29		100.0%		3.52%
+P2	8.79		0.0%		96.33%		8.76		0.0%		96.48%
+EPOCH #277:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.56		100.0%		2.67%		8.26		100.0%		3.49%
+P2	8.02		0.0%		97.33%		8.73		0.0%		96.51%
+EPOCH #278:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		2.67%		8.27		100.0%		3.46%
+P2	8.94		0.0%		97.33%		8.74		0.0%		96.54%
+EPOCH #279:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.36		100.0%		3.67%		8.27		100.0%		3.47%
+P2	8.81		0.0%		96.33%		8.74		0.0%		96.53%
+EPOCH #280:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		4.67%		8.26		100.0%		3.51%
+P2	8.37		0.0%		95.33%		8.72		0.0%		96.49%
+EPOCH #281:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.27		100.0%		2.67%		8.22		100.0%		3.48%
+P2	7.74		0.0%		97.33%		8.68		0.0%		96.52%
+EPOCH #282:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		5.0%		8.22		100.0%		3.54%
+P2	8.6		0.0%		95.0%		8.68		0.0%		96.46%
+EPOCH #283:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		6.67%		8.22		100.0%		3.67%
+P2	8.75		0.0%		93.33%		8.68		0.0%		96.33%
+EPOCH #284:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		3.67%		8.21		100.0%		3.67%
+P2	8.51		0.0%		96.33%		8.68		0.0%		96.33%
+EPOCH #285:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.76		100.0%		2.0%		8.2		100.0%		3.6%
+P2	8.27		0.0%		98.0%		8.66		0.0%		96.4%
+EPOCH #286:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		3.0%		8.21		100.0%		3.58%
+P2	8.96		0.0%		97.0%		8.67		0.0%		96.42%
+EPOCH #287:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		4.33%		8.21		100.0%		3.61%
+P2	8.75		0.0%		95.67%		8.67		0.0%		96.39%
+EPOCH #288:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.66		100.0%		4.33%		8.23		100.0%		3.63%
+P2	9.1		0.0%		95.67%		8.69		0.0%		96.37%
+EPOCH #289:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.78		100.0%		2.67%		8.21		100.0%		3.6%
+P2	8.19		0.0%		97.33%		8.67		0.0%		96.4%
+EPOCH #290:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		3.0%		8.2		100.0%		3.57%
+P2	8.3		0.0%		97.0%		8.66		0.0%		96.43%
+EPOCH #291:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.03		100.0%		3.67%		8.23		100.0%		3.58%
+P2	9.47		0.0%		96.33%		8.69		0.0%		96.42%
+EPOCH #292:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.69		100.0%		3.33%		8.25		100.0%		3.57%
+P2	9.16		0.0%		96.67%		8.71		0.0%		96.43%
+EPOCH #293:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		4.0%		8.25		100.0%		3.58%
+P2	8.87		0.0%		96.0%		8.71		0.0%		96.42%
+EPOCH #294:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		5.0%		8.27		100.0%		3.64%
+P2	9.04		0.0%		95.0%		8.73		0.0%		96.36%
+EPOCH #295:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		2.33%		8.26		100.0%		3.59%
+P2	8.69		0.0%		97.67%		8.73		0.0%		96.41%
+EPOCH #296:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		4.0%		8.23		100.0%		3.6%
+P2	7.95		0.0%		96.0%		8.69		0.0%		96.4%
+EPOCH #297:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		3.67%		8.25		100.0%		3.61%
+P2	9.05		0.0%		96.33%		8.71		0.0%		96.39%
+EPOCH #298:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		4.0%		8.23		100.0%		3.62%
+P2	8.21		0.0%		96.0%		8.69		0.0%		96.38%
+EPOCH #299:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.33		100.0%		6.0%		8.23		100.0%		3.72%
+P2	8.73		0.0%		94.0%		8.69		0.0%		96.28%
+EPOCH #300:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.02		100.0%		5.0%		8.19		100.0%		3.77%
+P2	7.47		0.0%		95.0%		8.64		0.0%		96.23%
+EPOCH #301:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.55		100.0%		2.33%		8.2		100.0%		3.71%
+P2	9.03		0.0%		97.67%		8.66		0.0%		96.29%
+EPOCH #302:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		1.67%		8.21		100.0%		3.63%
+P2	8.99		0.0%		98.33%		8.67		0.0%		96.37%
+EPOCH #303:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		5.0%		8.21		100.0%		3.68%
+P2	8.64		0.0%		95.0%		8.67		0.0%		96.32%
+EPOCH #304:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.94		100.0%		4.67%		8.2		100.0%		3.72%
+P2	8.37		0.0%		95.33%		8.66		0.0%		96.28%
+EPOCH #305:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		2.33%		8.19		100.0%		3.67%
+P2	8.41		0.0%		97.67%		8.65		0.0%		96.33%
+EPOCH #306:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.87		100.0%		4.0%		8.17		100.0%		3.68%
+P2	8.31		0.0%		96.0%		8.63		0.0%		96.32%
+EPOCH #307:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		3.33%		8.18		100.0%		3.67%
+P2	8.86		0.0%		96.67%		8.64		0.0%		96.33%
+EPOCH #308:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.87		100.0%		4.67%		8.17		100.0%		3.71%
+P2	8.38		0.0%		95.33%		8.63		0.0%		96.29%
+EPOCH #309:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		5.67%		8.18		100.0%		3.79%
+P2	8.77		0.0%		94.33%		8.64		0.0%		96.21%
+EPOCH #310:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		2.0%		8.17		100.0%		3.71%
+P2	8.44		0.0%		98.0%		8.63		0.0%		96.29%
+EPOCH #311:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		4.0%		8.16		100.0%		3.73%
+P2	8.42		0.0%		96.0%		8.62		0.0%		96.27%
+EPOCH #312:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.91		100.0%		3.67%		8.15		100.0%		3.72%
+P2	8.34		0.0%		96.33%		8.61		0.0%		96.28%
+EPOCH #313:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.69		100.0%		4.67%		8.13		100.0%		3.76%
+P2	8.13		0.0%		95.33%		8.59		0.0%		96.24%
+EPOCH #314:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.07		100.0%		4.0%		8.13		100.0%		3.77%
+P2	8.56		0.0%		96.0%		8.59		0.0%		96.23%
+EPOCH #315:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.18		100.0%		3.33%		8.13		100.0%		3.75%
+P2	8.68		0.0%		96.67%		8.59		0.0%		96.25%
+EPOCH #316:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		7.33%		8.15		100.0%		3.9%
+P2	9.05		0.0%		92.67%		8.61		0.0%		96.1%
+EPOCH #317:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.37		100.0%		4.0%		8.2		100.0%		3.9%
+P2	9.9		0.0%		96.0%		8.66		0.0%		96.1%
+EPOCH #318:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.48		100.0%		3.33%		8.17		100.0%		3.88%
+P2	7.96		0.0%		96.67%		8.63		0.0%		96.12%
+EPOCH #319:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.44		100.0%		4.33%		8.18		100.0%		3.9%
+P2	8.88		0.0%		95.67%		8.64		0.0%		96.1%
+EPOCH #320:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.45		100.0%		4.0%		8.19		100.0%		3.9%
+P2	8.91		0.0%		96.0%		8.66		0.0%		96.1%
+EPOCH #321:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.92		100.0%		3.33%		8.22		100.0%		3.88%
+P2	9.39		0.0%		96.67%		8.68		0.0%		96.12%
+EPOCH #322:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.65		100.0%		2.67%		8.2		100.0%		3.83%
+P2	8.14		0.0%		97.33%		8.66		0.0%		96.17%
+EPOCH #323:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		4.0%		8.19		100.0%		3.84%
+P2	8.58		0.0%		96.0%		8.66		0.0%		96.16%
+EPOCH #324:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		5.33%		8.19		100.0%		3.9%
+P2	8.68		0.0%		94.67%		8.66		0.0%		96.1%
+EPOCH #325:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		4.0%		8.19		100.0%		3.9%
+P2	8.69		0.0%		96.0%		8.66		0.0%		96.1%
+EPOCH #326:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.58		100.0%		4.0%		8.17		100.0%		3.9%
+P2	8.1		0.0%		96.0%		8.64		0.0%		96.1%
+EPOCH #327:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.6		100.0%		4.67%		8.15		100.0%		3.93%
+P2	8.04		0.0%		95.33%		8.61		0.0%		96.07%
+EPOCH #328:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.1		100.0%		4.33%		8.19		100.0%		3.95%
+P2	9.57		0.0%		95.67%		8.65		0.0%		96.05%
+EPOCH #329:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		3.33%		8.19		100.0%		3.93%
+P2	8.83		0.0%		96.67%		8.66		0.0%		96.07%
+EPOCH #330:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		4.33%		8.2		100.0%		3.94%
+P2	8.92		0.0%		95.67%		8.67		0.0%		96.06%
+EPOCH #331:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.85		100.0%		2.67%		8.23		100.0%		3.89%
+P2	9.31		0.0%		97.33%		8.7		0.0%		96.11%
+EPOCH #332:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.75		100.0%		6.67%		8.25		100.0%		4.0%
+P2	9.14		0.0%		93.33%		8.71		0.0%		96.0%
+EPOCH #333:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		5.67%		8.25		100.0%		4.07%
+P2	8.62		0.0%		94.33%		8.71		0.0%		95.93%
+EPOCH #334:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.08		100.0%		3.67%		8.24		100.0%		4.05%
+P2	8.52		0.0%		96.33%		8.7		0.0%		95.95%
+EPOCH #335:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		6.0%		8.24		100.0%		4.13%
+P2	8.7		0.0%		94.0%		8.7		0.0%		95.87%
+EPOCH #336:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.24		100.0%		1.67%		8.24		100.0%		4.03%
+P2	8.73		0.0%		98.33%		8.7		0.0%		95.97%
+EPOCH #337:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		3.33%		8.25		100.0%		4.0%
+P2	8.86		0.0%		96.67%		8.71		0.0%		96.0%
+EPOCH #338:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.99		100.0%		3.0%		8.28		100.0%		3.96%
+P2	9.41		0.0%		97.0%		8.74		0.0%		96.04%
+EPOCH #339:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.58		100.0%		3.67%		8.25		100.0%		3.95%
+P2	8.07		0.0%		96.33%		8.71		0.0%		96.05%
+EPOCH #340:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		5.67%		8.24		100.0%		4.02%
+P2	8.57		0.0%		94.33%		8.71		0.0%		95.98%
+EPOCH #341:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.18		100.0%		2.33%		8.2		100.0%		3.95%
+P2	7.67		0.0%		97.67%		8.66		0.0%		96.05%
+EPOCH #342:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		3.0%		8.23		100.0%		3.91%
+P2	9.31		0.0%		97.0%		8.69		0.0%		96.09%
+EPOCH #343:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.15		100.0%		5.67%		8.18		100.0%		3.99%
+P2	7.58		0.0%		94.33%		8.65		0.0%		96.01%
+EPOCH #344:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.89		100.0%		3.0%		8.17		100.0%		3.95%
+P2	8.36		0.0%		97.0%		8.63		0.0%		96.05%
+EPOCH #345:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.0		100.0%		4.0%		8.2		100.0%		3.95%
+P2	9.46		0.0%		96.0%		8.67		0.0%		96.05%
+EPOCH #346:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.8		100.0%		4.33%		8.23		100.0%		3.96%
+P2	9.24		0.0%		95.67%		8.69		0.0%		96.04%
+EPOCH #347:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.37		100.0%		3.67%		8.23		100.0%		3.95%
+P2	8.85		0.0%		96.33%		8.7		0.0%		96.05%
+EPOCH #348:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		5.0%		8.22		100.0%		3.99%
+P2	8.33		0.0%		95.0%		8.68		0.0%		96.01%
+EPOCH #349:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.27		100.0%		4.33%		8.3		100.0%		4.01%
+P2	10.74		0.0%		95.67%		8.76		0.0%		95.99%
+EPOCH #350:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		4.67%		8.3		100.0%		4.03%
+P2	8.75		0.0%		95.33%		8.76		0.0%		95.97%
+EPOCH #351:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		4.33%		8.28		100.0%		4.05%
+P2	8.28		0.0%		95.67%		8.74		0.0%		95.95%
+EPOCH #352:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		3.67%		8.25		100.0%		4.03%
+P2	7.98		0.0%		96.33%		8.71		0.0%		95.97%
+EPOCH #353:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.5		100.0%		4.0%		8.22		100.0%		4.03%
+P2	7.93		0.0%		96.0%		8.68		0.0%		95.97%
+EPOCH #354:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		2.33%		8.2		100.0%		3.96%
+P2	7.98		0.0%		97.67%		8.65		0.0%		96.04%
+EPOCH #355:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.35		100.0%		3.0%		8.2		100.0%		3.92%
+P2	8.87		0.0%		97.0%		8.66		0.0%		96.08%
+EPOCH #356:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.62		100.0%		4.0%		8.22		100.0%		3.93%
+P2	9.13		0.0%		96.0%		8.68		0.0%		96.07%
+EPOCH #357:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.7		100.0%		3.0%		8.24		100.0%		3.89%
+P2	9.18		0.0%		97.0%		8.7		0.0%		96.11%
+EPOCH #358:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.87		100.0%		3.0%		8.26		100.0%		3.85%
+P2	9.31		0.0%		97.0%		8.73		0.0%		96.15%
+EPOCH #359:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		4.33%		8.25		100.0%		3.87%
+P2	8.48		0.0%		95.67%		8.72		0.0%		96.13%
+EPOCH #360:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.99		100.0%		5.0%		8.28		100.0%		3.92%
+P2	9.39		0.0%		95.0%		8.74		0.0%		96.08%
+EPOCH #361:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.67		100.0%		4.0%		8.3		100.0%		3.92%
+P2	9.14		0.0%		96.0%		8.76		0.0%		96.08%
+EPOCH #362:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		3.0%		8.31		100.0%		3.88%
+P2	9.05		0.0%		97.0%		8.77		0.0%		96.12%
+EPOCH #363:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		3.33%		8.32		100.0%		3.86%
+P2	9.05		0.0%		96.67%		8.78		0.0%		96.14%
+EPOCH #364:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.61		100.0%		3.33%		8.33		100.0%		3.84%
+P2	9.12		0.0%		96.67%		8.79		0.0%		96.16%
+EPOCH #365:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.5		100.0%		4.0%		8.3		100.0%		3.85%
+P2	8.0		0.0%		96.0%		8.76		0.0%		96.15%
+EPOCH #366:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		4.33%		8.3		100.0%		3.87%
+P2	8.87		0.0%		95.67%		8.77		0.0%		96.13%
+EPOCH #367:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		4.33%		8.3		100.0%		3.89%
+P2	8.7		0.0%		95.67%		8.76		0.0%		96.11%
+EPOCH #368:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		6.33%		8.3		100.0%		3.98%
+P2	8.62		0.0%		93.67%		8.76		0.0%		96.02%
+EPOCH #369:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.33%		8.3		100.0%		3.96%
+P2	8.79		0.0%		96.67%		8.76		0.0%		96.04%
+EPOCH #370:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		3.67%		8.29		100.0%		3.95%
+P2	8.56		0.0%		96.33%		8.75		0.0%		96.05%
+EPOCH #371:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		4.67%		8.28		100.0%		3.97%
+P2	8.68		0.0%		95.33%		8.75		0.0%		96.03%
+EPOCH #372:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		5.0%		8.29		100.0%		4.02%
+P2	8.89		0.0%		95.0%		8.75		0.0%		95.98%
+EPOCH #373:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		5.0%		8.3		100.0%		4.05%
+P2	9.01		0.0%		95.0%		8.76		0.0%		95.95%
+EPOCH #374:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.75		100.0%		5.33%		8.32		100.0%		4.11%
+P2	9.17		0.0%		94.67%		8.78		0.0%		95.89%
+EPOCH #375:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		5.33%		8.3		100.0%		4.16%
+P2	8.28		0.0%		94.67%		8.76		0.0%		95.84%
+EPOCH #376:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		3.33%		8.29		100.0%		4.12%
+P2	8.44		0.0%		96.67%		8.75		0.0%		95.88%
+EPOCH #377:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		4.33%		8.3		100.0%		4.13%
+P2	9.0		0.0%		95.67%		8.76		0.0%		95.87%
+EPOCH #378:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		6.0%		8.29		100.0%		4.21%
+P2	8.6		0.0%		94.0%		8.75		0.0%		95.79%
+EPOCH #379:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		4.33%		8.3		100.0%		4.21%
+P2	9.05		0.0%		95.67%		8.76		0.0%		95.79%
+EPOCH #380:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		5.33%		8.31		100.0%		4.26%
+P2	8.91		0.0%		94.67%		8.77		0.0%		95.74%
+EPOCH #381:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		4.33%		8.31		100.0%		4.26%
+P2	8.88		0.0%		95.67%		8.77		0.0%		95.74%
+EPOCH #382:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.42		100.0%		3.33%		8.28		100.0%		4.22%
+P2	7.86		0.0%		96.67%		8.74		0.0%		95.78%
+EPOCH #383:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		3.33%		8.27		100.0%		4.19%
+P2	8.51		0.0%		96.67%		8.73		0.0%		95.81%
+EPOCH #384:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.93		100.0%		5.67%		8.29		100.0%		4.25%
+P2	9.36		0.0%		94.33%		8.75		0.0%		95.75%
+EPOCH #385:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		3.0%		8.29		100.0%		4.2%
+P2	8.69		0.0%		97.0%		8.75		0.0%		95.8%
+EPOCH #386:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.71		100.0%		5.0%		8.31		100.0%		4.23%
+P2	9.08		0.0%		95.0%		8.76		0.0%		95.77%
+EPOCH #387:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.14		100.0%		2.33%		8.3		100.0%		4.15%
+P2	8.63		0.0%		97.67%		8.76		0.0%		95.85%
+EPOCH #388:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.04		100.0%		3.67%		8.33		100.0%		4.13%
+P2	9.48		0.0%		96.33%		8.79		0.0%		95.87%
+EPOCH #389:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		5.33%		8.33		100.0%		4.18%
+P2	8.84		0.0%		94.67%		8.79		0.0%		95.82%
+EPOCH #390:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		3.0%		8.32		100.0%		4.13%
+P2	8.45		0.0%		97.0%		8.78		0.0%		95.87%
+EPOCH #391:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.72		100.0%		3.67%		8.34		100.0%		4.11%
+P2	9.14		0.0%		96.33%		8.79		0.0%		95.89%
+EPOCH #392:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.54		100.0%		3.33%		8.3		100.0%		4.08%
+P2	8.01		0.0%		96.67%		8.76		0.0%		95.92%
+EPOCH #393:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		4.33%		8.31		100.0%		4.09%
+P2	8.99		0.0%		95.67%		8.77		0.0%		95.91%
+EPOCH #394:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		4.67%		8.29		100.0%		4.12%
+P2	8.24		0.0%		95.33%		8.75		0.0%		95.88%
+EPOCH #395:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		3.67%		8.3		100.0%		4.1%
+P2	8.81		0.0%		96.33%		8.75		0.0%		95.9%
+EPOCH #396:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		6.67%		8.28		100.0%		4.2%
+P2	8.29		0.0%		93.33%		8.73		0.0%		95.8%
+EPOCH #397:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		3.0%		8.28		100.0%		4.15%
+P2	8.93		0.0%		97.0%		8.74		0.0%		95.85%
+EPOCH #398:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.2		100.0%		3.33%		8.24		100.0%		4.12%
+P2	7.68		0.0%		96.67%		8.7		0.0%		95.88%
+EPOCH #399:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.14		100.0%		3.0%		8.24		100.0%		4.08%
+P2	8.65		0.0%		97.0%		8.7		0.0%		95.92%
+EPOCH #400:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		2.33%		8.21		100.0%		4.01%
+P2	7.98		0.0%		97.67%		8.67		0.0%		95.99%
+EPOCH #401:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		2.33%		8.22		100.0%		3.94%
+P2	8.97		0.0%		97.67%		8.68		0.0%		96.06%
+EPOCH #402:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		4.33%		8.21		100.0%		3.95%
+P2	8.52		0.0%		95.67%		8.67		0.0%		96.05%
+EPOCH #403:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		3.67%		8.22		100.0%		3.94%
+P2	8.72		0.0%		96.33%		8.67		0.0%		96.06%
+EPOCH #404:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.65		100.0%		3.33%		8.23		100.0%		3.92%
+P2	9.11		0.0%		96.67%		8.69		0.0%		96.08%
+EPOCH #405:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		3.33%		8.22		100.0%		3.9%
+P2	8.44		0.0%		96.67%		8.68		0.0%		96.1%
+EPOCH #406:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		3.33%		8.23		100.0%		3.87%
+P2	8.9		0.0%		96.67%		8.69		0.0%		96.13%
+EPOCH #407:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.71		100.0%		1.33%		8.25		100.0%		3.77%
+P2	9.16		0.0%		98.67%		8.71		0.0%		96.23%
+EPOCH #408:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.91		100.0%		5.0%		8.24		100.0%		3.82%
+P2	8.34		0.0%		95.0%		8.69		0.0%		96.18%
+EPOCH #409:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.24		100.0%		5.33%		8.24		100.0%		3.88%
+P2	8.7		0.0%		94.67%		8.7		0.0%		96.12%
+EPOCH #410:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.73		100.0%		3.67%		8.26		100.0%		3.87%
+P2	9.27		0.0%		96.33%		8.72		0.0%		96.13%
+EPOCH #411:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.73		100.0%		3.67%		8.28		100.0%		3.86%
+P2	9.15		0.0%		96.33%		8.74		0.0%		96.14%
+EPOCH #412:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.1		100.0%		2.67%		8.23		100.0%		3.82%
+P2	7.56		0.0%		97.33%		8.69		0.0%		96.18%
+EPOCH #413:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		5.0%		8.23		100.0%		3.86%
+P2	8.68		0.0%		95.0%		8.69		0.0%		96.14%
+EPOCH #414:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		5.33%		8.22		100.0%		3.92%
+P2	8.55		0.0%		94.67%		8.68		0.0%		96.08%
+EPOCH #415:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.57		100.0%		6.0%		8.2		100.0%		4.01%
+P2	8.0		0.0%		94.0%		8.66		0.0%		95.99%
+EPOCH #416:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		3.0%		8.17		100.0%		3.97%
+P2	7.98		0.0%		97.0%		8.63		0.0%		96.03%
+EPOCH #417:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		4.67%		8.19		100.0%		3.99%
+P2	9.07		0.0%		95.33%		8.65		0.0%		96.01%
+EPOCH #418:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		3.67%		8.16		100.0%		3.98%
+P2	7.98		0.0%		96.33%		8.62		0.0%		96.02%
+EPOCH #419:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		5.67%		8.17		100.0%		4.05%
+P2	8.85		0.0%		94.33%		8.63		0.0%		95.95%
+EPOCH #420:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		3.67%		8.19		100.0%		4.03%
+P2	9.03		0.0%		96.33%		8.65		0.0%		95.97%
+EPOCH #421:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.59		100.0%		5.0%		8.16		100.0%		4.07%
+P2	8.02		0.0%		95.0%		8.62		0.0%		95.93%
+EPOCH #422:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		5.33%		8.15		100.0%		4.12%
+P2	8.26		0.0%		94.67%		8.61		0.0%		95.88%
+EPOCH #423:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		3.33%		8.13		100.0%		4.09%
+P2	8.11		0.0%		96.67%		8.59		0.0%		95.91%
+EPOCH #424:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		3.33%		8.14		100.0%		4.06%
+P2	8.77		0.0%		96.67%		8.59		0.0%		95.94%
+EPOCH #425:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		5.33%		8.12		100.0%		4.11%
+P2	8.05		0.0%		94.67%		8.57		0.0%		95.89%
+EPOCH #426:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		3.67%		8.1		100.0%		4.09%
+P2	8.24		0.0%		96.33%		8.56		0.0%		95.91%
+EPOCH #427:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		3.67%		8.11		100.0%		4.08%
+P2	8.83		0.0%		96.33%		8.57		0.0%		95.92%
+EPOCH #428:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		3.67%		8.11		100.0%		4.06%
+P2	8.63		0.0%		96.33%		8.57		0.0%		95.94%
+EPOCH #429:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.72		100.0%		3.33%		8.1		100.0%		4.03%
+P2	8.18		0.0%		96.67%		8.56		0.0%		95.97%
+EPOCH #430:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		4.0%		8.1		100.0%		4.03%
+P2	8.48		0.0%		96.0%		8.55		0.0%		95.97%
+EPOCH #431:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.14		100.0%		3.67%		8.1		100.0%		4.01%
+P2	8.61		0.0%		96.33%		8.56		0.0%		95.99%
+EPOCH #432:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		4.0%		8.13		100.0%		4.01%
+P2	9.26		0.0%		96.0%		8.58		0.0%		95.99%
+EPOCH #433:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.0%		8.12		100.0%		3.97%
+P2	8.51		0.0%		97.0%		8.58		0.0%		96.03%
+EPOCH #434:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.44		100.0%		1.33%		8.14		100.0%		3.87%
+P2	8.91		0.0%		98.67%		8.59		0.0%		96.13%
+EPOCH #435:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		3.33%		8.15		100.0%		3.85%
+P2	9.03		0.0%		96.67%		8.61		0.0%		96.15%
+EPOCH #436:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		3.67%		8.14		100.0%		3.84%
+P2	8.29		0.0%		96.33%		8.6		0.0%		96.16%
+EPOCH #437:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		3.33%		8.14		100.0%		3.82%
+P2	8.6		0.0%		96.67%		8.6		0.0%		96.18%
+EPOCH #438:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.35		100.0%		2.67%		8.15		100.0%		3.77%
+P2	8.8		0.0%		97.33%		8.61		0.0%		96.23%
+EPOCH #439:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		4.0%		8.15		100.0%		3.78%
+P2	8.68		0.0%		96.0%		8.61		0.0%		96.22%
+EPOCH #440:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.04		100.0%		2.33%		8.19		100.0%		3.72%
+P2	9.53		0.0%		97.67%		8.65		0.0%		96.28%
+EPOCH #441:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.13		100.0%		4.0%		8.19		100.0%		3.74%
+P2	8.6		0.0%		96.0%		8.64		0.0%		96.26%
+EPOCH #442:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.33%		8.18		100.0%		3.72%
+P2	8.51		0.0%		96.67%		8.64		0.0%		96.28%
+EPOCH #443:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		2.67%		8.18		100.0%		3.68%
+P2	8.62		0.0%		97.33%		8.64		0.0%		96.32%
+EPOCH #444:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.94		100.0%		4.0%		8.17		100.0%		3.69%
+P2	8.43		0.0%		96.0%		8.63		0.0%		96.31%
+EPOCH #445:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		4.0%		8.16		100.0%		3.7%
+P2	8.42		0.0%		96.0%		8.62		0.0%		96.3%
+EPOCH #446:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.29		100.0%		2.0%		8.17		100.0%		3.63%
+P2	8.81		0.0%		98.0%		8.63		0.0%		96.37%
+EPOCH #447:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		3.33%		8.16		100.0%		3.62%
+P2	8.45		0.0%		96.67%		8.62		0.0%		96.38%
+EPOCH #448:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		4.33%		8.16		100.0%		3.65%
+P2	8.78		0.0%		95.67%		8.63		0.0%		96.35%
+EPOCH #449:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.43		100.0%		2.33%		8.17		100.0%		3.6%
+P2	8.89		0.0%		97.67%		8.64		0.0%		96.4%
+EPOCH #450:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.62		100.0%		3.67%		8.19		100.0%		3.6%
+P2	9.02		0.0%		96.33%		8.65		0.0%		96.4%
+EPOCH #451:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		4.67%		8.17		100.0%		3.64%
+P2	8.2		0.0%		95.33%		8.64		0.0%		96.36%
+EPOCH #452:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		2.67%		8.18		100.0%		3.6%
+P2	8.83		0.0%		97.33%		8.64		0.0%		96.4%
+EPOCH #453:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.55		100.0%		3.33%		8.19		100.0%		3.59%
+P2	8.98		0.0%		96.67%		8.66		0.0%		96.41%
+EPOCH #454:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		3.67%		8.18		100.0%		3.6%
+P2	8.18		0.0%		96.33%		8.64		0.0%		96.4%
+EPOCH #455:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.87		100.0%		5.0%		8.16		100.0%		3.65%
+P2	8.29		0.0%		95.0%		8.62		0.0%		96.35%
+EPOCH #456:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		4.0%		8.16		100.0%		3.67%
+P2	8.51		0.0%		96.0%		8.62		0.0%		96.33%
+EPOCH #457:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		4.33%		8.15		100.0%		3.69%
+P2	8.43		0.0%		95.67%		8.61		0.0%		96.31%
+EPOCH #458:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		4.0%		8.16		100.0%		3.71%
+P2	8.67		0.0%		96.0%		8.61		0.0%		96.29%
+EPOCH #459:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		4.67%		8.15		100.0%		3.74%
+P2	8.41		0.0%		95.33%		8.61		0.0%		96.26%
+EPOCH #460:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.7		100.0%		4.0%		8.13		100.0%		3.75%
+P2	8.2		0.0%		96.0%		8.59		0.0%		96.25%
+EPOCH #461:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		4.67%		8.13		100.0%		3.79%
+P2	8.57		0.0%		95.33%		8.59		0.0%		96.21%
+EPOCH #462:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.76		100.0%		3.33%		8.16		100.0%		3.77%
+P2	9.19		0.0%		96.67%		8.61		0.0%		96.23%
+EPOCH #463:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		100.0%		4.0%		8.2		100.0%		3.78%
+P2	9.57		0.0%		96.0%		8.65		0.0%		96.22%
+EPOCH #464:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		6.0%		8.21		100.0%		3.87%
+P2	8.92		0.0%		94.0%		8.66		0.0%		96.13%
+EPOCH #465:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		3.67%		8.21		100.0%		3.86%
+P2	8.64		0.0%		96.33%		8.66		0.0%		96.14%
+EPOCH #466:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.95		100.0%		3.33%		8.19		100.0%		3.84%
+P2	8.4		0.0%		96.67%		8.65		0.0%		96.16%
+EPOCH #467:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.91		100.0%		2.33%		8.18		100.0%		3.78%
+P2	8.39		0.0%		97.67%		8.64		0.0%		96.22%
+EPOCH #468:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		4.33%		8.18		100.0%		3.8%
+P2	8.58		0.0%		95.67%		8.64		0.0%		96.2%
+EPOCH #469:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.6		100.0%		3.0%		8.16		100.0%		3.77%
+P2	8.09		0.0%		97.0%		8.62		0.0%		96.23%
+EPOCH #470:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.05		100.0%		2.0%		8.11		100.0%		3.7%
+P2	7.53		0.0%		98.0%		8.57		0.0%		96.3%
+EPOCH #471:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.51		100.0%		4.67%		8.13		100.0%		3.74%
+P2	8.97		0.0%		95.33%		8.59		0.0%		96.26%
+EPOCH #472:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		6.33%		8.15		100.0%		3.84%
+P2	9.0		0.0%		93.67%		8.61		0.0%		96.16%
+EPOCH #473:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.95		100.0%		2.0%		8.14		100.0%		3.77%
+P2	8.36		0.0%		98.0%		8.6		0.0%		96.23%
+EPOCH #474:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.01		100.0%		4.33%		8.17		100.0%		3.79%
+P2	9.55		0.0%		95.67%		8.63		0.0%		96.21%
+EPOCH #475:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.74		100.0%		4.33%		8.16		100.0%		3.81%
+P2	8.24		0.0%		95.67%		8.62		0.0%		96.19%
+EPOCH #476:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		3.67%		8.16		100.0%		3.81%
+P2	8.6		0.0%		96.33%		8.62		0.0%		96.19%
+EPOCH #477:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.69		100.0%		5.0%		8.18		100.0%		3.85%
+P2	9.1		0.0%		95.0%		8.64		0.0%		96.15%
+EPOCH #478:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.65		100.0%		5.67%		8.16		100.0%		3.93%
+P2	8.1		0.0%		94.33%		8.62		0.0%		96.07%
+EPOCH #479:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.77		100.0%		4.0%		8.18		100.0%		3.93%
+P2	9.23		0.0%		96.0%		8.64		0.0%		96.07%
+EPOCH #480:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		3.67%		8.17		100.0%		3.92%
+P2	8.31		0.0%		96.33%		8.63		0.0%		96.08%
+EPOCH #481:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		3.67%		8.18		100.0%		3.91%
+P2	9.0		0.0%		96.33%		8.64		0.0%		96.09%
+EPOCH #482:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.59		100.0%		3.33%		8.16		100.0%		3.89%
+P2	8.03		0.0%		96.67%		8.62		0.0%		96.11%
+EPOCH #483:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		100.0%		4.33%		8.2		100.0%		3.9%
+P2	9.56		0.0%		95.67%		8.65		0.0%		96.1%
+EPOCH #484:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		5.67%		8.19		100.0%		3.97%
+P2	8.46		0.0%		94.33%		8.65		0.0%		96.03%
+EPOCH #485:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		6.0%		8.21		100.0%		4.06%
+P2	9.29		0.0%		94.0%		8.67		0.0%		95.94%
+EPOCH #486:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		2.33%		8.2		100.0%		3.99%
+P2	8.39		0.0%		97.67%		8.66		0.0%		96.01%
+EPOCH #487:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.08		100.0%		5.67%		8.23		100.0%		4.05%
+P2	9.48		0.0%		94.33%		8.69		0.0%		95.95%
+EPOCH #488:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.27		100.0%		4.0%		8.28		100.0%		4.05%
+P2	9.72		0.0%		96.0%		8.73		0.0%		95.95%
+EPOCH #489:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.55		100.0%		3.0%		8.29		100.0%		4.01%
+P2	9.0		0.0%		97.0%		8.75		0.0%		95.99%
+EPOCH #490:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.73		100.0%		3.67%		8.26		100.0%		4.0%
+P2	8.21		0.0%		96.33%		8.72		0.0%		96.0%
+EPOCH #491:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.33%		8.25		100.0%		3.97%
+P2	8.34		0.0%		96.67%		8.71		0.0%		96.03%
+EPOCH #492:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		5.33%		8.24		100.0%		4.02%
+P2	8.39		0.0%		94.67%		8.7		0.0%		95.98%
+EPOCH #493:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		4.0%		8.24		100.0%		4.02%
+P2	8.6		0.0%		96.0%		8.69		0.0%		95.98%
+EPOCH #494:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		2.0%		8.24		100.0%		3.94%
+P2	8.87		0.0%		98.0%		8.7		0.0%		96.06%
+EPOCH #495:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.68		100.0%		4.67%		8.26		100.0%		3.97%
+P2	9.16		0.0%		95.33%		8.72		0.0%		96.03%
+EPOCH #496:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.33%		8.26		100.0%		3.95%
+P2	8.72		0.0%		96.67%		8.72		0.0%		96.05%
+EPOCH #497:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.24		100.0%		2.67%		8.26		100.0%		3.89%
+P2	8.68		0.0%		97.33%		8.72		0.0%		96.11%
+EPOCH #498:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.04		100.0%		4.33%		8.21		100.0%		3.91%
+P2	7.54		0.0%		95.67%		8.67		0.0%		96.09%
+EPOCH #499:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		3.0%		8.19		100.0%		3.88%
+P2	8.04		0.0%		97.0%		8.64		0.0%		96.12%
+EPOCH #500:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		1.33%		8.17		100.0%		3.77%
+P2	8.34		0.0%		98.67%		8.63		0.0%		96.23%
+EPOCH #501:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		5.33%		8.17		100.0%		3.84%
+P2	8.51		0.0%		94.67%		8.63		0.0%		96.16%
+EPOCH #502:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.44		100.0%		4.33%		8.14		100.0%		3.86%
+P2	7.87		0.0%		95.67%		8.6		0.0%		96.14%
+EPOCH #503:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		2.67%		8.14		100.0%		3.81%
+P2	8.63		0.0%		97.33%		8.6		0.0%		96.19%
+EPOCH #504:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.09		100.0%		3.0%		8.14		100.0%		3.78%
+P2	8.55		0.0%		97.0%		8.6		0.0%		96.22%
+EPOCH #505:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		2.33%		8.11		100.0%		3.72%
+P2	7.98		0.0%		97.67%		8.57		0.0%		96.28%
+EPOCH #506:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.11		100.0%		3.67%		8.15		100.0%		3.72%
+P2	9.54		0.0%		96.33%		8.61		0.0%		96.28%
+EPOCH #507:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		5.67%		8.17		100.0%		3.79%
+P2	8.95		0.0%		94.33%		8.62		0.0%		96.21%
+EPOCH #508:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.64		100.0%		3.33%		8.19		100.0%		3.78%
+P2	9.1		0.0%		96.67%		8.64		0.0%		96.22%
+EPOCH #509:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		6.33%		8.2		100.0%		3.88%
+P2	9.05		0.0%		93.67%		8.66		0.0%		96.12%
+EPOCH #510:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		4.0%		8.2		100.0%		3.88%
+P2	8.6		0.0%		96.0%		8.66		0.0%		96.12%
+EPOCH #511:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.67		100.0%		5.67%		8.18		100.0%		3.95%
+P2	8.09		0.0%		94.33%		8.63		0.0%		96.05%
+EPOCH #512:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		4.33%		8.17		100.0%		3.97%
+P2	8.49		0.0%		95.67%		8.63		0.0%		96.03%
+EPOCH #513:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		3.0%		8.16		100.0%		3.93%
+P2	8.4		0.0%		97.0%		8.62		0.0%		96.07%
+EPOCH #514:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.78		100.0%		5.33%		8.15		100.0%		3.99%
+P2	8.27		0.0%		94.67%		8.61		0.0%		96.01%
+EPOCH #515:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.12		100.0%		6.67%		8.15		100.0%		4.09%
+P2	8.55		0.0%		93.33%		8.6		0.0%		95.91%
+EPOCH #516:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		2.33%		8.16		100.0%		4.02%
+P2	9.03		0.0%		97.67%		8.62		0.0%		95.98%
+EPOCH #517:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.24		100.0%		3.67%		8.21		100.0%		4.01%
+P2	9.71		0.0%		96.33%		8.66		0.0%		95.99%
+EPOCH #518:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.76		100.0%		3.0%		8.19		100.0%		3.97%
+P2	8.18		0.0%		97.0%		8.64		0.0%		96.03%
+EPOCH #519:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.77		100.0%		1.0%		8.17		100.0%		3.85%
+P2	8.29		0.0%		99.0%		8.63		0.0%		96.15%
+EPOCH #520:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.67		100.0%		4.33%		8.19		100.0%		3.87%
+P2	9.13		0.0%		95.67%		8.65		0.0%		96.13%
+EPOCH #521:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		4.0%		8.18		100.0%		3.87%
+P2	8.37		0.0%		96.0%		8.64		0.0%		96.13%
+EPOCH #522:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		2.33%		8.19		100.0%		3.81%
+P2	8.83		0.0%		97.67%		8.65		0.0%		96.19%
+EPOCH #523:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.79		100.0%		3.33%		8.21		100.0%		3.79%
+P2	9.27		0.0%		96.67%		8.67		0.0%		96.21%
+EPOCH #524:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		4.67%		8.22		100.0%		3.83%
+P2	8.82		0.0%		95.33%		8.68		0.0%		96.17%
+EPOCH #525:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		3.67%		8.23		100.0%		3.82%
+P2	8.75		0.0%		96.33%		8.68		0.0%		96.18%
+EPOCH #526:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		3.33%		8.21		100.0%		3.8%
+P2	8.39		0.0%		96.67%		8.67		0.0%		96.2%
+EPOCH #527:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.18		100.0%		4.0%		8.21		100.0%		3.81%
+P2	8.68		0.0%		96.0%		8.67		0.0%		96.19%
+EPOCH #528:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		3.67%		8.21		100.0%		3.8%
+P2	8.67		0.0%		96.33%		8.67		0.0%		96.2%
+EPOCH #529:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.7		100.0%		4.0%		8.19		100.0%		3.81%
+P2	8.17		0.0%		96.0%		8.65		0.0%		96.19%
+EPOCH #530:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		3.0%		8.21		100.0%		3.78%
+P2	9.05		0.0%		97.0%		8.67		0.0%		96.22%
+EPOCH #531:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.43		100.0%		3.67%		8.18		100.0%		3.78%
+P2	7.87		0.0%		96.33%		8.63		0.0%		96.22%
+EPOCH #532:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	6.98		100.0%		3.33%		8.13		100.0%		3.76%
+P2	7.44		0.0%		96.67%		8.59		0.0%		96.24%
+EPOCH #533:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.49		100.0%		5.67%		8.1		100.0%		3.83%
+P2	7.91		0.0%		94.33%		8.56		0.0%		96.17%
+EPOCH #534:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.7		100.0%		4.0%		8.13		100.0%		3.84%
+P2	9.17		0.0%		96.0%		8.58		0.0%		96.16%
+EPOCH #535:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.42		100.0%		3.33%		8.18		100.0%		3.82%
+P2	9.86		0.0%		96.67%		8.63		0.0%		96.18%
+EPOCH #536:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		3.33%		8.17		100.0%		3.8%
+P2	8.56		0.0%		96.67%		8.63		0.0%		96.2%
+EPOCH #537:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.11		100.0%		6.33%		8.21		100.0%		3.9%
+P2	9.58		0.0%		93.67%		8.67		0.0%		96.1%
+EPOCH #538:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.07		100.0%		4.33%		8.25		100.0%		3.92%
+P2	9.48		0.0%		95.67%		8.7		0.0%		96.08%
+EPOCH #539:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.29		100.0%		3.33%		8.25		100.0%		3.9%
+P2	8.75		0.0%		96.67%		8.7		0.0%		96.1%
+EPOCH #540:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		4.0%		8.25		100.0%		3.9%
+P2	8.86		0.0%		96.0%		8.71		0.0%		96.1%
+EPOCH #541:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		5.67%		8.25		100.0%		3.97%
+P2	8.6		0.0%		94.33%		8.7		0.0%		96.03%
+EPOCH #542:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.69		100.0%		4.0%		8.23		100.0%		3.97%
+P2	8.18		0.0%		96.0%		8.68		0.0%		96.03%
+EPOCH #543:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		5.0%		8.24		100.0%		4.01%
+P2	8.95		0.0%		95.0%		8.69		0.0%		95.99%
+EPOCH #544:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		2.67%		8.24		100.0%		3.96%
+P2	8.7		0.0%		97.33%		8.69		0.0%		96.04%
+EPOCH #545:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.6		100.0%		4.0%		8.25		100.0%		3.96%
+P2	9.11		0.0%		96.0%		8.71		0.0%		96.04%
+EPOCH #546:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		4.0%		8.26		100.0%		3.96%
+P2	8.89		0.0%		96.0%		8.72		0.0%		96.04%
+EPOCH #547:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		5.0%		8.26		100.0%		4.0%
+P2	8.93		0.0%		95.0%		8.73		0.0%		96.0%
+EPOCH #548:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.24		100.0%		2.33%		8.26		100.0%		3.94%
+P2	8.67		0.0%		97.67%		8.72		0.0%		96.06%
+EPOCH #549:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.8		100.0%		4.33%		8.25		100.0%		3.95%
+P2	8.25		0.0%		95.67%		8.71		0.0%		96.05%
+EPOCH #550:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.51		100.0%		2.0%		8.22		100.0%		3.88%
+P2	7.95		0.0%		98.0%		8.68		0.0%		96.12%
+EPOCH #551:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.18		100.0%		4.33%		8.25		100.0%		3.89%
+P2	9.63		0.0%		95.67%		8.71		0.0%		96.11%
+EPOCH #552:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		5.0%		8.28		100.0%		3.94%
+P2	9.25		0.0%		95.0%		8.73		0.0%		96.06%
+EPOCH #553:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.61		100.0%		3.0%		8.29		100.0%		3.9%
+P2	9.03		0.0%		97.0%		8.75		0.0%		96.1%
+EPOCH #554:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.71		100.0%		4.0%		8.31		100.0%		3.9%
+P2	9.15		0.0%		96.0%		8.76		0.0%		96.1%
+EPOCH #555:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		6.0%		8.29		100.0%		3.99%
+P2	8.24		0.0%		94.0%		8.74		0.0%		96.01%
+EPOCH #556:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.41		100.0%		4.33%		8.25		100.0%		4.0%
+P2	7.89		0.0%		95.67%		8.71		0.0%		96.0%
+EPOCH #557:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		4.33%		8.24		100.0%		4.02%
+P2	8.42		0.0%		95.67%		8.7		0.0%		95.98%
+EPOCH #558:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.45		100.0%		2.33%		8.21		100.0%		3.95%
+P2	7.95		0.0%		97.67%		8.67		0.0%		96.05%
+EPOCH #559:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.05		100.0%		4.0%		8.24		100.0%		3.95%
+P2	9.49		0.0%		96.0%		8.7		0.0%		96.05%
+EPOCH #560:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		4.33%		8.21		100.0%		3.97%
+P2	7.96		0.0%		95.67%		8.67		0.0%		96.03%
+EPOCH #561:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		2.67%		8.2		100.0%		3.91%
+P2	8.43		0.0%		97.33%		8.66		0.0%		96.09%
+EPOCH #562:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.01		100.0%		4.67%		8.2		100.0%		3.94%
+P2	8.48		0.0%		95.33%		8.65		0.0%		96.06%
+EPOCH #563:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.71		100.0%		2.33%		8.22		100.0%		3.88%
+P2	9.2		0.0%		97.67%		8.68		0.0%		96.12%
+EPOCH #564:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		4.0%		8.2		100.0%		3.88%
+P2	8.22		0.0%		96.0%		8.66		0.0%		96.12%
+EPOCH #565:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		2.33%		8.19		100.0%		3.82%
+P2	8.53		0.0%		97.67%		8.65		0.0%		96.18%
+EPOCH #566:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		2.0%		8.19		100.0%		3.75%
+P2	8.5		0.0%		98.0%		8.65		0.0%		96.25%
+EPOCH #567:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		4.67%		8.19		100.0%		3.79%
+P2	8.8		0.0%		95.33%		8.65		0.0%		96.21%
+EPOCH #568:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		4.67%		8.19		100.0%		3.82%
+P2	8.69		0.0%		95.33%		8.65		0.0%		96.18%
+EPOCH #569:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		3.0%		8.21		100.0%		3.79%
+P2	9.05		0.0%		97.0%		8.67		0.0%		96.21%
+EPOCH #570:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		1.67%		8.22		100.0%		3.7%
+P2	9.01		0.0%		98.33%		8.68		0.0%		96.3%
+EPOCH #571:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.32		100.0%		2.33%		8.19		100.0%		3.65%
+P2	7.8		0.0%		97.67%		8.65		0.0%		96.35%
+EPOCH #572:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.35		100.0%		5.0%		8.19		100.0%		3.7%
+P2	8.78		0.0%		95.0%		8.65		0.0%		96.3%
+EPOCH #573:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		2.33%		8.2		100.0%		3.65%
+P2	8.72		0.0%		97.67%		8.66		0.0%		96.35%
+EPOCH #574:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.03		100.0%		4.67%		8.23		100.0%		3.69%
+P2	9.52		0.0%		95.33%		8.69		0.0%		96.31%
+EPOCH #575:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		2.0%		8.24		100.0%		3.62%
+P2	8.91		0.0%		98.0%		8.7		0.0%		96.38%
+EPOCH #576:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		4.33%		8.23		100.0%		3.65%
+P2	8.5		0.0%		95.67%		8.69		0.0%		96.35%
+EPOCH #577:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		3.0%		8.23		100.0%		3.62%
+P2	8.72		0.0%		97.0%		8.69		0.0%		96.38%
+EPOCH #578:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.48		100.0%		4.33%		8.2		100.0%		3.65%
+P2	7.96		0.0%		95.67%		8.66		0.0%		96.35%
+EPOCH #579:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.63		100.0%		3.33%		8.18		100.0%		3.64%
+P2	8.08		0.0%		96.67%		8.64		0.0%		96.36%
+EPOCH #580:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		5.33%		8.19		100.0%		3.71%
+P2	8.8		0.0%		94.67%		8.65		0.0%		96.29%
+EPOCH #581:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		2.33%		8.2		100.0%		3.65%
+P2	8.94		0.0%		97.67%		8.66		0.0%		96.35%
+EPOCH #582:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.5		100.0%		2.67%		8.21		100.0%		3.61%
+P2	9.03		0.0%		97.33%		8.67		0.0%		96.39%
+EPOCH #583:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.78		100.0%		2.0%		8.19		100.0%		3.55%
+P2	8.26		0.0%		98.0%		8.66		0.0%		96.45%
+EPOCH #584:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		2.67%		8.17		100.0%		3.51%
+P2	7.98		0.0%		97.33%		8.63		0.0%		96.49%
+EPOCH #585:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		2.67%		8.17		100.0%		3.48%
+P2	8.66		0.0%		97.33%		8.63		0.0%		96.52%
+EPOCH #586:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		4.33%		8.18		100.0%		3.51%
+P2	8.99		0.0%		95.67%		8.64		0.0%		96.49%
+EPOCH #587:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.33%		8.17		100.0%		3.51%
+P2	8.3		0.0%		96.67%		8.63		0.0%		96.49%
+EPOCH #588:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		4.33%		8.17		100.0%		3.54%
+P2	8.65		0.0%		95.67%		8.63		0.0%		96.46%
+EPOCH #589:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.54		100.0%		4.67%		8.15		100.0%		3.58%
+P2	7.98		0.0%		95.33%		8.61		0.0%		96.42%
+EPOCH #590:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		5.33%		8.15		100.0%		3.65%
+P2	8.76		0.0%		94.67%		8.61		0.0%		96.35%
+EPOCH #591:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		3.0%		8.17		100.0%		3.63%
+P2	9.02		0.0%		97.0%		8.63		0.0%		96.37%
+EPOCH #592:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.76		100.0%		6.67%		8.19		100.0%		3.75%
+P2	9.22		0.0%		93.33%		8.65		0.0%		96.25%
+EPOCH #593:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		3.33%		8.21		100.0%		3.73%
+P2	9.02		0.0%		96.67%		8.67		0.0%		96.27%
+EPOCH #594:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		100.0%		4.0%		8.24		100.0%		3.74%
+P2	9.56		0.0%		96.0%		8.7		0.0%		96.26%
+EPOCH #595:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		4.33%		8.25		100.0%		3.77%
+P2	8.86		0.0%		95.67%		8.71		0.0%		96.23%
+EPOCH #596:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		5.33%		8.25		100.0%		3.83%
+P2	8.6		0.0%		94.67%		8.7		0.0%		96.17%
+EPOCH #597:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		6.0%		8.25		100.0%		3.92%
+P2	8.73		0.0%		94.0%		8.71		0.0%		96.08%
+EPOCH #598:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.57		100.0%		3.33%		8.22		100.0%		3.89%
+P2	8.03		0.0%		96.67%		8.68		0.0%		96.11%
+EPOCH #599:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		3.33%		8.21		100.0%		3.87%
+P2	8.43		0.0%		96.67%		8.67		0.0%		96.13%
+EPOCH #600:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		5.0%		8.21		100.0%		3.92%
+P2	8.67		0.0%		95.0%		8.67		0.0%		96.08%
+EPOCH #601:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.5		100.0%		4.0%		8.26		100.0%		3.92%
+P2	10.01		0.0%		96.0%		8.72		0.0%		96.08%
+EPOCH #602:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		5.67%		8.27		100.0%		3.99%
+P2	8.9		0.0%		94.33%		8.73		0.0%		96.01%
+EPOCH #603:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.43		100.0%		5.33%		8.24		100.0%		4.04%
+P2	7.93		0.0%		94.67%		8.7		0.0%		95.96%
+EPOCH #604:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.58		100.0%		4.33%		8.29		100.0%		4.05%
+P2	9.98		0.0%		95.67%		8.75		0.0%		95.95%
+EPOCH #605:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.04		100.0%		3.0%		8.32		100.0%		4.01%
+P2	9.48		0.0%		97.0%		8.78		0.0%		95.99%
+EPOCH #606:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.82		100.0%		2.67%		8.3		100.0%		3.96%
+P2	8.34		0.0%		97.33%		8.76		0.0%		96.04%
+EPOCH #607:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.65		100.0%		3.0%		8.28		100.0%		3.92%
+P2	8.1		0.0%		97.0%		8.73		0.0%		96.08%
+EPOCH #608:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.96		100.0%		4.67%		8.26		100.0%		3.95%
+P2	8.4		0.0%		95.33%		8.72		0.0%		96.05%
+EPOCH #609:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.91		100.0%		3.67%		8.25		100.0%		3.94%
+P2	8.33		0.0%		96.33%		8.7		0.0%		96.06%
+EPOCH #610:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.54		100.0%		3.67%		8.22		100.0%		3.93%
+P2	8.04		0.0%		96.33%		8.68		0.0%		96.07%
+EPOCH #611:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		2.33%		8.23		100.0%		3.86%
+P2	8.84		0.0%		97.67%		8.68		0.0%		96.14%
+EPOCH #612:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.33		100.0%		3.0%		8.23		100.0%		3.83%
+P2	8.81		0.0%		97.0%		8.69		0.0%		96.17%
+EPOCH #613:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.82		100.0%		4.67%		8.22		100.0%		3.86%
+P2	8.34		0.0%		95.33%		8.68		0.0%		96.14%
+EPOCH #614:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.66		100.0%		4.67%		8.19		100.0%		3.9%
+P2	8.11		0.0%		95.33%		8.65		0.0%		96.1%
+EPOCH #615:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		4.67%		8.2		100.0%		3.93%
+P2	8.77		0.0%		95.33%		8.66		0.0%		96.07%
+EPOCH #616:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.87		100.0%		4.0%		8.19		100.0%		3.93%
+P2	8.32		0.0%		96.0%		8.64		0.0%		96.07%
+EPOCH #617:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		2.0%		8.2		100.0%		3.85%
+P2	9.09		0.0%		98.0%		8.66		0.0%		96.15%
+EPOCH #618:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.67		100.0%		3.67%		8.22		100.0%		3.84%
+P2	9.06		0.0%		96.33%		8.68		0.0%		96.16%
+EPOCH #619:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.44		100.0%		4.0%		8.27		100.0%		3.85%
+P2	9.89		0.0%		96.0%		8.73		0.0%		96.15%
+EPOCH #620:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.0%		8.26		100.0%		3.82%
+P2	8.49		0.0%		97.0%		8.72		0.0%		96.18%
+EPOCH #621:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		1.33%		8.25		100.0%		3.72%
+P2	8.45		0.0%		98.67%		8.71		0.0%		96.28%
+EPOCH #622:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		4.33%		8.24		100.0%		3.74%
+P2	8.48		0.0%		95.67%		8.7		0.0%		96.26%
+EPOCH #623:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.68		100.0%		4.33%		8.3		100.0%		3.77%
+P2	10.09		0.0%		95.67%		8.75		0.0%		96.23%
+EPOCH #624:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.33		100.0%		4.67%		8.3		100.0%		3.8%
+P2	8.74		0.0%		95.33%		8.75		0.0%		96.2%
+EPOCH #625:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		5.33%		8.28		100.0%		3.86%
+P2	8.29		0.0%		94.67%		8.73		0.0%		96.14%
+EPOCH #626:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		3.33%		8.29		100.0%		3.84%
+P2	8.87		0.0%		96.67%		8.74		0.0%		96.16%
+EPOCH #627:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.67		100.0%		3.33%		8.26		100.0%		3.82%
+P2	8.13		0.0%		96.67%		8.72		0.0%		96.18%
+EPOCH #628:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.05		100.0%		4.0%		8.25		100.0%		3.83%
+P2	8.5		0.0%		96.0%		8.71		0.0%		96.17%
+EPOCH #629:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		3.67%		8.24		100.0%		3.82%
+P2	8.37		0.0%		96.33%		8.69		0.0%		96.18%
+EPOCH #630:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.39		100.0%		3.33%		8.25		100.0%		3.8%
+P2	8.86		0.0%		96.67%		8.7		0.0%		96.2%
+EPOCH #631:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		3.67%		8.27		100.0%		3.8%
+P2	9.3		0.0%		96.33%		8.72		0.0%		96.2%
+EPOCH #632:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		0.67%		8.27		100.0%		3.67%
+P2	8.68		0.0%		99.33%		8.72		0.0%		96.33%
+EPOCH #633:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.07		100.0%		4.67%		8.26		100.0%		3.71%
+P2	8.53		0.0%		95.33%		8.71		0.0%		96.29%
+EPOCH #634:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		1.67%		8.26		100.0%		3.63%
+P2	8.75		0.0%		98.33%		8.72		0.0%		96.37%
+EPOCH #635:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.53		100.0%		2.67%		8.27		100.0%		3.59%
+P2	9.03		0.0%		97.33%		8.73		0.0%		96.41%
+EPOCH #636:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		5.67%		8.26		100.0%		3.67%
+P2	8.42		0.0%		94.33%		8.72		0.0%		96.33%
+EPOCH #637:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.9		100.0%		2.33%		8.28		100.0%		3.62%
+P2	9.4		0.0%		97.67%		8.74		0.0%		96.38%
+EPOCH #638:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		5.33%		8.26		100.0%		3.69%
+P2	8.08		0.0%		94.67%		8.72		0.0%		96.31%
+EPOCH #639:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.01		100.0%		5.33%		8.25		100.0%		3.75%
+P2	8.41		0.0%		94.67%		8.7		0.0%		96.25%
+EPOCH #640:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.6		100.0%		3.0%		8.22		100.0%		3.72%
+P2	8.09		0.0%		97.0%		8.68		0.0%		96.28%
+EPOCH #641:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		3.0%		8.23		100.0%		3.7%
+P2	8.97		0.0%		97.0%		8.69		0.0%		96.3%
+EPOCH #642:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		6.67%		8.24		100.0%		3.81%
+P2	8.93		0.0%		93.33%		8.7		0.0%		96.19%
+EPOCH #643:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.6		100.0%		3.0%		8.22		100.0%		3.78%
+P2	8.11		0.0%		97.0%		8.68		0.0%		96.22%
+EPOCH #644:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.33		100.0%		3.0%		8.22		100.0%		3.75%
+P2	8.81		0.0%		97.0%		8.68		0.0%		96.25%
+EPOCH #645:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.67		100.0%		5.0%		8.24		100.0%		3.8%
+P2	9.11		0.0%		95.0%		8.7		0.0%		96.2%
+EPOCH #646:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		3.33%		8.25		100.0%		3.78%
+P2	9.03		0.0%		96.67%		8.71		0.0%		96.22%
+EPOCH #647:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.93		100.0%		3.0%		8.24		100.0%		3.75%
+P2	8.43		0.0%		97.0%		8.7		0.0%		96.25%
+EPOCH #648:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.67%		8.22		100.0%		3.75%
+P2	8.37		0.0%		96.33%		8.69		0.0%		96.25%
+EPOCH #649:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		5.67%		8.24		100.0%		3.82%
+P2	9.1		0.0%		94.33%		8.7		0.0%		96.18%
+EPOCH #650:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		5.0%		8.24		100.0%		3.87%
+P2	8.57		0.0%		95.0%		8.7		0.0%		96.13%
+EPOCH #651:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		4.67%		8.24		100.0%		3.9%
+P2	8.71		0.0%		95.33%		8.7		0.0%		96.1%
+EPOCH #652:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.82		100.0%		4.0%		8.22		100.0%		3.91%
+P2	8.32		0.0%		96.0%		8.68		0.0%		96.09%
+EPOCH #653:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		2.67%		8.2		100.0%		3.86%
+P2	8.08		0.0%		97.33%		8.66		0.0%		96.14%
+EPOCH #654:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		3.67%		8.21		100.0%		3.85%
+P2	8.92		0.0%		96.33%		8.67		0.0%		96.15%
+EPOCH #655:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		5.33%		8.19		100.0%		3.91%
+P2	8.22		0.0%		94.67%		8.65		0.0%		96.09%
+EPOCH #656:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		4.33%		8.2		100.0%		3.93%
+P2	8.79		0.0%		95.67%		8.66		0.0%		96.07%
+EPOCH #657:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.64		100.0%		3.0%		8.18		100.0%		3.89%
+P2	8.09		0.0%		97.0%		8.64		0.0%		96.11%
+EPOCH #658:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.74		100.0%		4.33%		8.2		100.0%		3.91%
+P2	9.13		0.0%		95.67%		8.66		0.0%		96.09%
+EPOCH #659:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		2.67%		8.2		100.0%		3.86%
+P2	8.68		0.0%		97.33%		8.66		0.0%		96.14%
+EPOCH #660:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		4.33%		8.21		100.0%		3.88%
+P2	8.97		0.0%		95.67%		8.67		0.0%		96.12%
+EPOCH #661:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.37		100.0%		3.33%		8.22		100.0%		3.85%
+P2	8.83		0.0%		96.67%		8.68		0.0%		96.15%
+EPOCH #662:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		4.0%		8.21		100.0%		3.86%
+P2	8.58		0.0%		96.0%		8.67		0.0%		96.14%
+EPOCH #663:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.5		100.0%		5.33%		8.23		100.0%		3.92%
+P2	8.94		0.0%		94.67%		8.68		0.0%		96.08%
+EPOCH #664:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.98		100.0%		5.0%		8.26		100.0%		3.96%
+P2	9.42		0.0%		95.0%		8.71		0.0%		96.04%
+EPOCH #665:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		2.67%		8.24		100.0%		3.91%
+P2	8.28		0.0%		97.33%		8.69		0.0%		96.09%
+EPOCH #666:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		3.33%		8.22		100.0%		3.89%
+P2	8.29		0.0%		96.67%		8.68		0.0%		96.11%
+EPOCH #667:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.8		100.0%		3.67%		8.25		100.0%		3.88%
+P2	9.24		0.0%		96.33%		8.7		0.0%		96.12%
+EPOCH #668:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.42		100.0%		2.0%		8.25		100.0%		3.8%
+P2	8.95		0.0%		98.0%		8.71		0.0%		96.2%
+EPOCH #669:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		3.67%		8.25		100.0%		3.8%
+P2	8.61		0.0%		96.33%		8.71		0.0%		96.2%
+EPOCH #670:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.86		100.0%		4.67%		8.27		100.0%		3.83%
+P2	9.35		0.0%		95.33%		8.73		0.0%		96.17%
+EPOCH #671:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.01		100.0%		4.67%		8.26		100.0%		3.87%
+P2	8.49		0.0%		95.33%		8.72		0.0%		96.13%
+EPOCH #672:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.25		100.0%		2.0%		8.3		100.0%		3.79%
+P2	9.76		0.0%		98.0%		8.76		0.0%		96.21%
+EPOCH #673:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.73		100.0%		2.0%		8.28		100.0%		3.72%
+P2	8.25		0.0%		98.0%		8.74		0.0%		96.28%
+EPOCH #674:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		3.33%		8.27		100.0%		3.7%
+P2	8.36		0.0%		96.67%		8.73		0.0%		96.3%
+EPOCH #675:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		3.67%		8.25		100.0%		3.7%
+P2	8.49		0.0%		96.33%		8.72		0.0%		96.3%
+EPOCH #676:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		3.67%		8.24		100.0%		3.7%
+P2	8.23		0.0%		96.33%		8.7		0.0%		96.3%
+EPOCH #677:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.5		100.0%		2.67%		8.25		100.0%		3.66%
+P2	9.01		0.0%		97.33%		8.71		0.0%		96.34%
+EPOCH #678:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.79		100.0%		2.67%		8.31		100.0%		3.62%
+P2	10.3		0.0%		97.33%		8.77		0.0%		96.38%
+EPOCH #679:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	6.99		100.0%		4.33%		8.26		100.0%		3.65%
+P2	7.48		0.0%		95.67%		8.72		0.0%		96.35%
+EPOCH #680:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.09		100.0%		3.0%		8.25		100.0%		3.62%
+P2	8.56		0.0%		97.0%		8.72		0.0%		96.38%
+EPOCH #681:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		3.0%		8.25		100.0%		3.6%
+P2	8.88		0.0%		97.0%		8.72		0.0%		96.4%
+EPOCH #682:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		3.33%		8.24		100.0%		3.59%
+P2	8.48		0.0%		96.67%		8.71		0.0%		96.41%
+EPOCH #683:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		5.0%		8.24		100.0%		3.64%
+P2	8.55		0.0%		95.0%		8.71		0.0%		96.36%
+EPOCH #684:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.78		100.0%		5.67%		8.22		100.0%		3.72%
+P2	8.24		0.0%		94.33%		8.69		0.0%		96.28%
+EPOCH #685:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		4.33%		8.25		100.0%		3.75%
+P2	9.28		0.0%		95.67%		8.71		0.0%		96.25%
+EPOCH #686:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.75		100.0%		5.0%		8.27		100.0%		3.8%
+P2	9.18		0.0%		95.0%		8.73		0.0%		96.2%
+EPOCH #687:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.81		100.0%		4.67%		8.29		100.0%		3.83%
+P2	9.24		0.0%		95.33%		8.75		0.0%		96.17%
+EPOCH #688:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.22		100.0%		4.33%		8.28		100.0%		3.85%
+P2	8.66		0.0%		95.67%		8.75		0.0%		96.15%
+EPOCH #689:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.0		100.0%		4.0%		8.27		100.0%		3.86%
+P2	8.47		0.0%		96.0%		8.74		0.0%		96.14%
+EPOCH #690:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		3.67%		8.3		100.0%		3.85%
+P2	9.28		0.0%		96.33%		8.76		0.0%		96.15%
+EPOCH #691:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		3.67%		8.27		100.0%		3.84%
+P2	8.08		0.0%		96.33%		8.73		0.0%		96.16%
+EPOCH #692:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		3.0%		8.25		100.0%		3.81%
+P2	8.3		0.0%		97.0%		8.71		0.0%		96.19%
+EPOCH #693:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.7		100.0%		4.0%		8.23		100.0%		3.82%
+P2	8.11		0.0%		96.0%		8.69		0.0%		96.18%
+EPOCH #694:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.49		100.0%		4.0%		8.24		100.0%		3.83%
+P2	8.98		0.0%		96.0%		8.7		0.0%		96.17%
+EPOCH #695:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.4		100.0%		3.33%		8.25		100.0%		3.81%
+P2	8.87		0.0%		96.67%		8.71		0.0%		96.19%
+EPOCH #696:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.19		100.0%		3.33%		8.24		100.0%		3.79%
+P2	8.67		0.0%		96.67%		8.71		0.0%		96.21%
+EPOCH #697:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		6.33%		8.25		100.0%		3.89%
+P2	8.75		0.0%		93.67%		8.71		0.0%		96.11%
+EPOCH #698:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		3.67%		8.25		100.0%		3.88%
+P2	8.66		0.0%		96.33%		8.71		0.0%		96.12%
+EPOCH #699:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.05		100.0%		5.33%		8.28		100.0%		3.94%
+P2	9.46		0.0%		94.67%		8.74		0.0%		96.06%
+EPOCH #700:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		3.67%		8.27		100.0%		3.93%
+P2	8.54		0.0%		96.33%		8.73		0.0%		96.07%
+EPOCH #701:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.9		100.0%		4.0%		8.29		100.0%		3.93%
+P2	9.35		0.0%		96.0%		8.75		0.0%		96.07%
+EPOCH #702:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		4.0%		8.29		100.0%		3.93%
+P2	8.62		0.0%		96.0%		8.75		0.0%		96.07%
+EPOCH #703:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		5.33%		8.3		100.0%		3.99%
+P2	9.03		0.0%		94.67%		8.76		0.0%		96.01%
+EPOCH #704:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		2.33%		8.28		100.0%		3.92%
+P2	8.28		0.0%		97.67%		8.74		0.0%		96.08%
+EPOCH #705:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		5.33%		8.28		100.0%		3.98%
+P2	8.69		0.0%		94.67%		8.74		0.0%		96.02%
+EPOCH #706:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.07		100.0%		2.33%		8.27		100.0%		3.91%
+P2	8.54		0.0%		97.67%		8.73		0.0%		96.09%
+EPOCH #707:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.31		100.0%		3.33%		8.23		100.0%		3.89%
+P2	7.78		0.0%		96.67%		8.69		0.0%		96.11%
+EPOCH #708:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.63		100.0%		4.67%		8.21		100.0%		3.92%
+P2	8.1		0.0%		95.33%		8.67		0.0%		96.08%
+EPOCH #709:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		2.0%		8.22		100.0%		3.84%
+P2	9.07		0.0%		98.0%		8.68		0.0%		96.16%
+EPOCH #710:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.56		100.0%		4.67%		8.24		100.0%		3.88%
+P2	8.96		0.0%		95.33%		8.7		0.0%		96.12%
+EPOCH #711:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.61		100.0%		5.67%		8.21		100.0%		3.95%
+P2	8.0		0.0%		94.33%		8.67		0.0%		96.05%
+EPOCH #712:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.63		100.0%		4.0%		8.23		100.0%		3.95%
+P2	9.12		0.0%		96.0%		8.69		0.0%		96.05%
+EPOCH #713:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		3.67%		8.21		100.0%		3.94%
+P2	8.34		0.0%		96.33%		8.67		0.0%		96.06%
+EPOCH #714:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.64		100.0%		4.67%		8.19		100.0%		3.97%
+P2	8.09		0.0%		95.33%		8.65		0.0%		96.03%
+EPOCH #715:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.3		100.0%		2.33%		8.19		100.0%		3.9%
+P2	8.75		0.0%		97.67%		8.65		0.0%		96.1%
+EPOCH #716:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.75		100.0%		3.33%		8.22		100.0%		3.88%
+P2	9.2		0.0%		96.67%		8.67		0.0%		96.12%
+EPOCH #717:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		2.67%		8.22		100.0%		3.83%
+P2	8.82		0.0%		97.33%		8.68		0.0%		96.17%
+EPOCH #718:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.7		100.0%		2.67%		8.24		100.0%		3.79%
+P2	9.2		0.0%		97.33%		8.7		0.0%		96.21%
+EPOCH #719:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.5		100.0%		5.67%		8.25		100.0%		3.86%
+P2	8.9		0.0%		94.33%		8.71		0.0%		96.14%
+EPOCH #720:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		4.0%		8.24		100.0%		3.87%
+P2	8.63		0.0%		96.0%		8.71		0.0%		96.13%
+EPOCH #721:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		3.33%		8.25		100.0%		3.84%
+P2	9.01		0.0%		96.67%		8.72		0.0%		96.16%
+EPOCH #722:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.66		100.0%		2.67%		8.23		100.0%		3.8%
+P2	8.13		0.0%		97.33%		8.69		0.0%		96.2%
+EPOCH #723:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.59		100.0%		5.0%		8.24		100.0%		3.85%
+P2	9.02		0.0%		95.0%		8.71		0.0%		96.15%
+EPOCH #724:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.34		100.0%		3.67%		8.21		100.0%		3.84%
+P2	7.8		0.0%		96.33%		8.67		0.0%		96.16%
+EPOCH #725:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.29		100.0%		3.67%		8.21		100.0%		3.83%
+P2	8.74		0.0%		96.33%		8.67		0.0%		96.17%
+EPOCH #726:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.65		100.0%		4.67%		8.23		100.0%		3.87%
+P2	9.09		0.0%		95.33%		8.69		0.0%		96.13%
+EPOCH #727:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.78		100.0%		2.33%		8.25		100.0%		3.8%
+P2	9.26		0.0%		97.67%		8.71		0.0%		96.2%
+EPOCH #728:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.99		100.0%		3.0%		8.24		100.0%		3.77%
+P2	8.48		0.0%		97.0%		8.7		0.0%		96.23%
+EPOCH #729:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.0%		8.23		100.0%		3.74%
+P2	8.54		0.0%		97.0%		8.7		0.0%		96.26%
+EPOCH #730:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		5.0%		8.23		100.0%		3.79%
+P2	8.74		0.0%		95.0%		8.7		0.0%		96.21%
+EPOCH #731:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		4.67%		8.23		100.0%		3.83%
+P2	8.61		0.0%		95.33%		8.7		0.0%		96.17%
+EPOCH #732:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.55		100.0%		3.33%		8.24		100.0%		3.81%
+P2	9.05		0.0%		96.67%		8.71		0.0%		96.19%
+EPOCH #733:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.88		100.0%		5.67%		8.27		100.0%		3.88%
+P2	9.31		0.0%		94.33%		8.73		0.0%		96.12%
+EPOCH #734:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.52		100.0%		2.0%		8.24		100.0%		3.81%
+P2	7.98		0.0%		98.0%		8.7		0.0%		96.19%
+EPOCH #735:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.89		100.0%		4.0%		8.22		100.0%		3.81%
+P2	8.35		0.0%		96.0%		8.69		0.0%		96.19%
+EPOCH #736:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		3.0%		8.21		100.0%		3.78%
+P2	8.37		0.0%		97.0%		8.68		0.0%		96.22%
+EPOCH #737:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		2.67%		8.21		100.0%		3.74%
+P2	8.7		0.0%		97.33%		8.68		0.0%		96.26%
+EPOCH #738:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		5.0%		8.21		100.0%		3.79%
+P2	8.71		0.0%		95.0%		8.68		0.0%		96.21%
+EPOCH #739:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.7		100.0%		4.0%		8.23		100.0%		3.8%
+P2	9.19		0.0%		96.0%		8.7		0.0%		96.2%
+EPOCH #740:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.46		100.0%		3.0%		8.24		100.0%		3.76%
+P2	8.95		0.0%		97.0%		8.71		0.0%		96.24%
+EPOCH #741:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.9		100.0%		3.33%		8.23		100.0%		3.75%
+P2	8.34		0.0%		96.67%		8.69		0.0%		96.25%
+EPOCH #742:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.68		100.0%		3.67%		8.24		100.0%		3.74%
+P2	9.15		0.0%		96.33%		8.71		0.0%		96.26%
+EPOCH #743:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.76		100.0%		2.67%		8.27		100.0%		3.7%
+P2	9.24		0.0%		97.33%		8.73		0.0%		96.3%
+EPOCH #744:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.57		100.0%		4.0%		8.28		100.0%		3.71%
+P2	9.02		0.0%		96.0%		8.75		0.0%		96.29%
+EPOCH #745:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.0%		8.28		100.0%		3.68%
+P2	8.71		0.0%		97.0%		8.74		0.0%		96.32%
+EPOCH #746:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.35		100.0%		4.67%		8.28		100.0%		3.72%
+P2	8.8		0.0%		95.33%		8.75		0.0%		96.28%
+EPOCH #747:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.75		100.0%		4.0%		8.3		100.0%		3.73%
+P2	9.22		0.0%		96.0%		8.77		0.0%		96.27%
+EPOCH #748:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.85		100.0%		2.67%		8.4		100.0%		3.69%
+P2	11.34		0.0%		97.33%		8.87		0.0%		96.31%
+EPOCH #749:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.36		100.0%		4.0%		8.4		100.0%		3.7%
+P2	8.81		0.0%		96.0%		8.87		0.0%		96.3%
+EPOCH #750:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.1		100.0%		3.0%		8.39		100.0%		3.68%
+P2	8.6		0.0%		97.0%		8.86		0.0%		96.32%
+EPOCH #751:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		3.67%		8.37		100.0%		3.68%
+P2	8.24		0.0%		96.33%		8.83		0.0%		96.32%
+EPOCH #752:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		6.33%		8.34		100.0%		3.78%
+P2	8.28		0.0%		93.67%		8.81		0.0%		96.22%
+EPOCH #753:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.48		100.0%		4.33%		8.35		100.0%		3.8%
+P2	8.95		0.0%		95.67%		8.81		0.0%		96.2%
+EPOCH #754:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.59		100.0%		3.67%		8.32		100.0%		3.8%
+P2	8.04		0.0%		96.33%		8.78		0.0%		96.2%
+EPOCH #755:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.94		100.0%		4.33%		8.34		100.0%		3.82%
+P2	9.31		0.0%		95.67%		8.8		0.0%		96.18%
+EPOCH #756:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.54		100.0%		3.0%		8.31		100.0%		3.79%
+P2	7.97		0.0%		97.0%		8.77		0.0%		96.21%
+EPOCH #757:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.08		100.0%		5.33%		8.3		100.0%		3.85%
+P2	8.55		0.0%		94.67%		8.76		0.0%		96.15%
+EPOCH #758:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.64		100.0%		4.33%		8.32		100.0%		3.87%
+P2	9.11		0.0%		95.67%		8.78		0.0%		96.13%
+EPOCH #759:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.34		100.0%		4.67%		8.32		100.0%		3.9%
+P2	8.79		0.0%		95.33%		8.78		0.0%		96.1%
+EPOCH #760:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.92		100.0%		3.33%		8.3		100.0%		3.88%
+P2	8.39		0.0%		96.67%		8.76		0.0%		96.12%
+EPOCH #761:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.24		100.0%		3.67%		8.3		100.0%		3.87%
+P2	8.75		0.0%		96.33%		8.76		0.0%		96.13%
+EPOCH #762:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		4.0%		8.29		100.0%		3.87%
+P2	8.73		0.0%		96.0%		8.76		0.0%		96.13%
+EPOCH #763:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.15		100.0%		2.67%		8.29		100.0%		3.83%
+P2	8.61		0.0%		97.33%		8.75		0.0%		96.17%
+EPOCH #764:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.53		100.0%		3.67%		8.26		100.0%		3.82%
+P2	7.98		0.0%		96.33%		8.72		0.0%		96.18%
+EPOCH #765:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.72		100.0%		3.0%		8.24		100.0%		3.79%
+P2	8.21		0.0%		97.0%		8.7		0.0%		96.21%
+EPOCH #766:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.77		100.0%		3.33%		8.22		100.0%		3.77%
+P2	8.27		0.0%		96.67%		8.68		0.0%		96.23%
+EPOCH #767:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.67		100.0%		5.67%		8.2		100.0%		3.84%
+P2	8.08		0.0%		94.33%		8.66		0.0%		96.16%
+EPOCH #768:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.58		100.0%		5.67%		8.21		100.0%		3.92%
+P2	9.0		0.0%		94.33%		8.67		0.0%		96.08%
+EPOCH #769:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		2.67%		8.21		100.0%		3.87%
+P2	8.66		0.0%		97.33%		8.67		0.0%		96.13%
+EPOCH #770:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.72		100.0%		3.67%		8.23		100.0%		3.86%
+P2	9.17		0.0%		96.33%		8.69		0.0%		96.14%
+EPOCH #771:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.37		100.0%		5.33%		8.24		100.0%		3.92%
+P2	8.76		0.0%		94.67%		8.7		0.0%		96.08%
+EPOCH #772:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		4.67%		8.22		100.0%		3.95%
+P2	8.27		0.0%		95.33%		8.68		0.0%		96.05%
+EPOCH #773:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.42		100.0%		1.67%		8.19		100.0%		3.86%
+P2	7.92		0.0%		98.33%		8.65		0.0%		96.14%
+EPOCH #774:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.04		100.0%		3.0%		8.18		100.0%		3.82%
+P2	8.56		0.0%		97.0%		8.65		0.0%		96.18%
+EPOCH #775:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.0		100.0%		5.0%		8.21		100.0%		3.87%
+P2	9.43		0.0%		95.0%		8.68		0.0%		96.13%
+EPOCH #776:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.54		100.0%		3.0%		8.23		100.0%		3.83%
+P2	8.99		0.0%		97.0%		8.69		0.0%		96.17%
+EPOCH #777:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		3.0%		8.23		100.0%		3.8%
+P2	8.72		0.0%		97.0%		8.69		0.0%		96.2%
+EPOCH #778:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.77		100.0%		6.67%		8.25		100.0%		3.92%
+P2	9.17		0.0%		93.33%		8.71		0.0%		96.08%
+EPOCH #779:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.25		100.0%		5.0%		8.25		100.0%		3.96%
+P2	8.72		0.0%		95.0%		8.71		0.0%		96.04%
+EPOCH #780:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.17		100.0%		6.33%		8.25		100.0%		4.05%
+P2	8.62		0.0%		93.67%		8.71		0.0%		95.95%
+EPOCH #781:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.82		100.0%		3.0%		8.27		100.0%		4.01%
+P2	9.32		0.0%		97.0%		8.73		0.0%		95.99%
+EPOCH #782:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.54		100.0%		5.0%		8.28		100.0%		4.05%
+P2	9.01		0.0%		95.0%		8.74		0.0%		95.95%
+EPOCH #783:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		4.33%		8.27		100.0%		4.06%
+P2	8.38		0.0%		95.67%		8.73		0.0%		95.94%
+EPOCH #784:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.86		100.0%		5.0%		8.25		100.0%		4.1%
+P2	8.33		0.0%		95.0%		8.71		0.0%		95.9%
+EPOCH #785:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.89		100.0%		3.67%		8.24		100.0%		4.08%
+P2	8.38		0.0%		96.33%		8.7		0.0%		95.92%
+EPOCH #786:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.9		100.0%		2.33%		8.26		100.0%		4.01%
+P2	9.34		0.0%		97.67%		8.72		0.0%		95.99%
+EPOCH #787:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.85		100.0%		3.33%		8.25		100.0%		3.99%
+P2	8.33		0.0%		96.67%		8.71		0.0%		96.01%
+EPOCH #788:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.29		100.0%		3.33%		8.21		100.0%		3.96%
+P2	7.77		0.0%		96.67%		8.67		0.0%		96.04%
+EPOCH #789:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.03		100.0%		4.67%		8.24		100.0%		3.99%
+P2	9.44		0.0%		95.33%		8.7		0.0%		96.01%
+EPOCH #790:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.07		100.0%		5.67%		8.24		100.0%		4.06%
+P2	8.53		0.0%		94.33%		8.69		0.0%		95.94%
+EPOCH #791:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.39		100.0%		3.67%		8.2		100.0%		4.04%
+P2	7.88		0.0%		96.33%		8.66		0.0%		95.96%
+EPOCH #792:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.8		100.0%		4.33%		8.19		100.0%		4.05%
+P2	8.26		0.0%		95.67%		8.65		0.0%		95.95%
+EPOCH #793:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.07		100.0%		1.67%		8.22		100.0%		3.96%
+P2	9.54		0.0%		98.33%		8.68		0.0%		96.04%
+EPOCH #794:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.66		100.0%		2.67%		8.24		100.0%		3.9%
+P2	9.13		0.0%		97.33%		8.7		0.0%		96.1%
+EPOCH #795:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.97		100.0%		4.67%		8.23		100.0%		3.94%
+P2	8.41		0.0%		95.33%		8.69		0.0%		96.06%
+EPOCH #796:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.38		100.0%		3.33%		8.23		100.0%		3.91%
+P2	8.82		0.0%		96.67%		8.69		0.0%		96.09%
+EPOCH #797:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		5.67%		8.22		100.0%		3.98%
+P2	8.24		0.0%		94.33%		8.67		0.0%		96.02%
+EPOCH #798:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.88		100.0%		4.0%		8.28		100.0%		3.98%
+P2	10.34		0.0%		96.0%		8.74		0.0%		96.02%
+EPOCH #799:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.23		100.0%		4.67%		8.28		100.0%		4.01%
+P2	8.72		0.0%		95.33%		8.74		0.0%		95.99%
+EPOCH #800:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.45		100.0%		3.33%		8.29		100.0%		3.98%
+P2	8.87		0.0%		96.67%		8.75		0.0%		96.02%
+EPOCH #801:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		3.67%		8.27		100.0%		3.97%
+P2	8.29		0.0%		96.33%		8.73		0.0%		96.03%
+EPOCH #802:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.12		100.0%		2.67%		8.3		100.0%		3.92%
+P2	9.56		0.0%		97.33%		8.76		0.0%		96.08%
+EPOCH #803:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.28		100.0%		3.33%		8.34		100.0%		3.89%
+P2	9.72		0.0%		96.67%		8.8		0.0%		96.11%
+EPOCH #804:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.43		100.0%		3.67%		8.35		100.0%		3.89%
+P2	8.93		0.0%		96.33%		8.8		0.0%		96.11%
+EPOCH #805:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.47		100.0%		5.67%		8.31		100.0%		3.96%
+P2	7.9		0.0%		94.33%		8.77		0.0%		96.04%
+EPOCH #806:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.18		100.0%		3.67%		8.31		100.0%		3.94%
+P2	8.64		0.0%		96.33%		8.76		0.0%		96.06%
+EPOCH #807:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.8		100.0%		5.0%		8.29		100.0%		3.99%
+P2	8.22		0.0%		95.0%		8.74		0.0%		96.01%
+EPOCH #808:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.16		100.0%		4.0%		8.32		100.0%		3.99%
+P2	9.59		0.0%		96.0%		8.78		0.0%		96.01%
+EPOCH #809:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.65		100.0%		5.0%		8.33		100.0%		4.03%
+P2	9.05		0.0%		95.0%		8.79		0.0%		95.97%
+EPOCH #810:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.51		100.0%		4.0%		8.34		100.0%		4.03%
+P2	9.02		0.0%		96.0%		8.8		0.0%		95.97%
+EPOCH #811:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		4.0%		8.34		100.0%		4.03%
+P2	8.7		0.0%		96.0%		8.79		0.0%		95.97%
+EPOCH #812:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.6		100.0%		3.33%		8.31		100.0%		4.0%
+P2	8.06		0.0%		96.67%		8.76		0.0%		96.0%
+EPOCH #813:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.27		100.0%		3.0%		8.31		100.0%		3.96%
+P2	8.73		0.0%		97.0%		8.76		0.0%		96.04%
+EPOCH #814:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.32		100.0%		2.67%		8.31		100.0%		3.91%
+P2	8.8		0.0%		97.33%		8.76		0.0%		96.09%
+EPOCH #815:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		6.33%		8.3		100.0%		4.0%
+P2	8.53		0.0%		93.67%		8.75		0.0%		96.0%
+EPOCH #816:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.84		100.0%		2.67%		8.32		100.0%		3.95%
+P2	9.31		0.0%		97.33%		8.78		0.0%		96.05%
+EPOCH #817:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.07		100.0%		1.0%		8.35		100.0%		3.83%
+P2	9.55		0.0%		99.0%		8.81		0.0%		96.17%
+EPOCH #818:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		4.0%		8.34		100.0%		3.84%
+P2	8.65		0.0%		96.0%		8.8		0.0%		96.16%
+EPOCH #819:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		4.0%		8.31		100.0%		3.85%
+P2	8.1		0.0%		96.0%		8.77		0.0%		96.15%
+EPOCH #820:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.62		100.0%		4.33%		8.29		100.0%		3.86%
+P2	8.13		0.0%		95.67%		8.75		0.0%		96.14%
+EPOCH #821:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.87		100.0%		3.0%		8.31		100.0%		3.83%
+P2	9.33		0.0%		97.0%		8.77		0.0%		96.17%
+EPOCH #822:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.83		100.0%		3.33%		8.29		100.0%		3.81%
+P2	8.29		0.0%		96.67%		8.75		0.0%		96.19%
+EPOCH #823:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.5		100.0%		4.0%		8.26		100.0%		3.82%
+P2	7.94		0.0%		96.0%		8.72		0.0%		96.18%
+EPOCH #824:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.49		100.0%		2.67%		8.23		100.0%		3.77%
+P2	7.91		0.0%		97.33%		8.69		0.0%		96.23%
+EPOCH #825:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.03		100.0%		5.0%		8.22		100.0%		3.82%
+P2	8.5		0.0%		95.0%		8.68		0.0%		96.18%
+EPOCH #826:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.31		100.0%		3.33%		8.22		100.0%		3.8%
+P2	8.8		0.0%		96.67%		8.68		0.0%		96.2%
+EPOCH #827:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.42		100.0%		3.33%		8.19		100.0%		3.78%
+P2	7.88		0.0%		96.67%		8.65		0.0%		96.22%
+EPOCH #828:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.43		100.0%		5.67%		8.2		100.0%		3.86%
+P2	8.89		0.0%		94.33%		8.66		0.0%		96.14%
+EPOCH #829:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.44		100.0%		4.0%		8.17		100.0%		3.86%
+P2	7.91		0.0%		96.0%		8.63		0.0%		96.14%
+EPOCH #830:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.69		100.0%		4.0%		8.19		100.0%		3.87%
+P2	9.13		0.0%		96.0%		8.65		0.0%		96.13%
+EPOCH #831:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		1.67%		8.22		100.0%		3.78%
+P2	9.3		0.0%		98.33%		8.68		0.0%		96.22%
+EPOCH #832:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.76		100.0%		4.33%		8.24		100.0%		3.8%
+P2	9.2		0.0%		95.67%		8.7		0.0%		96.2%
+EPOCH #833:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.59		100.0%		4.33%		8.21		100.0%		3.82%
+P2	8.03		0.0%		95.67%		8.67		0.0%		96.18%
+EPOCH #834:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		4.67%		8.21		100.0%		3.86%
+P2	8.6		0.0%		95.33%		8.67		0.0%		96.14%
+EPOCH #835:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.83		100.0%		2.33%		8.24		100.0%		3.8%
+P2	9.28		0.0%		97.67%		8.69		0.0%		96.2%
+EPOCH #836:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.06		100.0%		2.33%		8.23		100.0%		3.74%
+P2	8.6		0.0%		97.67%		8.69		0.0%		96.26%
+EPOCH #837:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.37		100.0%		5.67%		8.23		100.0%		3.82%
+P2	8.79		0.0%		94.33%		8.69		0.0%		96.18%
+EPOCH #838:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.09		100.0%		4.0%		8.27		100.0%		3.82%
+P2	9.53		0.0%		96.0%		8.73		0.0%		96.18%
+EPOCH #839:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.08		100.0%		4.33%		8.26		100.0%		3.84%
+P2	8.51		0.0%		95.67%		8.72		0.0%		96.16%
+EPOCH #840:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.16		100.0%		2.67%		8.26		100.0%		3.8%
+P2	8.67		0.0%		97.33%		8.72		0.0%		96.2%
+EPOCH #841:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.88		100.0%		3.33%		8.24		100.0%		3.78%
+P2	8.3		0.0%		96.67%		8.7		0.0%		96.22%
+EPOCH #842:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.62		100.0%		4.33%		8.26		100.0%		3.8%
+P2	9.1		0.0%		95.67%		8.72		0.0%		96.2%
+EPOCH #843:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.36		100.0%		2.67%		8.26		100.0%		3.75%
+P2	8.81		0.0%		97.33%		8.72		0.0%		96.25%
+EPOCH #844:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.81		100.0%		2.0%		8.28		100.0%		3.68%
+P2	9.22		0.0%		98.0%		8.74		0.0%		96.32%
+EPOCH #845:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.76		100.0%		5.67%		8.3		100.0%		3.76%
+P2	9.23		0.0%		94.33%		8.76		0.0%		96.24%
+EPOCH #846:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.35		100.0%		4.67%		8.34		100.0%		3.8%
+P2	9.85		0.0%		95.33%		8.8		0.0%		96.2%
+EPOCH #847:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.48		100.0%		4.0%		8.31		100.0%		3.81%
+P2	7.9		0.0%		96.0%		8.77		0.0%		96.19%
+EPOCH #848:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		3.67%		8.29		100.0%		3.8%
+P2	8.28		0.0%		96.33%		8.75		0.0%		96.2%
+EPOCH #849:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.11		100.0%		3.33%		8.28		100.0%		3.78%
+P2	8.58		0.0%		96.67%		8.74		0.0%		96.22%
+EPOCH #850:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.2		100.0%		3.67%		8.28		100.0%		3.78%
+P2	8.68		0.0%		96.33%		8.74		0.0%		96.22%
+EPOCH #851:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.03		100.0%		3.67%		8.23		100.0%		3.77%
+P2	7.48		0.0%		96.33%		8.69		0.0%		96.23%
+EPOCH #852:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.72		100.0%		3.33%		8.21		100.0%		3.76%
+P2	8.19		0.0%		96.67%		8.67		0.0%		96.24%
+EPOCH #853:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.66		100.0%		2.33%		8.19		100.0%		3.7%
+P2	8.17		0.0%		97.67%		8.65		0.0%		96.3%
+EPOCH #854:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.47		100.0%		1.33%		8.2		100.0%		3.61%
+P2	8.94		0.0%		98.67%		8.66		0.0%		96.39%
+EPOCH #855:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.21		100.0%		6.33%		8.2		100.0%		3.71%
+P2	8.59		0.0%		93.67%		8.66		0.0%		96.29%
+EPOCH #856:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.73		100.0%		4.33%		8.22		100.0%		3.74%
+P2	9.17		0.0%		95.67%		8.68		0.0%		96.26%
+EPOCH #857:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.52		100.0%		4.33%		8.23		100.0%		3.76%
+P2	8.96		0.0%		95.67%		8.69		0.0%		96.24%
+EPOCH #858:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.79		100.0%		4.33%		8.22		100.0%		3.79%
+P2	8.23		0.0%		95.67%		8.67		0.0%		96.21%
+EPOCH #859:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.59		100.0%		4.67%		8.19		100.0%		3.82%
+P2	8.05		0.0%		95.33%		8.65		0.0%		96.18%
+EPOCH #860:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.19		100.0%		2.0%		8.23		100.0%		3.75%
+P2	9.69		0.0%		98.0%		8.69		0.0%		96.25%
+EPOCH #861:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.26		100.0%		2.0%		8.23		100.0%		3.68%
+P2	8.73		0.0%		98.0%		8.69		0.0%		96.32%
+EPOCH #862:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.13		100.0%		3.67%		8.27		100.0%		3.68%
+P2	9.61		0.0%		96.33%		8.73		0.0%		96.32%
+EPOCH #863:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.81		100.0%		3.0%		8.25		100.0%		3.65%
+P2	8.26		0.0%		97.0%		8.71		0.0%		96.35%
+EPOCH #864:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	7.84		100.0%		3.0%		8.23		100.0%		3.62%
+P2	8.28		0.0%		97.0%		8.69		0.0%		96.38%
+BUILD STOPPED (total time: 12 seconds)

@@ -74,7 +74,9 @@ public class GUI extends JFrame{
 		
 		Player[] players = new Player[]{
 			new PlayerAI(false),
-			new PlayerAI(false)
+			new PlayerMax(),
+			new PlayerKyleHard(rack_size),
+			new PlayerAI(true)
 		};
 
 		//TRAINING & TESTING
