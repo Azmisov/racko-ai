@@ -206,7 +206,7 @@ public class PlayerAI extends Player{
 		super.epoch();
 		
 		//Deep learning stopping criteria
-		if (DL_layers != DL_maxlayers){
+		if (!use_random && DL_layers != DL_maxlayers){
 			//Update our average EPOCH statistics
 			if (!DL_layer_start){				
 				//Update the "noimprove" and DL_max/DL_min variables

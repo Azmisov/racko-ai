@@ -64,7 +64,7 @@ public class Game {
 	/**
 	 * Starts a new game
 	 */
-	public void play(){
+	public void play(int start_player){
 		for (int i=0; i<players.length; i++)
 			players[i].beginGame();
 		
@@ -72,7 +72,7 @@ public class Game {
 		while (true){
 			//Deal out a new deck; setup variables for the game loop
 			deck.deal();
-			active_player = -1;
+			active_player = start_player-1;
 			
 			//Inner loop goes through each player, starting with 0
 			while (true){

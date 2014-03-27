@@ -4,6 +4,7 @@ import interfaces.Player;
 
 import java.awt.CardLayout;
 import java.util.Arrays;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -15,6 +16,7 @@ import racko.Rack;
  * Human usable interface for playing racko
  */
 public class GUI extends JFrame{
+	private static final Random rand = new Random();
 	//Window title
 	private static final String title = "Racko v0.1";
 	//Window dimensions
@@ -71,8 +73,8 @@ public class GUI extends JFrame{
 			play_human = false;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerTD(),
-			new PlayerTD()
+			new PlayerAI(false),
+			new PlayerAI(false)
 		};
 
 		//TRAINING & TESTING
@@ -83,7 +85,7 @@ public class GUI extends JFrame{
 			
 			Game train_game = Game.create(players, rack_size, streak_min, bonus_mode);
 			for (int i=0; i<train_games; i++){
-				train_game.play();
+				train_game.play(rand.nextInt(players.length));
 				if (i % 50 == 0)
 					System.out.println(i*100/train_games+"% trained");
 			}
@@ -97,7 +99,7 @@ public class GUI extends JFrame{
 		Game g = Game.create(players, rack_size, streak_min, bonus_mode);		
 		int epochs = 0;
 		for (int i = 0; i < play_games; i++){
-			g.play();
+			g.play(rand.nextInt(players.length));
 			if (i > 0 && i % epoch_every == 0){
 				epochs++;
 				//Notify players of epoch
