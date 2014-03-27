@@ -103,7 +103,7 @@ public class Network{
 	 * @throws Exception if the data is ill-formed
 	 */
 	public void compute(double[] data){
-		assert(data.length != input_nodes);
+		assert(data.length == input_nodes);
 		
 		//Set initial net values
 		boolean first = true;
@@ -182,7 +182,7 @@ public class Network{
 		int layer_count = layers.size();
 		Node[] layer = layers.get(layer_count-1);
 		
-		assert(targets.length != layer.length);
+		assert(targets.length == layer.length);
 		//First, calculate error for output nodes
 		//Err = [derivative of sigmoid]*[delta rule] OR output*(1-output)(target-output)
 		for (int i=0; i<layer.length; i++){

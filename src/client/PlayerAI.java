@@ -12,7 +12,7 @@ import racko.Rack;
  * Plays the game as an artificial intelligence
  */
 public class PlayerAI extends Player{
-	private static final double LEARN_RATE = .15;
+	private static final double LEARN_RATE = .15, EPSILON = 0.00001;
 	private static final Random RAND = new Random();
 	//Playing history
 	private final ArrayList<DataInstance> drawHistory;
@@ -23,7 +23,7 @@ public class PlayerAI extends Player{
 	private static final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
 	private static final int[]
 		drawNet_layers = new int[]{16, 32, 1},
-		playNet_layers = new int[]{6, 32, 6};
+		playNet_layers = new int[]{16, 32, 6};
 	private static final Network
 		drawNet = new Network(drawNet_layers),
 		playNet = new Network(playNet_layers);
@@ -188,7 +188,7 @@ public class PlayerAI extends Player{
 		double fac = scoreMetric() - initialScore;
 		double rate = LEARN_RATE * fac;
 		
-		if (rate > .00001){
+		if (rate > .0001){
 			//System.out.println("Training with "+drawHistory.size()+" instances");
 			//Train for drawing
 			for (DataInstance d: drawHistory){
@@ -218,18 +218,19 @@ public class PlayerAI extends Player{
 		
 		//Deep learning stopping criteria
 		if (!use_random && DL_layers != DL_maxlayers){
+			DL_noimprove++;
 			//Update our average EPOCH statistics
-			if (!DL_layer_start){				
+			if (!DL_layer_start){
 				//Update the "noimprove" and DL_max/DL_min variables
-				if (MODEL_allmoves < DL_min_allmoves){
+				if (MODEL_allmoves-DL_min_allmoves+EPSILON < 0){
 					DL_min_allmoves = MODEL_allmoves;
 					DL_noimprove = 0;
 				}
-				if (MODEL_badmoves < DL_min_badmoves){
+				if (MODEL_badmoves-DL_min_badmoves+EPSILON < 0){
 					DL_min_badmoves = MODEL_badmoves;
 					DL_noimprove = 0;
 				}
-				if (MODEL_wins > DL_max_wins){
+				if (MODEL_wins-DL_max_wins-EPSILON > 0){
 					DL_max_wins = MODEL_wins;
 					DL_noimprove = 0;
 				}
@@ -257,8 +258,8 @@ public class PlayerAI extends Player{
 			DL_layers++;
 			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
 				pl = playNet_layers[1] - DL_layers*DL_playdelta;
-			if (Game.verbose)
-				System.out.println("Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+", "+pl+" nodes)");
+			//if (Game.verbose)
+				System.out.println("PlayerAI: Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+", "+pl+" nodes)");
 			drawNet.addHiddenLayer(dl);
 			playNet.addHiddenLayer(pl);
 			drawNet.freeze(DL_layers);
@@ -269,8 +270,8 @@ public class PlayerAI extends Player{
 		else if (DL_layers == DL_maxlayers){
 			drawNet.freeze(0);
 			playNet.freeze(0);
-			if (Game.verbose)
-				System.out.println("Beginning DEEP LEARNING refinement stage");
+			//if (Game.verbose)
+				System.out.println("PlayerAI: Beginning DEEP LEARNING refinement stage");
 		}
 		return false;
 	}
