@@ -4,47 +4,87 @@ import interfaces.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import racko.Game;
+import racko.Rack;
 
 /**
  * I found this online and have adapted it for our interface
  * http://subversion.assembla.com/svn/rack-o/
  * I think it is optimizing for a flat, maximal spread distribution
- * of cards in the rack
+ * of cards in the rack; it has an optional reinforcement learning mode
  * @author Kyle Thompson
  */
-public class PlayerKyleHard extends Player{	
+public class PlayerKyle extends Player{
 	private final ArrayList<Integer> anchorPoints = new ArrayList();
 	private final ArrayList<Range> myRanges = new ArrayList();
+	private static int rack_size;
 	private int[] oldRack;
-	private final int rack_size;
+	//Reinforcement learning
+	private static final ArrayList<Decision> myDecisions = new ArrayList();
+	private static int[][] weights;
+	private final boolean use_reinforcement;
+	//Stopping criteria for reinforcement learning
+	private static final StoppingCriteria RI_stop = new StoppingCriteria();
+	private static boolean done_learning;
 	
-	public PlayerKyleHard(int rack_size){
-		this.rack_size = rack_size;
-		oldRack = new int[rack_size];
-		Arrays.fill(oldRack,0);
+	/**
+	 * Create Player Kyle
+	 * @param reinforce use reinforcement learning?
+	 */
+	public PlayerKyle(boolean reinforce){
+		use_reinforcement = reinforce;
 	}
 
+	@Override
+	public void register(Game g, Rack r) {
+		//Default registration
+		super.register(g, r);
+		
+		//Set game constants
+		rack_size = g.rack_size;
+		if (weights == null || weights.length != rack_size+1 || weights[0].length != g.card_count+1){
+			System.out.println("Registering PlayerKyle; Warning! PlayerKyle cannot play simultaneous games of different configurations");
+			oldRack = new int[rack_size];
+			weights = new int[rack_size+1][g.card_count+1];
+			//reset stopping criteria
+			done_learning = false;
+			RI_stop.reset();
+		}
+	}
+	@Override
+	public void beginRound(){
+		anchorPoints.clear();
+		myRanges.clear();
+		myDecisions.clear();
+		initialize();
+		calculateRanges();
+	}
+	@Override
+	public void scoreRound(boolean won, int score) {
+		//If we won the round, update the weights for reinforcement learning
+		if (won) updateWeights();
+	}
+	@Override
+	public void epoch(){
+		super.epoch();
+		//Reinforcement learning stopping criteria
+		if (!done_learning){
+			done_learning = RI_stop.epoch(this);
+			if (done_learning)
+				System.out.println("PlayerKyle: Done learning!");
+		}
+	}
 	@Override
 	public int play() {
 		//get the rack
 		int[] tmpRack = rack.getCards();
 		
-		//initialize the anchor points and ranges if not done already
-		if (!Arrays.equals(oldRack,tmpRack)){
-			anchorPoints.clear();
-			myRanges.clear();
-			initialize();
-			calculateRanges();
-		}
-		
 		//look at the top of the discard pile and decide which range it will fit in
 		int topDiscard = game.deck.peek(true);
 		int targetRange = -1;
-		for (int i = 0; i < myRanges.size(); i++)
-		{
+		for (int i = 0; i < myRanges.size(); i++){
 			Range tmpRange = (Range) myRanges.get(i);
-			if (topDiscard >= tmpRange.getLowEnd() && topDiscard <= tmpRange.getHighEnd())
-			{
+			if (topDiscard >= tmpRange.getLowEnd() && topDiscard <= tmpRange.getHighEnd()){
 				targetRange = i;
 				break; //target found, no need to keep searching
 			}
@@ -55,8 +95,7 @@ public class PlayerKyleHard extends Player{
 		int cardDrawn = game.deck.draw(fromDiscard);
 		
 		//if drew from deck, see if card is useful
-		if (targetRange == -1)
-		{
+		if (targetRange == -1){
 			for (int i = 0; i < myRanges.size(); i++)
 			{
 				Range tmpRange = (Range) myRanges.get(i);
@@ -75,33 +114,14 @@ public class PlayerKyleHard extends Player{
 		//decide which slot the card goes in given the range
 		Range target = (Range) myRanges.get(targetRange);
 		
-		int slot = 0;
-		if (target.getNumSlots() > 1)
-		{
-			int span1 = target.getHighEnd() - cardDrawn; //test card in first slot
-			int span2 = (target.getHighEnd() - cardDrawn) + (cardDrawn - target.getLowEnd()); //test card in a middle
-			int span3 = cardDrawn - target.getLowEnd(); //test card in last slot
-			
-			if (span1 >= span2 && span1 >= span3) //put in first slot
-				slot = target.getStartSlot();
-			else if (span2 >= span1 && span2 >= span3) //put in a middle slot
-			{
-				double estimate = (((double)cardDrawn)/target.getHighEnd()) * target.getNumSlots();
-				int roundNum;
-				if (estimate < 1)
-					roundNum = 1;
-				else
-					roundNum = (int) Math.round(estimate);
-				slot = target.getStartSlot() + roundNum - 1;	
-			}
-			else if (span3 >= span1 && span3 >= span2) //put in last slot
-				slot = target.getStartSlot() + target.getNumSlots() - 1;
-		}
-		else if (target.getNumSlots() == 1)
-			slot = target.getStartSlot();
+		//decide which slot the card goes in given the range
+		int slot = use_reinforcement ? decideSlotReinf(target, cardDrawn) : decideSlotClassic(target, cardDrawn);			
 		
 		//replace the card in the rack
 		int toDiscard = rack.swap(cardDrawn, slot-1, fromDiscard);
+		
+		//add decision
+		myDecisions.add(new Decision(slot, cardDrawn));
 		
 		//create new ranges
 		if (!anchorPoints.contains (new Integer(slot)))
@@ -116,8 +136,84 @@ public class PlayerKyleHard extends Player{
 		return toDiscard;
 	}
 	
-	private void initialize(){
-		
+	//SLOT DECISION MAKING
+	private int decideSlotReinf(Range target, int cardDrawn){
+		int slot = 0;
+		if (target.getHighEnd() - cardDrawn <= 5)
+			slot = target.getStartSlot() + target.getNumSlots() - 1;
+		else if (cardDrawn - target.getLowEnd() <= 5)
+			slot = target.getStartSlot();
+		else{
+			int highCount = 0;
+			for (int i = target.getStartSlot(); i <= target.getStartSlot() + target.getNumSlots() - 1; i++){
+				if (weights[i][cardDrawn] >= highCount){
+					highCount = weights[i][cardDrawn];
+					slot = i;
+				}
+			}
+		}
+		return slot;
+	}
+	private int decideSlotClassic(Range target, int cardDrawn){
+		//Original logic for the hard player
+		int slot = 0;
+		if (target.getNumSlots() > 1){
+			int span1 = target.getHighEnd() - cardDrawn; //test card in first slot
+			int span2 = (target.getHighEnd() - cardDrawn) + (cardDrawn - target.getLowEnd()); //test card in a middle
+			int span3 = cardDrawn - target.getLowEnd(); //test card in last slot
+			
+			//put in first slot
+			if (span1 >= span2 && span1 >= span3)
+				slot = target.getStartSlot();
+			//put in a middle slot
+			else if (span2 >= span1 && span2 >= span3){
+				double estimate = (((double)cardDrawn)/target.getHighEnd()) * target.getNumSlots();
+				int roundNum;
+				if (estimate < 1)
+					roundNum = 1;
+				else
+					roundNum = (int) Math.round(estimate);
+				slot = target.getStartSlot() + roundNum - 1;	
+			}
+			//put in last slot
+			else if (span3 >= span1 && span3 >= span2)
+				slot = target.getStartSlot() + target.getNumSlots() - 1;
+		}
+		else if (target.getNumSlots() == 1)
+			slot = target.getStartSlot();
+		return slot;
+	}
+	
+	//REINFORCEMENT LEARNING
+	private void updateWeights(){
+		//update the weights matrix based on the decisions made in the round
+		for (Decision d: myDecisions)
+			weights[d.getSlot()][d.getCard()]++;
+	}
+	public class Decision{
+		private int slot;
+		private int card;
+
+		public Decision(int slot, int card){
+			this.slot = slot;
+			this.card = card;
+		}
+
+		public int getSlot ()
+		{ return slot; }
+
+		public int getCard ()
+		{ return card; }
+
+		public void setSlot(int slot)
+		{ this.slot = slot; }
+
+		public void setCard(int card)
+		{ this.card = card; }
+	}
+	
+	//RANGE CALCULATIONS
+	private void initialize(){	
 		//get rack and print it
 		int[] tmpRack = rack.getCards();
 		
@@ -151,7 +247,6 @@ public class PlayerKyleHard extends Player{
 		
 		Collections.sort(anchorPoints); //sort the collection if any ranges were added
 	}
-	
 	private void calculateRanges(){		
 		//creates ranges in which to put cards
 		int[] tmpRack = rack.getCards();
@@ -200,7 +295,6 @@ public class PlayerKyleHard extends Player{
 		}
 		myRanges.removeAll(toRemove);
 	}
-	
 	public class Range{
 		private int lowEnd, highEnd, startSlot, numSlots;
 		

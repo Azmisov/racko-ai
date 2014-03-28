@@ -33,13 +33,7 @@ public class PlayerAI extends Player{
 		DL_drawdelta = (drawNet_layers[1]-drawNet_layers[2])/DL_maxlayers,
 		DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
 	private static int DL_layers = 0;
-	//Stopping criteria for a deep learning layer
-	private static final int DL_noimprove_max = 25;
-	private static final double DL_noimprove_creep = .04;
-	private static boolean DL_layer_start = true;
-	private static int DL_noimprove;
-	private static double
-		DL_max_wins, DL_min_badmoves, DL_min_allmoves;
+	private static final StoppingCriteria DL_stop = new StoppingCriteria();
 	//Statistics
 	private double initialScore, currentScore;
 	private int games_played = 0, net_play_count, moves_in_round;
@@ -217,43 +211,14 @@ public class PlayerAI extends Player{
 		super.epoch();
 		
 		//Deep learning stopping criteria
-		if (!use_random && DL_layers != DL_maxlayers){
-			DL_noimprove++;
-			//Update our average EPOCH statistics
-			if (!DL_layer_start){
-				//Update the "noimprove" and DL_max/DL_min variables
-				if (MODEL_allmoves-DL_min_allmoves+EPSILON < 0){
-					DL_min_allmoves = MODEL_allmoves;
-					DL_noimprove = 0;
-				}
-				if (MODEL_badmoves-DL_min_badmoves+EPSILON < 0){
-					DL_min_badmoves = MODEL_badmoves;
-					DL_noimprove = 0;
-				}
-				if (MODEL_wins-DL_max_wins-EPSILON > 0){
-					DL_max_wins = MODEL_wins;
-					DL_noimprove = 0;
-				}
-			}
-			//If it is the start of an epoch, just set averages to current
-			//In most situations, this should work fine, since accuracy is not at it's peak at the start
-			else{
-				DL_layer_start = false;
-				DL_min_allmoves = MODEL_allmoves;
-				DL_min_badmoves = MODEL_badmoves;
-				DL_max_wins = MODEL_wins;
-			}
-
-			//If no improvement, add another deep learning layer
-			if (DL_noimprove == DL_noimprove_max){
-				deepLearn();
-				resetModel();
-				DL_layer_start = true;
-				DL_noimprove = 0;
-			}
+		//If no improvement, add another deep learning layer
+		if (!use_random && DL_layers != DL_maxlayers && DL_stop.epoch(this)){
+			DL_stop.reset();
+			deepLearn();
 		}
 	}
-	private static boolean deepLearn(){
+	private static void deepLearn(){
+		//Add another layer
 		if (DL_layers < DL_maxlayers){
 			DL_layers++;
 			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
@@ -264,15 +229,13 @@ public class PlayerAI extends Player{
 			playNet.addHiddenLayer(pl);
 			drawNet.freeze(DL_layers);
 			playNet.freeze(DL_layers);
-			return true;
 		}
-		//Unfreeze all layers
-		else if (DL_layers == DL_maxlayers){
+		//Unfreeze all layers (refinement stage)
+		else{
 			drawNet.freeze(0);
 			playNet.freeze(0);
 			//if (Game.verbose)
 				System.out.println("PlayerAI: Beginning DEEP LEARNING refinement stage");
 		}
-		return false;
 	}
 }

@@ -43,10 +43,12 @@ public abstract class Player {
 	
 	/**
 	 * Register a game to be played
+	 * If you override this, you must call super.register!!!
+	 * Otherwise, we can't guarantee this will work
 	 * @param g a game to register
 	 * @param r the player's rack
 	 */
-	public final void register(Game g, Rack r){
+	public void register(Game g, Rack r){
 		game = g;
 		rack = r;
 		score = 0;
