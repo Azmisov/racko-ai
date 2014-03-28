@@ -212,15 +212,15 @@ public class PlayerAI extends Player{
 		
 		//Deep learning stopping criteria
 		//If no improvement, add another deep learning layer
-		if (!use_random && DL_layers != DL_maxlayers && DL_stop.epoch(this)){
+		if (!use_random && DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
 			DL_stop.reset();
 			deepLearn();
 		}
 	}
 	private static void deepLearn(){
+		DL_layers++;
 		//Add another layer
 		if (DL_layers < DL_maxlayers){
-			DL_layers++;
 			int dl = drawNet_layers[1] - DL_layers*DL_drawdelta,
 				pl = playNet_layers[1] - DL_layers*DL_playdelta;
 			//if (Game.verbose)

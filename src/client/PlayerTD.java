@@ -161,15 +161,15 @@ public class PlayerTD extends Player{
 		
 		//Deep learning stopping criteria
 		//If no improvement, add another deep learning layer
-		if (DL_layers != DL_maxlayers && DL_stop.epoch(this)){
+		if (DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
 			DL_stop.reset();
 			deepLearn();
 		}
 	}
 	private static void deepLearn(){
+		DL_layers++;
 		//Add another layer
 		if (DL_layers < DL_maxlayers){
-			DL_layers++;
 			int dl = net_layers[1] - DL_layers*DL_delta;
 			//if (Game.verbose)
 				System.out.println("PlayerTD: Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+" nodes)");
