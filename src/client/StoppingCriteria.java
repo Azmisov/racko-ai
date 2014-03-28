@@ -89,5 +89,6 @@ public class StoppingCriteria {
 	 */
 	public void reset(){
 		new_model = true;
+		noimprove = 0;
 	}
 }

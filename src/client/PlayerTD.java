@@ -23,10 +23,15 @@ public class PlayerTD extends Player{
 	//TD network
 	private static final double LEARN_RATE = .15;
 	private static final int[]
-		net_layers = new int[]{5, 20, 1};
+		net_layers = new int[]{15, 30, 1};
 	private static final Network
 		net = new Network(net_layers);
-	private int deep_layers = 0;
+	//Deep learning
+	private static final StoppingCriteria DL_stop = new StoppingCriteria();
+	private static final int
+		DL_maxlayers = 10,
+		DL_delta = (net_layers[1]-net_layers[2])/DL_maxlayers;
+	private static int DL_layers = 0;
 	//Stored score values
 	private boolean biased_play = false;
 	private DataInstance data_prev = null, data_cur;
@@ -72,24 +77,21 @@ public class PlayerTD extends Player{
 			return swap == -1 ? drawn : rack.swap(drawn, swap, fromDiscard);
 		}
 		
-		/*
+		//*
 		//Use a predefined scoring function as a starting bias
-		if (net_play_count == 10 || games_played < 100000){
+		if (games_played < 100000 && (net_play_count == 15 || games_played % 10 == 0)){
 			STAT_badmoves++;
 			biased_play = true;
-			int swap = PlayerMax.maxSequence(rack, game.rack_size, drawn);
+			int swap = PlayerMax.maxSequence(rack, game.rack_size, drawn, false);
 			return swap == -1 ? drawn : rack.swap(drawn, swap, fromDiscard);
 		}
 		//*/
-		biased_play = net_play_count == 10 || games_played < 1000000;
-		if (biased_play)
-			STAT_badmoves++;
 		
 		//Find the move that maximizes predicted score
 		int max_slot = 0;
-		double max_score = 0;
-				//probHi = game.deck.getRealProbability(drawn, true),
-				//probLo = game.deck.getRealProbability(drawn, false);
+		double max_score = 0,
+				probHi = game.deck.getRealProbability(drawn, true),
+				probLo = game.deck.getRealProbability(drawn, false);
 		double[] inputs = Arrays.copyOf(data_cur.inputs, data_cur.inputs.length);
 		//Replace the drawn card with each value in the rack
 		for (int i=0; i<game.rack_size; i++){
@@ -97,8 +99,8 @@ public class PlayerTD extends Player{
 				i2 = game.rack_size*2 + i;
 			//Swap the card and replace input features
 			int swapped = rack.swap(drawn, i);
-			//inputs[i1] = probHi;
-			//inputs[i2] = probLo;
+			inputs[i1] = probHi;
+			inputs[i2] = probLo;
 			//Score of this move
 			net.compute(inputs);
 			double temp_score = net.getOutput(0);
@@ -108,19 +110,17 @@ public class PlayerTD extends Player{
 			}
 			//Undo the swap
 			rack.swap(swapped, i);
-			//inputs[i1] = data_cur.inputs[i1];
-			//inputs[i2] = data_cur.inputs[i2];
+			inputs[i1] = data_cur.inputs[i1];
+			inputs[i2] = data_cur.inputs[i2];
 		}
 		
 		//Make the actual move
-		return max_score > score_cur ? rack.swap(drawn, max_slot, fromDiscard) : drawn;
+		return max_score >= score_cur ? rack.swap(drawn, max_slot, fromDiscard) : drawn;
 	}
-
 	@Override
 	public void beginRound() {
 		net_play_count = 0;
 	}
-
 	@Override
 	public void scoreRound(boolean won, int score){
 		games_played++;
@@ -137,10 +137,9 @@ public class PlayerTD extends Player{
 	}
 	
 	private DataInstance getInputs(){
-		DataInstance data = new DataInstance(game.rack_size);
+		DataInstance data = new DataInstance(game.rack_size*3);
 		//Rack
 		int[] cur_rack = rack.getCards();
-		/*
 		//Probabilities
 		double[] pHigh = new double[game.rack_size],
 				pLow = new double[game.rack_size];
@@ -148,33 +147,40 @@ public class PlayerTD extends Player{
 			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
 			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
 		}
-		//*/
 		//Insert into datainstance object
 		data.addFeature(cur_rack, game.card_count);
-		//data.addFeature(pHigh, 1);
-		//data.addFeature(pLow, 1);
+		data.addFeature(pHigh, 1);
+		data.addFeature(pLow, 1);
 		return data;
 	}
 	
-	private int epochs = 0;
+	//DEEP LEARNING
 	@Override
 	public void epoch(){
 		super.epoch();
 		
-		//Add deep learning layer
-		if (++epochs % 10 == 0){
-			if (deep_layers < 10){
-				deep_layers++;
-				System.out.println("Adding DEEP LEARNING layer #"+deep_layers);
-				net.addHiddenLayer(20);
-				net.freeze(deep_layers);
-			}
-			//Unfreeze all layers
-			else if (deep_layers == 10){
-				net.freeze(0);
-				System.out.println("Beginning DEEP LEARNING refinement stage");
-			}
+		//Deep learning stopping criteria
+		//If no improvement, add another deep learning layer
+		if (DL_layers != DL_maxlayers && DL_stop.epoch(this)){
+			DL_stop.reset();
+			deepLearn();
 		}
 	}
-	
+	private static void deepLearn(){
+		//Add another layer
+		if (DL_layers < DL_maxlayers){
+			DL_layers++;
+			int dl = net_layers[1] - DL_layers*DL_delta;
+			//if (Game.verbose)
+				System.out.println("PlayerTD: Adding DEEP LEARNING layer #"+DL_layers+" ("+dl+" nodes)");
+			net.addHiddenLayer(dl);
+			net.freeze(DL_layers);
+		}
+		//Unfreeze all layers (refinement stage)
+		else{
+			net.freeze(0);
+			//if (Game.verbose)
+				System.out.println("PlayerTD: Beginning DEEP LEARNING refinement stage");
+		}
+	}	
 }
