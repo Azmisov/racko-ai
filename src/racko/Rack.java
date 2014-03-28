@@ -23,6 +23,7 @@ public class Rack {
 	private int exposed_count, maxCard;
 	private final boolean[] exposed;
 	private final int[] cards;
+	private int[] lus_cards = null, lus_ids;
 	
 	/**
 	 * Initializes a rack
@@ -41,6 +42,7 @@ public class Rack {
 	 */
 	public void deal(int[] cards){
 		assert(cards.length == this.cards.length);
+		lus_cards = null;
 		System.arraycopy(cards, 0, this.cards, 0, cards.length);
 		//at start of game, all cards are secret
 		exposed_count = 0;
@@ -56,6 +58,7 @@ public class Rack {
 	 */
 	public int swap(int card, int position, boolean fromDiscard){
 		assert(position >= 0 && position < cards.length);
+		lus_cards = null;
 		int old = cards[position];
 		cards[position] = card;
 		if (exposed[position] != fromDiscard)
@@ -202,6 +205,56 @@ public class Rack {
 	 * @return length of largest ascending subset
 	 */
 	public int scoreSequence(){
+		computeLUS();
+		return lus_cards.length;
+	}
+	/**
+	 * Gives distribution error of the rack
+	 * @param target target distribution
+	 * @param err_weight distribution to weight errors by (optional)
+	 * @return error normalized between 0-1 (uses weighted sum of absolute errors)
+	 *  (provided distributions are within the correct ranges)
+	 */
+	public double scoreDE(Distribution target, Distribution err_weight){
+		double sum = 0;
+		for (int i=0; i<cards.length; i++){
+			double err = Math.abs(target.eval(i) - cards[i]);
+			if (err_weight != null)
+				err *= (1 + err_weight.eval(i));
+			sum += err;
+		}
+		//Min err = 0, Max err = rack_size(max_card-rack_size)*2 (or *1, if no error weighting)
+		sum /= (double) (cards.length*(maxCard-cards.length)*(err_weight == null ? 1 : 2));
+		assert(sum >= 0 && sum <= 1);
+		return sum;
+	}
+	/**
+	 * Gives distribution error of the rack without penalizing for usable sequences
+	 * @param target target distribution
+	 * @param err_weight distribution to weight errors by
+	 * @return root mean squared error, normalized between 0-1
+	 *  (provided distributions are within the correct ranges)
+	 */
+	public double scoreAdjustedDE(Distribution d, Distribution err_weight){
+		//TODO
+		System.out.println("TODO implement Adjusted DE");
+		return 0;
+	}
+	public double scoreProbability(){
+		//TODO
+		System.out.println("TODO implement probability score");
+		return 0;
+	}
+
+	/**
+	 * Computes the longest usable sequence; see scoreSequence for
+	 * details about what a usable sequence is
+	 */
+	private void computeLUS(){
+		//Since this is an n^2 algorithm, we cache the results
+		if (lus_cards != null)
+			return;
+		
 		int s = cards.length;
 		//Hold cards in each sequence we're considering
 		int[][] seq_cards = new int[s][s];
@@ -210,7 +263,7 @@ public class Rack {
 		//Length of each sequence
 		int[] seq_len = new int[s];
 		//How many sequences are we considering and the max sequence length
-		int seq_count = 0, max_len = 0;
+		int seq_count = 0, max_len = 0, max_idx;
 		
 		//Check each next card to see if it can be added to a sequence
 		//If it cannot, create a new sequence (we only care about the "maximum" subsequences, so
@@ -246,8 +299,10 @@ public class Rack {
 			if (new_len == 0 && card-1 < i)
 				continue;
 			//Create a new sequence, if we couldn't add it to the end of one
-			if (new_len == 0 || seq_len[new_seq] > new_len)
+			if (new_len == 0 || seq_len[new_seq] > new_len){
 				new_seq = seq_count++;
+				//Copy the prefix of the other sequence
+			}
 			//Add the card to the appropriate sequence
 			seq_cards[new_seq][new_len] = card;
 			seq_idx[new_seq][new_len] = i;
@@ -256,27 +311,10 @@ public class Rack {
 			seq_len[new_seq] = new_len;
 		}
 		
-		//Return the maximum usable sequence size
-		return max_len;
-	}
-	/**
-	 * Gives the sum squared error of the rack's distribution
-	 * @return 
-	 */
-	public double scoreSSE(Distribution d){
-		//TODO
-		return 0;
-	}
-	/**
-	 * Gives the sum squared error of the rack's distribution,
-	 * without penalizing for usable sequences
-	 * @return 
-	 */
-	public double scoreAdjustedSSE(Distribution d){
-		//TODO
-		return 0;
+		//Cache the results
 	}
 	
+	@Override
 	public String toString(){
 		return Arrays.toString(cards);
 	}

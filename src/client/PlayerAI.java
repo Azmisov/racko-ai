@@ -19,20 +19,13 @@ public class PlayerAI extends Player{
 	private final ArrayList<DataInstance> playHistory;
 	private DataInstance draw_instance, play_instance;
 	//Learning model
-	private final boolean use_random;
+	private final boolean USE_RAND, USE_PROB_DRAW = false, USE_PROB_PLAY = false;
 	private static final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
-	private static final int[]
-		drawNet_layers = new int[]{6, 20, 1},
-		playNet_layers = new int[]{6, 20, 6};
-	private static final Network
-		drawNet = new Network(drawNet_layers),
-		playNet = new Network(playNet_layers);
+	private static int[] drawNet_layers, playNet_layers;
+	private static Network drawNet = null, playNet = null;
 	//Deep learning
-	private static final int
-		DL_maxlayers = 10,
-		DL_drawdelta = (drawNet_layers[1]-drawNet_layers[2])/DL_maxlayers,
-		DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
-	private static int DL_layers = 0;
+	private static final int DL_maxlayers = 4;
+	private static int DL_drawdelta, DL_playdelta, DL_layers = 0, rack_size;
 	private static final StoppingCriteria DL_stop = new StoppingCriteria();
 	//Statistics
 	private double initialScore, currentScore;
@@ -41,11 +34,32 @@ public class PlayerAI extends Player{
 	
 	public PlayerAI(boolean random){
 		super();
-		use_random = random;
+		USE_RAND = random;
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
 	}
-	
+
+	@Override
+	public void register(Game g, Rack r) {
+		super.register(g, r);
+		
+		//Change game configuration
+		if (drawNet == null || rack_size != g.rack_size){
+			rack_size = g.rack_size;
+			//Draw network
+			int inputs_d = (USE_PROB_DRAW ? rack_size : rack_size*3) + 1,
+				hidden_d = USE_PROB_DRAW ? rack_size*2 : rack_size*4;
+			drawNet_layers = new int[]{inputs_d, hidden_d, 1};
+			DL_drawdelta = (drawNet_layers[1]-drawNet_layers[2])/DL_maxlayers;
+			drawNet = new Network(drawNet_layers);
+			//Play network
+			int inputs_p = (USE_PROB_PLAY ? rack_size : rack_size*3) + 1,
+				hidden_p = USE_PROB_PLAY ? rack_size*2 : rack_size*4;
+			playNet_layers = new int[]{inputs_p, hidden_p, rack_size+1};
+			DL_playdelta = (playNet_layers[1]-playNet_layers[2])/DL_maxlayers;
+			playNet = new Network(playNet_layers);
+		}
+	}
 	@Override
 	public int play() {
 		net_play_count++;
@@ -62,10 +76,7 @@ public class PlayerAI extends Player{
 			drawHistory.add(draw_instance);
 			playHistory.add(play_instance);
 		}
-		currentScore = newScore;		
-		
-		if (Game.verbose)
-			System.out.println("\tAI"+(use_random ? "-rand" : "-net")+": "+rack.toString());
+		currentScore = newScore;
 		
 		return discard;
 	}
@@ -75,7 +86,7 @@ public class PlayerAI extends Player{
 
 		//We only add the draw instnace if the decidePlay outcome is good
 		createDrawHistory();
-		if (!use_random && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
+		if (!USE_RAND && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
 			drawNet.compute(draw_instance.inputs);
 			rval = drawNet.getOutput() > .5;
 		}
@@ -91,7 +102,7 @@ public class PlayerAI extends Player{
 		int rval = -1;
 		
 		createPlayHistory(card);
-		if (!use_random && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
+		if (!USE_RAND && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
 			playNet.compute(play_instance.inputs);
 			rval = playNet.getOutput()-1;
 		}
@@ -133,45 +144,47 @@ public class PlayerAI extends Player{
 		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
-	private void createDrawHistory(){		
-		//Calculate features
-		int[] cur_rack = rack.getCards();
-		double[] pHigh = new double[game.rack_size],
-				pLow = new double[game.rack_size];
-		for (int i=0; i < game.rack_size; i++){
-			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
-			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
-		}
-		int discard = game.deck.peek(true);
-		
-		//Create the history
+	private void createDrawHistory(){
 		DataInstance ddi = new DataInstance(game.rack_size*3 + 1);
+		//Rack
+		int[] cur_rack = rack.getCards();
 		ddi.addFeature(cur_rack, game.card_count);
-		ddi.addFeature(pHigh, 1);
-		ddi.addFeature(pLow, 1);
+		//Probabilities
+		if (USE_PROB_DRAW){
+			double[] pHigh = new double[game.rack_size],
+					pLow = new double[game.rack_size];
+			for (int i=0; i < game.rack_size; i++){
+				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
+			}
+			ddi.addFeature(pHigh, 1);
+			ddi.addFeature(pLow, 1);
+		}
+		//Top of discard
+		int discard = game.deck.peek(true);
 		ddi.addFeature(discard, game.card_count);
 		
 		draw_instance = ddi;
 	}
 	private void createPlayHistory(int drawnCard){
-		
+		DataInstance pdi = new DataInstance(playNet_layers[0]);
+		//Rack
 		int[] cur_rack = rack.getCards();
-		/*
-		double[] pHigh = new double[game.rack_size],
-				pLow = new double[game.rack_size];
-		for (int i=0; i < game.rack_size; i++){
-			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
-			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
-		}
-		//*/
-		
-		//Create the history
-		DataInstance pdi = new DataInstance(game.rack_size + 1);
 		pdi.addFeature(cur_rack, game.card_count);
-		//pdi.addFeature(pHigh, 1);
-		//pdi.addFeature(pLow, 1);
-		pdi.addFeature(drawnCard, game.card_count);		
+		//Probabilities
+		if (USE_PROB_PLAY){
+			double[] pHigh = new double[game.rack_size],
+					pLow = new double[game.rack_size];
+			for (int i=0; i < game.rack_size; i++){
+				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
+			}
+			pdi.addFeature(pHigh, 1);
+			pdi.addFeature(pLow, 1);
+		}
 		
+		//The card that was drawn
+		pdi.addFeature(drawnCard, game.card_count);
 		play_instance = pdi;
 	}
 	
@@ -214,7 +227,7 @@ public class PlayerAI extends Player{
 		
 		//Deep learning stopping criteria
 		//If no improvement, add another deep learning layer
-		if (!use_random && DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
+		if (!USE_RAND && DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
 			DL_stop.reset();
 			resetModel();
 			deepLearn();

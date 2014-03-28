@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Random;
 import racko.DataInstance;
 import racko.Game;
+import racko.Rack;
 
 /**
  * Using TD-backprop (Temporal Difference) as was used for
@@ -23,22 +24,33 @@ public class PlayerTD extends Player{
 	private static final Random RAND = new Random();
 	//TD network
 	private static final double LEARN_RATE = .15;
-	private static final int[]
-		net_layers = new int[]{USE_PROB ? 15 : 5, USE_PROB ? 30 : 20, 1};
-	private static final Network
-		net = new Network(net_layers);
+	private static int[] net_layers;
+	private static Network net = null;
+	private static int rack_size;
 	//Deep learning
 	private static final StoppingCriteria DL_stop = new StoppingCriteria();
-	private static final int
-		DL_maxlayers = 10,
-		DL_delta = (net_layers[1]-net_layers[2])/DL_maxlayers;
-	private static int DL_layers = 0;
+	private static final int DL_maxlayers = 10;
+	private static int DL_delta, DL_layers = 0;
 	//Stored score values
 	private boolean biased_play = false;
 	private DataInstance data_prev = null, data_cur;
 	private double score_prev, score_cur;
 	private int net_play_count, games_played;
 
+	@Override
+	public void register(Game g, Rack r) {
+		super.register(g, r);
+		
+		//Change game configuration
+		if (net == null || rack_size != g.rack_size){
+			rack_size = g.rack_size;
+			int inputs = USE_PROB ? rack_size : rack_size*3,
+				hidden = USE_PROB ? rack_size*2 : rack_size*4;
+			net_layers = new int[]{inputs, hidden, 1};
+			DL_delta = (net_layers[1]-net_layers[2])/DL_maxlayers;
+			net = new Network(net_layers);
+		}
+	}
 	@Override
 	public int play() {
 		/* The temporal difference algorithm works by training a nueral network to score moves.
@@ -142,7 +154,7 @@ public class PlayerTD extends Player{
 	}
 	
 	private DataInstance getInputs(){
-		DataInstance data = new DataInstance(game.rack_size*3);
+		DataInstance data = new DataInstance(net_layers[0]);
 		//Rack
 		int[] cur_rack = rack.getCards();
 		data.addFeature(cur_rack, game.card_count);

@@ -8,15 +8,31 @@ import racko.Rack;
  * Plays the game as a human
  */
 public class PlayerHuman extends Player{
+	private double max_points;
 
 	public PlayerHuman(){
 		super();
 	}
+
+	@Override
+	public void register(Game g, Rack r) {
+		super.register(g, r);
+		max_points = g.maxPoints();
+	}
 	
 	@Override
 	public int play(){
-		System.out.println("Score Metric = "+rack.scoreSequence());
+		double score_pts = rack.scorePoints(true) / max_points,
+				score_seq = rack.scoreSequence() / (double) game.rack_size,
+				score_def = rack.scoreDE(game.dist_flat, null),
+				score_des = rack.scoreDE(game.dist_flat, game.dist_skew);
+				
 		System.out.println("Discard: "+game.deck.peek(true)+", Rack: "+rack.toString());
+		System.out.println("Score Metrics:");
+		System.out.println("\tpts = "+score_pts);
+		System.out.println("\tseq = "+score_seq);
+		System.out.println("\tdef = "+score_def);
+		System.out.println("\tdes = "+score_des);
 		char draw;
 		do{
 			String output = System.console().readLine("Draw from discard [y/n]:");

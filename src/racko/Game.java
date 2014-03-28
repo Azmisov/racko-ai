@@ -1,5 +1,8 @@
 package racko;
 
+import client.PlayerHuman;
+import distributions.DistributionFlat;
+import distributions.DistributionSkew;
 import interfaces.Player;
 
 /**
@@ -12,6 +15,8 @@ public class Game {
 	//Scoring constants
 	public static int
 		score_win = 500;	//score needed to win the game
+	public DistributionSkew dist_skew;
+	public DistributionFlat dist_flat;
 	
 	//Game management
 	public final int rack_size, min_streak, player_count, card_count;
@@ -37,12 +42,16 @@ public class Game {
 		//Create the deck; rack size and player count are validated here
 		deck = new Deck(players, rackSize);
 		card_count = deck.cards;
+		
+		//Create distribution objects
+		dist_skew = new DistributionSkew(rack_size, card_count, 1);
+		dist_flat = new DistributionFlat(rack_size, card_count);
 	}
 	/**
 	 * Registers players to the game
 	 */
 	private void register(){
-		int max = deck.getMaxCard();
+		int max = deck.cards;
 		for (int i=0; i<player_count; i++){
 			Rack r = new Rack(rack_size, max);
 			players[i].register(this, r);
@@ -81,9 +90,13 @@ public class Game {
 				Player cur_player = players[active_player];
 				deck.discard(cur_player.play());
 				cur_player.STAT_allmoves++;
+				
+				//Show output for human player
+				Rack cur_rack = cur_player.rack;
+				if (Game.verbose && !(cur_player instanceof PlayerHuman))
+					System.out.println("\tP"+cur_player.playerNumber+": "+cur_rack.toString());
 
 				//Check if this player has won
-				Rack cur_rack = cur_player.rack;
 				if (cur_rack.isSorted()){
 					if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
 						//We have a winner
@@ -119,5 +132,20 @@ public class Game {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Calculates the maximum number of points a player
+	 * could earn in a round
+	 * @return maximum points possible per round
+	 */
+	public int maxPoints(){
+		//Create a dummy rack and use scorePoints to get max score
+		Rack dummy = new Rack(rack_size, card_count);
+		int[] best = new int[rack_size];
+		for (int i=0; i<rack_size; i++)
+			best[i] = i+1;
+		dummy.deal(best);
+		return dummy.scorePoints(bonus_mode);
 	}
 }

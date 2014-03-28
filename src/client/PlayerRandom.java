@@ -22,9 +22,7 @@ public class PlayerRandom extends Player{
 		boolean mary_poppins = rand.nextBoolean();
 		int card = game.deck.draw(mary_poppins);
 		int pos = rand.nextInt(game.rack_size+1);
-		if (pos == game.rack_size)
-			return card;
-		return rack.swap(card, pos, mary_poppins);
+		return pos == game.rack_size ? card : rack.swap(card, pos, mary_poppins);
 	}
 	
 }

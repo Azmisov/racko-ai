@@ -63,19 +63,17 @@ public class GUI extends JFrame{
 		
 		//*
 		//SETTINGS
-		int rack_size = 5,			//rack size
+		int rack_size = 10,			//rack size
 			streak_min = 1,			//minimum streak to win
-			train_games = 3000,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 10000000,	//how many games to play (after training, if playing a human)
-			epoch_every = 250;		//epoch after how many games?
+			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
+			play_games = 1,			//how many games to play (after training, if playing a human)
+			epoch_every = 100;		//epoch after how many games?
 		boolean
 			bonus_mode = false,		//use bonus scoring
-			play_human = false;		//play against the AI's in a terminal
+			play_human = true;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerTD(),
-			new PlayerAI(true),
-			new PlayerAI(false)
+			new PlayerHuman()
 		};
 
 		//TRAINING & TESTING

@@ -40,10 +40,9 @@ public class PlayerKyle extends Player{
 		//Default registration
 		super.register(g, r);
 		
-		//Set game constants
+		//If game configuration has changed, we need to reset our learned reinforcement weights
 		rack_size = g.rack_size;
 		if (weights == null || weights.length != rack_size+1 || weights[0].length != g.card_count+1){
-			System.out.println("Registering PlayerKyle; Warning! PlayerKyle cannot play simultaneous games of different configurations");
 			oldRack = new int[rack_size];
 			weights = new int[rack_size+1][g.card_count+1];
 			//reset stopping criteria

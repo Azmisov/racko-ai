@@ -10,9 +10,21 @@ import racko.Rack;
  */
 public class PlayerMax extends Player{
 	private static final Random rand = new Random();
+	private int deadlock_count = 0, deadlock_max;
 	
 	@Override
 	public int play() {
+		//To avoid deadlock, we'll compromise and make a random move
+		//This is probably a zugzwang situation, where doing so will cost us the game
+		//When rack size increases, maximization tends to fail anyways
+		//Hopefully it doesn't happen too often though...
+		if (++deadlock_count > deadlock_max){
+			STAT_badmoves++;
+			deadlock_count = 0;
+			deadlock_max--;
+			return rack.swap(game.deck.draw(false), rand.nextInt(game.rack_size), false);
+		}
+		
 		//Check if taking from the discard pile will improve our score
 		int peek = game.deck.peek(true);
 		int best_pos = maxSequence(rack, game.rack_size, peek, true);
@@ -27,6 +39,13 @@ public class PlayerMax extends Player{
 		
 		return best_pos == -1 ? drawn : rack.swap(drawn, best_pos, fromDiscard);
 	}
+
+	@Override
+	public void scoreRound(boolean won, int score) {
+		deadlock_count = 0;
+		deadlock_max = game.rack_size+5;
+	}
+	
 	
 	/**
 	 * Maximization algorithm for scoreSequence, for a given rack/game
