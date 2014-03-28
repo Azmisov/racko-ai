@@ -56,11 +56,11 @@ public class PlayerMax extends Player{
 	 */
 	public static int maxSequence(Rack r, int rack_size, int drawn, boolean forceBetter){
 		//Replace the drawn card with each value in rack
-		int prev_score = r.scoreSequence();
+		int prev_score = r.computeLUS();
 		int max_pos = 0, max_score = 0;
 		for (int i=0; i<rack_size; i++){
 			int swapped = r.swap(drawn, i);
-			int temp_score = r.scoreSequence();
+			int temp_score = r.computeLUS();
 			if (temp_score > max_score){
 				max_score = temp_score;
 				max_pos = i;

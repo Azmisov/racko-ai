@@ -1,6 +1,7 @@
 package racko;
 
 import interfaces.Distribution;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -8,14 +9,9 @@ import java.util.Arrays;
  * If you get an assertion error, you aren't following Racko rules
  */
 public class Rack {
-	//Scoring constants
-	public static int
-		score_all = 25,			//score for having all cards in order
-		score_single = 5,		//score for a single card in order
-		score_bonus = 50,		//bonus score for the minimum streak
-		score_bonus_fac = 2,	//bonus score multiplication factor for each additional card above minimum streak
-		bonus_min = 3,			//minimum streak for bonus
-		bonus_max = 6;			//maximum streak for bonus
+	//If unbiased, it will save all long usable sequences in the lus_cache
+	// (as opposed to saving just the "longest" ones)
+	public static boolean SCORE_UNBIASED = false;
 
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
@@ -23,7 +19,8 @@ public class Rack {
 	private int exposed_count, maxCard;
 	private final boolean[] exposed;
 	private final int[] cards;
-	private int[] lus_cards = null, lus_ids;
+	public ArrayList<LUS> lus_cache;
+	public int lus_max_length;
 	
 	/**
 	 * Initializes a rack
@@ -34,6 +31,7 @@ public class Rack {
 		exposed = new boolean[size];
 		cards = new int[size];
 		maxCard = max;
+		lus_cache = new ArrayList();
 	}
 	
 	/**
@@ -42,7 +40,7 @@ public class Rack {
 	 */
 	public void deal(int[] cards){
 		assert(cards.length == this.cards.length);
-		lus_cards = null;
+		lus_cache.clear();
 		System.arraycopy(cards, 0, this.cards, 0, cards.length);
 		//at start of game, all cards are secret
 		exposed_count = 0;
@@ -58,7 +56,7 @@ public class Rack {
 	 */
 	public int swap(int card, int position, boolean fromDiscard){
 		assert(position >= 0 && position < cards.length);
-		lus_cards = null;
+		lus_cache.clear();
 		int old = cards[position];
 		cards[position] = card;
 		if (exposed[position] != fromDiscard)
@@ -164,28 +162,28 @@ public class Rack {
 	 * @param bonusMode allows bonus points for consecutive cards, provided all
 	 * the cards are in order; each consecutive card beyond "bonus_min", up to
 	 * "bonus_max" will multiply "score_bonus" by "score_bonus_fac"
-	 * (see static Rack variables)
+	 * (see static Game variables)
 	 * @return the score
 	 */
 	public int scorePoints(boolean bonusMode){
-		int score = score_single,
+		int score = Game.score_single,
 			bonus = 0, cur_streak = 1;
 		for (int i=1; i<cards.length; i++){
 			//Not all are sorted
 			if (cards[i] < cards[i-1])
 				return score;
 			else{
-				score += score_single;
+				score += Game.score_single;
 				//Calculate streaks, for bonus mode
 				if (bonusMode){
 					if (cards[i] == cards[i-1]+1)
 						cur_streak++;
 					else{
-						if (cur_streak >= bonus_min){
-							if (cur_streak > bonus_max)
-								cur_streak = bonus_max;
-							cur_streak -= bonus_min;
-							bonus += Math.pow(score_bonus_fac, cur_streak)*score_bonus;
+						if (cur_streak >= Game.bonus_min){
+							if (cur_streak > Game.bonus_max)
+								cur_streak = Game.bonus_max;
+							cur_streak -= Game.bonus_min;
+							bonus += Math.pow(Game.score_bonus_fac, cur_streak)*Game.score_bonus;
 						}
 						cur_streak = 1;
 					}
@@ -193,29 +191,16 @@ public class Rack {
 			}
 		}
 		//This person is a winner! (bonus is 0, if bonusMode is false)
-		return score + score_all + bonus;
-	}
-	/**
-	 * Returns the largest ascending subset that is usable
-	 *	"usable" sequences are ones that could be used for a winning rack:
-	 *		{4 1 3 6} gives a score of 2, since the 1 in the {1 3 6} sequence is
-	 *		unusable for a winning rack (e.g. there is no card less than 1 to fill the four's spot)
-	 *  if two usable sequences cannot be used together, the largest one is returned
-	 *  otherwise, if they are both usable, their lengths will be summed
-	 * @return length of largest ascending subset
-	 */
-	public int scoreSequence(){
-		computeLUS();
-		return lus_cards.length;
+		return score + Game.score_all + bonus;
 	}
 	/**
 	 * Gives distribution error of the rack
 	 * @param target target distribution
 	 * @param err_weight distribution to weight errors by (optional)
-	 * @return error normalized between 0-1 (uses weighted sum of absolute errors)
+	 * @return weighted average of absolute errors, normalized between 0-1
 	 *  (provided distributions are within the correct ranges)
 	 */
-	public double scoreDE(Distribution target, Distribution err_weight){
+	public double scoreRackDE(Distribution target, Distribution err_weight){
 		double sum = 0;
 		for (int i=0; i<cards.length; i++){
 			double err = Math.abs(target.eval(i) - cards[i]);
@@ -229,31 +214,57 @@ public class Rack {
 		return sum;
 	}
 	/**
-	 * Gives distribution error of the rack without penalizing for usable sequences
+	 * Gives distribution error for clumps in a long usable sequences
+	 * @param seq a long usable sequence to score clumps
 	 * @param target target distribution
 	 * @param err_weight distribution to weight errors by
-	 * @return root mean squared error, normalized between 0-1
+	 * @return weighted average of absolute errors, normalized between 0-1
 	 *  (provided distributions are within the correct ranges)
 	 */
-	public double scoreAdjustedDE(Distribution d, Distribution err_weight){
+	public double scoreClumpDE(LUS seq, Distribution target, Distribution err_weight){
 		//TODO
+		//maybe combine this with scoreAdjustedDE and just take null for seq?
 		System.out.println("TODO implement Adjusted DE");
 		return 0;
 	}
-	public double scoreProbability(){
+	/**
+	 * Gives a score for the probability of 
+	 * @param seq a long usable sequence to compute probabilities for
+	 * @param err_weight distribution to weight probabilities (optional)
+	 * @return 
+	 */
+	public double scoreProbability(LUS seq, Distribution err_weight){
 		//TODO
+		//probability in between clumps
+		//closeness
 		System.out.println("TODO implement probability score");
+		return 0;
+	}
+	/**
+	 * Gives a score for the density of clumps in a sequence
+	 * @param seq a long usable sequence to score clumps
+	 * @return 
+	 */
+	public double scoreDensity(LUS seq){
+		//TODO
 		return 0;
 	}
 
 	/**
-	 * Computes the longest usable sequence; see scoreSequence for
-	 * details about what a usable sequence is
+	 * Returns the largest ascending sequence that is usable
+	 *	"usable" sequences are ones that could be used for a winning rack:
+	 *		{4 1 3 6} gives a score of 2, since the 1 in the {1 3 6} sequence is
+	 *		unusable for a winning rack (e.g. there is no card less than 1 to fill the four's spot)
+	 *  if two usable sequences cannot be used together, the largest one is returned
+	 *  otherwise, if they are both usable, their lengths will be summed
+	 * 
+	 * @return the length of the longest usable sequence; results are cached
+	 * in lus_cache and lus_max_length variables
 	 */
-	private void computeLUS(){
+	public int computeLUS(){
 		//Since this is an n^2 algorithm, we cache the results
-		if (lus_cards != null)
-			return;
+		if (lus_cache.size() > 0)
+			return lus_max_length;
 		
 		int s = cards.length;
 		//Hold cards in each sequence we're considering
@@ -262,8 +273,12 @@ public class Rack {
 		int[][] seq_idx = new int[s][s];
 		//Length of each sequence
 		int[] seq_len = new int[s];
-		//How many sequences are we considering and the max sequence length
-		int seq_count = 0, max_len = 0, max_idx;
+		//Sequence prefixes, if they have branched from another sequence [0] = prefix_sequence [1] = prefix_length
+		int[][] seq_prefix = new int[s][2];
+		//How many sequences are we considering
+		int seq_count = 0;
+		//Maximum sequence length we've seen thus far
+		lus_max_length = 0;
 		
 		//Check each next card to see if it can be added to a sequence
 		//If it cannot, create a new sequence (we only care about the "maximum" subsequences, so
@@ -300,18 +315,46 @@ public class Rack {
 				continue;
 			//Create a new sequence, if we couldn't add it to the end of one
 			if (new_len == 0 || seq_len[new_seq] > new_len){
-				new_seq = seq_count++;
-				//Copy the prefix of the other sequence
+				seq_count++;
+				//Store prefix location, for deferred mem copying
+				seq_prefix[seq_count][0] = new_seq;
+				seq_prefix[seq_count][1] = new_len;
+				new_seq = seq_count;
 			}
 			//Add the card to the appropriate sequence
 			seq_cards[new_seq][new_len] = card;
 			seq_idx[new_seq][new_len] = i;
-			if (++new_len > max_len)
-				max_len = new_len;
+			if (++new_len > lus_max_length)
+				lus_max_length = new_len;
 			seq_len[new_seq] = new_len;
 		}
 		
 		//Cache the results
+		for (int i=0; i<seq_count; i++){
+			if (SCORE_UNBIASED || seq_len[i] == lus_max_length){
+				//Copy missing prefix first
+				System.arraycopy(seq_cards[seq_prefix[i][0]], 0, seq_cards[i], 0, seq_prefix[i][1]);
+				lus_cache.add(new LUS(seq_cards[i], seq_idx[i], seq_len[i]));
+			}
+		}
+		
+		//Return maximum length found
+		return lus_max_length;
+	}
+	/**
+	 * Holds cached longest-usable-sequence results
+	 * cards = the card numbers in the sequence
+	 * indexes = the rack positions of each of the cards
+	 * length = the length of the sequence (length may not equal cards.length)
+	 */
+	public class LUS{
+		public int[] cards, indexes;
+		public int length;
+		public LUS(int[] cards, int[] indexes, int length){
+			this.cards = cards;
+			this.indexes = indexes;
+			this.length = length;
+		}
 	}
 	
 	@Override

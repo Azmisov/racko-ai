@@ -75,7 +75,7 @@ public class PlayerTD extends Player{
 				
 		//Train network to predict current scores, given previous data
 		if (data_prev != null){
-			double output = biased_play ? rack.scoreSequence() / (double) game.rack_size : score_cur;
+			double output = biased_play ? rack.computeLUS() / (double) game.rack_size : score_cur;
 			net.compute(data_prev.inputs);
 			net.trainBackprop(LEARN_RATE, new double[]{output});
 		}

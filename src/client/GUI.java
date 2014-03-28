@@ -136,8 +136,7 @@ public class GUI extends JFrame{
 		int size = 5;
 		Rack r = new Rack(rack.length, 6);
 		r.deal(rack);
-		int seq = r.scoreSequence();
-		System.out.println(seq);
+		System.out.println(r.computeLUS());
 	}
 	private static double round(double val){
 		return Math.round(val*100)/100.0;

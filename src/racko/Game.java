@@ -7,6 +7,7 @@ import interfaces.Player;
 
 /**
  * Controls a Racko game with fixed settings
+ * TODO: be able to play multiple games at once?
  */
 public class Game {
 	//Shows rack output for each move
@@ -14,7 +15,13 @@ public class Game {
 	
 	//Scoring constants
 	public static int
-		score_win = 500;	//score needed to win the game
+		score_win = 500,	//score needed to win the game
+		score_all = 25,			//score for having all cards in order
+		score_single = 5,		//score for a single card in order
+		score_bonus = 50,		//bonus score for the minimum streak
+		score_bonus_fac = 2,	//bonus score multiplication factor for each additional card above minimum streak
+		bonus_min = 3,			//minimum streak for bonus
+		bonus_max = 6;			//maximum streak for bonus
 	public DistributionSkew dist_skew;
 	public DistributionFlat dist_flat;
 	
