@@ -86,6 +86,7 @@ public class StoppingCriteria {
 	 * Reset the stopping criteria
 	 * Use this if the learning model changes (e.g. you add
 	 * another hidden layer to a deep neural network)
+	 * Make sure to also call Player.resetModel() as well!!!
 	 */
 	public void reset(){
 		new_model = true;

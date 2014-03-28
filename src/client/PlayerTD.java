@@ -19,11 +19,12 @@ import racko.Game;
  * @author isaac
  */
 public class PlayerTD extends Player{
+	private static final boolean USE_PROB = false;
 	private static final Random RAND = new Random();
 	//TD network
 	private static final double LEARN_RATE = .15;
 	private static final int[]
-		net_layers = new int[]{15, 30, 1};
+		net_layers = new int[]{USE_PROB ? 15 : 5, USE_PROB ? 30 : 20, 1};
 	private static final Network
 		net = new Network(net_layers);
 	//Deep learning
@@ -70,7 +71,7 @@ public class PlayerTD extends Player{
 		score_prev = score_cur;
 		
 		//If we're stuck, pick a random move
-		if (++net_play_count == 20){
+		if (++net_play_count == 30){
 			net_play_count = 0;
 			STAT_badmoves++;
 			int swap = RAND.nextInt(game.rack_size+1) - 1;
@@ -79,7 +80,7 @@ public class PlayerTD extends Player{
 		
 		//*
 		//Use a predefined scoring function as a starting bias
-		if (games_played < 100000 && (net_play_count == 15 || games_played % 10 == 0)){
+		if (games_played < 100000 && (net_play_count == 20 || games_played % 10 == 0)){
 			STAT_badmoves++;
 			biased_play = true;
 			int swap = PlayerMax.maxSequence(rack, game.rack_size, drawn, false);
@@ -99,8 +100,10 @@ public class PlayerTD extends Player{
 				i2 = game.rack_size*2 + i;
 			//Swap the card and replace input features
 			int swapped = rack.swap(drawn, i);
-			inputs[i1] = probHi;
-			inputs[i2] = probLo;
+			if (USE_PROB){
+				inputs[i1] = probHi;
+				inputs[i2] = probLo;
+			}
 			//Score of this move
 			net.compute(inputs);
 			double temp_score = net.getOutput(0);
@@ -110,8 +113,10 @@ public class PlayerTD extends Player{
 			}
 			//Undo the swap
 			rack.swap(swapped, i);
-			inputs[i1] = data_cur.inputs[i1];
-			inputs[i2] = data_cur.inputs[i2];
+			if (USE_PROB){
+				inputs[i1] = data_cur.inputs[i1];
+				inputs[i2] = data_cur.inputs[i2];
+			}
 		}
 		
 		//Make the actual move
@@ -140,17 +145,18 @@ public class PlayerTD extends Player{
 		DataInstance data = new DataInstance(game.rack_size*3);
 		//Rack
 		int[] cur_rack = rack.getCards();
-		//Probabilities
-		double[] pHigh = new double[game.rack_size],
-				pLow = new double[game.rack_size];
-		for (int i=0; i < game.rack_size; i++){
-			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
-			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
-		}
-		//Insert into datainstance object
 		data.addFeature(cur_rack, game.card_count);
-		data.addFeature(pHigh, 1);
-		data.addFeature(pLow, 1);
+		//Probabilities
+		if (USE_PROB){
+			double[] pHigh = new double[game.rack_size],
+					pLow = new double[game.rack_size];
+			for (int i=0; i < game.rack_size; i++){
+				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
+			}
+			data.addFeature(pHigh, 1);
+			data.addFeature(pLow, 1);
+		}		
 		return data;
 	}
 	
@@ -163,6 +169,7 @@ public class PlayerTD extends Player{
 		//If no improvement, add another deep learning layer
 		if (DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
 			DL_stop.reset();
+			resetModel();
 			deepLearn();
 		}
 	}

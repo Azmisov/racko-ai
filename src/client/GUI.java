@@ -67,18 +67,15 @@ public class GUI extends JFrame{
 			streak_min = 1,			//minimum streak to win
 			train_games = 3000,		//if play_human = true, how many games to train the AI's beforehand
 			play_games = 10000000,	//how many games to play (after training, if playing a human)
-			epoch_every = 8000;		//epoch after how many games?
+			epoch_every = 250;		//epoch after how many games?
 		boolean
 			bonus_mode = false,		//use bonus scoring
 			play_human = false;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
 			new PlayerTD(),
-			new PlayerMax(),
 			new PlayerAI(true),
-			new PlayerAI(false),
-			new PlayerKyle(true),
-			new PlayerKyle(false)
+			new PlayerAI(false)
 		};
 
 		//TRAINING & TESTING

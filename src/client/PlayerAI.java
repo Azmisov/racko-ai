@@ -12,7 +12,7 @@ import racko.Rack;
  * Plays the game as an artificial intelligence
  */
 public class PlayerAI extends Player{
-	private static final double LEARN_RATE = .15, EPSILON = 0.00001;
+	private static final double LEARN_RATE = .1, EPSILON = 0.00001;
 	private static final Random RAND = new Random();
 	//Playing history
 	private final ArrayList<DataInstance> drawHistory;
@@ -22,8 +22,8 @@ public class PlayerAI extends Player{
 	private final boolean use_random;
 	private static final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
 	private static final int[]
-		drawNet_layers = new int[]{16, 32, 1},
-		playNet_layers = new int[]{16, 32, 6};
+		drawNet_layers = new int[]{6, 20, 1},
+		playNet_layers = new int[]{6, 20, 6};
 	private static final Network
 		drawNet = new Network(drawNet_layers),
 		playNet = new Network(playNet_layers);
@@ -156,18 +156,20 @@ public class PlayerAI extends Player{
 	private void createPlayHistory(int drawnCard){
 		
 		int[] cur_rack = rack.getCards();
+		/*
 		double[] pHigh = new double[game.rack_size],
 				pLow = new double[game.rack_size];
 		for (int i=0; i < game.rack_size; i++){
 			pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
 			pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
 		}
+		//*/
 		
 		//Create the history
-		DataInstance pdi = new DataInstance(game.rack_size*3 + 1);
+		DataInstance pdi = new DataInstance(game.rack_size + 1);
 		pdi.addFeature(cur_rack, game.card_count);
-		pdi.addFeature(pHigh, 1);
-		pdi.addFeature(pLow, 1);
+		//pdi.addFeature(pHigh, 1);
+		//pdi.addFeature(pLow, 1);
 		pdi.addFeature(drawnCard, game.card_count);		
 		
 		play_instance = pdi;
@@ -214,6 +216,7 @@ public class PlayerAI extends Player{
 		//If no improvement, add another deep learning layer
 		if (!use_random && DL_layers <= DL_maxlayers && DL_stop.epoch(this)){
 			DL_stop.reset();
+			resetModel();
 			deepLearn();
 		}
 	}
