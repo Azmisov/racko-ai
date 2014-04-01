@@ -60,7 +60,7 @@ public class Game {
 	private void register(){
 		int max = deck.cards;
 		for (int i=0; i<player_count; i++){
-			Rack r = new Rack(rack_size, max);
+			Rack r = new Rack(rack_size, this);
 			players[i].register(this, r);
 		}
 	}
@@ -148,7 +148,7 @@ public class Game {
 	 */
 	public int maxPoints(){
 		//Create a dummy rack and use scorePoints to get max score
-		Rack dummy = new Rack(rack_size, card_count);
+		Rack dummy = new Rack(rack_size, this);
 		int[] best = new int[rack_size];
 		for (int i=0; i<rack_size; i++)
 			best[i] = i+1;

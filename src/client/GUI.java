@@ -132,11 +132,7 @@ public class GUI extends JFrame{
 	}
 	
 	private static void testSuite(){
-		int[] rack = new int[]{6, 5, 2, 1};
-		int size = 5;
-		Rack r = new Rack(rack.length, 6);
-		r.deal(rack);
-		System.out.println(r.computeLUS());
+		
 	}
 	private static double round(double val){
 		return Math.round(val*100)/100.0;

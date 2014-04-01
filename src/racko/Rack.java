@@ -13,10 +13,11 @@ public class Rack {
 	// (as opposed to saving just the "longest" ones)
 	public static boolean SCORE_UNBIASED = false;
 
+	private Game game;
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
 	//cards are known to other players
-	private int exposed_count, maxCard;
+	private int exposed_count;
 	private final boolean[] exposed;
 	private final int[] cards;
 	public ArrayList<LUS> lus_cache;
@@ -26,11 +27,11 @@ public class Rack {
 	 * Initializes a rack
 	 * @param size the number of cards in a rack
 	 */
-	public Rack(int size, int max){
+	public Rack(int size, Game g){
+		game = g;
 		exposed_count = 0;
 		exposed = new boolean[size];
 		cards = new int[size];
-		maxCard = max;
 		lus_cache = new ArrayList();
 	}
 	
@@ -167,7 +168,7 @@ public class Rack {
 	 */
 	public int scorePoints(boolean bonusMode){
 		int score = Game.score_single,
-			bonus = 0, cur_streak = 1;
+			bonus = 0, cur_streak = 1, max_streak = 1;
 		for (int i=1; i<cards.length; i++){
 			//Not all are sorted
 			if (cards[i] < cards[i-1])
@@ -176,9 +177,14 @@ public class Rack {
 				score += Game.score_single;
 				//Calculate streaks, for bonus mode
 				if (bonusMode){
-					if (cards[i] == cards[i-1]+1)
+					boolean is_streak = cards[i] == cards[i-1]+1;
+					if (is_streak){
 						cur_streak++;
-					else{
+						if (cur_streak > max_streak)
+							max_streak = cur_streak;
+					}
+					//Calculate the actual bonus (when streak ends or end of rack)
+					if (!is_streak || i+1 == cards.length){
 						if (cur_streak >= Game.bonus_min){
 							if (cur_streak > Game.bonus_max)
 								cur_streak = Game.bonus_max;
@@ -191,7 +197,8 @@ public class Rack {
 			}
 		}
 		//This person is a winner! (bonus is 0, if bonusMode is false)
-		return score + Game.score_all + bonus;
+		boolean winner = max_streak >= game.min_streak;
+		return score + (winner ? Game.score_all : 0) + bonus;
 	}
 	/**
 	 * Gives distribution error of the rack
@@ -205,11 +212,11 @@ public class Rack {
 		for (int i=0; i<cards.length; i++){
 			double err = Math.abs(target.eval(i) - cards[i]);
 			if (err_weight != null)
-				err *= (1 + err_weight.eval(i));
+				err *= err_weight.eval(i);
 			sum += err;
 		}
-		//Min err = 0, Max err = rack_size(max_card-rack_size)*2 (or *1, if no error weighting)
-		sum /= (double) (cards.length*(maxCard-cards.length)*(err_weight == null ? 1 : 2));
+		//Min err = 0, Max err = rack_size(max_card-rack_size)
+		sum /= (double) (cards.length*(game.deck.cards-cards.length));
 		assert(sum >= 0 && sum <= 1);
 		return sum;
 	}
@@ -258,10 +265,12 @@ public class Rack {
 	 *  if two usable sequences cannot be used together, the largest one is returned
 	 *  otherwise, if they are both usable, their lengths will be summed
 	 * 
+	 * @param um an optional "usability metric" to prune unwanted sequences (in addition to the default)
+	 *  (for example, probability of drawing a card above/below/between)
 	 * @return the length of the longest usable sequence; results are cached
 	 * in lus_cache and lus_max_length variables
 	 */
-	public int computeLUS(){
+	public int computeLUS(UsableMetric um){
 		//Since this is an n^2 algorithm, we cache the results
 		if (lus_cache.size() > 0)
 			return lus_max_length;
@@ -273,8 +282,13 @@ public class Rack {
 		int[][] seq_idx = new int[s][s];
 		//Length of each sequence
 		int[] seq_len = new int[s];
-		//Sequence prefixes, if they have branched from another sequence [0] = prefix_sequence [1] = prefix_length
-		int[][] seq_prefix = new int[s][2];
+		//Sequence prefixes, if they have branched from another sequence
+		//[0] = prefix_sequence [1] = prefix_length
+		int[] seq_prefix_len = new int[s];
+		ArrayList<Integer>[] seq_prefix_seq = new ArrayList[s];
+		for (int i=0; i<s; i++)
+			seq_prefix_seq[i] = new ArrayList();
+		ArrayList<Integer> prefixes = new ArrayList();
 		//How many sequences are we considering
 		int seq_count = 0;
 		//Maximum sequence length we've seen thus far
@@ -283,42 +297,52 @@ public class Rack {
 		//Check each next card to see if it can be added to a sequence
 		//If it cannot, create a new sequence (we only care about the "maximum" subsequences, so
 		//there will only be one branch per added card; e.g. [5,6,7] and [1,2,7] are treated the same
-		//since they both end in 7 and have length of three; we branch on the one with largest length)
+		//since they both end in 7 and have length of three; we branch on the one with largest length;
+		//however, if SCORE_UNBIASED is enabled, it will keep both)
 		for (int i=0; i<s; i++){
 			int card = cards[i];
 			//Make sure there is enough "usable" space above this 
-			if (maxCard-card < s-i-1)
+			if (game.deck.cards-card < s-i-1 && (um == null || um.above(card, i)))
 				continue;
 			//If we can't find any sequences that can prepend this card, we create a new branch
 			//(hence the initial new_len/seq vars)
 			int new_len = 0, new_seq = 0;
+			prefixes.clear();
+			prefixes.add(0);
 			for (int j=0; j<seq_count; j++){
 				//Find the longest subset of the sequence that can be used
 				//with this card; since the sequence is sorted, this is O(n) worst case
 				//We only care about sequences greater than what we've seen already, hence the "k>new_len"
-				for (int k = seq_len[j]; k>new_len; k--){
-					int comp = seq_cards[j][k-1];
+				for (int k = seq_len[j]; k != 0 && k>=new_len; k--){
+					int comp = seq_cards[j][k-1],
+						comp_idx = seq_idx[j][k-1];
 					//When we encounter a zero, this part of the sequence is the same as one we saw
 					//earlier; we don't copy the earlier sequence to this one, because it would be redundant
 					if (comp == 0) break;
 					//This card is in ascending order in position "k"
 					//Also make sure there is enough "usable" space in between the two cards
-					if (comp < card && card-comp >= i-seq_idx[j][k-1]){
-						new_seq = j;
-						new_len = k;
+					if (comp < card && card-comp >= i-comp_idx && (um == null || um.between(card, i, comp, comp_idx))){
+						//If longer than previously seen, clear previous stored vars
+						if (k != new_len){
+							prefixes.clear();
+							new_seq = j;
+							new_len = k;
+						}
+						prefixes.add(j);
 						break;
 					}
 				}
 			}
 			//If this is the first item in the sequence, check for "usable" space below this
-			if (new_len == 0 && card-1 < i)
+			if (new_len == 0 && card-1 < i && (um == null || um.below(card, i)))
 				continue;
 			//Create a new sequence, if we couldn't add it to the end of one
-			if (new_len == 0 || seq_len[new_seq] > new_len){
+			//If there is more than one prefix, we also branch, to avoid trickiness
+			if (new_len == 0 || prefixes.size() > 1 || seq_len[new_seq] > new_len){
 				seq_count++;
 				//Store prefix location, for deferred mem copying
-				seq_prefix[seq_count][0] = new_seq;
-				seq_prefix[seq_count][1] = new_len;
+				seq_prefix_len[seq_count] = new_len;
+				seq_prefix_seq[seq_count].addAll(prefixes);
 				new_seq = seq_count;
 			}
 			//Add the card to the appropriate sequence
@@ -333,8 +357,14 @@ public class Rack {
 		for (int i=0; i<seq_count; i++){
 			if (SCORE_UNBIASED || seq_len[i] == lus_max_length){
 				//Copy missing prefix first
-				System.arraycopy(seq_cards[seq_prefix[i][0]], 0, seq_cards[i], 0, seq_prefix[i][1]);
-				lus_cache.add(new LUS(seq_cards[i], seq_idx[i], seq_len[i]));
+				int prefix_len = seq_prefix_len[i];
+				for (Integer prefix: seq_prefix_seq[i]){
+					System.arraycopy(seq_cards[prefix], 0, seq_cards[i], 0, prefix_len);
+					//Clone data for later use
+					int[] cards_clone = Arrays.copyOf(seq_cards[i], seq_len[i]),
+						  idxs_clone = Arrays.copyOf(seq_idx[i], seq_len[i]);
+					lus_cache.add(new LUS(cards_clone, idxs_clone));
+				}
 			}
 		}
 		
@@ -349,12 +379,21 @@ public class Rack {
 	 */
 	public class LUS{
 		public int[] cards, indexes;
-		public int length;
-		public LUS(int[] cards, int[] indexes, int length){
+		public LUS(int[] cards, int[] indexes){
 			this.cards = cards;
 			this.indexes = indexes;
-			this.length = length;
 		}
+	}
+	/**
+	 * Specify a usablility metric for finding longest-usable-sequences
+	 * Class is given a card and it's index and a boolean value is returned,
+	 * whether this card could be used in a winning rack in this position
+	 */
+	public interface UsableMetric{
+		public boolean above(int card, int idx);
+		public boolean below(int card, int idx);
+		//Where idx_hi is always greater than idx_lo
+		public boolean between(int card_hi, int idx_hi, int card_lo, int idx_lo);
 	}
 	
 	@Override

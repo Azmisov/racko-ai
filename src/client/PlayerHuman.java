@@ -23,7 +23,7 @@ public class PlayerHuman extends Player{
 	@Override
 	public int play(){
 		double score_pts = rack.scorePoints(true) / max_points,
-				score_seq = rack.computeLUS() / (double) game.rack_size,
+				score_seq = rack.computeLUS(null) / (double) game.rack_size,
 				score_def = rack.scoreDE(game.dist_flat, null),
 				score_des = rack.scoreDE(game.dist_flat, game.dist_skew);
 				
