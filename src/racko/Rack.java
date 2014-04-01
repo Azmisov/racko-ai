@@ -251,17 +251,46 @@ public class Rack {
 		return 0;
 	}
 	/**
-	 * Gives a score for the probability of 
-	 * @param seq a long usable sequence to compute probabilities for
+	 * Gives a score for the probability of drawing cards that
+	 * fill in the missing slots of a sequence
+	 * @param seq a long usable sequence to use for computations
 	 * @param err_weight distribution to weight probabilities (optional)
-	 * @return 
+	 * @param use_average averages individual probabilities for each missing slot,
+	 * rather than calculating a true probability; use this if you don't want a
+	 * zero probability in one slot to cancel everything out
+	 * @param prob_actual see Rack.getProbabilities
+	 * @param prob_memory see Rack.getProbabilities
+	 * @return probability between 0-1
 	 */
-	public double scoreProbability(LUS seq, Distribution err_weight){
-		//TODO
-		//probability in between clumps
-		//closeness
-		System.out.println("TODO implement probability score");
-		return 0;
+	public double scoreProbability(LUS seq, Distribution err_weight, boolean use_average, boolean prob_actual, int prob_memory){
+		double[][] prob = getProbabilities(prob_actual, prob_memory);
+		double score = use_average ? 0 : 1;
+		
+		//There will always be at least one clump in a sequence
+		int cur_clump = seq.indexes[0];
+		double cur_prob = prob[cur_clump][1];
+		for (int i=0; i<cards.length; i++){
+			//Don't count cards in the sequence
+			if (cur_clump == i){
+				//Last card in sequence, get prob higher
+				if (seq.cards.length == i+1)
+					cur_prob = prob[cur_clump][0];
+				//Probability in between this card and the previous
+				else{
+					cur_clump = seq.indexes[i+1];
+					cur_prob = prob[cur_clump][1] - cur_prob;
+				}
+				continue;
+			}
+			//Weight the probability
+			double weight = err_weight == null ? 1 : err_weight.eval(i);
+			//Add probability to score
+			if (use_average)
+				score += cur_prob*weight;
+			else score *= Math.pow(cur_prob, weight);
+		}
+		
+		return use_average ? score / (double) (cards.length - seq.cards.length) : score;
 	}
 	/**
 	 * Gives a score for the density of clumps in a sequence
