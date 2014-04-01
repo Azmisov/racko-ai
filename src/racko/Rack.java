@@ -12,16 +12,24 @@ public class Rack {
 	//If unbiased, it will save all long usable sequences in the lus_cache
 	// (as opposed to saving just the "longest" ones)
 	public static boolean SCORE_UNBIASED = false;
-
-	private Game game;
+	
+	//The game we're associated with
+	private final Game game;
 	//If someone had a photographic memory, they could memorize where someone
 	//put a -known- card in an opponenets rack; "exposed" keeps track of which
 	//cards are known to other players
 	private int exposed_count;
 	private final boolean[] exposed;
 	private final int[] cards;
-	public ArrayList<LUS> lus_cache;
-	public int lus_max_length;
+	//Longest usable sequence cache
+	private UsableMetric lus_metric = null;
+	private final ArrayList<LUS> lus_cache;
+	private int lus_max_length;
+	//Probability cache [rack_size][2], [0] = Above, [1] = Below
+	private final double[][] prob_cache;
+	private final boolean[] prob_cache_dirty;
+	private boolean prob_cache_actual;
+	private int prob_cache_memlimit, prob_cache_turn;
 	
 	/**
 	 * Initializes a rack
@@ -33,6 +41,8 @@ public class Rack {
 		exposed = new boolean[size];
 		cards = new int[size];
 		lus_cache = new ArrayList();
+		prob_cache = new double[size][2];
+		prob_cache_dirty = new boolean[size];
 	}
 	
 	/**
@@ -41,11 +51,14 @@ public class Rack {
 	 */
 	public void deal(int[] cards){
 		assert(cards.length == this.cards.length);
-		lus_cache.clear();
 		System.arraycopy(cards, 0, this.cards, 0, cards.length);
 		//at start of game, all cards are secret
 		exposed_count = 0;
 		Arrays.fill(exposed, false);
+		
+		//Dirty caches
+		lus_cache.clear();
+		Arrays.fill(prob_cache_dirty, true);
 	}
 	/**
 	 * Swaps a drawn card with one in the rack
@@ -57,12 +70,15 @@ public class Rack {
 	 */
 	public int swap(int card, int position, boolean fromDiscard){
 		assert(position >= 0 && position < cards.length);
-		lus_cache.clear();
 		int old = cards[position];
 		cards[position] = card;
 		if (exposed[position] != fromDiscard)
 			exposed_count += fromDiscard ? 1 : -1;
 		exposed[position] = fromDiscard;
+		
+		//Dirty caches
+		lus_cache.clear();
+		prob_cache_dirty[position] = true;
 		return old;
 	}
 	/**
@@ -250,13 +266,28 @@ public class Rack {
 	/**
 	 * Gives a score for the density of clumps in a sequence
 	 * @param seq a long usable sequence to score clumps
+	 * @param err_weight distribution to weight densities (optional)
 	 * @return 
 	 */
-	public double scoreDensity(LUS seq){
+	public double scoreDensity(LUS seq, Distribution err_weight){
 		//TODO
 		return 0;
 	}
 
+	//LONGEST USABLE SEQUENCES
+	/**
+	 * Holds cached longest-usable-sequence results
+	 * cards = the card numbers in the sequence
+	 * indexes = the rack positions of each of the cards
+	 * length = the length of the sequence (length may not equal cards.length)
+	 */
+	public class LUS{
+		public int[] cards, indexes;
+		public LUS(int[] cards, int[] indexes){
+			this.cards = cards;
+			this.indexes = indexes;
+		}
+	}
 	/**
 	 * Returns the largest ascending sequence that is usable
 	 *	"usable" sequences are ones that could be used for a winning rack:
@@ -265,15 +296,13 @@ public class Rack {
 	 *  if two usable sequences cannot be used together, the largest one is returned
 	 *  otherwise, if they are both usable, their lengths will be summed
 	 * 
-	 * @param um an optional "usability metric" to prune unwanted sequences (in addition to the default)
-	 *  (for example, probability of drawing a card above/below/between)
-	 * @return the length of the longest usable sequence; results are cached
-	 * in lus_cache and lus_max_length variables
+	 * @return the longest usable sequence; if SCORE_UNBIASED is enabled,
+	 * it will return all "long" usable sequences as well
 	 */
-	public int computeLUS(UsableMetric um){
+	public ArrayList<LUS> getLUS(){
 		//Since this is an n^2 algorithm, we cache the results
 		if (lus_cache.size() > 0)
-			return lus_max_length;
+			return lus_cache;
 		
 		int s = cards.length;
 		//Hold cards in each sequence we're considering
@@ -302,7 +331,7 @@ public class Rack {
 		for (int i=0; i<s; i++){
 			int card = cards[i];
 			//Make sure there is enough "usable" space above this 
-			if (game.deck.cards-card < s-i-1 && (um == null || um.above(card, i)))
+			if (game.deck.cards-card < s-i-1 && (lus_metric == null || lus_metric.above(card, i)))
 				continue;
 			//If we can't find any sequences that can prepend this card, we create a new branch
 			//(hence the initial new_len/seq vars)
@@ -321,7 +350,9 @@ public class Rack {
 					if (comp == 0) break;
 					//This card is in ascending order in position "k"
 					//Also make sure there is enough "usable" space in between the two cards
-					if (comp < card && card-comp >= i-comp_idx && (um == null || um.between(card, i, comp, comp_idx))){
+					if (comp < card && card-comp >= i-comp_idx &&
+						(lus_metric == null || lus_metric.between(card, i, comp, comp_idx))
+					){
 						//If longer than previously seen, clear previous stored vars
 						if (k != new_len){
 							prefixes.clear();
@@ -334,7 +365,7 @@ public class Rack {
 				}
 			}
 			//If this is the first item in the sequence, check for "usable" space below this
-			if (new_len == 0 && card-1 < i && (um == null || um.below(card, i)))
+			if (new_len == 0 && card-1 < i && (lus_metric == null || lus_metric.below(card, i)))
 				continue;
 			//Create a new sequence, if we couldn't add it to the end of one
 			//If there is more than one prefix, we also branch, to avoid trickiness
@@ -368,21 +399,24 @@ public class Rack {
 			}
 		}
 		
-		//Return maximum length found
+		//Return cache
+		return lus_cache;
+	}
+	/**
+	 * Return longest usable sequence length
+	 * @return length of longest usable sequence
+	 */
+	public int getLUSLength(){
 		return lus_max_length;
 	}
 	/**
-	 * Holds cached longest-usable-sequence results
-	 * cards = the card numbers in the sequence
-	 * indexes = the rack positions of each of the cards
-	 * length = the length of the sequence (length may not equal cards.length)
+	 * Set an optional "usability metric" to prune unwanted sequences (in addition to the default)
+	 * in the subsequent calls to getLUS();  For example, probability of drawing a card
+	 * above/below/between can prune non-usable sequences
+	 * @param um the usability metric; null to reset to default
 	 */
-	public class LUS{
-		public int[] cards, indexes;
-		public LUS(int[] cards, int[] indexes){
-			this.cards = cards;
-			this.indexes = indexes;
-		}
+	public void setLUSMetric(UsableMetric um){
+		lus_metric = um;
 	}
 	/**
 	 * Specify a usablility metric for finding longest-usable-sequences
@@ -394,6 +428,43 @@ public class Rack {
 		public boolean below(int card, int idx);
 		//Where idx_hi is always greater than idx_lo
 		public boolean between(int card_hi, int idx_hi, int card_lo, int idx_lo);
+	}
+	
+	//PROBABILITIES
+	/**
+	 * Get probabilities 
+	 * @param actual use estimated vs actual probabilities
+	 *	set to false to simulate human play
+	 * @param mem_limit if actual = false, how much memory does this person
+	 *  have to remember cards (improves probability estimates)
+	 *	See Deck.getProbability for details
+	 * @return a list of probabilities int[rack_size][2], where
+	 *  [0] = probability of drawing higher, [1] = drawing lower
+	 */
+	public double[][] getProbabilities(boolean actual, int mem_limit){
+		//If probabilities have changed, we need to recompute all values
+		int turn = game.deck.getTurns();
+		if (prob_cache_turn != turn || actual != prob_cache_actual || mem_limit != prob_cache_memlimit)
+			Arrays.fill(prob_cache_dirty, true);
+		
+		prob_cache_actual = actual;
+		prob_cache_memlimit = mem_limit;
+		
+		for (int i=0; i<cards.length; i++){
+			if (prob_cache_dirty[i]){
+				prob_cache_dirty[i] = false;
+				if (actual){
+					prob_cache[i][0] = game.deck.getRealProbability(cards[i], true);
+					prob_cache[i][1] = game.deck.getRealProbability(cards[i], false);
+				}
+				else{
+					prob_cache[i][0] = game.deck.getProbability(cards[i], true, this, mem_limit);
+					prob_cache[i][1] = game.deck.getProbability(cards[i], false, this, mem_limit);
+				}
+			}
+		}
+		
+		return prob_cache;
 	}
 	
 	@Override

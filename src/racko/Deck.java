@@ -13,6 +13,7 @@ public class Deck {
 	protected final int cards, rack_size;	//number of cards & the rack size
 	private final Player[] players;			//list of players
 	//Deck variables
+	private int turns;
 	private int draw_count, discard_count;	//cards in draw/discard pile
 	private final int[] draw, discard;		//draw and discard piles
 	private final boolean[] in_play;		//which cards are in play?
@@ -42,6 +43,7 @@ public class Deck {
 		cards = rackSize*players.length + rackSize*2;
 		
 		//Initialize deck; counts are all zero, since we haven't called "deal()" yet
+		turns = 0;
 		draw_count = 0;
 		discard_count = 0;
 		draw = new int[cards];
@@ -63,6 +65,7 @@ public class Deck {
 	protected void deal(){
 		//Create a new deck
 		dealing = true;
+		turns = 0;
 		//First, reset all deck variables
 		Arrays.fill(in_play, false);
 		Arrays.fill(memory, 0);
@@ -131,6 +134,7 @@ public class Deck {
 	public int draw(boolean fromDiscard){
 		//Make sure there are the correct number of cards in play
 		assert(dealing || (draw_count+discard_count == rack_size*2 && !action));
+		turns++;
 		action = true;
 		int card;
 		if (fromDiscard){
@@ -184,6 +188,7 @@ public class Deck {
 		assert(card >= 0 && rack != null);
 		
 		//TODO: fix the probability calculator
+		//TODO: make this compute probabilities for an entire rack at once
 		if (true)
 			return getRealProbability(card, higher);
 		
@@ -242,13 +247,20 @@ public class Deck {
 		}
 		return total / (double) draw_count;
 	}
+	
 	/**
 	 * Gets the total number of cards in the deck, or synonymously, 
 	 * gets the value of the highest numbered card in the deck
 	 * @return Number of cards
 	 */
-	public int getMaxCard()
-	{
+	public int getMaxCard(){
 		return cards;
+	}
+	/**
+	 * How many turns have gone since the last call to deal();
+	 * @return 
+	 */
+	public int getTurns(){
+		return turns;
 	}
 }

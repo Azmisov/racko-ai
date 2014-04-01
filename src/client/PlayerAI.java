@@ -217,7 +217,7 @@ public class PlayerAI extends Player{
 	 * @return the score
 	 */
 	private double scoreMetric(){
-		return rack.computeLUS(null) / (double) game.rack_size;
+		return rack.getLUSLength() / (double) game.rack_size;
 	}
 	
 	//DEEP LEARNING
