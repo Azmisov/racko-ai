@@ -293,14 +293,45 @@ public class Rack {
 		return use_average ? score / (double) (cards.length - seq.cards.length) : score;
 	}
 	/**
-	 * Gives a score for the density of clumps in a sequence
+	 * Gives a score for the density of clumps in a sequence;
+	 * 0: clumps of length 1
+	 * 0-1: clumps that are not in a perfect streak (1,6,8)
+	 * 1: clumps in perfect streak sequence (1,2,3)
 	 * @param seq a long usable sequence to score clumps
 	 * @param err_weight distribution to weight densities (optional)
-	 * @return 
+	 * @param loner_penalty incur penalty for clumps of length 1 (0=no affect, 1=equivalent to worst density)
+	 * @return density score (average of all clump scores), between 0-1
 	 */
-	public double scoreDensity(LUS seq, Distribution err_weight){
-		//TODO
-		return 0;
+	public double scoreDensity(LUS seq, Distribution err_weight, int loner_penalty){
+		double score = 0, count = 0,
+			interpolate = 1 - cards.length;
+		
+		//first item in clump
+		boolean first = true;
+		int cur_clump = seq.indexes[0];
+		for (int i=1; i<seq.cards.length; i++){
+			//These two cards are in a clump
+			//Scoring is interpolated linearly, based on distance between cards
+			if (seq.indexes[i] == cur_clump+1){
+				first = false;
+				double density = (seq.cards[i] - seq.cards[cur_clump] - cards.length) / interpolate;
+				//Since this is really the density "in between cards", we subtract .5
+				if (err_weight != null)
+					density *= err_weight.eval(i-.5);
+				score += density;
+				count++;
+			}
+			//Penalize loner clumps (only one card in the clump)
+			else if (first){
+				double penalty = loner_penalty;
+				if (err_weight != null)
+					penalty *= err_weight.eval(i);
+				count += penalty;
+			}
+			cur_clump = seq.indexes[i];
+		}
+		
+		return count > 0 ? score / count : score;
 	}
 
 	//LONGEST USABLE SEQUENCES
