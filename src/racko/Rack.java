@@ -232,12 +232,14 @@ public class Rack {
 			sum += err;
 		}
 		//Min err = 0, Max err = rack_size(max_card-rack_size)
+		//Max err formula was computed from the rack [n, n-1, n-2, ... 3, 2, 1], where n is the max card in deck
 		sum /= (double) (cards.length*(game.deck.cards-cards.length));
 		assert(sum >= 0 && sum <= 1);
 		return sum;
 	}
 	/**
 	 * Gives distribution error for clumps in a long usable sequences
+	 * Uses the error for center of each clump, weighted by how large each clump is
 	 * @param seq a long usable sequence to score clumps
 	 * @param target target distribution
 	 * @param err_weight distribution to weight errors by
@@ -245,10 +247,59 @@ public class Rack {
 	 *  (provided distributions are within the correct ranges)
 	 */
 	public double scoreClumpDE(LUS seq, Distribution target, Distribution err_weight){
-		//TODO
-		//maybe combine this with scoreAdjustedDE and just take null for seq?
-		System.out.println("TODO implement Adjusted DE");
-		return 0;
+		double sum = 0, interpolate = (double) cards.length - 1;
+		//Current clump size
+		int clump_len = 0, cur_clump = seq.indexes[0];
+		//We just use the centers of the clumps, rather than every card in the rack
+		for (int i=1; i<seq.cards.length; i++){
+			boolean is_clump = seq.indexes[i] == cur_clump+1;
+			if (is_clump) clump_len++;
+			
+			//End of clump, compute 
+			if (!is_clump || i+1 == seq.cards.length){
+				//If this clump is at the very beginning/end of the rack, we use
+				//the extremes as the center points; this "stretches" out the
+				//unfilled space, so to speak
+				boolean is_first = cur_clump-clump_len == 0,
+						is_last = cur_clump == cards.length-1;
+				double center;
+				if (is_first && !is_last)
+					center = 0;
+				else if (is_last && !is_first)
+					center = cards.length-1;
+				else center = cur_clump-clump_len/2.0;
+				//Compute the "lower" average (since center could be +0.5)
+				int lo = (int) center;
+				double err_lo = Math.abs(target.eval(lo) - seq.cards[lo]);
+				if (err_weight != null)
+					err_lo *= err_weight.eval(lo);
+				//If center is in between two cards, we'll need to average their errors
+				if (lo != center){
+					double err_hi = Math.abs(target.eval(lo+1) - seq.cards[lo+1]);
+					if (err_weight != null)
+						err_hi *= err_weight.eval(lo+1);
+					//Average the two
+					err_lo = (err_lo+err_hi)/2.0;
+				}
+				//Weight the error based on how large the clump is
+				//Error for a clump of size "cards.length", will be scaled x2
+				err_lo += err_lo*clump_len/interpolate;
+				sum += err_lo;
+				//Reset vars
+				clump_len = 0;
+			}
+			
+			cur_clump = seq.indexes[i];
+		}
+		
+		//Normalize error
+		//Maximum error is when you have all clumps of length 1, that have maximum error
+		//The max clumps of length 1 is (int) (cards.length+1/2)
+		//The max error of all these clumps is: sum {i=0 to max_clumps-1} of {n-1-2i}
+		int max_clumps = (cards.length+1)/2;
+		sum /= (double) (max_clumps*(game.deck.cards-max_clumps));
+		assert(sum >= 0 && sum <= 1);
+		return sum;
 	}
 	/**
 	 * Gives a score for the probability of drawing cards that
@@ -289,8 +340,10 @@ public class Rack {
 				score += cur_prob*weight;
 			else score *= Math.pow(cur_prob, weight);
 		}
-		
-		return use_average ? score / (double) (cards.length - seq.cards.length) : score;
+		if (use_average)
+			score /= (double) (cards.length - seq.cards.length);
+		assert(score >= 0 && score <= 1);
+		return score;
 	}
 	/**
 	 * Gives a score for the density of clumps in a sequence;
@@ -330,8 +383,10 @@ public class Rack {
 			}
 			cur_clump = seq.indexes[i];
 		}
-		
-		return count > 0 ? score / count : score;
+		if (count > 0)
+			score /= count;
+		assert(score >= 0 && score <= 1);
+		return score;
 	}
 
 	//LONGEST USABLE SEQUENCES
