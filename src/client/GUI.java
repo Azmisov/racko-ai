@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 
 import racko.Game;
 import racko.Rack;
+import reinforcement.*;
 
 /**
  * Human usable interface for playing racko
@@ -63,17 +64,22 @@ public class GUI extends JFrame{
 		
 		//*
 		//SETTINGS
-		int rack_size = 10,			//rack size
+		int rack_size = 5,			//rack size
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 1,			//how many games to play (after training, if playing a human)
-			epoch_every = 100;		//epoch after how many games?
+			play_games = 1000000,			//how many games to play (after training, if playing a human)
+			epoch_every = 2000;		//epoch after how many games?
 		boolean
 			bonus_mode = false,		//use bonus scoring
-			play_human = true;		//play against the AI's in a terminal
+			play_human = false;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerHuman()
+			//new PlayerAI(false),
+			//new PlayerAI(true),
+			//new PlayerMax(),
+			//new PlayerKyle(true)
+			new PlayerRandom(),
+			new PlayerExploiter()
 		};
 
 		//TRAINING & TESTING
