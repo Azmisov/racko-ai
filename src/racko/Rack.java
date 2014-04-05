@@ -244,6 +244,10 @@ public class Rack {
 	 *  (provided distributions are within the correct ranges)
 	 */
 	public double scoreClumpDE(LUS seq, Distribution target, Distribution err_weight){
+		//No usable sequences
+		if (seq == null || seq.cards.length == 0)
+			return 1;
+			
 		double sum = 0, interpolate = (double) cards.length - 1;
 		//Current clump size
 		int clump_len = 0, cur_clump = seq.indexes[0];
@@ -315,6 +319,14 @@ public class Rack {
 	 * @return probability between 0-1
 	 */
 	public double scoreProbability(LUS seq, Distribution err_weight, boolean use_average, boolean prob_actual, int prob_memory){
+		//No usable sequences
+		if (seq == null || seq.cards.length == 0)
+			return 1;
+
+		//Full rack, cannot compute probabilities
+		if (cards.length - seq.cards.length == 0)
+			return 1;
+
 		double[][] prob = getProbabilities(prob_actual, prob_memory);
 		double score = use_average ? 0 : 1;
 		
@@ -348,8 +360,6 @@ public class Rack {
 		}
 		if (use_average)
 			score /= (double) (cards.length - seq.cards.length);
-		if (score < 0 || score > 1)
-			System.out.println(score);
 		assert(score >= 0 && score <= 1);
 		return score;
 	}
@@ -364,6 +374,10 @@ public class Rack {
 	 * @return density score (average of all clump scores), between 0-1
 	 */
 	public double scoreDensity(LUS seq, Distribution err_weight, int loner_penalty){
+		//No usable sequences
+		if (seq == null || seq.cards.length == 0)
+			return 0;
+		
 		int max_difference = game.card_count-cards.length+1;
 		double score = 0, count = 0,
 			interpolate = 1 - max_difference;
@@ -398,8 +412,6 @@ public class Rack {
 		}
 		if (count > 0)
 			score /= count;
-		if (score < 0 || score > 1)
-			System.out.println("BAD = "+score);
 		assert(score >= 0 && score <= 1);
 		return score;
 	}
@@ -558,15 +570,19 @@ public class Rack {
 			linearize_recursive(new ArrayList());
 			
 			//Create LUS objects from each linearization
-			ArrayList<LUS> lus = new ArrayList(seqs.size());
+			int num_seqs = seqs.size();
+			ArrayList<LUS> lus = new ArrayList(num_seqs);
 			for (ArrayList<LUSTree> seq: seqs){
-				int size = seq.size(), i = 0;
-				int[] cards = new int[size], indexes = new int[size];
-				for (LUSTree n: seq){
-					cards[i] = n.card;
-					indexes[i++] = n.index;
+				int size = seq.size();
+				if (size > 0 || num_seqs == 1){
+					int i = 0;
+					int[] cards = new int[size], indexes = new int[size];
+					for (LUSTree n: seq){
+						cards[i] = n.card;
+						indexes[i++] = n.index;
+					}
+					lus.add(new LUS(cards, indexes));
 				}
-				lus.add(new LUS(cards, indexes));
 			}
 			return lus;
 		}
