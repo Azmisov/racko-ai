@@ -240,6 +240,10 @@ public class Deck {
 	 * @return 
 	 */
 	public double getRealProbability(int card, boolean higher){
+		//We haven't dealt yet, so this is just probabilities for the entire deck
+		if (draw_count == 0)
+			return (higher ? cards - card : card - 1) / (double) (cards-1);
+		//Otherwise, get real probability
 		int total = draw_count;
 		for (int i=0; i<draw_count; i++){
 			if (higher ? draw[i] < card : draw[i] > card)

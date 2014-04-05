@@ -21,8 +21,7 @@ public class StoppingCriteria {
 	//How many epochs we've gone without improvement
 	private int noimprove;
 	//Best scores we've seen thus far (running averages)
-	private double 
-		max_wins, min_badmoves, min_allmoves;
+	private double max_wins, min_badmoves, min_allmoves;
 	
 	/**
 	 * Create a new stopping criteria with default parameters

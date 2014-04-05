@@ -1,18 +1,16 @@
 package client;
 
 import interfaces.Player;
-
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-
 import racko.Game;
 import racko.Rack;
 import racko.Rack.LUS;
+import reinforcement.PlayerExploiter;
 
 /**
  * Human usable interface for playing racko
@@ -154,19 +152,37 @@ public class GUI extends JFrame{
 		x	[7,1,6,3,2]
 		x	[7,9,6,10,5,8]
 		*/
-		int[] hand = new int[]{7,9,6,10,5,8};
+		int[] hand = new int[]{1,20,6,10,5,8};
 		Player[] players = new Player[]{
 			new PlayerRandom(),
 			new PlayerRandom()
 		};
-		Game.create(players, hand.length, 1, false);
+		Game g = Game.create(players, hand.length, 1, false);
 		Rack r = players[0].rack;
-		Rack.SCORE_UNBIASED = true;
 		r.deal(hand);
+		
+		//Score metrics testing
+		System.out.println("MaxCard = "+g.card_count);
+		System.out.println("Points = "+r.scorePoints(false));
+		System.out.println("RackDE = "+r.scoreRackDE(g.dist_flat, null));
+		System.out.println("RackDE' = "+r.scoreRackDE(g.dist_flat, g.dist_skew));
 		ArrayList<LUS> lus = r.getLUS();
-		System.out.println("sequences -> "+lus.size());
-		for (LUS l: lus)
+		for (LUS l: lus){
 			System.out.println(Arrays.toString(l.cards));
+			//*
+			System.out.println("\tClumpDE = "+r.scoreClumpDE(l, g.dist_flat, null));
+			System.out.println("\tClumpDE' = "+r.scoreClumpDE(l, g.dist_flat, g.dist_skew));
+			System.out.println("\tDensity0 = "+r.scoreDensity(l, null, 0));
+			System.out.println("\tDensity0' = "+r.scoreDensity(l, g.dist_skew, 0));
+			System.out.println("\tDensity1 = "+r.scoreDensity(l, null, 1));
+			System.out.println("\tDensity1' = "+r.scoreDensity(l, g.dist_skew, 1));
+			//*
+			System.out.println("\tProbReal = "+r.scoreProbability(l, null, false, true, 0));
+			System.out.println("\tProbReal' = "+r.scoreProbability(l, g.dist_skew, false, true, 0));
+			System.out.println("\tProbAvg = "+r.scoreProbability(l, null, true, true, 0));
+			System.out.println("\tProbAvg' = "+r.scoreProbability(l, g.dist_skew, true, true, 0));
+			//*/
+		}
 	}
 	private static double round(double val){
 		return Math.round(val*100)/100.0;

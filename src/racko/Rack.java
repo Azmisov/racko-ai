@@ -12,10 +12,6 @@ import java.util.Stack;
  * If you get an assertion error, you aren't following Racko rules
  */
 public class Rack {
-	//If unbiased, it will save all long usable sequences in the lus_cache
-	// (as opposed to saving just the "longest" ones)
-	public static boolean SCORE_UNBIASED = true;
-	
 	//The game we're associated with
 	private final Game game;
 	//If someone had a photographic memory, they could memorize where someone
@@ -194,24 +190,22 @@ public class Rack {
 				return score;
 			else{
 				score += Game.score_single;
-				//Calculate streaks, for bonus mode
-				if (bonusMode){
-					boolean is_streak = cards[i] == cards[i-1]+1;
-					if (is_streak){
-						cur_streak++;
-						if (cur_streak > max_streak)
-							max_streak = cur_streak;
+				//Calculate streaks, for bonus mode/min-streak requirements
+				boolean is_streak = cards[i] == cards[i-1]+1;
+				if (is_streak){
+					cur_streak++;
+					if (cur_streak > max_streak)
+						max_streak = cur_streak;
+				}
+				//Calculate the actual bonus (when streak ends or end of rack)
+				if (!is_streak || i+1 == cards.length){
+					if (bonusMode && cur_streak >= Game.bonus_min){
+						if (cur_streak > Game.bonus_max)
+							cur_streak = Game.bonus_max;
+						cur_streak -= Game.bonus_min;
+						bonus += Math.pow(Game.score_bonus_fac, cur_streak)*Game.score_bonus;
 					}
-					//Calculate the actual bonus (when streak ends or end of rack)
-					if (!is_streak || i+1 == cards.length){
-						if (cur_streak >= Game.bonus_min){
-							if (cur_streak > Game.bonus_max)
-								cur_streak = Game.bonus_max;
-							cur_streak -= Game.bonus_min;
-							bonus += Math.pow(Game.score_bonus_fac, cur_streak)*Game.score_bonus;
-						}
-						cur_streak = 1;
-					}
+					cur_streak = 1;
 				}
 			}
 		}
@@ -254,12 +248,16 @@ public class Rack {
 		//Current clump size
 		int clump_len = 0, cur_clump = seq.indexes[0];
 		//We just use the centers of the clumps, rather than every card in the rack
-		for (int i=1; i<seq.cards.length; i++){
-			boolean is_clump = seq.indexes[i] == cur_clump+1;
-			if (is_clump) clump_len++;
+		for (int i=1; i<=seq.cards.length; i++){
+			boolean is_clump = false,
+					exit = i == seq.cards.length;
+			if (!exit){
+				is_clump = seq.indexes[i] == cur_clump+1;
+				if (is_clump) clump_len++;
+			}
 			
 			//End of clump, compute 
-			if (!is_clump || i+1 == seq.cards.length){
+			if (!is_clump){
 				//If this clump is at the very beginning/end of the rack, we use
 				//the extremes as the center points; this "stretches" out the
 				//unfilled space, so to speak
@@ -269,16 +267,16 @@ public class Rack {
 				if (is_first && !is_last)
 					center = 0;
 				else if (is_last && !is_first)
-					center = cards.length-1;
-				else center = cur_clump-clump_len/2.0;
+					center = seq.cards.length-1;
+				else center = i-1-clump_len/2.0;
 				//Compute the "lower" average (since center could be +0.5)
 				int lo = (int) center;
-				double err_lo = Math.abs(target.eval(lo) - seq.cards[lo]);
+				double err_lo = Math.abs(target.eval(seq.indexes[lo]) - seq.cards[lo]);
 				if (err_weight != null)
 					err_lo *= err_weight.eval(lo);
 				//If center is in between two cards, we'll need to average their errors
 				if (lo != center){
-					double err_hi = Math.abs(target.eval(lo+1) - seq.cards[lo+1]);
+					double err_hi = Math.abs(target.eval(seq.indexes[lo+1]) - seq.cards[lo+1]);
 					if (err_weight != null)
 						err_hi *= err_weight.eval(lo+1);
 					//Average the two
@@ -291,8 +289,8 @@ public class Rack {
 				//Reset vars
 				clump_len = 0;
 			}
-			
-			cur_clump = seq.indexes[i];
+			if (!exit)
+				cur_clump = seq.indexes[i];
 		}
 		
 		//Normalize error
@@ -321,17 +319,22 @@ public class Rack {
 		double score = use_average ? 0 : 1;
 		
 		//There will always be at least one clump in a sequence
-		int cur_clump = seq.indexes[0];
+		int cur_clump_idx = 0, cur_clump = seq.indexes[cur_clump_idx];
 		double cur_prob = prob[cur_clump][1];
 		for (int i=0; i<cards.length; i++){
 			//Don't count cards in the sequence
 			if (cur_clump == i){
 				//Last card in sequence, get prob higher
-				if (seq.cards.length == i+1)
+				if (seq.cards.length == ++cur_clump_idx)
 					cur_prob = prob[cur_clump][0];
 				//Probability in between this card and the previous
 				else{
-					cur_clump = seq.indexes[i+1];
+					cur_clump = seq.indexes[cur_clump_idx];
+					if (cur_prob > prob[cur_clump][1]){
+						System.out.println(prob[cur_clump_idx][1]);
+						System.out.println(prob[cur_clump_idx-1][1]);
+						System.out.println(prob[cur_clump][1]+" VS "+cur_prob);
+					}
 					cur_prob = prob[cur_clump][1] - cur_prob;
 				}
 				continue;
@@ -345,6 +348,8 @@ public class Rack {
 		}
 		if (use_average)
 			score /= (double) (cards.length - seq.cards.length);
+		if (score < 0 || score > 1)
+			System.out.println(score);
 		assert(score >= 0 && score <= 1);
 		return score;
 	}
@@ -359,18 +364,20 @@ public class Rack {
 	 * @return density score (average of all clump scores), between 0-1
 	 */
 	public double scoreDensity(LUS seq, Distribution err_weight, int loner_penalty){
+		int max_difference = game.card_count-cards.length+1;
 		double score = 0, count = 0,
-			interpolate = 1 - cards.length;
+			interpolate = 1 - max_difference;
 		
 		//first item in clump
 		boolean first = true;
 		int cur_clump = seq.indexes[0];
-		for (int i=1; i<seq.cards.length; i++){
+		for (int i=1; i<=seq.cards.length; i++){
+			boolean exit = i == seq.cards.length;
 			//These two cards are in a clump
 			//Scoring is interpolated linearly, based on distance between cards
-			if (seq.indexes[i] == cur_clump+1){
+			if (!exit && seq.indexes[i] == cur_clump+1){
 				first = false;
-				double density = (seq.cards[i] - seq.cards[cur_clump] - cards.length) / interpolate;
+				double density = (seq.cards[i] - seq.cards[i-1] - max_difference) / interpolate;
 				//Since this is really the density "in between cards", we subtract .5
 				if (err_weight != null)
 					density *= err_weight.eval(i-.5);
@@ -381,13 +388,18 @@ public class Rack {
 			else if (first){
 				double penalty = loner_penalty;
 				if (err_weight != null)
-					penalty *= err_weight.eval(i);
+					penalty *= err_weight.eval(exit ? i-1 : i);
 				count += penalty;
 			}
-			cur_clump = seq.indexes[i];
+			else first = true;
+			//Get next clump index
+			if (!exit)
+				cur_clump = seq.indexes[i];
 		}
 		if (count > 0)
 			score /= count;
+		if (score < 0 || score > 1)
+			System.out.println("BAD = "+score);
 		assert(score >= 0 && score <= 1);
 		return score;
 	}
@@ -409,9 +421,9 @@ public class Rack {
 			return lus_cache;			
 		
 		//Get a tree of all possible long, usable, ascending sequences
-		LUSTree root = new LUSTree(0, 0);
+		LUSTree root = new LUSTree(0, 0, game.card_count, game.rack_size);
 		for (int i=0; i<cards.length; i++)
-			root.insert(new LUSTree(cards[i], i));
+			root.insert(new LUSTree(cards[i], i, game.card_count, game.rack_size));
 		
 		//Convert the tree to a set of sequence arrays
 		lus_cache = root.linearize();
@@ -472,15 +484,19 @@ public class Rack {
 	 */
 	private static class LUSTree{
 		private static final ArrayList<ArrayList<LUSTree>> seqs = new ArrayList();
-		public ArrayList<LUSTree> branches;
-		public int card, index;
+		public final ArrayList<LUSTree> branches;
+		public final int card, index;
 		//Keep track of insertion results, so we don't go back to the same node twice
 		private int build_id;
 		private boolean build_result;
+		//Game variables
+		private final int game_cards, game_racksize;
 		
-		public LUSTree(int card, int index){
+		public LUSTree(int card, int index, int game_cards, int game_racksize){
 			this.card = card;
 			this.index = index;
+			this.game_cards = game_cards;
+			this.game_racksize = game_racksize;
 			branches = new ArrayList();
 			build_id = 0;
 		}
@@ -490,9 +506,23 @@ public class Rack {
 		 * @param node a leaf node (a card)
 		 */
 		public void insert(LUSTree node){
+			//Make sure there is enough usable space above/below the card
+			if (game_cards-node.card < game_racksize-node.index-1 || node.card-1 < node.index)
+				return;
+			//Check if it can be added to any branches
+			boolean added = false;
+			for (LUSTree n: branches){
+				n.insert_recursive(node);
+				if (n.build_result)
+					added = true;
+			}
+			if (!added)
+				branches.add(node);
+		}
+		private void insert_recursive(LUSTree node){
 			build_id = node.index+1;
 			//The new card cannot be inserted here (wouldn't be sorted)
-			if (card != 0 && node.card < card)
+			if (node.card < card)
 				build_result = false;
 			else{
 				build_result = false;
@@ -504,13 +534,14 @@ public class Rack {
 							build_result = true;
 					}
 					else{
-						n.insert(node);
+						n.insert_recursive(node);
 						if (n.build_result)
 							build_result = true;
 					}
 				}
 				//If not, we'll insert it here
-				if (!build_result){
+				//Make sure there is enough usable in between the cards
+				if (!build_result && (node.card-card >= node.index-index)){
 					branches.add(node);
 					build_result = true;
 				}
@@ -567,7 +598,7 @@ public class Rack {
 	 * @param mem_limit if actual = false, how much memory does this person
 	 *  have to remember cards (improves probability estimates)
 	 *	See Deck.getProbability for details
-	 * @return a list of probabilities int[rack_size][2], where
+	 * @return a list of probabilities double[rack_size][2], where
 	 *  [0] = probability of drawing higher, [1] = drawing lower
 	 */
 	public double[][] getProbabilities(boolean actual, int mem_limit){
