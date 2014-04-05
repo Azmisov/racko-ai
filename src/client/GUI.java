@@ -68,15 +68,14 @@ public class GUI extends JFrame{
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
 			play_games = 1000000,	//how many games to play (after training, if playing a human)
-			epoch_every = 100;		//epoch after how many games?
+			epoch_every = 150,		//epoch after how many games?
+			move_limit = 1500;		//moves before calling a draw (0 for unlimited)
 		boolean
 			bonus_mode = false,		//use bonus scoring
-			play_human = false;		//play against the AI's in a terminal
+			play_human = true;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerKyle(true),
-			new PlayerDiablo(),
-			new PlayerRandom()
+			new PlayerDiablo("diablo_weights.txt", false)
 		};
 
 		//TRAINING & TESTING
@@ -98,7 +97,8 @@ public class GUI extends JFrame{
 			players[players.length-1] = new PlayerHuman();
 		}
 			
-		Game g = Game.create(players, rack_size, streak_min, bonus_mode);		
+		Game g = Game.create(players, rack_size, streak_min, bonus_mode);	
+		g.limitMoves(move_limit);
 		int epochs = 0;
 		for (int i = 0; i < play_games; i++){
 			g.play(rand.nextInt(players.length));

@@ -30,7 +30,7 @@ public class Game {
 	public final boolean bonus_mode;
 	public final Deck deck;
 	private final Player[] players;
-	private int active_player;
+	private int active_player, move_limit;
 	
 	/**
 	 * Creates a new racko game
@@ -78,6 +78,14 @@ public class Game {
 	}
 	
 	/**
+	 * Limits the number of moves in a game before calling a draw
+	 * @param limit move limit; use 0 for unlimited
+	 */
+	public void limitMoves(int limit){
+		move_limit = limit;
+	}
+	
+	/**
 	 * Starts a new game
 	 */
 	public void play(int start_player){
@@ -104,11 +112,16 @@ public class Game {
 					System.out.println("\tP"+cur_player.playerNumber+": "+cur_rack.toString());
 
 				//Check if this player has won
-				if (cur_rack.isSorted()){
-					if (min_streak < 2 || cur_rack.maxStreak() >= min_streak){
+				boolean won = cur_rack.isSorted();
+				//If they haven't won, check for a draw
+				boolean draw = move_limit > 0 && cur_player.STAT_allmoves >= move_limit && !won;
+				if (won || draw){
+					if (draw || min_streak < 2 || cur_rack.maxStreak() >= min_streak){
 						//We have a winner
-						cur_player.STAT_wins++;
-						cur_player.wins++;
+						if (won){
+							cur_player.STAT_wins++;
+							cur_player.wins++;
+						}
 						int max_score = 0, max_idx = 0;
 						for (int i=0; i<player_count; i++){
 							Player p = players[i];
@@ -116,7 +129,7 @@ public class Game {
 							p.score += score;
 							p.STAT_score += score;
 							p.STAT_rounds++;
-							p.scoreRound(i == active_player, score);
+							p.scoreRound(draw ? false : i == active_player, score);
 							//Check if they have greater than "score_win" points
 							//In case of a tie, go for the person that won the most games
 							//TODO: what to do when it is still a tie???

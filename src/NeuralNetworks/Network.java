@@ -1,6 +1,14 @@
 package NeuralNetworks;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 /**
  * A generic multi-layered neural network
@@ -8,8 +16,8 @@ import java.util.ArrayList;
  */
 public class Network{
 	//Input nodes for data features; 
-	private final ArrayList<Node[]> layers;
-	private final int input_nodes;
+	private ArrayList<Node[]> layers;
+	private int input_nodes;
 	private int frozen;
 	
 	/**
@@ -17,13 +25,52 @@ public class Network{
 	 * @param layers node counts for each layer
 	 */
 	public Network(int[] layers){
-		super();
+		createNetwork(layers);
+		//No frozen layers to start out with (deep learning)
+		frozen = 0;
+	}
+	/**
+	 * Creates a network by importing predefined weights
+	 * @param filename the exported network
+	 */
+	public Network(String filename) throws Exception{
+		try (FileReader x = new FileReader(filename)){
+			Scanner s = new Scanner(x);
+			String splitter = "[\t\n]";
+			s.useDelimiter(splitter);
+			
+			//Frozen layers
+			frozen = s.nextInt();
+			s.nextLine();
+			
+			//Layer sizes
+			String line2 = s.nextLine();
+			String[] line2_vals = line2.split(splitter);
+			int[] f_layers = new int[line2_vals.length];
+			for (int i=0; i<f_layers.length; i++)
+				f_layers[i] = Integer.parseInt(line2_vals[i]);
+			createNetwork(f_layers);
+			
+			//Network weights
+			for (Node[] layer: layers){
+				for (Node n: layer){
+					ListIterator<Double> iter = n.weights.listIterator();
+					while (iter.hasNext()){
+						iter.next();
+						iter.set(s.nextDouble());
+					}
+					s.nextLine();
+				}
+			}
+		}
+	}
+	private void createNetwork(int[] layers){
 		//Network must have at least one layer
 		assert(layers != null && layers.length != 0);
+		input_nodes = layers[0];
+		this.layers = new ArrayList();
 		
 		//Create nodes for each layer
-		this.layers = new ArrayList();
-		input_nodes = layers[0];
 		for (int i=0, count; i<layers.length; i++){
 			count = layers[i];
 			//Layers must have positive node count
@@ -48,9 +95,6 @@ public class Network{
 					p.addOutlink(n);
 			}
 		}
-		
-		//No frozen layers to start out with (deep learning)
-		frozen = 0;
 	}
 	
 	/**
@@ -229,8 +273,37 @@ public class Network{
 		trainBackprop(rate, targets);
 	}
 	
-	private static double fastexp(double val) {
-		final long tmp = (long) (1512775 * val + 1072632447);
-		return Double.longBitsToDouble(tmp << 32);
+	/**
+	 * Export network to file for loading later
+	 * @param filename name of file
+	 * @return success, if returns true
+	 */
+	public boolean export(String filename){
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append(frozen).append('\n');
+			int i = layers.size();
+			for (Node[] layer: layers){
+				//Account for bias weights
+				int layer_size = layer.length;
+				if (--i != 0) layer_size--;
+				sb.append(layer_size).append('\t');
+			}
+			sb.append('\n');
+			for (Node[] layer: layers){
+				for (Node n: layer){
+					for (Double weight: n.weights)
+						sb.append(weight).append('\t');
+					sb.append('\n');
+				}
+			}
+			try (FileWriter x = new FileWriter(new File(filename))) {
+				x.write(sb.toString());
+			}
+			return true;
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
 	}
 }

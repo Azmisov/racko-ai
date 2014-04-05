@@ -2,6 +2,7 @@ package client;
 
 import NeuralNetworks.Network;
 import interfaces.Player;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,9 +26,46 @@ public class PlayerDiablo extends Player{
 	private double max_points;
 	//Neural network
 	private static final double LEARN_RATE = 0.1;
+	private final String net_file;
+	private boolean TRAIN = true;
 	private final ArrayList<DataInstance> train_data = new ArrayList();
 	private double discard_threshold, learn_rate_decay;
-	private static final Network net = new Network(new int[]{15, 30, 1});
+	public Network net;
+	
+	/**
+	 * Create new Diablo AI, loading network weights from file
+	 * @param file file to load network weights
+	 * @param train should we train the 
+	 */
+	public PlayerDiablo(String file, boolean train){
+		super();
+		//Try to load the network file
+		net_file = file;
+		File f = new File(file);
+		boolean loaded = false;
+		if (f.exists()){
+			try{
+				net = new Network(file);
+				TRAIN = train;
+				loaded = true;
+			} catch (Exception e){
+				System.out.println("Warning!!! Could not load Diablo network weights");
+			}
+		}
+		//Standard settings
+		if (!loaded) newNetwork();
+	}
+	public PlayerDiablo(Network net){
+		super();
+		net_file = null;
+		if (net == null)
+			newNetwork();
+		else this.net = net;
+	}
+	private void newNetwork(){
+		System.out.println("Creating a new network...");
+		net = new Network(new int[]{15, 30, 1});
+	}
 
 	@Override
 	public void register(Game g, Rack r) {
@@ -36,6 +74,8 @@ public class PlayerDiablo extends Player{
 		discard_threshold = 1/(double) (game.rack_size*2);
 		learn_rate_decay = LEARN_RATE / (double) (game.rack_size*4);
 		no_progress_limit = game.rack_size*2;
+		
+		net.freeze(0);
 	}
 	@Override
 	public void beginRound() {
@@ -43,24 +83,32 @@ public class PlayerDiablo extends Player{
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
-		//Final target value is the final score
-		old_score.output = score / max_points;
-		train_data.add(old_score);
-		
-		//Train the network
-		//Give higher learning rate to more recent data
-		double rate = LEARN_RATE - train_data.size()*learn_rate_decay;
-		double[] target = new double[1];
-		for (DataInstance d: train_data){
-			//Wait until learning rate breaks above zero
-			rate += learn_rate_decay;
-			if (rate <= 0) continue;
-			//Train this data
-			target[0] = d.output;
-			net.compute(d.inputs);
-			net.trainBackprop(rate, target);
+		if (TRAIN){
+			//Final target value is the final score
+			old_score.output = score / max_points;
+			train_data.add(old_score);
+
+			//Train the network
+			//Give higher learning rate to more recent data
+			double rate = LEARN_RATE - train_data.size()*learn_rate_decay;
+			double[] target = new double[1];
+			for (DataInstance d: train_data){
+				//Wait until learning rate breaks above zero
+				rate += learn_rate_decay;
+				if (rate <= 0) continue;
+				//Train this data
+				target[0] = d.output;
+				net.compute(d.inputs);
+				net.trainBackprop(rate, target);
+			}
+			train_data.clear();
 		}
-		train_data.clear();
+	}
+	@Override
+	public void epoch() {
+		super.epoch();
+		if (TRAIN && net_file != null)
+			net.export(net_file);
 	}
 	@Override
 	public int play() {
@@ -99,13 +147,16 @@ public class PlayerDiablo extends Player{
 			else game.deck.draw(true);
 		}
 		//Add training data
-		if (old_score != null){
-			old_score.output = last_score.output;
-			train_data.add(old_score);
+		if (TRAIN){
+			if (old_score != null){
+				old_score.output = last_score.output;
+				train_data.add(old_score);
+			}
+			old_score = last_score;
 		}
-		old_score = last_score;
 		return pos == -1 ? drawn : rack.swap(drawn, pos, fromDiscard);
 	}
+	
 	
 	/**
 	 * Tests a card at every position in the rack and gives the best score/position
@@ -157,7 +208,7 @@ public class PlayerDiablo extends Player{
 			*/
 			DataInstance d = new DataInstance(15);
 			//if closer to one, the game is close to ending; may want to get more points before game ends
-			d.addFeature(turns, rack_size);
+			d.addFeature(turns > rack_size*2 ? rack_size*2 : turns, rack_size);
 			//maximize points scored (possibly, when turn_ratio is high and sequence length is low)
 			d.addFeature(rack.scorePoints(game.bonus_mode), max_points);
 			//maximize usable sequence length
