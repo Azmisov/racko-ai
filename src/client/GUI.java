@@ -3,6 +3,7 @@ package client;
 import interfaces.Player;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import javax.swing.JScrollPane;
 
 import racko.Game;
 import racko.Rack;
-import reinforcement.*;
+import racko.Rack.LUS;
 
 /**
  * Human usable interface for playing racko
@@ -59,7 +60,8 @@ public class GUI extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		//testSuite();
+		testSuite();
+		if (true) return;
 		//http://www.spellensite.nl/spellen-spelen.php?type=spellen&spellen=Tower+blaster&id=1291
 		
 		//*
@@ -138,7 +140,33 @@ public class GUI extends JFrame{
 	}
 	
 	private static void testSuite(){
-		
+		/* TESTS
+		x	[5,7,4,3,6,9]
+		x	[1,7,5,6,9]
+		x	[3,7,5,2,6]
+		x	[1,7,5,4,6,9]
+		x	[1,2,3,4,5]
+		x	[5,4,3,2,1]
+		x	[2,3,1,7,9,5,8]
+		x	[2,3,1,7,5]
+		x	[1,9,7,10]
+		x	[4,1,3,2]
+		x	[7,1,6,3,2]
+		x	[7,9,6,10,5,8]
+		*/
+		int[] hand = new int[]{7,9,6,10,5,8};
+		Player[] players = new Player[]{
+			new PlayerRandom(),
+			new PlayerRandom()
+		};
+		Game.create(players, hand.length, 1, false);
+		Rack r = players[0].rack;
+		Rack.SCORE_UNBIASED = true;
+		r.deal(hand);
+		ArrayList<LUS> lus = r.getLUS();
+		System.out.println("sequences -> "+lus.size());
+		for (LUS l: lus)
+			System.out.println(Arrays.toString(l.cards));
 	}
 	private static double round(double val){
 		return Math.round(val*100)/100.0;
