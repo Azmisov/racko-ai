@@ -24,8 +24,8 @@ public class PlayerHuman extends Player{
 	public int play(){
 		double score_pts = rack.scorePoints(true) / max_points,
 				score_seq = rack.getLUSLength() / (double) game.rack_size,
-				score_def = rack.scoreDE(game.dist_flat, null),
-				score_des = rack.scoreDE(game.dist_flat, game.dist_skew);
+				score_def = rack.scoreRackDE(game.dist_flat, null),
+				score_des = rack.scoreRackDE(game.dist_flat, game.dist_skew);
 				
 		System.out.println("Discard: "+game.deck.peek(true)+", Rack: "+rack.toString());
 		System.out.println("Score Metrics:");

@@ -3,6 +3,9 @@ package racko;
 import interfaces.Distribution;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Controls a Racko "rack" of cards
@@ -11,7 +14,7 @@ import java.util.Arrays;
 public class Rack {
 	//If unbiased, it will save all long usable sequences in the lus_cache
 	// (as opposed to saving just the "longest" ones)
-	public static boolean SCORE_UNBIASED = false;
+	public static boolean SCORE_UNBIASED = true;
 	
 	//The game we're associated with
 	private final Game game;
@@ -23,7 +26,7 @@ public class Rack {
 	private final int[] cards;
 	//Longest usable sequence cache
 	private UsableMetric lus_metric = null;
-	private final ArrayList<LUS> lus_cache;
+	private ArrayList<LUS> lus_cache;
 	private int lus_max_length;
 	//Probability cache [rack_size][2], [0] = Above, [1] = Below
 	private final double[][] prob_cache;
@@ -391,130 +394,32 @@ public class Rack {
 
 	//LONGEST USABLE SEQUENCES
 	/**
-	 * Holds cached longest-usable-sequence results
-	 * cards = the card numbers in the sequence
-	 * indexes = the rack positions of each of the cards
-	 * length = the length of the sequence (length may not equal cards.length)
-	 */
-	public class LUS{
-		public int[] cards, indexes;
-		public LUS(int[] cards, int[] indexes){
-			this.cards = cards;
-			this.indexes = indexes;
-		}
-	}
-	/**
-	 * Returns the largest ascending sequence that is usable
+	 * Returns a list of ascending sequences that are usable
 	 *	"usable" sequences are ones that could be used for a winning rack:
 	 *		{4 1 3 6} gives a score of 2, since the 1 in the {1 3 6} sequence is
 	 *		unusable for a winning rack (e.g. there is no card less than 1 to fill the four's spot)
 	 *  if two usable sequences cannot be used together, the largest one is returned
 	 *  otherwise, if they are both usable, their lengths will be summed
 	 * 
-	 * @return the longest usable sequence; if SCORE_UNBIASED is enabled,
-	 * it will return all "long" usable sequences as well
+	 * @return a list of usable sequences
 	 */
 	public ArrayList<LUS> getLUS(){
-		//Since this is an n^2 algorithm, we cache the results
-		if (lus_cache.size() > 0)
-			return lus_cache;
+		//Since this is like an n^2 algorithm, we cache the results
+		if (!lus_cache.isEmpty())
+			return lus_cache;			
 		
-		int s = cards.length;
-		//Hold cards in each sequence we're considering
-		int[][] seq_cards = new int[s][s];
-		//For each sequence, where each card lies in the rack (necessary to filter for "usable" sequences)
-		int[][] seq_idx = new int[s][s];
-		//Length of each sequence
-		int[] seq_len = new int[s];
-		//Sequence prefixes, if they have branched from another sequence
-		//[0] = prefix_sequence [1] = prefix_length
-		int[] seq_prefix_len = new int[s];
-		ArrayList<Integer>[] seq_prefix_seq = new ArrayList[s];
-		for (int i=0; i<s; i++)
-			seq_prefix_seq[i] = new ArrayList();
-		ArrayList<Integer> prefixes = new ArrayList();
-		//How many sequences are we considering
-		int seq_count = 0;
-		//Maximum sequence length we've seen thus far
+		//Get a tree of all possible long, usable, ascending sequences
+		LUSTree root = new LUSTree(0, 0);
+		for (int i=0; i<cards.length; i++)
+			root.insert(new LUSTree(cards[i], i));
+		
+		//Convert the tree to a set of sequence arrays
+		lus_cache = root.linearize();
 		lus_max_length = 0;
-		
-		//Check each next card to see if it can be added to a sequence
-		//If it cannot, create a new sequence (we only care about the "maximum" subsequences, so
-		//there will only be one branch per added card; e.g. [5,6,7] and [1,2,7] are treated the same
-		//since they both end in 7 and have length of three; we branch on the one with largest length;
-		//however, if SCORE_UNBIASED is enabled, it will keep both)
-		for (int i=0; i<s; i++){
-			int card = cards[i];
-			//Make sure there is enough "usable" space above this 
-			if (game.deck.cards-card < s-i-1 && (lus_metric == null || lus_metric.above(card, i)))
-				continue;
-			//If we can't find any sequences that can prepend this card, we create a new branch
-			//(hence the initial new_len/seq vars)
-			int new_len = 0, new_seq = 0;
-			prefixes.clear();
-			prefixes.add(0);
-			for (int j=0; j<seq_count; j++){
-				//Find the longest subset of the sequence that can be used
-				//with this card; since the sequence is sorted, this is O(n) worst case
-				//We only care about sequences greater than what we've seen already, hence the "k>new_len"
-				for (int k = seq_len[j]; k != 0 && k>=new_len; k--){
-					int comp = seq_cards[j][k-1],
-						comp_idx = seq_idx[j][k-1];
-					//When we encounter a zero, this part of the sequence is the same as one we saw
-					//earlier; we don't copy the earlier sequence to this one, because it would be redundant
-					if (comp == 0) break;
-					//This card is in ascending order in position "k"
-					//Also make sure there is enough "usable" space in between the two cards
-					if (comp < card && card-comp >= i-comp_idx &&
-						(lus_metric == null || lus_metric.between(card, i, comp, comp_idx))
-					){
-						//If longer than previously seen, clear previous stored vars
-						if (k != new_len){
-							prefixes.clear();
-							new_seq = j;
-							new_len = k;
-						}
-						prefixes.add(j);
-						break;
-					}
-				}
-			}
-			//If this is the first item in the sequence, check for "usable" space below this
-			if (new_len == 0 && card-1 < i && (lus_metric == null || lus_metric.below(card, i)))
-				continue;
-			//Create a new sequence, if we couldn't add it to the end of one
-			//If there is more than one prefix, we also branch, to avoid trickiness
-			if (new_len == 0 || prefixes.size() > 1 || seq_len[new_seq] > new_len){
-				seq_count++;
-				//Store prefix location, for deferred mem copying
-				seq_prefix_len[seq_count] = new_len;
-				seq_prefix_seq[seq_count].addAll(prefixes);
-				new_seq = seq_count;
-			}
-			//Add the card to the appropriate sequence
-			seq_cards[new_seq][new_len] = card;
-			seq_idx[new_seq][new_len] = i;
-			if (++new_len > lus_max_length)
-				lus_max_length = new_len;
-			seq_len[new_seq] = new_len;
+		for (LUS seq: lus_cache){
+			if (seq.cards.length > lus_max_length)
+				lus_max_length = seq.cards.length;
 		}
-		
-		//Cache the results
-		for (int i=0; i<seq_count; i++){
-			if (SCORE_UNBIASED || seq_len[i] == lus_max_length){
-				//Copy missing prefix first
-				int prefix_len = seq_prefix_len[i];
-				for (Integer prefix: seq_prefix_seq[i]){
-					System.arraycopy(seq_cards[prefix], 0, seq_cards[i], 0, prefix_len);
-					//Clone data for later use
-					int[] cards_clone = Arrays.copyOf(seq_cards[i], seq_len[i]),
-						  idxs_clone = Arrays.copyOf(seq_idx[i], seq_len[i]);
-					lus_cache.add(new LUS(cards_clone, idxs_clone));
-				}
-			}
-		}
-		
-		//Return cache
 		return lus_cache;
 	}
 	/**
@@ -522,6 +427,9 @@ public class Rack {
 	 * @return length of longest usable sequence
 	 */
 	public int getLUSLength(){
+		//Run the LUS computations, if they haven't been done yet
+		if (lus_cache.isEmpty())
+			getLUS();
 		return lus_max_length;
 	}
 	/**
@@ -545,6 +453,112 @@ public class Rack {
 		public boolean between(int card_hi, int idx_hi, int card_lo, int idx_lo);
 	}
 	
+	/**
+	 * Holds cached longest-usable-sequence results
+	 * cards = the card numbers in the sequence
+	 * indexes = the rack positions of each of the cards
+	 * length = the length of the sequence (length may not equal cards.length)
+	 */
+	public static class LUS{
+		public int[] cards, indexes;
+		public LUS(int[] cards, int[] indexes){
+			this.cards = cards;
+			this.indexes = indexes;
+		}
+	}
+	/**
+	 * Holds a tree that can be used to construct every
+	 * usable sequence, through a depth first search
+	 */
+	private static class LUSTree{
+		private static final ArrayList<ArrayList<LUSTree>> seqs = new ArrayList();
+		public ArrayList<LUSTree> branches;
+		public int card, index;
+		//Keep track of insertion results, so we don't go back to the same node twice
+		private int build_id;
+		private boolean build_result;
+		
+		public LUSTree(int card, int index){
+			this.card = card;
+			this.index = index;
+			branches = new ArrayList();
+			build_id = 0;
+		}
+		
+		/**
+		 * Add a card to the tree
+		 * @param node a leaf node (a card)
+		 */
+		public void insert(LUSTree node){
+			build_id = node.index+1;
+			//The new card cannot be inserted here (wouldn't be sorted)
+			if (card != 0 && node.card < card)
+				build_result = false;
+			else{
+				build_result = false;
+				//Check to see if it can be inserted somewhere further
+				for (LUSTree n: branches){
+					//This node has already been visited
+					if (n.build_id == build_id){
+						if (n.build_result)
+							build_result = true;
+					}
+					else{
+						n.insert(node);
+						if (n.build_result)
+							build_result = true;
+					}
+				}
+				//If not, we'll insert it here
+				if (!build_result){
+					branches.add(node);
+					build_result = true;
+				}
+			}
+		}
+		/**
+		 * Convert the tree into linearized sequences
+		 *  (topological sorts)
+		 * @return a list of sequences
+		 */
+		public ArrayList<LUS> linearize(){
+			//Linearize the tree
+			seqs.clear();
+			linearize_recursive(new ArrayList());
+			
+			//Create LUS objects from each linearization
+			ArrayList<LUS> lus = new ArrayList(seqs.size());
+			for (ArrayList<LUSTree> seq: seqs){
+				int size = seq.size(), i = 0;
+				int[] cards = new int[size], indexes = new int[size];
+				for (LUSTree n: seq){
+					cards[i] = n.card;
+					indexes[i++] = n.index;
+				}
+				lus.add(new LUS(cards, indexes));
+			}
+			return lus;
+		}
+		private void linearize_recursive(ArrayList<LUSTree> seq){
+			if (card != 0)
+				seq.add(this);
+			//This is the end of a sequence
+			if (branches.isEmpty()){
+				seqs.add(seq);
+				return;
+			}
+			//Otherwise, branch
+			int len = branches.size(), i = 0;
+			for (LUSTree node: branches){
+				//We need to copy the sequence, so it isn't overriden
+				if (len != ++i)
+					node.linearize_recursive(new ArrayList(seq));
+				//We can pass along the original list to one child
+				else node.linearize_recursive(seq);
+			}
+		}
+	}
+
 	//PROBABILITIES
 	/**
 	 * Get probabilities 
