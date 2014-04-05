@@ -30,7 +30,12 @@ public class PlayerKyle extends Player{
 	private static final StoppingCriteria RI_stop = new StoppingCriteria();
 	private static boolean done_learning;
 	public static boolean save_moves = false;
+	
 	public static ArrayList<DataInstance> play_history = new ArrayList<DataInstance>();
+	private ArrayList<DataInstance> game_play_history = new ArrayList<DataInstance>();
+	public static ArrayList<DataInstance> draw_history = new ArrayList<DataInstance>();
+	private ArrayList<DataInstance> game_draw_history = new ArrayList<DataInstance>();
+	
 	
 	/**
 	 * Create Player Kyle
@@ -66,7 +71,22 @@ public class PlayerKyle extends Player{
 	@Override
 	public void scoreRound(boolean won, int score) {
 		//If we won the round, update the weights for reinforcement learning
-		if (won) updateWeights();
+		if (won) {
+			updateWeights();
+			
+			if(save_moves == true){
+				play_history.addAll(game_play_history);
+				draw_history.addAll(game_draw_history);
+			}
+			
+		}
+		
+		
+		if(save_moves == true){
+			game_play_history.clear();
+			game_draw_history.clear();
+		}
+		
 	}
 	@Override
 	public void epoch(){
@@ -120,6 +140,34 @@ public class PlayerKyle extends Player{
 		
 		//decide which slot the card goes in given the range
 		int slot = use_reinforcement ? decideSlotReinf(target, cardDrawn) : decideSlotClassic(target, cardDrawn);			
+		
+		
+		if(save_moves == true) {
+			int num_features = rack_size + 1;
+			DataInstance pdi = new DataInstance(num_features);
+			pdi.addFeature(rack.getCards(), game.card_count);
+			pdi.addFeature(cardDrawn, game.card_count);
+			pdi.setOutput(slot,1);
+			game_play_history.add(pdi);
+			
+			DataInstance ddi = new DataInstance(game.rack_size*3 + 1);
+			//Rack
+			int[] cur_rack = rack.getCards();
+			ddi.addFeature(cur_rack, game.card_count);
+			double[] pHigh = new double[game.rack_size],
+					pLow = new double[game.rack_size];
+			for (int i=0; i < game.rack_size; i++){
+				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
+				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
+			}
+			ddi.addFeature(pHigh, 1);
+			ddi.addFeature(pLow, 1);
+			
+			int discard = game.deck.peek(true);
+			ddi.addFeature(discard, game.card_count);
+			ddi.output = fromDiscard ? 0.0 : 1.0;
+			game_draw_history.add(ddi);
+		}
 		
 		//replace the card in the rack
 		int toDiscard = rack.swap(cardDrawn, slot-1, fromDiscard);
