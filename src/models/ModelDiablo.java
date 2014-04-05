@@ -1,29 +1,28 @@
-package client;
+package models;
 
 import NeuralNetworks.Network;
-import interfaces.Player;
+import interfaces.Model;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Random;
 import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
-import racko.Rack.LUS;
 
 /**
+ * High level feature, TD network
  * @author isaac
  */
-public class PlayerDiablo extends Player{
+public class ModelDiablo extends Model{
 	private static final Random RAND = new Random();
-	//Last max-score, computed in scoreCard()
-	private DataInstance old_score, last_score;
-	//Turns made this round
-	private int turns, no_progress_limit;
+	//Game constants
+	private Game game;
+	private Rack rack;
 	//Maximum points that can be won in a game
 	private double max_points;
+	//Last max-score, computed in scoreCard()
+	private DataInstance old_score, last_score, base_score;
+	private int cache_pos, cache_turn = -1;
 	//Neural network
 	private static final double LEARN_RATE = 0.1;
 	private final String net_file;
@@ -37,8 +36,7 @@ public class PlayerDiablo extends Player{
 	 * @param file file to load network weights
 	 * @param train should we train the 
 	 */
-	public PlayerDiablo(String file, boolean train){
-		super();
+	public ModelDiablo(String file, boolean train){
 		//Try to load the network file
 		net_file = file;
 		File f = new File(file);
@@ -55,8 +53,11 @@ public class PlayerDiablo extends Player{
 		//Standard settings
 		if (!loaded) newNetwork();
 	}
-	public PlayerDiablo(Network net){
-		super();
+	/**
+	 * Create a new Diablo AI, using a predefined network
+	 * @param net the network to use
+	 */
+	public ModelDiablo(Network net){
 		net_file = null;
 		if (net == null)
 			newNetwork();
@@ -68,18 +69,13 @@ public class PlayerDiablo extends Player{
 	}
 
 	@Override
-	public void register(Game g, Rack r) {
-		super.register(g, r);
+	public void register(Game g, Rack r) throws Exception{
+		this.game = g;
+		this.rack = r;
+
 		max_points = g.maxPoints();
 		discard_threshold = 1/(double) (game.rack_size*2);
 		learn_rate_decay = LEARN_RATE / (double) (game.rack_size*4);
-		no_progress_limit = game.rack_size*2;
-		
-		net.freeze(0);
-	}
-	@Override
-	public void beginRound() {
-		turns = 0;
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
@@ -106,46 +102,32 @@ public class PlayerDiablo extends Player{
 	}
 	@Override
 	public void epoch() {
-		super.epoch();
 		if (TRAIN && net_file != null)
 			net.export(net_file);
 	}
 	@Override
-	public int play() {
-		turns++;
-		int drawn, pos;
-		boolean fromDiscard;
-		//If we haven't made progress in a while, do a random move
-		if (turns % no_progress_limit == 0){
-			STAT_badmoves++;
-			fromDiscard = RAND.nextBoolean();
-			drawn = game.deck.draw(fromDiscard);
-			findBestMove(drawn);
-			pos = RAND.nextInt(game.rack_size+1)-1;
+	public boolean decideDraw(int turn) {
+		//Get a base score for this rack
+		base_score = scoreRack(turn);
+		cache_turn = turn;
+		
+		//See if taking from discard improves score at all
+		int top_discard = game.deck.peek(true);
+		cache_pos = findBestMove(turn, top_discard);
+		//TODO: We could use a learned weight to determine how good the draw-from-discard score has to be to accept
+		//This could be much more sophisticated...
+		return last_score.output - discard_threshold > base_score.output;
+	}
+	@Override
+	public int decidePlay(int turn, int drawn, boolean fromDiscard) {
+		//If it gives us a bad score, take from draw pile
+		if (!fromDiscard || cache_turn != turn){
+			cache_pos = findBestMove(turn, drawn);
+			//If it hurts our score, we'll discard
+			if (last_score.output <= base_score.output)
+				cache_pos = -1;
 		}
-		//Otherwise, use regular scoring approach
-		else{
-			//Get a base score for this rack
-			DataInstance base = scoreRack();
 
-			//See if taking from discard improves score at all
-			drawn = game.deck.peek(true);
-			pos = findBestMove(drawn);
-			//We use a learned weight to determine how good the draw-from-discard score has to be to accept
-			//This could be much more sophisticated...
-			double discard_score = last_score.output;
-			fromDiscard = discard_score - discard_threshold > base.output;
-
-			//If it gives us a bad score, take from draw pile
-			if (!fromDiscard){
-				drawn = game.deck.draw(false);
-				pos = findBestMove(drawn);
-				//If it hurts our score, we'll discard
-				if (last_score.output <= base.output)
-					pos = -1;
-			}
-			else game.deck.draw(true);
-		}
 		//Add training data
 		if (TRAIN){
 			if (old_score != null){
@@ -154,25 +136,26 @@ public class PlayerDiablo extends Player{
 			}
 			old_score = last_score;
 		}
-		return pos == -1 ? drawn : rack.swap(drawn, pos, fromDiscard);
+		
+		return cache_pos;
 	}
-	
 	
 	/**
 	 * Tests a card at every position in the rack and gives the best score/position
+	 * @param turns turns made this round (by this player)
 	 * @param card the card to insert into the rack somewhere
 	 * @return position card should be placed for maximum score
 	 *  actual scores are saved to "last_score" variable
 	 */
-	private int findBestMove(int card){
-		int max_pos = 0, discard = 0;
+	private int findBestMove(int turns, int card){
+		int max_pos = 0, discard;
 		last_score = null;
 		//Test every possible move
 		for (int i=0; i<game.rack_size; i++){
 			//Swap card with this position
 			discard = rack.swap(card, i);
 			//Score the rack
-			DataInstance d = scoreRack();
+			DataInstance d = scoreRack(turns);
 			if (last_score == null || d.output > last_score.output){
 				last_score = d;
 				max_pos = i;
@@ -184,16 +167,17 @@ public class PlayerDiablo extends Player{
 	}
 	/**
 	 * Scores the rack
+	 * @param turns turns made this round (by this player)
 	 * @return features used, and the max score given from them
 	 */
-	private DataInstance scoreRack(){
+	private DataInstance scoreRack(int turns){
 		DataInstance max_score = null;
 		double rack_size = game.rack_size;
 		
 		//Loop through every long usable sequence for this rack
 		double rack_de = rack.scoreRackDE(game.dist_flat, null),
 				rack_de_skew = rack.scoreRackDE(game.dist_flat, game.dist_skew);
-		for (LUS lus: rack.getLUS()){
+		for (Rack.LUS lus: rack.getLUS()){
 			/* Other features to consider:
 				- scoreDensity weighted by probabilities or distribution-error
 				- scoreClumpDE weighted by probabilities or density

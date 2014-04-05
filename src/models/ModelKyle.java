@@ -1,6 +1,6 @@
-package client;
+package models;
 
-import interfaces.Player;
+import interfaces.Model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,33 +14,39 @@ import racko.Rack;
  * of cards in the rack; it has an optional reinforcement learning mode
  * @author Kyle Thompson
  */
-public class PlayerKyle extends Player{
+public class ModelKyle extends Model{
+	//Game constants
+	private Game game;
+	private Rack rack;
+	//Rack cache
 	private final ArrayList<Integer> anchorPoints = new ArrayList();
 	private final ArrayList<Range> myRanges = new ArrayList();
-	private static int rack_size;
+	private int rack_size;
 	private int[] oldRack;
+	private int cache_pos, cache_turn;
 	//Reinforcement learning
-	private static final ArrayList<Decision> myDecisions = new ArrayList();
-	private static int[][] weights;
+	private final ArrayList<Decision> myDecisions = new ArrayList();
+	private int[][] weights;
 	private final boolean use_reinforcement;
 	//Stopping criteria for reinforcement learning
-	private static final StoppingCriteria RI_stop = new StoppingCriteria();
-	private static boolean done_learning;
+	private final StoppingCriteria RI_stop = new StoppingCriteria();
+	private boolean done_learning;
 	
 	/**
-	 * Create Player Kyle
+	 * Create Kyle Model
 	 * @param reinforce use reinforcement learning?
 	 */
-	public PlayerKyle(boolean reinforce){
+	public ModelKyle(boolean reinforce){
 		use_reinforcement = reinforce;
 	}
-
+	
 	@Override
-	public void register(Game g, Rack r) {
-		//Default registration
-		super.register(g, r);
+	public void register(Game g, Rack r) throws Exception{
+		this.game = g;
+		this.rack = r;
 		
 		//If game configuration has changed, we need to reset our learned reinforcement weights
+		//TODO: fix this thing here...
 		rack_size = g.rack_size;
 		if (weights == null || weights.length != rack_size+1 || weights[0].length != g.card_count+1){
 			oldRack = new int[rack_size];
@@ -65,7 +71,6 @@ public class PlayerKyle extends Player{
 	}
 	@Override
 	public void epoch(){
-		super.epoch();
 		//Reinforcement learning stopping criteria
 		if (!done_learning){
 			done_learning = RI_stop.epoch(this);
@@ -74,53 +79,32 @@ public class PlayerKyle extends Player{
 		}
 	}
 	@Override
-	public int play() {
-		//get the rack
-		int[] tmpRack = rack.getCards();
-		
+	public boolean decideDraw(int turn) {
+		cache_turn = turn;
 		//look at the top of the discard pile and decide which range it will fit in
 		int topDiscard = game.deck.peek(true);
-		int targetRange = -1;
-		for (int i = 0; i < myRanges.size(); i++){
-			Range tmpRange = (Range) myRanges.get(i);
-			if (topDiscard >= tmpRange.getLowEnd() && topDiscard <= tmpRange.getHighEnd()){
-				targetRange = i;
-				break; //target found, no need to keep searching
-			}
-		}
-		
-		//decide to draw from discard or deck (targetRange == -1 -> draw pile)
-		boolean fromDiscard = targetRange != -1;
-		int cardDrawn = game.deck.draw(fromDiscard);
-		
-		//if drew from deck, see if card is useful
-		if (targetRange == -1){
-			for (int i = 0; i < myRanges.size(); i++)
-			{
-				Range tmpRange = (Range) myRanges.get(i);
-				if (cardDrawn > tmpRange.getLowEnd() && cardDrawn < tmpRange.getHighEnd())
-				{
-					targetRange = i;
-					break; //target found, no need to keep searching
-				}
-			}
-		}
+		cache_pos = findRange(true, topDiscard);
+		return cache_pos != -1;
+	}
+	@Override
+	public int decidePlay(int turn, int drawn, boolean fromDiscard){		
+		//see if this card is useful (or if not cached already)
+		if (!fromDiscard || turn != cache_turn)
+			cache_pos = findRange(fromDiscard, turn);
 		
 		//discard and exit if the card is still useless
-		if (targetRange == -1)
-			return cardDrawn;
+		if (cache_pos == -1)
+			return -1;
 		
 		//decide which slot the card goes in given the range
-		Range target = (Range) myRanges.get(targetRange);
+		Range target = (Range) myRanges.get(cache_pos);
 		
 		//decide which slot the card goes in given the range
-		int slot = use_reinforcement ? decideSlotReinf(target, cardDrawn) : decideSlotClassic(target, cardDrawn);			
-		
-		//replace the card in the rack
-		int toDiscard = rack.swap(cardDrawn, slot-1, fromDiscard);
+		int slot = use_reinforcement ? decideSlotReinf(target, drawn) : decideSlotClassic(target, drawn);
 		
 		//add decision
-		myDecisions.add(new Decision(slot, cardDrawn));
+		if (use_reinforcement && !done_learning)
+			myDecisions.add(new Decision(slot, drawn));
 		
 		//create new ranges
 		if (!anchorPoints.contains (new Integer(slot)))
@@ -132,7 +116,7 @@ public class PlayerKyle extends Player{
 		//copy the current rack into the old rack for comparison later
 		oldRack = Arrays.copyOf(rack.getCards(), rack_size);
 		
-		return toDiscard;
+		return slot-1;
 	}
 	
 	//SLOT DECISION MAKING
@@ -293,6 +277,18 @@ public class PlayerKyle extends Player{
 				toRemove.add(tmpRange);
 		}
 		myRanges.removeAll(toRemove);
+	}
+	private int findRange(boolean discard, int card){
+		int targetRange = -1;
+		for (int i = 0; i < myRanges.size(); i++){
+			Range tmpRange = (Range) myRanges.get(i);
+			int lo = tmpRange.getLowEnd(), hi = tmpRange.getHighEnd();
+			if (card > lo && card < hi || (discard && (card == lo || card == hi))){
+				targetRange = i;
+				break; //target found, no need to keep searching
+			}
+		}
+		return targetRange;
 	}
 	public class Range{
 		private int lowEnd, highEnd, startSlot, numSlots;

@@ -1,5 +1,6 @@
 package client;
 
+import models.StoppingCriteria;
 import java.util.ArrayList;
 import java.util.Random;
 import NeuralNetworks.Network;
@@ -20,13 +21,13 @@ public class PlayerAI extends Player{
 	private DataInstance draw_instance, play_instance;
 	//Learning model
 	private final boolean USE_RAND, USE_PROB_DRAW = false, USE_PROB_PLAY = false;
-	private static final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
-	private static int[] drawNet_layers, playNet_layers;
-	private static Network drawNet = null, playNet = null;
+	private final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
+	private int[] drawNet_layers, playNet_layers;
+	private Network drawNet = null, playNet = null;
 	//Deep learning
-	private static final int DL_maxlayers = 4;
-	private static int DL_drawdelta, DL_playdelta, DL_layers = 0, rack_size;
-	private static final StoppingCriteria DL_stop = new StoppingCriteria();
+	private final int DL_maxlayers = 4;
+	private int DL_drawdelta, DL_playdelta, DL_layers = 0, rack_size;
+	private final StoppingCriteria DL_stop = new StoppingCriteria();
 	//Statistics
 	private double initialScore, currentScore;
 	private int games_played = 0, net_play_count, moves_in_round;
@@ -38,6 +39,7 @@ public class PlayerAI extends Player{
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
 	}
+	public PlayerAI(boolean)
 
 	@Override
 	public void register(Game g, Rack r) {

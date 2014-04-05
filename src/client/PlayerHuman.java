@@ -22,17 +22,7 @@ public class PlayerHuman extends Player{
 	
 	@Override
 	public int play(){
-		double score_pts = rack.scorePoints(true) / max_points,
-				score_seq = rack.getLUSLength() / (double) game.rack_size,
-				score_def = rack.scoreRackDE(game.dist_flat, null),
-				score_des = rack.scoreRackDE(game.dist_flat, game.dist_skew);
-				
 		System.out.println("Discard: "+game.deck.peek(true)+", Rack: "+rack.toString());
-		System.out.println("Score Metrics:");
-		System.out.println("\tpts = "+score_pts);
-		System.out.println("\tseq = "+score_seq);
-		System.out.println("\tdef = "+score_def);
-		System.out.println("\tdes = "+score_des);
 		char draw;
 		do{
 			String output = System.console().readLine("Draw from discard [y/n]:");

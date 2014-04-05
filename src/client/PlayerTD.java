@@ -6,6 +6,7 @@
 
 package client;
 
+import models.StoppingCriteria;
 import NeuralNetworks.Network;
 import interfaces.Player;
 import java.util.Arrays;
