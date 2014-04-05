@@ -1,9 +1,12 @@
 package client;
 
 import interfaces.Player;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+
+import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
 
@@ -26,6 +29,8 @@ public class PlayerKyle extends Player{
 	//Stopping criteria for reinforcement learning
 	private static final StoppingCriteria RI_stop = new StoppingCriteria();
 	private static boolean done_learning;
+	public static boolean save_moves = false;
+	public static ArrayList<DataInstance> play_history = new ArrayList<DataInstance>();
 	
 	/**
 	 * Create Player Kyle
