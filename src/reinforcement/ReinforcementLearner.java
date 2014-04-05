@@ -1,6 +1,9 @@
 package reinforcement;
 import interfaces.*;
 import client.*;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReinforcementLearner {
 	private IndexingCriterion indexer;
@@ -12,17 +15,35 @@ public class ReinforcementLearner {
 	private int oldPlayAction = -1;
 	private int oldDrawState = -1;
 	private int oldDrawAction = -1;
+	private int rackSize = 5;
+	private String indexMode;
 
 	public ReinforcementLearner()
 	{
+		indexMode = "AboveBelow";
 		gamesSinceBelowMin = 0;
-		indexer = createCriterion("AboveBelow");
+		indexer = createCriterion(indexMode);
 		playStates = new State[indexer.maxStates()];
 		drawStates = new State[indexer.maxStates()];
 		for (int i=0; i < playStates.length; i++)
 			playStates[i] = new State(false);
 		for (int i=0; i < drawStates.length; i++)
 			drawStates[i] = new State(true);
+	}
+	public ReinforcementLearner(BufferedReader buff)
+	{
+		try {
+			rackSize = Integer.parseInt(buff.readLine());
+			indexer = createCriterion(buff.readLine());
+			playStates = new State[indexer.maxStates()];
+			drawStates = new State[indexer.maxStates()];
+			for (int i=0; i < playStates.length; i++)
+				playStates[i] = new State(false, buff);
+			for (int i=0; i < drawStates.length; i++)
+				drawStates[i] = new State(true, buff);
+		} catch (IOException ex) {
+			Logger.getLogger(ReinforcementLearner.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 	public boolean fromDiscardForReal(Player p)
 	{
@@ -94,6 +115,18 @@ public class ReinforcementLearner {
 		oldDrawState = -1;
 		oldPlayAction = -1;
 		oldDrawAction = -1;
+	}
+	
+	public String saveString()
+	{
+		String toReturn = "";
+		toReturn = toReturn + rackSize + "\n";
+		toReturn = toReturn + indexMode + "\n";
+		for (State s: playStates)
+			toReturn = toReturn + s.saveString();
+		for (State s: drawStates)
+			toReturn = toReturn + s.saveString();
+		return toReturn;
 	}
 
 	public IndexingCriterion createCriterion(String string)

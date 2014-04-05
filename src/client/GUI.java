@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import racko.Game;
 import racko.Rack;
 import racko.Rack.LUS;
-import reinforcement.PlayerExploiter;
+import reinforcement.*;
 
 /**
  * Human usable interface for playing racko
@@ -58,8 +58,8 @@ public class GUI extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		testSuite();
-		if (true) return;
+		//testSuite();
+		//if (true) return;
 		//http://www.spellensite.nl/spellen-spelen.php?type=spellen&spellen=Tower+blaster&id=1291
 		
 		//*
@@ -78,8 +78,8 @@ public class GUI extends JFrame{
 			//new PlayerAI(true),
 			//new PlayerMax(),
 			//new PlayerKyle(true)
-			new PlayerRandom(),
-			new PlayerExploiter()
+			new PlayerBaltar(),
+			new PlayerRandom()
 		};
 
 		//TRAINING & TESTING

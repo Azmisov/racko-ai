@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package reinforcement;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Action {
 	private double reward;
@@ -16,6 +19,15 @@ public class Action {
 	{
 		reward = 0;
 		visits = 0;
+	}
+	public Action(BufferedReader buff)
+	{
+		visits = 0;
+		try {
+			reward = Double.parseDouble(buff.readLine());
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 	public double getReward()
 	{
@@ -38,6 +50,10 @@ public class Action {
 			reward = firstpart + secondpart;
 			
 		}
+	}
+	public String saveString()
+	{
+		return "" + reward + "\n";
 	}
 	
 }

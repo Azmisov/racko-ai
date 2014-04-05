@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package reinforcement;
+import java.io.*;
 
 public class State {
 	Action[] actions;
@@ -18,6 +19,17 @@ public class State {
 		
 		for (int i=0; i < actions.length; i++)
 			actions[i] = new Action();
+	}
+	public State(boolean draw, BufferedReader buff)
+	{
+		drawState = draw;
+		if (draw)
+			actions = new Action[2];
+		else
+			actions = new Action[6];
+		
+		for (int i=0; i < actions.length; i++)
+			actions[i] = new Action(buff);
 	}
 	public double stateScore()
 	{
@@ -66,6 +78,12 @@ public class State {
 				return false;
 		return true;
 	}
-	
+	public String saveString()
+	{
+		String toReturn = "";
+		for (Action a: actions)
+			toReturn = toReturn + a.saveString();
+		return toReturn;
+	}
 	
 }
