@@ -23,15 +23,19 @@ public class PlayerBaltar extends Player {
 		"ReinforcementLearner267447822.txt",
 		"ReinforcementLearner446609466.txt",
 		"ReinforcementLearner-566309831.txt",
+		"ReinforcementLearner723045708.txt",
+		"ReinforcementLearner-982413113.txt",
 		"ReinforcementLearner-1042424524.txt",
 		"ReinforcementLearner-1099763312.txt",
 		"ReinforcementLearner-1302531921.txt",
 		"ReinforcementLearner-1414899564.txt",
+		"ReinforcementLearner1462336758.txt",
 		"ReinforcementLearner-1581899655.txt",
 		"ReinforcementLearner1830453964.txt",
 		"ReinforcementLearner1974869635.txt",
 		"ReinforcementLearner2068109305.txt",
-		"ReinforcementLearner-2090730043.txt"
+		"ReinforcementLearner-2090730043.txt",
+		"ReinforcementLearner2091629729.txt"
 		};
 	
 	public PlayerBaltar()

@@ -78,6 +78,12 @@ public class State {
 				return false;
 		return true;
 	}
-	
+	public String saveString()
+	{
+		String toReturn = "";
+		for (Action a: actions)
+			toReturn = toReturn + a.saveString();
+		return toReturn;
+	}
 	
 }

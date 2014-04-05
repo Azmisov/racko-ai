@@ -51,5 +51,9 @@ public class Action {
 			
 		}
 	}
+	public String saveString()
+	{
+		return "" + reward + "\n";
+	}
 	
 }
