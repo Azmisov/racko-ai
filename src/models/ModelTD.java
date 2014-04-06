@@ -1,6 +1,5 @@
 package models;
 
-import models.StoppingCriteria;
 import NeuralNetworks.Network;
 import interfaces.Player;
 import java.util.Arrays;
@@ -33,9 +32,10 @@ public class ModelTD extends Player{
 	private int net_play_count, games_played;
 
 	@Override
-	public void register(Game g, Rack r) {
+	public boolean register(Game g, Rack r) {
 		super.register(g, r);
 		
+		//TODO: fix this here!!!
 		//Change game configuration
 		if (net == null || rack_size != g.rack_size){
 			rack_size = g.rack_size;
@@ -45,6 +45,8 @@ public class ModelTD extends Player{
 			DL_delta = (net_layers[1]-net_layers[2])/DL_maxlayers;
 			net = new Network(net_layers);
 		}
+		
+		return true;
 	}
 	@Override
 	public int play() {

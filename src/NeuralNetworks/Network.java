@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -16,7 +14,7 @@ import java.util.Scanner;
  */
 public class Network{
 	//Input nodes for data features; 
-	private ArrayList<Node[]> layers;
+	public final ArrayList<Node[]> layers = new ArrayList();
 	private int input_nodes;
 	private int frozen;
 	
@@ -32,6 +30,7 @@ public class Network{
 	/**
 	 * Creates a network by importing predefined weights
 	 * @param filename the exported network
+	 * @throws Exception if there was an error loading the file
 	 */
 	public Network(String filename) throws Exception{
 		try (FileReader x = new FileReader(filename)){
@@ -68,7 +67,6 @@ public class Network{
 		//Network must have at least one layer
 		assert(layers != null && layers.length != 0);
 		input_nodes = layers[0];
-		this.layers = new ArrayList();
 		
 		//Create nodes for each layer
 		for (int i=0, count; i<layers.length; i++){
@@ -98,6 +96,16 @@ public class Network{
 	}
 	
 	/**
+	 * Get how many input nodes are in the network
+	 * @return number of input nodes
+	 */
+	public int inputNodes(){
+		return input_nodes;
+	}
+	public int hiddenLayers(){
+		return layers.size()-2;
+	}
+	/**
 	 * Freezes a layer so weights are not adjusted; use for deep learning
 	 * @param layer the hidden layer to freeze (all layers before this one
 	 * are automatically frozen as well); starts with 1, ends with |layers|-3;
@@ -107,7 +115,6 @@ public class Network{
 		assert(layer >= 0 && layer <= layers.size()-3);
 		frozen = layer;
 	}
-	
 	/**
 	 * Inserts another hidden layer
 	 * @param nodes 
@@ -144,7 +151,6 @@ public class Network{
 	 * node is cached, for use with the "train()" method
 	 * TODO: make this work for cyclic graphs??
 	 * @param data the input data
-	 * @throws Exception if the data is ill-formed
 	 */
 	public void compute(double[] data){
 		assert(data.length == input_nodes);
@@ -219,7 +225,6 @@ public class Network{
 	 * Adjusts the network's weights, using the backpropagation rule
 	 * @param rate the learning rate
 	 * @param targets an array of target values, corresponding to the output nodes
-	 * @throws Exception if the targets don't match the output nodes
 	 */
 	public void trainBackprop(double rate, double[] targets){		
 		//TODO: what if we have nested networks?
@@ -259,8 +264,7 @@ public class Network{
 	/**
 	 * Train with backpropagation, using classification
 	 * @param rate the learning rate
-	 * @param target the target class
-	 * @throws Exception 
+	 * @param target the target class 
 	 */
 	public void trainBackprop(double rate, int target){
 		int outputs = layers.get(layers.size()-1).length;

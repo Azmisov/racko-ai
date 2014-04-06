@@ -10,14 +10,17 @@ import racko.Rack;
 public abstract class Model {
 	protected Game game;
 	protected Rack rack;
+	
 	/**
 	 * Register this model with a particular game
 	 * @param g game to use
 	 * @param r rack to use
+	 * @return true, if registration is successful
 	 */
-	public void register(Game g, Rack r){
+	public boolean register(Game g, Rack r){
 		game = g;
 		rack = r;
+		return true;
 	}
 	/**
 	 * Decide whether to draw form discard pile
@@ -45,9 +48,8 @@ public abstract class Model {
 	 */
 	public void scoreRound(boolean won, int score){}
 	/**
-	 * Denote the end of an epoch; Can be used for
-	 * stopping criteria, deep learning, etc.; If this method is
-	 * overridden, super.epoch() must be called
+	 * Notifies model that an epoch has been reached
+	 * @param p the player using this model
 	 */
-	public void epoch(){}
+	public void epoch(Player p){}
 }

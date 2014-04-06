@@ -17,13 +17,12 @@ public class PlayerHuman extends Player{
 		super();
 		hinters = new Model[]{
 			new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false),
-			new ModelMax(),
-			new ModelKyle(false)
+			new ModelMax()
 		};
 	}
 
 	@Override
-	public void register(Game g, Rack r) {
+	public boolean register(Game g, Rack r) {
 		super.register(g, r);
 		max_points = g.maxPoints();
 		try {
@@ -32,6 +31,7 @@ public class PlayerHuman extends Player{
 		} catch (Exception ex) {
 			System.out.println("Could not enable hinting!!!");
 		}
+		return true;
 	}
 	
 	@Override
@@ -84,7 +84,7 @@ public class PlayerHuman extends Player{
 	}
 
 	@Override
-	public void scoreGame(boolean won) {
+	public void scoreGame(boolean won, int score) {
 		if (won)
 			System.out.println("You won the game!\n");
 		else System.out.println("You lost the game.\n");

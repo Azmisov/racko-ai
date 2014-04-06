@@ -47,13 +47,15 @@ public abstract class Player {
 	 * Otherwise, we can't guarantee this will work
 	 * @param g a game to register
 	 * @param r the player's rack
+	 * @return true, if successfully registered
 	 */
-	public void register(Game g, Rack r){
+	public boolean register(Game g, Rack r){
 		game = g;
 		rack = r;
 		score = 0;
 		wins = 0;
 		resetStats();
+		return true;
 	}
 	/**
 	 * Notifies the player that their turn has arrived; the player must call
@@ -70,9 +72,9 @@ public abstract class Player {
 	/**
 	 * Notifies the player of the outcome for the game
 	 * @param won whether this player won the game
-	 * @param final their final score for the game
+	 * @param score their final score for the game
 	 */
-	public void scoreGame(boolean won){}
+	public void scoreGame(boolean won, int score){}
 	
 	public void beginRound(){}
 	public void beginGame(){}

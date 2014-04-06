@@ -87,10 +87,11 @@ public class Game {
 	
 	/**
 	 * Starts a new game
+	 * @param start_player who should start the game?
 	 */
 	public void play(int start_player){
-		for (int i=0; i<players.length; i++)
-			players[i].beginGame();
+		for (Player player: players)
+			player.beginGame();
 		
 		//Outer loop sets up games for each new round
 		while (true){
@@ -145,7 +146,7 @@ public class Game {
 						//Notify players that the game has ended
 						else{
 							for (int i=0; i<player_count; i++)
-								players[i].scoreGame(i == max_idx);
+								players[i].scoreGame(i == max_idx, players[i].score);
 							return;
 						}
 					}

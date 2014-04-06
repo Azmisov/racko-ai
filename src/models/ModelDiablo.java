@@ -2,6 +2,7 @@ package models;
 
 import NeuralNetworks.Network;
 import interfaces.Model;
+import interfaces.Player;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,11 +14,8 @@ import racko.Rack;
  * High level feature, TD network
  * @author isaac
  */
-public class ModelDiablo extends Model{
+public class ModelDiablo extends Model {
 	private static final Random RAND = new Random();
-	//Game constants
-	private Game game;
-	private Rack rack;
 	//Maximum points that can be won in a game
 	private double max_points;
 	//Last max-score, computed in scoreCard()
@@ -33,18 +31,19 @@ public class ModelDiablo extends Model{
 	
 	/**
 	 * Create new Diablo AI, loading network weights from file
+	 * If file doesn't exist, it will create a new one
 	 * @param file file to load network weights
 	 * @param train should we train the 
 	 */
 	public ModelDiablo(String file, boolean train){
 		//Try to load the network file
 		net_file = file;
+		TRAIN = train;
 		File f = new File(file);
 		boolean loaded = false;
 		if (f.isFile()){
 			try{
 				net = new Network(file);
-				TRAIN = train;
 				loaded = true;
 			} catch (Exception e){
 				System.out.println("Warning!!! Could not load Diablo network weights");
@@ -56,26 +55,28 @@ public class ModelDiablo extends Model{
 	/**
 	 * Create a new Diablo AI, using a predefined network
 	 * @param net the network to use
+	 * @param train should we train the network?
 	 */
-	public ModelDiablo(Network net){
+	public ModelDiablo(Network net, boolean train){
 		net_file = null;
+		TRAIN = train;
 		if (net == null)
 			newNetwork();
 		else this.net = net;
 	}
 	private void newNetwork(){
-		System.out.println("Creating a new network...");
+		System.out.println("Diablo: Creating a new network...");
 		net = new Network(new int[]{15, 30, 1});
 	}
 
 	@Override
-	public void register(Game g, Rack r) throws Exception{
-		this.game = g;
-		this.rack = r;
-
+	public boolean register(Game g, Rack r){
+		super.register(g, r);
 		max_points = g.maxPoints();
 		discard_threshold = 1/(double) (game.rack_size*2);
 		learn_rate_decay = LEARN_RATE / (double) (game.rack_size*4);
+		//Diablo works for any game configuration
+		return true;
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
@@ -101,7 +102,7 @@ public class ModelDiablo extends Model{
 		}
 	}
 	@Override
-	public void epoch() {
+	public void epoch(Player p) {
 		if (TRAIN && net_file != null)
 			net.export(net_file);
 	}

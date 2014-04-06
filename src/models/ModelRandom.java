@@ -13,8 +13,10 @@ public class ModelRandom extends Model{
 	private int rack_size;
 	
 	@Override
-	public void register(Game g, Rack r) {
+	public boolean register(Game g, Rack r){
+		super.register(g, r);
 		rack_size = g.rack_size;
+		return true;
 	}
 	@Override
 	public boolean decideDraw(int turn) {

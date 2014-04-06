@@ -8,18 +8,10 @@ import client.*;
 import java.util.Random;
 import models.ModelRandom;
 import racko.Game;
-import racko.Rack;
 
 public class ModelExplorer extends Model{
-	private Game game;
-	private Rack rack;
-	private ReinforcementLearner rl = new ReinforcementLearner();
+	private final ReinforcementLearner rl = new ReinforcementLearner();
 
-	@Override
-	public void register(Game g, Rack r) throws Exception {
-		this.game = g;
-		this.rack = r;
-	}
 	@Override
 	public boolean decideDraw(int turn) {
 		return rl.fromDiscard(game, rack);

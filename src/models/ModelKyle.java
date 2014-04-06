@@ -1,6 +1,7 @@
 package models;
 
 import interfaces.Model;
+import interfaces.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,14 +16,10 @@ import racko.Rack;
  * @author Kyle Thompson
  */
 public class ModelKyle extends Model{
-	//Game constants
-	private Game game;
-	private Rack rack;
-	int epochs = 0;
 	//Rack cache
 	private final ArrayList<Integer> anchorPoints = new ArrayList();
 	private final ArrayList<Range> myRanges = new ArrayList();
-	private int rack_size;
+	private final int rack_size, card_count;
 	private int[] oldRack;
 	private int cache_pos, cache_turn;
 	//Reinforcement learning
@@ -36,26 +33,28 @@ public class ModelKyle extends Model{
 	/**
 	 * Create Kyle Model
 	 * @param reinforce use reinforcement learning?
+	 * @param rack_size size of rack
+	 * @param max_card max card in deck
 	 */
-	public ModelKyle(boolean reinforce){
+	public ModelKyle(boolean reinforce, int rack_size, int max_card){
 		use_reinforcement = reinforce;
-	}
-	
-	@Override
-	public void register(Game g, Rack r) throws Exception{
-		this.game = g;
-		this.rack = r;
+		this.rack_size = rack_size;
+		this.card_count = max_card;
+		oldRack = new int[rack_size];
 		
-		//If game configuration has changed, we need to reset our learned reinforcement weights
-		//TODO: fix this thing here...
-		rack_size = g.rack_size;
-		if (weights == null || weights.length != rack_size+1 || weights[0].length != g.card_count+1){
-			oldRack = new int[rack_size];
-			weights = new int[rack_size+1][g.card_count+1];
+		//Setup reinforcement learning
+		if (use_reinforcement){
+			weights = new int[rack_size+1][card_count+1];
 			//reset stopping criteria
 			done_learning = false;
 			RI_stop.reset();
 		}
+	}
+	
+	@Override
+	public boolean register(Game g, Rack r){
+		super.register(g, r);
+		return game.rack_size == rack_size && g.card_count == card_count;
 	}
 	@Override
 	public void beginRound(){
@@ -71,18 +70,13 @@ public class ModelKyle extends Model{
 		if (won) updateWeights();
 	}
 	@Override
-	public void epoch(){
-		//TODO: make stopping criteria work again
-		if (++epochs == 250)
-			done_learning = true;
-		/*
+	public void epoch(Player p){
 		//Reinforcement learning stopping criteria
 		if (!done_learning){
-			done_learning = RI_stop.epoch(this);
+			done_learning = RI_stop.epoch(p);
 			if (done_learning)
 				System.out.println("PlayerKyle: Done learning!");
 		}
-		*/
 	}
 	@Override
 	public boolean decideDraw(int turn) {

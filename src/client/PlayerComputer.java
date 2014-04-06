@@ -19,17 +19,11 @@ public class PlayerComputer extends Player{
 	}
 
 	@Override
-	public void register(Game g, Rack r) {
+	public boolean register(Game g, Rack r) {
 		super.register(g, r);
 		no_progress = g.rack_size*2;
-		try{
-			random.register(g, r);
-			learner.register(g, r);
-		} catch (Exception e){
-			System.out.println("Learning model is not compatibile with this game configuration!");
-		}
+		return random.register(g, r) && learner.register(g, r);
 	}
-	
 	@Override
 	public int play(){
 		//If we've gone so many moves without progress, do a random move
@@ -39,5 +33,19 @@ public class PlayerComputer extends Player{
 		int drawn = game.deck.draw(fromDiscard),
 			pos = m.decidePlay(turns, drawn, fromDiscard);
 		return pos == -1 ? drawn : rack.swap(drawn, pos, fromDiscard);
-	}	
+	}
+
+	@Override
+	public void beginRound() {
+		learner.beginRound();
+	}
+	@Override
+	public void scoreRound(boolean won, int score) {
+		learner.beginRound();
+	}
+	@Override
+	public void epoch() {
+		super.epoch();
+		learner.epoch(this);
+	}
 }
