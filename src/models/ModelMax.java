@@ -1,7 +1,6 @@
 package models;
 
 import interfaces.Model;
-import racko.Game;
 import racko.Rack;
 
 /**
@@ -9,17 +8,11 @@ import racko.Rack;
  * @author isaac
  */
 public class ModelMax extends Model{
-	//Game constants
-	private Game game;
-	private Rack rack;
 	//Cached maxes
 	private int cache_pos, cache_turn;
 	
-	@Override
-	public void register(Game g, Rack r) {
-		this.game = g;
-		this.rack = r;
-	}
+	public ModelMax(){}
+	
 	@Override
 	public boolean decideDraw(int turn) {
 		cache_turn = turn;
@@ -41,6 +34,7 @@ public class ModelMax extends Model{
 	 * @param r the player's rack
 	 * @param rack_size the size of the rack
 	 * @param drawn the card that was drawn
+	 * @param forceBetter discard, if it doesn't improve score
 	 * @return the position to swap with or -1, if the card should be discarded
 	 */
 	public static int maxSequence(Rack r, int rack_size, int drawn, boolean forceBetter){

@@ -1,6 +1,8 @@
 package client;
 
+import interfaces.Model;
 import interfaces.Player;
+import models.*;
 import racko.Game;
 import racko.Rack;
 
@@ -9,33 +11,60 @@ import racko.Rack;
  */
 public class PlayerHuman extends Player{
 	private double max_points;
+	private Model[] hinters;
 
 	public PlayerHuman(){
 		super();
+		hinters = new Model[]{
+			new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false),
+			new ModelMax(),
+			new ModelKyle(false)
+		};
 	}
 
 	@Override
 	public void register(Game g, Rack r) {
 		super.register(g, r);
 		max_points = g.maxPoints();
+		try {
+			for (Model m: hinters)
+				m.register(g, r);
+		} catch (Exception ex) {
+			System.out.println("Could not enable hinting!!!");
+		}
 	}
 	
 	@Override
 	public int play(){
 		System.out.println("Discard: "+game.deck.peek(true)+", Rack: "+rack.toString());
 		char draw;
+		String hint_draw = "";
+		for (Model m: hinters)
+			hint_draw += m.decideDraw(0) ? "y" : "n";
 		do{
-			String output = System.console().readLine("Draw from discard [y/n]:");
+			String output = System.console().readLine("Draw from discard [y/n/h]:");
 			draw = output.toLowerCase().charAt(0);
+			if (draw == 'h')
+				System.out.println("(Hint: "+hint_draw+")");
 		} while(draw != 'n' && draw != 'y');
 		boolean fromDiscard = draw == 'y';
 		int drawn = game.deck.draw(fromDiscard);
 		int discard = -1;
+		String hint_play = "";
+		for (Model m: hinters){
+			int hint_pos = m.decidePlay(0, drawn, fromDiscard);
+			int hint_discard = hint_pos == -1 ? drawn : rack.getCardAt(hint_pos);	
+			hint_play += hint_discard+", ";
+		}
 		do{
 			String pos = System.console().readLine("Drew %d, Discard:", drawn);
-			try{
-				discard = Integer.parseInt(pos);
-			} catch (Exception e){}
+			if (pos.equals("h"))
+				System.out.println("(Hint: "+hint_play+")");
+			else{
+				try{
+					discard = Integer.parseInt(pos);
+				} catch (Exception e){}
+			}
 		} while (discard == -1 || (discard != drawn && !rack.contains(discard)));
 		if (discard != drawn){
 			int[] cards = rack.getCards();

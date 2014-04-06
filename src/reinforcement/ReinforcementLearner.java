@@ -1,9 +1,10 @@
 package reinforcement;
 import interfaces.*;
-import client.*;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import racko.Game;
+import racko.Rack;
 
 public class ReinforcementLearner {
 	private IndexingCriterion indexer;
@@ -45,18 +46,18 @@ public class ReinforcementLearner {
 			Logger.getLogger(ReinforcementLearner.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	public boolean fromDiscardForReal(Player p)
+	public boolean fromDiscardForReal(Game g, Rack r)
 	{
-		int index = indexer.index(p);
+		int index = indexer.index(g, r);
 		int newDrawAction = drawStates[index].getBestReward();
 		if (newDrawAction == 0)
 			return false;
 		else
 			return true;
 	}
-	public boolean fromDiscard(Player p)
+	public boolean fromDiscard(Game g, Rack r)
 	{
-		int index = indexer.index(p);
+		int index = indexer.index(g, r);
 		int newDrawState = index;
 		int newDrawAction = drawStates[index].getLeastVisited();
 		if (oldDrawState != -1)
@@ -70,15 +71,15 @@ public class ReinforcementLearner {
 		else
 			return true;
 	}
-	public int cardPositionForReal(Player p, int card)
+	public int cardPositionForReal(Game g, Rack r, int card)
 	{
-		int index = indexer.index(p, card);
+		int index = indexer.index(g, r, card);
 		
 		return playStates[index].getBestReward();
 	}
-	public int cardPosition(Player p, int card)
+	public int cardPosition(Game g, Rack r, int card)
 	{
-		int index = indexer.index(p, card);
+		int index = indexer.index(g, r, card);
 		
 		int newPlayState = index;
 		int newPlayAction = playStates[index].getLeastVisited();
@@ -141,8 +142,8 @@ public class ReinforcementLearner {
 		private abstract class IndexingCriterion
 		{
 			public abstract int maxStates();
-			public abstract int index(Player p);
-			public abstract int index(Player p, int card);
+			public abstract int index(Game g, Rack r);
+			public abstract int index(Game g, Rack r, int card);
 		}
 		private class AboveBelowCriterion extends IndexingCriterion
 		{
@@ -150,9 +151,9 @@ public class ReinforcementLearner {
 			{
 				return (int)Math.pow(2,6);
 			}
-			public int index(Player p)
+			public int index(Game g, Rack r)
 			{
-				double[][] probabilities = p.rack.getProbabilities(false, 0);
+				double[][] probabilities = r.getProbabilities(false, 0);
 				int index = 0;
 				for (int i=0; i < probabilities.length; i++)
 				{
@@ -160,16 +161,16 @@ public class ReinforcementLearner {
 						index++;
 					index *= 2;
 				}
-				int discard = p.game.deck.peek(true);
-				double probHigher = p.game.deck.getProbability(discard, true, p.rack, 0);
-				double probLower = p.game.deck.getProbability(discard, false, p.rack, 0);
+				int discard = g.deck.peek(true);
+				double probHigher = g.deck.getProbability(discard, true, r, 0);
+				double probLower = g.deck.getProbability(discard, false, r, 0);
 				if (probHigher > probLower)
 					index++;
 				return index;
 			}
-			public int index(Player p, int card)
+			public int index(Game g, Rack r, int card)
 			{
-				double[][] probabilities = p.rack.getProbabilities(false, 0);
+				double[][] probabilities = r.getProbabilities(false, 0);
 				int index = 0;
 				for (int i=0; i < probabilities.length; i++)
 				{
@@ -177,8 +178,8 @@ public class ReinforcementLearner {
 						index++;
 					index *= 2;
 				}
-				double probHigher = p.game.deck.getProbability(card, true, p.rack, 0);
-				double probLower = p.game.deck.getProbability(card, false, p.rack, 0);
+				double probHigher = g.deck.getProbability(card, true, r, 0);
+				double probLower = g.deck.getProbability(card, false, r, 0);
 				if (probHigher > probLower)
 					index++;
 				return index;

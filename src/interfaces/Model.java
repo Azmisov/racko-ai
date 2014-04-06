@@ -8,14 +8,17 @@ import racko.Rack;
  * @author isaac
  */
 public abstract class Model {
+	protected Game game;
+	protected Rack rack;
 	/**
 	 * Register this model with a particular game
 	 * @param g game to use
 	 * @param r rack to use
-	 * @throws Exception if this model is not compatible with this game configuration
-	 *	(e.g. only trained for racksize of 5, but game is racksize 10)
 	 */
-	public abstract void register(Game g, Rack r) throws Exception;
+	public void register(Game g, Rack r){
+		game = g;
+		rack = r;
+	}
 	/**
 	 * Decide whether to draw form discard pile
 	 * @param turn what turn is this in the round?

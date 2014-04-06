@@ -1,21 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package client;
-import java.util.*;
-import interfaces.*;
+package models;
+
+import interfaces.Model;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import reinforcement.*;
+import java.util.ArrayList;
+import racko.Game;
+import racko.Rack;
+import reinforcement.ReinforcementLearner;
 
-public class PlayerBaltar extends Player {
-	
-	private ArrayList<ReinforcementLearner> cylons;
-	private ArrayList<Double> weights;
-	private String[] BaltarFiles = new String[]{
+/**
+ * Ensemble of reinforcement learners
+ * @author john
+ */
+public class ModelBaltar extends Model{
+	//game constants
+	private Game game;
+	private Rack rack;
+	//reinforcement learners
+	private final ArrayList<ReinforcementLearner> cylons;
+	private final ArrayList<Double> weights;
+	private final String[] BaltarFiles = new String[]{
 		"ReinforcementLearner84647971.txt",
 		"ReinforcementLearner129801927.txt",
 		"ReinforcementLearner-207920943.txt",
@@ -38,11 +44,10 @@ public class PlayerBaltar extends Player {
 		"ReinforcementLearner2091629729.txt"
 		};
 	
-	public PlayerBaltar()
-	{
+	public ModelBaltar(){
 		String[] Filenames = BaltarFiles;
-		cylons = new ArrayList<ReinforcementLearner>();
-		weights = new ArrayList<Double>();
+		cylons = new ArrayList();
+		weights = new ArrayList();
 		for (String filename: Filenames)
 		{
 			try {
@@ -52,31 +57,38 @@ public class PlayerBaltar extends Player {
 				cylons.add(new ReinforcementLearner(buff));
 			} catch (FileNotFoundException ex) {
 				ex.printStackTrace();
-			}
-			catch (IOException e)
-			{
+			} catch (IOException e){
 				e.printStackTrace();
 			}
 		}
 	}
-
+	
 	@Override
-	public int play() {
+	public void register(Game g, Rack r) throws Exception {
+		this.game = g;
+		this.rack = r;
+		if (g.rack_size != 5)
+			System.out.println("Unsupported racksize");
+	}
+	@Override
+	public boolean decideDraw(int turn) {
 		double drawVote = 0;
-		for (int i=0; i < cylons.size(); i++)
-		{
-			if (cylons.get(i).fromDiscardForReal(this))
+		for (int i=0; i < cylons.size(); i++){
+			if (cylons.get(i).fromDiscardForReal(game, rack))
 				drawVote += weights.get(i);
 			else
 				drawVote -= weights.get(i);
 		}
-		boolean fromDiscard = drawVote > 0;
+		return drawVote > 0;
+	}
+	@Override
+	public int decidePlay(int turn, int drawn, boolean fromDiscard) {
 		int card = game.deck.draw(fromDiscard);
 		
 		double[] playVotes = new double[6];
 		for (int i=0; i < cylons.size(); i++)
 		{
-			int vote = cylons.get(i).cardPositionForReal(this, card);
+			int vote = cylons.get(i).cardPositionForReal(game, rack, card);
 			playVotes[vote] += weights.get(i);
 		}
 		double bestVote = 0;
@@ -91,5 +103,4 @@ public class PlayerBaltar extends Player {
 		}
 		return pos == game.rack_size ? card : rack.swap(card, pos, fromDiscard);
 	}
-	
 }

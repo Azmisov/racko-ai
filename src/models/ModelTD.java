@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package client;
+package models;
 
 import models.StoppingCriteria;
 import NeuralNetworks.Network;
@@ -20,7 +14,7 @@ import racko.Rack;
  * TD Backgammon AI (Gerald Tesauro, 1991)
  * @author isaac
  */
-public class PlayerTD extends Player{
+public class ModelTD extends Player{
 	private static final boolean USE_PROB = false;
 	private static final Random RAND = new Random();
 	//TD network
@@ -96,7 +90,7 @@ public class PlayerTD extends Player{
 		if (games_played < 100000 && (net_play_count == 20 || games_played % 10 == 0)){
 			STAT_badmoves++;
 			biased_play = true;
-			int swap = PlayerMax.maxSequence(rack, game.rack_size, drawn, false);
+			int swap = ModelMax.maxSequence(rack, game.rack_size, drawn, false);
 			return swap == -1 ? drawn : rack.swap(drawn, swap, fromDiscard);
 		}
 		//*/

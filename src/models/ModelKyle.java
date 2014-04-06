@@ -18,6 +18,7 @@ public class ModelKyle extends Model{
 	//Game constants
 	private Game game;
 	private Rack rack;
+	int epochs = 0;
 	//Rack cache
 	private final ArrayList<Integer> anchorPoints = new ArrayList();
 	private final ArrayList<Range> myRanges = new ArrayList();
@@ -71,12 +72,17 @@ public class ModelKyle extends Model{
 	}
 	@Override
 	public void epoch(){
+		//TODO: make stopping criteria work again
+		if (++epochs == 250)
+			done_learning = true;
+		/*
 		//Reinforcement learning stopping criteria
 		if (!done_learning){
 			done_learning = RI_stop.epoch(this);
 			if (done_learning)
 				System.out.println("PlayerKyle: Done learning!");
 		}
+		*/
 	}
 	@Override
 	public boolean decideDraw(int turn) {

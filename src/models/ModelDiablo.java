@@ -41,7 +41,7 @@ public class ModelDiablo extends Model{
 		net_file = file;
 		File f = new File(file);
 		boolean loaded = false;
-		if (f.exists()){
+		if (f.isFile()){
 			try{
 				net = new Network(file);
 				TRAIN = train;

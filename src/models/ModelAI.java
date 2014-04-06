@@ -1,10 +1,9 @@
-package client;
+package models;
 
-import models.StoppingCriteria;
+import NeuralNetworks.Network;
+import interfaces.Model;
 import java.util.ArrayList;
 import java.util.Random;
-import NeuralNetworks.Network;
-import interfaces.Player;
 import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
@@ -12,7 +11,7 @@ import racko.Rack;
 /**
  * Plays the game as an artificial intelligence
  */
-public class PlayerAI extends Player{
+public class ModelAI extends Model{
 	private static final double LEARN_RATE = .1, EPSILON = 0.00001;
 	private static final Random RAND = new Random();
 	//Playing history
@@ -33,18 +32,15 @@ public class PlayerAI extends Player{
 	private int games_played = 0, net_play_count, moves_in_round;
 	public int rand_count = 0;
 	
-	public PlayerAI(boolean random){
-		super();
+	public ModelAI(boolean random){
 		USE_RAND = random;
 		drawHistory = new ArrayList();
 		playHistory = new ArrayList();
 	}
-	public PlayerAI(boolean)
 
 	@Override
 	public void register(Game g, Rack r) {
 		super.register(g, r);
-		
 		//Change game configuration
 		if (drawNet == null || rack_size != g.rack_size){
 			rack_size = g.rack_size;
@@ -63,28 +59,10 @@ public class PlayerAI extends Player{
 		}
 	}
 	@Override
-	public int play() {
+	public boolean decideDraw(int turn){
+		boolean rval;
 		net_play_count++;
 		moves_in_round++;
-		boolean drawFromDiscard = decideDraw();
-		
-		int card = game.deck.draw(drawFromDiscard);		
-		int slot = decidePlay(rack, card);
-		int discard = slot == -1 ? card : rack.swap(card, slot, drawFromDiscard);
-		
-		//If we think this move was good, we'll keep it
-		double newScore = scoreMetric();
-		if (newScore-currentScore > 0){
-			drawHistory.add(draw_instance);
-			playHistory.add(play_instance);
-		}
-		currentScore = newScore;
-		
-		return discard;
-	}
-
-	private boolean decideDraw(){
-		boolean rval;
 
 		//We only add the draw instnace if the decidePlay outcome is good
 		createDrawHistory();
@@ -100,10 +78,12 @@ public class PlayerAI extends Player{
 		
 		return rval;
 	}
-	private int decidePlay(Rack rack, int card) {
+	
+	@Override
+	public int decidePlay(int turns, int drawn, boolean fromDiscard) {
 		int rval = -1;
 		
-		createPlayHistory(card);
+		createPlayHistory(drawn);
 		if (!USE_RAND && net_play_count < RAND_LIMIT && games_played > RAND_ROUNDS){
 			playNet.compute(play_instance.inputs);
 			rval = playNet.getOutput()-1;
@@ -116,6 +96,14 @@ public class PlayerAI extends Player{
 		//We use -1 to represent a discard action
 		//The neural network needs a value between 0 to rack_size+1
 		play_instance.setOutput(rval+1, 1);
+		
+		//If we think this move was good, we'll keep it
+		double newScore = scoreMetric();
+		if (newScore-currentScore > 0){
+			drawHistory.add(draw_instance);
+			playHistory.add(play_instance);
+		}
+		currentScore = newScore;
 		
 		return rval;
 	}
@@ -130,20 +118,12 @@ public class PlayerAI extends Player{
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
-		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" ROUND, score = "+score);
-		STAT_badmoves += rand_count;
 		games_played++;
 		saveMoveHistory(won);
 		
 		//Reset history
 		drawHistory.clear();
 		playHistory.clear();
-	}
-	@Override
-	public void beginGame(){}
-	@Override
-	public void scoreGame(boolean won) {
-		//System.out.println(playerNumber +": "+(won ? "WON" : "LOST")+" GAME, score = "+score);
 	}
 	
 	private void createDrawHistory(){
@@ -222,6 +202,7 @@ public class PlayerAI extends Player{
 		return rack.getLUSLength() / (double) game.rack_size;
 	}
 	
+	/*
 	//DEEP LEARNING
 	@Override
 	public void epoch(){
@@ -256,4 +237,5 @@ public class PlayerAI extends Player{
 				System.out.println("PlayerAI: Beginning DEEP LEARNING refinement stage");
 		}
 	}
+	*/
 }

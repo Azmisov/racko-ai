@@ -4,6 +4,7 @@ import interfaces.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import models.*;
 import racko.Game;
 import racko.Rack;
 
@@ -31,7 +32,7 @@ public class Testing {
 			play_human = true;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerDiablo("diablo_weights.txt", false)
+			new PlayerComputer(new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false))
 		};
 
 		//TRAINING & TESTING
@@ -107,8 +108,8 @@ public class Testing {
 		*/
 		int[] hand = new int[]{1,20,6,10,5,8};
 		Player[] players = new Player[]{
-			new PlayerRandom(),
-			new PlayerRandom()
+			new PlayerHuman(),
+			new PlayerHuman()
 		};
 		Game g = Game.create(players, hand.length, 1, false);
 		Rack r = players[0].rack;
