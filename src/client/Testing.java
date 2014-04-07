@@ -19,36 +19,37 @@ public class Testing {
 		//if (true) return;
 		//http://www.spellensite.nl/spellen-spelen.php?type=spellen&spellen=Tower+blaster&id=1291
 		
+		/**
+		 * TESTING NEEDED:
+		 * - AI
+		 * - Baltar
+		 * - Casandra
+		 * - TD			BUGS
+		 * - Exploiter
+		 * - Explorer
+		 */
+		
 		//*
 		//SETTINGS
-		int rack_size = 10,			//rack size
+		int rack_size = 5,			//rack size
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 1000000,	//how many games to play (after training, if playing a human)
-			epoch_every = 150,		//epoch after how many games?
+			play_games = 100000000,	//how many games to play (after training, if playing a human)
+			epoch_every = 1000,		//epoch after how many games?
 			move_limit = 1500;		//moves before calling a draw (0 for unlimited)
 		boolean
 			bonus_mode = false,		//use bonus scoring
-			play_human = true;		//play against the AI's in a terminal
+			play_human = false;		//play against the AI's in a terminal
 		
 		Player[] players = new Player[]{
-			new PlayerComputer(new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false))
+			new PlayerComputer(new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false)),
+			new PlayerComputer(new ModelKyle(false)),
+			//new PlayerComputer(new ModelKyle(true))
+			//new PlayerComputer(new ModelMax())
 		};
 
 		//TRAINING & TESTING
 		if (play_human){
-			//... just testing ... 
-			//train the ai first before playing by hand
-			System.out.println("Training the AI's, please wait...");
-			
-			Game train_game = Game.create(players, rack_size, streak_min, bonus_mode);
-			for (int i=0; i<train_games; i++){
-				train_game.play(rand.nextInt(players.length));
-				if (i % 50 == 0)
-					System.out.println(i*100/train_games+"% trained");
-			}
-
-			System.out.println("\n\n/////// BEGINNING TOURNAMENT ///////");
 			Game.verbose = true;
 			players = Arrays.copyOf(players, players.length+1);
 			players[players.length-1] = new PlayerHuman();

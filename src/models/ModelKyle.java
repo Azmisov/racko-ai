@@ -3,7 +3,6 @@ package models;
 import interfaces.Model;
 import interfaces.Player;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import racko.Game;
 import racko.Rack;
@@ -19,8 +18,7 @@ public class ModelKyle extends Model{
 	//Rack cache
 	private final ArrayList<Integer> anchorPoints = new ArrayList();
 	private final ArrayList<Range> myRanges = new ArrayList();
-	private final int rack_size, card_count;
-	private int[] oldRack;
+	private int rack_size, card_count;
 	private int cache_pos, cache_turn;
 	//Reinforcement learning
 	private final ArrayList<Decision> myDecisions = new ArrayList();
@@ -33,14 +31,17 @@ public class ModelKyle extends Model{
 	/**
 	 * Create Kyle Model
 	 * @param reinforce use reinforcement learning?
-	 * @param rack_size size of rack
-	 * @param max_card max card in deck
 	 */
-	public ModelKyle(boolean reinforce, int rack_size, int max_card){
+	public ModelKyle(boolean reinforce){
 		use_reinforcement = reinforce;
-		this.rack_size = rack_size;
-		this.card_count = max_card;
-		oldRack = new int[rack_size];
+		done_learning = !reinforce;
+	}
+	
+	@Override
+	public boolean register(Game g, Rack r){
+		super.register(g, r);
+		rack_size = g.rack_size;
+		card_count = g.card_count;
 		
 		//Setup reinforcement learning
 		if (use_reinforcement){
@@ -49,20 +50,13 @@ public class ModelKyle extends Model{
 			done_learning = false;
 			RI_stop.reset();
 		}
-	}
-	
-	@Override
-	public boolean register(Game g, Rack r){
-		super.register(g, r);
-		return game.rack_size == rack_size && g.card_count == card_count;
+		return true;
 	}
 	@Override
 	public void beginRound(){
 		anchorPoints.clear();
-		myRanges.clear();
 		myDecisions.clear();
-		initialize();
-		calculateRanges();
+		calculateAnchors();
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
@@ -80,6 +74,10 @@ public class ModelKyle extends Model{
 	}
 	@Override
 	public boolean decideDraw(int turn) {
+		//Recualculate ranges
+		myRanges.clear(); //clear ranges
+		calculateRanges(); //recalculate ranges
+		
 		cache_turn = turn;
 		//look at the top of the discard pile and decide which range it will fit in
 		int topDiscard = game.deck.peek(true);
@@ -89,8 +87,15 @@ public class ModelKyle extends Model{
 	@Override
 	public int decidePlay(int turn, int drawn, boolean fromDiscard){		
 		//see if this card is useful (or if not cached already)
-		if (!fromDiscard || turn != cache_turn)
-			cache_pos = findRange(fromDiscard, turn);
+		if (!fromDiscard || turn != cache_turn){
+			//Recalculate ranges, if needed
+			if (turn != cache_turn){
+				myRanges.clear(); //clear ranges
+				calculateRanges(); //recalculate ranges
+			}
+			cache_turn = turn;
+			cache_pos = findRange(fromDiscard, drawn);
+		}
 		
 		//discard and exit if the card is still useless
 		if (cache_pos == -1)
@@ -110,12 +115,7 @@ public class ModelKyle extends Model{
 		if (!anchorPoints.contains (new Integer(slot)))
 			anchorPoints.add (new Integer(slot));
 		Collections.sort(anchorPoints); //sort the collection
-		myRanges.clear(); //clear ranges
-		calculateRanges(); //recalculate ranges
-		
-		//copy the current rack into the old rack for comparison later
-		oldRack = Arrays.copyOf(rack.getCards(), rack_size);
-		
+
 		return slot-1;
 	}
 	
@@ -196,7 +196,7 @@ public class ModelKyle extends Model{
 	}
 	
 	//RANGE CALCULATIONS
-	private void initialize(){	
+	private void calculateAnchors(){	
 		//get rack and print it
 		int[] tmpRack = rack.getCards();
 		
@@ -204,7 +204,7 @@ public class ModelKyle extends Model{
 		//if the card in slot "i" fits roughly the flat, maximal spread distribution, it is an anchor
 		int slotLow = 1, slotHigh;
 		for (int i = 1; i <= rack_size; i++){
-			slotHigh = i * (game.deck.getMaxCard() / rack_size);
+			slotHigh = i * (card_count / rack_size);
 			if (tmpRack[i-1] >= slotLow && tmpRack[i-1] <= slotHigh)
 				anchorPoints.add(new Integer(i));
 			slotLow = slotHigh + 1;
@@ -278,12 +278,12 @@ public class ModelKyle extends Model{
 		}
 		myRanges.removeAll(toRemove);
 	}
-	private int findRange(boolean discard, int card){
+	private int findRange(boolean forDraw, int card){
 		int targetRange = -1;
 		for (int i = 0; i < myRanges.size(); i++){
 			Range tmpRange = (Range) myRanges.get(i);
 			int lo = tmpRange.getLowEnd(), hi = tmpRange.getHighEnd();
-			if (card > lo && card < hi || (discard && (card == lo || card == hi))){
+			if (card > lo && card < hi || (forDraw && (card == lo || card == hi))){
 				targetRange = i;
 				break; //target found, no need to keep searching
 			}
