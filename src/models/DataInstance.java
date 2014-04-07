@@ -1,4 +1,4 @@
-package racko;
+package models;
 
 /**
  * Generic inputs instance for neural network training

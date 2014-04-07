@@ -5,7 +5,6 @@ import interfaces.Model;
 import interfaces.Player;
 import java.io.File;
 import java.util.ArrayList;
-import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
 

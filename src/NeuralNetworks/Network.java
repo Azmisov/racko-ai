@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -102,6 +103,17 @@ public class Network{
 	public int inputNodes(){
 		return input_nodes;
 	}
+	/**
+	 * How many output nodes are in the network
+	 * @return 
+	 */
+	public int outputNodes(){
+		return layers.get(layers.size()-1).length;
+	}
+	/**
+	 * How many hidden layers in the network
+	 * @return 
+	 */
 	public int hiddenLayers(){
 		return layers.size()-2;
 	}
@@ -271,9 +283,11 @@ public class Network{
 		double[] targets;
 		targets = new double[outputs];
 		if (outputs == 1)
-			targets[0] = target;
-		else
+			targets[0] = target == 1 ? 1 : -1;
+		else{
+			Arrays.fill(targets, -1);
 			targets[target] = 1;
+		}
 		trainBackprop(rate, targets);
 	}
 	

@@ -4,7 +4,6 @@ import NeuralNetworks.Network;
 import interfaces.Player;
 import java.util.Arrays;
 import java.util.Random;
-import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
 

@@ -6,7 +6,6 @@ import interfaces.Player;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
-import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
 
@@ -53,7 +52,8 @@ public class ModelAI extends Model{
 		if (draw_f.isFile()){
 			try{
 				drawNet = new Network(drawNet_file);
-				if (drawNet.inputNodes() != calculateNodeCount(true, true, rack_size))
+				if (drawNet.inputNodes() != calculateNodeCount(true, true, rack_size) ||
+					drawNet.outputNodes() != calculateNodeCount(false, true, rack_size))
 					throw new Exception();
 				draw_loaded = true;
 			} catch (Exception e){
@@ -62,8 +62,9 @@ public class ModelAI extends Model{
 		}
 		if (draw_f.isFile()){
 			try{
-				playNet = new Network(drawNet_file);
-				if (playNet.inputNodes() != calculateNodeCount(true, false, rack_size))
+				playNet = new Network(playNet_file);
+				if (playNet.inputNodes() != calculateNodeCount(true, false, rack_size) ||
+					playNet.outputNodes() != calculateNodeCount(false, false, rack_size))
 					throw new Exception();
 				play_loaded = true;
 			} catch (Exception e){
@@ -153,9 +154,9 @@ public class ModelAI extends Model{
 	}
 	private void initDeepLearning(){
 		int draw_hf = drawNet.layers.get(1).length,
-			draw_hl = drawNet.layers.get(playNet.layers.size()-1).length,
+			draw_hl = drawNet.outputNodes(),
 			play_hf = playNet.layers.get(1).length,
-			play_hl = playNet.layers.get(playNet.layers.size()-1).length;
+			play_hl = playNet.outputNodes();
 		
 		DL_layers = Math.max(drawNet.hiddenLayers(), playNet.hiddenLayers())-1;
 		DL_drawdelta = (draw_hf-draw_hl)/DL_maxlayers;
@@ -252,14 +253,9 @@ public class ModelAI extends Model{
 		ddi.addFeature(cur_rack, game.card_count);
 		//Probabilities
 		if (USE_PROB_DRAW){
-			double[] pHigh = new double[game.rack_size],
-					pLow = new double[game.rack_size];
-			for (int i=0; i < game.rack_size; i++){
-				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
-				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
-			}
-			ddi.addFeature(pHigh, 1);
-			ddi.addFeature(pLow, 1);
+			double[][] prob = rack.getProbabilities(false, 0);
+			ddi.addFeature(prob[0], 1);
+			ddi.addFeature(prob[1], 1);
 		}
 		//Top of discard
 		int discard = game.deck.peek(true);
@@ -274,14 +270,9 @@ public class ModelAI extends Model{
 		pdi.addFeature(cur_rack, game.card_count);
 		//Probabilities
 		if (USE_PROB_PLAY){
-			double[] pHigh = new double[game.rack_size],
-					pLow = new double[game.rack_size];
-			for (int i=0; i < game.rack_size; i++){
-				pHigh[i] = game.deck.getProbability(cur_rack[i], true, rack, 0);
-				pLow[i] = game.deck.getProbability(cur_rack[i], false, rack, 0);
-			}
-			pdi.addFeature(pHigh, 1);
-			pdi.addFeature(pLow, 1);
+			double[][] prob = rack.getProbabilities(false, 0);
+			pdi.addFeature(prob[0], 1);
+			pdi.addFeature(prob[1], 1);
 		}
 		
 		//The card that was drawn
