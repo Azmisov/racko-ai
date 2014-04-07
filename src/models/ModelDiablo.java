@@ -5,7 +5,6 @@ import interfaces.Model;
 import interfaces.Player;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Random;
 import racko.DataInstance;
 import racko.Game;
 import racko.Rack;
@@ -15,7 +14,6 @@ import racko.Rack;
  * @author isaac
  */
 public class ModelDiablo extends Model {
-	private static final Random RAND = new Random();
 	//Maximum points that can be won in a game
 	private double max_points;
 	//Last max-score, computed in scoreCard()
@@ -54,15 +52,13 @@ public class ModelDiablo extends Model {
 	}
 	/**
 	 * Create a new Diablo AI, using a predefined network
-	 * @param net the network to use
+	 * @param diablo the network to use
 	 * @param train should we train the network?
 	 */
-	public ModelDiablo(Network net, boolean train){
-		net_file = null;
+	public ModelDiablo(ModelDiablo diablo, boolean train){
+		net_file = diablo.net_file;
+		net = diablo.net;
 		TRAIN = train;
-		if (net == null)
-			newNetwork();
-		else this.net = net;
 	}
 	private void newNetwork(){
 		System.out.println("Diablo: Creating a new network...");
