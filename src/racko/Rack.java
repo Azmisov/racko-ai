@@ -3,9 +3,7 @@ package racko;
 import interfaces.Distribution;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.HashSet;
 
 /**
  * Controls a Racko "rack" of cards
@@ -22,7 +20,9 @@ public class Rack {
 	private final int[] cards;
 	//Longest usable sequence cache
 	private UsableMetric lus_metric = null;
+	private LUSTree lus_cache_tree;
 	private ArrayList<LUS> lus_cache;
+	private boolean lus_cache_combos;
 	private int lus_max_length;
 	//Probability cache [rack_size][2], [0] = Above, [1] = Below
 	private final double[][] prob_cache;
@@ -415,6 +415,57 @@ public class Rack {
 		assert(score >= 0 && score <= 1);
 		return score;
 	}
+	/**
+	 * Gives a score for the density of clumps, using the absolute error
+	 * to the center of the clump
+	 * @param seq a sequence to score
+	 * @param err_weight optional error weighting
+	 * @return density score
+	 */
+	public double scoreDensityToCenter(LUS seq, Distribution err_weight){
+		//No usable sequences
+		if (seq == null || seq.cards.length == 0)
+			return 1;
+			
+		double sum = 0;
+		//Current clump size
+		int clump_len = 0, cur_clump = seq.indexes[0];
+		//We just use the centers of the clumps, rather than every card in the rack
+		for (int i=1; i<=seq.cards.length; i++){
+			boolean is_clump = false,
+					exit = i == seq.cards.length;
+			if (!exit){
+				is_clump = seq.indexes[i] == cur_clump+1;
+				if (is_clump) clump_len++;
+			}
+			
+			//End of clump, compute 
+			if (!is_clump){
+				//If this clump is at the very beginning/end of the rack, we use
+				//the extremes as the center points; this "stretches" out the
+				//unfilled space, so to speak
+				boolean is_first = cur_clump-clump_len == 0,
+						is_last = cur_clump == cards.length-1;
+				double center;
+				if (is_first && !is_last)
+					center = 0;
+				else if (is_last && !is_first)
+					center = seq.cards.length-1;
+				else center = i-1-clump_len/2.0;
+				//TODO: Compute error of clump cards to the center of the clump
+				
+				//Reset vars
+				clump_len = 0;
+			}
+			if (!exit)
+				cur_clump = seq.indexes[i];
+		}
+		
+		//TODO: Normalize error
+		
+		assert(sum >= 0 && sum <= 1);
+		return sum;
+	}
 
 	//LONGEST USABLE SEQUENCES
 	/**
@@ -425,25 +476,48 @@ public class Rack {
 	 *  if two usable sequences cannot be used together, the largest one is returned
 	 *  otherwise, if they are both usable, their lengths will be summed
 	 * 
+	 * @param use_combos include all combinations of sequences as well
 	 * @return a list of usable sequences
 	 */
-	public ArrayList<LUS> getLUS(){
+	public ArrayList<LUS> getLUS(boolean use_combos){
+		boolean reload_all = lus_cache.isEmpty();
 		//Since this is like an n^2 algorithm, we cache the results
-		if (!lus_cache.isEmpty())
-			return lus_cache;			
-		
-		//Get a tree of all possible long, usable, ascending sequences
-		LUSTree root = new LUSTree(0, 0, game.card_count, game.rack_size);
-		for (int i=0; i<cards.length; i++)
-			root.insert(new LUSTree(cards[i], i, game.card_count, game.rack_size));
+		if (reload_all){
+			//Get a tree of all possible long, usable, ascending sequences
+			lus_cache_tree = new LUSTree(0, 0, game.card_count, game.rack_size);
+			for (int i=0; i<cards.length; i++)
+				lus_cache_tree.insert(new LUSTree(cards[i], i, game.card_count, game.rack_size));
+		}
 		
 		//Convert the tree to a set of sequence arrays
-		lus_cache = root.linearize();
-		lus_max_length = 0;
-		for (LUS seq: lus_cache){
-			if (seq.cards.length > lus_max_length)
-				lus_max_length = seq.cards.length;
+		if (reload_all || lus_cache_combos != use_combos){
+			lus_cache_combos = use_combos;
+			lus_cache = lus_cache_tree.linearize(use_combos);
+			
+			//Remove duplicates, if needed (don't no a better way to do this)
+			if (use_combos){
+				lus_max_length = 0;
+				HashSet<String> hash = new HashSet();
+				ArrayList<LUS> seq_new = new ArrayList();
+				for (LUS seq: lus_cache){
+					if (hash.add(Arrays.toString(seq.cards))){
+						seq_new.add(seq);
+						if (seq.cards.length > lus_max_length)
+							lus_max_length = seq.cards.length;
+					}
+				}
+				lus_cache = seq_new;
+			}
+			//Max length only changes when we reload al
+			else if (reload_all){
+				lus_max_length = 0;
+				for (LUS seq: lus_cache){
+					if (seq.cards.length > lus_max_length)
+						lus_max_length = seq.cards.length;
+				}
+			}
 		}
+		
 		return lus_cache;
 	}
 	/**
@@ -453,7 +527,7 @@ public class Rack {
 	public int getLUSLength(){
 		//Run the LUS computations, if they haven't been done yet
 		if (lus_cache.isEmpty())
-			getLUS();
+			getLUS(false);
 		return lus_max_length;
 	}
 	/**
@@ -564,10 +638,10 @@ public class Rack {
 		 *  (topological sorts)
 		 * @return a list of sequences
 		 */
-		public ArrayList<LUS> linearize(){
+		public ArrayList<LUS> linearize(boolean use_combos){
 			//Linearize the tree
 			seqs.clear();
-			linearize_recursive(new ArrayList());
+			linearize_recursive(new ArrayList(), use_combos);
 			
 			//Create LUS objects from each linearization
 			int num_seqs = seqs.size();
@@ -586,22 +660,31 @@ public class Rack {
 			}
 			return lus;
 		}
-		private void linearize_recursive(ArrayList<LUSTree> seq){
-			if (card != 0)
+		private void linearize_recursive(ArrayList<LUSTree> seq, boolean use_combos){
+			if (card != 0){
+				//If getting all combinations, recurse without adding
+				if (use_combos)
+					linearize_recursive_single(new ArrayList(seq), use_combos);
 				seq.add(this);
+			}
+			linearize_recursive_single(seq, use_combos);
+		}
+		private void linearize_recursive_single(ArrayList<LUSTree> seq, boolean use_combos){
 			//This is the end of a sequence
 			if (branches.isEmpty()){
 				seqs.add(seq);
 				return;
 			}
 			//Otherwise, branch
-			int len = branches.size(), i = 0;
-			for (LUSTree node: branches){
-				//We need to copy the sequence, so it isn't overriden
-				if (len != ++i)
-					node.linearize_recursive(new ArrayList(seq));
-				//We can pass along the original list to one child
-				else node.linearize_recursive(seq);
+			else{
+				int len = branches.size(), i = 0;
+				for (LUSTree node: branches){
+					//We need to copy the sequence, so it isn't overriden
+					if (len != ++i)
+						node.linearize_recursive(new ArrayList(seq), use_combos);
+					//We can pass along the original list to one child
+					else node.linearize_recursive(seq, use_combos);
+				}
 			}
 		}
 	}

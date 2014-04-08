@@ -22,27 +22,29 @@ public class ModelAI extends Model{
 	//Learning model
 	private final boolean USE_RAND, USE_PROB_DRAW = false, USE_PROB_PLAY = false;
 	private final int RAND_LIMIT = 20, RAND_ROUNDS = 0;
-	private Network drawNet = null, playNet = null;
+	public Network drawNet = null, playNet = null;
 	private final String drawNet_file, playNet_file;
-	private boolean TRAIN;
+	private final boolean TRAIN;
 	//Deep learning
 	private final int DL_maxlayers = 4;
 	private int DL_drawdelta, DL_playdelta, DL_layers = 0, rack_size;
-	private final StoppingCriteria DL_stop = new StoppingCriteria();
+	private final StoppingCriteria DL_stop = new StoppingCriteria(04, 50);
 	//Statistics
 	private double initialScore, currentScore;
 	private int games_played = 0, net_play_count, moves_in_round;
 	public int rand_count = 0;
 	
-	/**static
+	/**
 	 * Load AI from stored file
 	 * @param draw_file weights for draw network
 	 * @param play_file weights for play network
 	 * @param rack_size rack size
 	 * @param train should we train the network?
+	 * @param random play random moves to explore the feature space
 	 */
-	public ModelAI(String draw_file, String play_file, int rack_size, boolean train){
-		USE_RAND = false;
+	public ModelAI(String draw_file, String play_file, int rack_size, boolean train, boolean random){
+		USE_RAND = random;
+		this.rack_size = rack_size;
 		drawNet_file = draw_file;
 		playNet_file = play_file;
 		File draw_f = new File(drawNet_file),
@@ -51,12 +53,12 @@ public class ModelAI extends Model{
 				play_loaded = false;
 		if (draw_f.isFile()){
 			try{
-				drawNet = new Network(drawNet_file);
 				if (drawNet.inputNodes() != calculateNodeCount(true, true, rack_size) ||
-					drawNet.outputNodes() != calculateNodeCount(false, true, rack_size))
-					throw new Exception();
+					drawNet.outputNodes() != 1)
+					throw new Exception("Invalid input/output size");
 				draw_loaded = true;
 			} catch (Exception e){
+				System.out.println(e.getMessage());
 				System.out.println("Warning!!! Could not load AI draw network weights");
 			}
 		}
@@ -64,10 +66,11 @@ public class ModelAI extends Model{
 			try{
 				playNet = new Network(playNet_file);
 				if (playNet.inputNodes() != calculateNodeCount(true, false, rack_size) ||
-					playNet.outputNodes() != calculateNodeCount(false, false, rack_size))
-					throw new Exception();
+					playNet.outputNodes() != rack_size+1)
+					throw new Exception("Invalid input/output size");
 				play_loaded = true;
 			} catch (Exception e){
+				System.out.println(e.getMessage());
 				System.out.println("Warning!!! Could not load AI play network weights");
 			}
 		}
@@ -80,6 +83,7 @@ public class ModelAI extends Model{
 		if (TRAIN){
 			drawHistory = new ArrayList();
 			playHistory = new ArrayList();
+			initDeepLearning();
 		}
 		else{
 			drawHistory = null;
@@ -88,26 +92,24 @@ public class ModelAI extends Model{
 	}
 	/**
 	 * Create AI using preexisting networks
-	 * @param draw_net draw network
-	 * @param play_net play network
+	 * @param copy AI to copy networks from
 	 * @param train train the networks
+	 * @param random play random moves, to explore the feature space
 	 */
-	public ModelAI(Network draw_net, Network play_net, boolean train){
-		USE_RAND = false;
-		drawNet_file = null;
-		playNet_file = null;
-		TRAIN = train;
-		if (draw_net == null)
-			newDrawNetwork();
-		else drawNet = draw_net;
-		if (play_net == null)
-			newPlayNetwork();
-		else playNet = play_net;
+	public ModelAI(ModelAI copy, boolean train, boolean random){
+		USE_RAND = random;
+		drawNet_file = copy.drawNet_file;
+		playNet_file = copy.playNet_file;
+		drawNet = copy.drawNet;
+		playNet = copy.playNet;
+		rack_size = copy.rack_size;
+		
 		//Training
 		TRAIN = train;
 		if (TRAIN){
 			drawHistory = new ArrayList();
 			playHistory = new ArrayList();
+			initDeepLearning();
 		}
 		else{
 			drawHistory = null;
@@ -132,9 +134,11 @@ public class ModelAI extends Model{
 			playHistory = new ArrayList();
 			newDrawNetwork();
 			newPlayNetwork();
+			initDeepLearning();
 		}
 	}
 	private void newDrawNetwork(){
+		System.out.println("ModelAI: Creating new draw network");
 		//Draw network
 		int[] layers = new int[]{
 			calculateNodeCount(true, false, rack_size),
@@ -144,6 +148,7 @@ public class ModelAI extends Model{
 		drawNet = new Network(layers);
 	}
 	private void newPlayNetwork(){
+		System.out.println("ModelAI: Creating new play network");
 		//Play network
 		int[] layers = new int[]{
 			calculateNodeCount(true, false, rack_size),
@@ -171,7 +176,7 @@ public class ModelAI extends Model{
 	 */
 	private int calculateNodeCount(boolean input, boolean draw, int rack_size){
 		if (input)
-			return ((draw ? USE_PROB_DRAW : USE_PROB_PLAY) ? rack_size : rack_size*3) + 1;
+			return ((draw ? USE_PROB_DRAW : USE_PROB_PLAY) ? rack_size*3 : rack_size) + 1;
 		return ((draw ? USE_PROB_DRAW : USE_PROB_PLAY) ? rack_size*2 : rack_size*4);
 	}
 	
@@ -219,12 +224,16 @@ public class ModelAI extends Model{
 		play_instance.setOutput(rval+1, 1);
 		
 		//If we think this move was good, we'll keep it
-		double newScore = scoreMetric();
-		if (newScore-currentScore > 0){
-			drawHistory.add(draw_instance);
-			playHistory.add(play_instance);
+		if (rval != -1){
+			int temp_swap = rack.swap(drawn, rval);
+			double newScore = scoreMetric();
+			rack.swap(temp_swap, rval);
+			if (newScore-currentScore > 0){
+				drawHistory.add(draw_instance);
+				playHistory.add(play_instance);
+			}
+			currentScore = newScore;
 		}
-		currentScore = newScore;
 		
 		return rval;
 	}
@@ -249,8 +258,7 @@ public class ModelAI extends Model{
 	private void createDrawHistory(){
 		DataInstance ddi = new DataInstance(drawNet.inputNodes());
 		//Rack
-		int[] cur_rack = rack.getCards();
-		ddi.addFeature(cur_rack, game.card_count);
+		ddi.addFeature(rack.getCards(), game.card_count);
 		//Probabilities
 		if (USE_PROB_DRAW){
 			double[][] prob = rack.getProbabilities(false, 0);
@@ -285,8 +293,9 @@ public class ModelAI extends Model{
 			return;
 		
 		//Score how well the AI did this round
-		double fac = scoreMetric() - initialScore;
-		double rate = LEARN_RATE * fac;
+		//double fac = scoreMetric() - initialScore;
+		//double rate = LEARN_RATE * fac;
+		double rate = 0.01;
 		
 		if (rate > .0001){
 			//System.out.println("Training with "+drawHistory.size()+" instances");
@@ -314,9 +323,15 @@ public class ModelAI extends Model{
 	//DEEP LEARNING
 	@Override
 	public void epoch(Player p){
+		if (TRAIN && !USE_RAND){
+			drawNet.export(drawNet_file);
+			playNet.export(playNet_file);
+		}
+			
 		//Deep learning stopping criteria
+		//Don't use the random player for stopping criteria
 		//If no improvement, add another deep learning layer
-		if (TRAIN && !USE_RAND && DL_layers <= DL_maxlayers && DL_stop.epoch(p)){
+		if (false && TRAIN && !USE_RAND && DL_layers <= DL_maxlayers && DL_stop.epoch(p)){
 			DL_stop.reset();
 			p.resetModel();
 			deepLearn();

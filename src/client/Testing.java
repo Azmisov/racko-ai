@@ -1,5 +1,6 @@
 package client;
 
+import interfaces.Model;
 import interfaces.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,29 +22,50 @@ public class Testing {
 		
 		/**
 		 * TESTING NEEDED:
-		 * - AI
-		 * - Baltar
+		 * - AI			BUGS
 		 * - Casandra
 		 * - TD			BUGS
-		 * - Exploiter
-		 * - Explorer
 		 */
 		
 		//*
 		//SETTINGS
-		int rack_size = 5,			//rack size
+		int rack_size = 10,			//rack size
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 100000000,	//how many games to play (after training, if playing a human)
-			epoch_every = 1000,		//epoch after how many games?
-			move_limit = 1500;		//moves before calling a draw (0 for unlimited)
+			play_games = 10000000,	//how many games to play (after training, if playing a human)
+			epoch_every = 100,		//epoch after how many games?
+			move_limit = 1000;		//moves before calling a draw (0 for unlimited)
 		boolean
 			bonus_mode = false,		//use bonus scoring
 			play_human = false;		//play against the AI's in a terminal
 		
+		/*
+		ModelAI ai_smart = new ModelAI(
+			"weights/ai/ai_draw_5deep.txt",
+			"weights/ai/ai_play_5deep.txt",
+			rack_size, true, false
+		);
+		ModelAI ai_dumb = new ModelAI(
+			ai_smart, true, true
+		);
+		*/
+		Model baltar = null, casandra = null;
+		Model diablo = new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false);
+		try{
+			baltar = new ModelBaltar();
+			casandra = new ModelCasandra(
+				"weights/casandra/c_draw_diablo.txt",
+				"weights/casandra/c_play_diablo.txt",
+				diablo, 5
+			);
+		} catch (Exception e){
+			System.out.println("Could not load Baltar files!!!!");
+		}
+		
 		Player[] players = new Player[]{
-			new PlayerComputer(new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false)),
+			//new PlayerComputer(baltar),
 			new PlayerComputer(new ModelKyle(false)),
+			new PlayerComputer(diablo)
 			//new PlayerComputer(new ModelKyle(true))
 			//new PlayerComputer(new ModelMax())
 		};
@@ -121,7 +143,7 @@ public class Testing {
 		System.out.println("Points = "+r.scorePoints(false));
 		System.out.println("RackDE = "+r.scoreRackDE(g.dist_flat, null));
 		System.out.println("RackDE' = "+r.scoreRackDE(g.dist_flat, g.dist_skew));
-		ArrayList<Rack.LUS> lus = r.getLUS();
+		ArrayList<Rack.LUS> lus = r.getLUS(true);
 		for (Rack.LUS l: lus){
 			System.out.println(Arrays.toString(l.cards));
 			//*

@@ -69,12 +69,11 @@ public class ModelBaltar extends Model{
 	}
 	@Override
 	public int decidePlay(int turn, int drawn, boolean fromDiscard) {
-		int card = game.deck.draw(fromDiscard);
 		
 		double[] playVotes = new double[6];
 		for (int i=0; i < cylons.size(); i++)
 		{
-			int vote = cylons.get(i).cardPositionForReal(game, rack, card);
+			int vote = cylons.get(i).cardPositionForReal(game, rack, drawn);
 			playVotes[vote] += weights.get(i);
 		}
 		double bestVote = 0;
@@ -87,6 +86,6 @@ public class ModelBaltar extends Model{
 				pos = i;
 			}
 		}
-		return pos == game.rack_size ? card : rack.swap(card, pos, fromDiscard);
+		return pos == game.rack_size ? -1 : pos;
 	}
 }

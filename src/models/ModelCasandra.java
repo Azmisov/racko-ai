@@ -17,13 +17,13 @@ public class ModelCasandra extends Model{
 	private static final Random RAND = new Random();
 	//Neural Network
 	private final Model model_mimic;
-	private final boolean USE_PROB_DRAW = true, USE_PROB_PLAY = false;
+	private final boolean USE_PROB_DRAW = false, USE_PROB_PLAY = false;
 	public Network drawNet, playNet;
 	private String drawNet_file, playNet_file;
 	//Deep learning
 	private final int DL_maxlayers = 4, rack_size;
 	private int DL_drawdelta, DL_playdelta, DL_layers = 0;
-	private final StoppingCriteria DL_stop = new StoppingCriteria();
+	private final StoppingCriteria DL_stop = new StoppingCriteria(.04, 100);
 	
 	/**
 	 * Loads a Casandra from file or trains a new one
@@ -73,7 +73,7 @@ public class ModelCasandra extends Model{
 		//Otherwise, create a new network
 		if (!loaded){
 			int inputs = nodeCount(forDraw, true);
-			net = new Network(new int[]{inputs, inputs*2, nodeCount(forDraw, false)});
+			net = new Network(new int[]{inputs, forDraw ? inputs*2 : inputs*3, nodeCount(forDraw, false)});
 		}
 		//Validate network size
 		else if (net.inputNodes() != nodeCount(forDraw, true) || net.outputNodes() != nodeCount(forDraw, false))

@@ -13,6 +13,7 @@ import racko.Rack;
  * @author isaac
  */
 public class ModelDiablo extends Model {
+	private static boolean USE_COMBOS = false;
 	//Maximum points that can be won in a game
 	private double max_points;
 	//Last max-score, computed in scoreCard()
@@ -148,6 +149,9 @@ public class ModelDiablo extends Model {
 		last_score = null;
 		//Test every possible move
 		for (int i=0; i<game.rack_size; i++){
+			//See if the card is usable in this position
+			if (game.card_count-card < game.rack_size-i-1 || card-1 < i)
+				continue;
 			//Swap card with this position
 			discard = rack.swap(card, i);
 			//Score the rack
@@ -173,7 +177,7 @@ public class ModelDiablo extends Model {
 		//Loop through every long usable sequence for this rack
 		double rack_de = rack.scoreRackDE(game.dist_flat, null),
 				rack_de_skew = rack.scoreRackDE(game.dist_flat, game.dist_skew);
-		for (Rack.LUS lus: rack.getLUS()){
+		for (Rack.LUS lus: rack.getLUS(USE_COMBOS)){
 			/* Other features to consider:
 				- scoreDensity weighted by probabilities or distribution-error
 				- scoreClumpDE weighted by probabilities or density
