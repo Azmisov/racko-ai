@@ -9,39 +9,40 @@ import racko.Game;
 import racko.Rack;
 
 /**
- * High level feature, TD network
+ * High level feature, TD score_network
  * @author isaac
  */
 public class ModelDiablo extends Model {
-	private static boolean USE_COMBOS = false;
+	private static final boolean USE_COMBOS = false;
+	private static final int FEATURES = 17;
 	//Maximum points that can be won in a game
 	private double max_points;
 	//Last max-score, computed in scoreCard()
-	private DataInstance old_score, last_score, base_score;
+	private DataInstance old_score, last_score, base_score, discard_score;
 	private int cache_pos, cache_turn = -1;
 	//Neural network
 	private static final double LEARN_RATE = 0.1;
-	private final String net_file;
-	private boolean TRAIN = true;
+	private final String score_file;
+	private boolean TRAIN_score = true;
 	private final ArrayList<DataInstance> train_data = new ArrayList();
 	private double discard_threshold, learn_rate_decay;
-	public Network net;
+	public Network score_net;
 	
 	/**
-	 * Create new Diablo AI, loading network weights from file
+	 * Create new Diablo AI, loading score_network weights from file
 	 * If file doesn't exist, it will create a new one
-	 * @param file file to load network weights
-	 * @param train should we train the 
+	 * @param score_file file to load score network weights
+	 * @param train_score should we train the scoring network
 	 */
-	public ModelDiablo(String file, boolean train){
+	public ModelDiablo(String score_file, boolean train_score){
 		//Try to load the network file
-		net_file = file;
-		TRAIN = train;
-		File f = new File(file);
+		this.score_file = score_file;
+		TRAIN_score = train_score;
+		File f = new File(score_file);
 		boolean loaded = false;
 		if (f.isFile()){
 			try{
-				net = new Network(file);
+				score_net = new Network(score_file);
 				loaded = true;
 			} catch (Exception e){
 				System.out.println("Warning!!! Could not load Diablo network weights");
@@ -49,41 +50,47 @@ public class ModelDiablo extends Model {
 		}
 		//Standard settings
 		if (!loaded) newNetwork();
+		//net.addHiddenLayer(30);
+		//net.freeze(0);
 	}
 	/**
-	 * Create a new Diablo AI, using a predefined network
-	 * @param diablo the network to use
-	 * @param train should we train the network?
+	 * Create a new Diablo AI, using a predefined score_network
+	 * @param diablo the score_network to use
+	 * @param train_score should we train the score network?
+	 * @param train_draw should we train the draw network
 	 */
-	public ModelDiablo(ModelDiablo diablo, boolean train){
-		net_file = diablo.net_file;
-		net = diablo.net;
-		TRAIN = train;
+	public ModelDiablo(ModelDiablo diablo, boolean train_score, boolean train_draw){
+		score_file = diablo.score_file;
+		score_net = diablo.score_net;
+		TRAIN_score = train_score;
 	}
 	private void newNetwork(){
 		System.out.println("Diablo: Creating a new network...");
-		net = new Network(new int[]{15, 30, 1});
+		score_net = new Network(new int[]{FEATURES, FEATURES*2, 1});
 	}
 
 	@Override
 	public boolean register(Game g, Rack r){
 		super.register(g, r);
 		max_points = g.maxPoints();
-		discard_threshold = 1/(double) (game.rack_size*2);
+		discard_threshold = 1/(double) (game.rack_size*2.8169);
 		learn_rate_decay = LEARN_RATE / (double) (game.rack_size*4);
 		//Diablo works for any game configuration
+		System.out.println(discard_threshold);
 		return true;
 	}
 	@Override
 	public void scoreRound(boolean won, int score) {
-		if (TRAIN){
+		if (TRAIN_score && old_score != null){
 			//Final target value is the final score
 			old_score.output = score / max_points;
+			//old_score.output = won ? 1 : 0;
 			train_data.add(old_score);
 
 			//Train the network
 			//Give higher learning rate to more recent data
 			double rate = LEARN_RATE - train_data.size()*learn_rate_decay;
+			//double rate = .01;
 			double[] target = new double[1];
 			for (DataInstance d: train_data){
 				//Wait until learning rate breaks above zero
@@ -91,16 +98,16 @@ public class ModelDiablo extends Model {
 				if (rate <= 0) continue;
 				//Train this data
 				target[0] = d.output;
-				net.compute(d.inputs);
-				net.trainBackprop(rate, target);
+				score_net.compute(d.inputs);
+				score_net.trainBackprop(rate, target);
 			}
 			train_data.clear();
 		}
 	}
 	@Override
 	public void epoch(Player p) {
-		if (TRAIN && net_file != null)
-			net.export(net_file);
+		if (TRAIN_score && score_file != null)
+			score_net.export(score_file);
 	}
 	@Override
 	public boolean decideDraw(int turn) {
@@ -110,13 +117,12 @@ public class ModelDiablo extends Model {
 		
 		//See if taking from discard improves score at all
 		int top_discard = game.deck.peek(true);
-		cache_pos = findBestMove(turn, top_discard);
-		//TODO: We could use a learned weight to determine how good the draw-from-discard score has to be to accept
-		//This could be much more sophisticated...
+		cache_pos = findBestMove(turn, top_discard);		
+		
 		return last_score.output - discard_threshold > base_score.output;
 	}
 	@Override
-	public int decidePlay(int turn, int drawn, boolean fromDiscard) {
+	public int decidePlay(int turn, int drawn, boolean fromDiscard){
 		//If it gives us a bad score, take from draw pile
 		if (!fromDiscard || cache_turn != turn){
 			cache_pos = findBestMove(turn, drawn);
@@ -126,7 +132,7 @@ public class ModelDiablo extends Model {
 		}
 
 		//Add training data
-		if (TRAIN){
+		if (TRAIN_score){
 			if (old_score != null){
 				old_score.output = last_score.output;
 				train_data.add(old_score);
@@ -179,7 +185,7 @@ public class ModelDiablo extends Model {
 				rack_de_skew = rack.scoreRackDE(game.dist_flat, game.dist_skew);
 		for (Rack.LUS lus: rack.getLUS(USE_COMBOS)){
 			/* Other features to consider:
-				- scoreDensity weighted by probabilities or distribution-error
+				- scoreDensityAdjacent weighted by probabilities or distribution-error
 				- scoreClumpDE weighted by probabilities or density
 				- scoreProbability weighted by distribution-error
 				- bonusMode: may optimize for denser clumps to get bonus points
@@ -190,7 +196,7 @@ public class ModelDiablo extends Model {
 				- use probabilities/density/clumpDE as a UsableMetric for getLSU()
 				- use probabilties/... to generate new sequences from getLSU() output
 			*/
-			DataInstance d = new DataInstance(15);
+			DataInstance d = new DataInstance(FEATURES);
 			//if closer to one, the game is close to ending; may want to get more points before game ends
 			d.addFeature(turns > rack_size*2 ? rack_size*2 : turns, rack_size);
 			//maximize points scored (possibly, when turn_ratio is high and sequence length is low)
@@ -205,10 +211,12 @@ public class ModelDiablo extends Model {
 			d.addFeature(rack.scoreProbability(lus, null, false, true, 0), 1);
 			//same as previous, except does not penalize as much for low probabilities
 			d.addFeature(rack.scoreProbability(lus, null, true, true, 0), 1);
-			//maximize density of clumps in a sequence
-			d.addFeature(rack.scoreDensity(lus, null, 0), 1);
+			//minimize density error of adjacent cards of clumps in a sequence
+			d.addFeature(rack.scoreDensityAdjacent(lus, null, 0), 1);
 			//same as previous, except penalizes for clumps of only length 1
-			d.addFeature(rack.scoreDensity(lus, null, 1), 1);
+			d.addFeature(rack.scoreDensityAdjacent(lus, null, 1), 1);
+			//minimize density error of cards to clump centroids
+			d.addFeature(rack.scoreDensityCenter(lus, null), 1);
 
 			//SKEWED FEATURES
 			//All the same as before, except optimizes for a higher score if the player doesn't win
@@ -216,12 +224,13 @@ public class ModelDiablo extends Model {
 			d.addFeature(rack.scoreClumpDE(lus, game.dist_flat, game.dist_skew), 1);
 			d.addFeature(rack.scoreProbability(lus, game.dist_skew, false, true, 0), 1);
 			d.addFeature(rack.scoreProbability(lus, game.dist_skew, true, true, 0), 1);
-			d.addFeature(rack.scoreDensity(lus, game.dist_skew, 0), 1);
-			d.addFeature(rack.scoreDensity(lus, game.dist_skew, 1), 1);
+			d.addFeature(rack.scoreDensityAdjacent(lus, game.dist_skew, 0), 1);
+			d.addFeature(rack.scoreDensityAdjacent(lus, game.dist_skew, 1), 1);
+			d.addFeature(rack.scoreDensityCenter(lus, game.dist_skew), 1);
 
 			//Run it through the neural network
-			net.compute(d.inputs);
-			d.output = net.getOutput(0);
+			score_net.compute(d.inputs);
+			d.output = score_net.getOutput(0);
 			if (max_score == null || d.output > max_score.output)
 				max_score = d;
 		}

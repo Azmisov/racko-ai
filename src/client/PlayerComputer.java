@@ -26,10 +26,9 @@ public class PlayerComputer extends Player{
 	}
 	@Override
 	public int play(){
-		turns++;
 		//If we've gone so many moves without progress, do a random move
 		//This will hopefully prevent deadlock over a zugzwang situation
-		Model m = ++turns % no_progress == 0 ? random : learner;
+		Model m = (++turns % no_progress) == 0 ? random : learner;
 		boolean fromDiscard = m.decideDraw(turns);
 		int drawn = game.deck.draw(fromDiscard),
 			pos = m.decidePlay(turns, drawn, fromDiscard);

@@ -29,12 +29,12 @@ public class Testing {
 		
 		//*
 		//SETTINGS
-		int rack_size = 10,			//rack size
+		int rack_size = 5,			//rack size
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
-			play_games = 10000000,	//how many games to play (after training, if playing a human)
+			play_games = 1000000,	//how many games to play (after training, if playing a human)
 			epoch_every = 100,		//epoch after how many games?
-			move_limit = 1000;		//moves before calling a draw (0 for unlimited)
+			move_limit = 5000;		//moves before calling a draw (0 for unlimited)
 		boolean
 			bonus_mode = false,		//use bonus scoring
 			play_human = false;		//play against the AI's in a terminal
@@ -49,24 +49,29 @@ public class Testing {
 			ai_smart, true, true
 		);
 		*/
-		Model baltar = null, casandra = null;
-		Model diablo = new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false);
+		//Model baltar = null, casandra = null, ensemble = null;
+		//Model diablo1 = new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false);
+		ModelDiablo diablo2 = new ModelDiablo("weights/diablo/diablo2_weights.txt", false);
+		/*
 		try{
 			baltar = new ModelBaltar();
 			casandra = new ModelCasandra(
 				"weights/casandra/c_draw_diablo.txt",
 				"weights/casandra/c_play_diablo.txt",
-				diablo, 5
+				diablo1, 5
 			);
+			ensemble = new ModelEnsemble();
 		} catch (Exception e){
 			System.out.println("Could not load Baltar files!!!!");
 		}
+		*/
 		
 		Player[] players = new Player[]{
-			//new PlayerComputer(baltar),
+			//new PlayerComputer(ensemble),
 			new PlayerComputer(new ModelKyle(false)),
-			new PlayerComputer(diablo)
-			//new PlayerComputer(new ModelKyle(true))
+			new PlayerComputer(diablo2)
+			//new PlayerComputer(new ModelDiablo(diablo2, true))
+			//new PlayerComputer(new ModelKyle(true)),
 			//new PlayerComputer(new ModelMax())
 		};
 
@@ -129,7 +134,7 @@ public class Testing {
 		x	[7,1,6,3,2]
 		x	[7,9,6,10,5,8]
 		*/
-		int[] hand = new int[]{1,20,6,10,5,8};
+		int[] hand = new int[]{1,26,27,28,29,30,31,2};
 		Player[] players = new Player[]{
 			new PlayerHuman(),
 			new PlayerHuman()
@@ -138,21 +143,23 @@ public class Testing {
 		Rack r = players[0].rack;
 		r.deal(hand);
 		
+		
 		//Score metrics testing
 		System.out.println("MaxCard = "+g.card_count);
 		System.out.println("Points = "+r.scorePoints(false));
 		System.out.println("RackDE = "+r.scoreRackDE(g.dist_flat, null));
 		System.out.println("RackDE' = "+r.scoreRackDE(g.dist_flat, g.dist_skew));
-		ArrayList<Rack.LUS> lus = r.getLUS(true);
+		ArrayList<Rack.LUS> lus = r.getLUS(false);
 		for (Rack.LUS l: lus){
 			System.out.println(Arrays.toString(l.cards));
+			System.out.println("\tDensityCenter = "+r.scoreDensityCenter(l, null));
 			//*
 			System.out.println("\tClumpDE = "+r.scoreClumpDE(l, g.dist_flat, null));
 			System.out.println("\tClumpDE' = "+r.scoreClumpDE(l, g.dist_flat, g.dist_skew));
-			System.out.println("\tDensity0 = "+r.scoreDensity(l, null, 0));
-			System.out.println("\tDensity0' = "+r.scoreDensity(l, g.dist_skew, 0));
-			System.out.println("\tDensity1 = "+r.scoreDensity(l, null, 1));
-			System.out.println("\tDensity1' = "+r.scoreDensity(l, g.dist_skew, 1));
+			System.out.println("\tDensity0 = "+r.scoreDensityAdjacent(l, null, 0));
+			System.out.println("\tDensity0' = "+r.scoreDensityAdjacent(l, g.dist_skew, 0));
+			System.out.println("\tDensity1 = "+r.scoreDensityAdjacent(l, null, 1));
+			System.out.println("\tDensity1' = "+r.scoreDensityAdjacent(l, g.dist_skew, 1));
 			//*
 			System.out.println("\tProbReal = "+r.scoreProbability(l, null, false, true, 0));
 			System.out.println("\tProbReal' = "+r.scoreProbability(l, g.dist_skew, false, true, 0));

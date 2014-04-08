@@ -1,0 +1,521 @@
+ant -f /home/isaac/Programming/School/Racko -Dnb.internal.action.name=run run
+init:
+Deleting: /home/isaac/Programming/School/Racko/build/built-jar.properties
+deps-jar:
+Updating property file: /home/isaac/Programming/School/Racko/build/built-jar.properties
+Compiling 1 source file to /home/isaac/Programming/School/Racko/build/classes
+Note: /home/isaac/Programming/School/Racko/src/models/ModelDiablo.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+compile:
+run:
+Diablo draw accuracy = 1.0
+EPOCH #1:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.39		0.0%		23.15%		9.39		0.0%		23.15%
+P2	9.69		0.0%		76.85%		9.69		0.0%		76.85%
+Diablo draw accuracy = 1.0
+EPOCH #2:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.36		0.0%		33.0%		9.39		0.0%		23.54%
+P2	9.52		0.0%		67.0%		9.68		0.0%		76.46%
+Diablo draw accuracy = 1.0
+EPOCH #3:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.92		0.0%		25.0%		9.37		0.0%		23.6%
+P2	9.16		0.0%		75.0%		9.66		0.0%		76.4%
+Diablo draw accuracy = 1.0
+EPOCH #4:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.52		0.0%		22.0%		9.38		0.0%		23.54%
+P2	9.8		0.0%		78.0%		9.66		0.0%		76.46%
+Diablo draw accuracy = 1.0
+EPOCH #5:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.05		0.0%		38.0%		9.4		0.0%		24.12%
+P2	10.21		0.0%		62.0%		9.69		0.0%		75.88%
+Diablo draw accuracy = 1.0
+EPOCH #6:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.5		0.0%		23.0%		9.41		0.0%		24.07%
+P2	9.78		0.0%		77.0%		9.69		0.0%		75.93%
+Diablo draw accuracy = 1.0
+EPOCH #7:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	11.07		0.0%		32.0%		9.47		0.0%		24.39%
+P2	11.31		0.0%		68.0%		9.75		0.0%		75.61%
+Diablo draw accuracy = 1.0
+EPOCH #8:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.56		0.0%		31.0%		9.52		0.0%		24.65%
+P2	10.65		0.0%		69.0%		9.79		0.0%		75.35%
+Diablo draw accuracy = 1.0
+EPOCH #9:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.17		0.0%		26.0%		9.54		0.0%		24.71%
+P2	10.36		0.0%		74.0%		9.81		0.0%		75.29%
+Diablo draw accuracy = 1.0
+EPOCH #10:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.26		0.0%		25.0%		9.53		0.0%		24.72%
+P2	9.52		0.0%		75.0%		9.8		0.0%		75.28%
+Diablo draw accuracy = 1.0
+EPOCH #11:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.22		0.0%		18.0%		9.52		0.0%		24.45%
+P2	9.5		0.0%		82.0%		9.79		0.0%		75.55%
+Diablo draw accuracy = 1.0
+EPOCH #12:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.79		0.0%		32.0%		9.53		0.0%		24.75%
+P2	10.02		0.0%		68.0%		9.8		0.0%		75.25%
+Diablo draw accuracy = 1.0
+EPOCH #13:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.5		0.0%		29.0%		9.53		0.0%		24.92%
+P2	9.71		0.0%		71.0%		9.79		0.0%		75.08%
+Diablo draw accuracy = 1.0
+EPOCH #14:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.2		0.0%		14.0%		9.52		0.0%		24.48%
+P2	9.49		0.0%		86.0%		9.78		0.0%		75.52%
+Diablo draw accuracy = 1.0
+EPOCH #15:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.08		0.0%		29.0%		9.54		0.0%		24.66%
+P2	10.28		0.0%		71.0%		9.8		0.0%		75.34%
+Diablo draw accuracy = 1.0
+EPOCH #16:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.14		0.0%		26.0%		9.52		0.0%		24.72%
+P2	9.4		0.0%		74.0%		9.79		0.0%		75.28%
+Diablo draw accuracy = 1.0
+EPOCH #17:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.53		0.0%		26.0%		9.52		0.0%		24.77%
+P2	9.74		0.0%		74.0%		9.78		0.0%		75.23%
+Diablo draw accuracy = 1.0
+EPOCH #18:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.52		0.0%		29.0%		9.52		0.0%		24.94%
+P2	9.82		0.0%		71.0%		9.79		0.0%		75.06%
+Diablo draw accuracy = 1.0
+EPOCH #19:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.51		0.0%		35.0%		9.52		0.0%		25.34%
+P2	9.66		0.0%		65.0%		9.78		0.0%		74.66%
+Diablo draw accuracy = 1.0
+EPOCH #20:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.26		0.0%		35.0%		9.51		0.0%		25.73%
+P2	9.41		0.0%		65.0%		9.77		0.0%		74.27%
+Diablo draw accuracy = 1.0
+EPOCH #21:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.34		0.0%		23.0%		9.5		0.0%		25.62%
+P2	9.61		0.0%		77.0%		9.76		0.0%		74.38%
+Diablo draw accuracy = 1.0
+EPOCH #22:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.58		0.0%		29.0%		9.51		0.0%		25.75%
+P2	9.81		0.0%		71.0%		9.76		0.0%		74.25%
+Diablo draw accuracy = 1.0
+EPOCH #23:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.18		0.0%		26.0%		9.49		0.0%		25.76%
+P2	9.45		0.0%		74.0%		9.75		0.0%		74.24%
+Diablo draw accuracy = 1.0
+EPOCH #24:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.74		0.0%		22.0%		9.5		0.0%		25.61%
+P2	10.06		0.0%		78.0%		9.76		0.0%		74.39%
+Diablo draw accuracy = 1.0
+EPOCH #25:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.51		0.0%		31.0%		9.5		0.0%		25.83%
+P2	9.73		0.0%		69.0%		9.76		0.0%		74.17%
+Diablo draw accuracy = 1.0
+EPOCH #26:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.54		0.0%		32.0%		9.51		0.0%		26.08%
+P2	9.69		0.0%		68.0%		9.76		0.0%		73.92%
+Diablo draw accuracy = 1.0
+EPOCH #27:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.64		0.0%		28.0%		9.51		0.0%		26.15%
+P2	9.82		0.0%		72.0%		9.76		0.0%		73.85%
+Diablo draw accuracy = 1.0
+EPOCH #28:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.31		0.0%		31.0%		9.5		0.0%		26.35%
+P2	9.51		0.0%		69.0%		9.75		0.0%		73.65%
+Diablo draw accuracy = 1.0
+EPOCH #29:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.54		0.0%		27.0%		9.5		0.0%		26.37%
+P2	9.78		0.0%		73.0%		9.75		0.0%		73.63%
+Diablo draw accuracy = 1.0
+EPOCH #30:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.96		0.0%		22.0%		9.48		0.0%		26.2%
+P2	9.23		0.0%		78.0%		9.73		0.0%		73.8%
+Diablo draw accuracy = 1.0
+EPOCH #31:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	8.89		0.0%		24.0%		9.46		0.0%		26.11%
+P2	9.17		0.0%		76.0%		9.71		0.0%		73.89%
+Diablo draw accuracy = 1.0
+EPOCH #32:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.35		0.0%		25.0%		9.45		0.0%		26.07%
+P2	9.62		0.0%		75.0%		9.7		0.0%		73.93%
+Diablo draw accuracy = 1.0
+EPOCH #33:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.21		0.0%		29.0%		9.48		0.0%		26.18%
+P2	10.48		0.0%		71.0%		9.74		0.0%		73.82%
+Diablo draw accuracy = 1.0
+EPOCH #34:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.48		0.0%		27.0%		9.48		0.0%		26.22%
+P2	9.72		0.0%		73.0%		9.73		0.0%		73.78%
+Diablo draw accuracy = 1.0
+EPOCH #35:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.47		0.0%		27.0%		9.48		0.0%		26.25%
+P2	9.73		0.0%		73.0%		9.73		0.0%		73.75%
+Diablo draw accuracy = 1.0
+EPOCH #36:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.36		0.0%		25.0%		9.48		0.0%		26.2%
+P2	9.65		0.0%		75.0%		9.73		0.0%		73.8%
+Diablo draw accuracy = 1.0
+EPOCH #37:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.35		0.0%		18.0%		9.51		0.0%		25.87%
+P2	10.72		0.0%		82.0%		9.77		0.0%		74.13%
+Diablo draw accuracy = 1.0
+EPOCH #38:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.73		0.0%		29.0%		9.52		0.0%		25.99%
+P2	9.95		0.0%		71.0%		9.78		0.0%		74.01%
+Diablo draw accuracy = 1.0
+EPOCH #39:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.77		0.0%		30.0%		9.53		0.0%		26.15%
+P2	10.01		0.0%		70.0%		9.79		0.0%		73.85%
+Diablo draw accuracy = 1.0
+EPOCH #40:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.75		0.0%		31.0%		9.54		0.0%		26.35%
+P2	9.93		0.0%		69.0%		9.79		0.0%		73.65%
+Diablo draw accuracy = 1.0
+EPOCH #41:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.18		0.0%		31.0%		9.57		0.0%		26.53%
+P2	10.38		0.0%		69.0%		9.82		0.0%		73.47%
+Diablo draw accuracy = 1.0
+EPOCH #42:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.36		0.0%		29.0%		9.56		0.0%		26.63%
+P2	9.61		0.0%		71.0%		9.81		0.0%		73.37%
+Diablo draw accuracy = 1.0
+EPOCH #43:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.7		0.0%		21.0%		9.56		0.0%		26.41%
+P2	9.99		0.0%		79.0%		9.82		0.0%		73.59%
+Diablo draw accuracy = 1.0
+EPOCH #44:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.27		0.0%		22.0%		9.55		0.0%		26.23%
+P2	9.58		0.0%		78.0%		9.81		0.0%		73.77%
+Diablo draw accuracy = 1.0
+EPOCH #45:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.68		0.0%		27.0%		9.56		0.0%		26.26%
+P2	9.86		0.0%		73.0%		9.81		0.0%		73.74%
+Diablo draw accuracy = 1.0
+EPOCH #46:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.4		0.0%		27.0%		9.55		0.0%		26.29%
+P2	9.59		0.0%		73.0%		9.8		0.0%		73.71%
+Diablo draw accuracy = 1.0
+EPOCH #47:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.45		0.0%		29.0%		9.55		0.0%		26.4%
+P2	9.66		0.0%		71.0%		9.79		0.0%		73.6%
+Diablo draw accuracy = 1.0
+EPOCH #48:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.99		0.0%		27.0%		9.56		0.0%		26.42%
+P2	10.22		0.0%		73.0%		9.81		0.0%		73.58%
+Diablo draw accuracy = 1.0
+EPOCH #49:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.45		0.0%		34.0%		9.56		0.0%		26.73%
+P2	9.59		0.0%		66.0%		9.8		0.0%		73.27%
+Diablo draw accuracy = 1.0
+EPOCH #50:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.27		0.0%		25.0%		9.55		0.0%		26.66%
+P2	9.5		0.0%		75.0%		9.79		0.0%		73.34%
+Diablo draw accuracy = 1.0
+EPOCH #51:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.35		0.0%		34.0%		9.54		0.0%		26.95%
+P2	9.5		0.0%		66.0%		9.78		0.0%		73.05%
+Diablo draw accuracy = 1.0
+EPOCH #52:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.66		0.0%		37.0%		9.55		0.0%		27.35%
+P2	9.8		0.0%		63.0%		9.78		0.0%		72.65%
+Diablo draw accuracy = 1.0
+EPOCH #53:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.91		0.0%		23.0%		9.56		0.0%		27.18%
+P2	10.07		0.0%		77.0%		9.79		0.0%		72.82%
+Diablo draw accuracy = 1.0
+EPOCH #54:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.58		0.0%		25.0%		9.56		0.0%		27.09%
+P2	9.76		0.0%		75.0%		9.79		0.0%		72.91%
+Diablo draw accuracy = 1.0
+EPOCH #55:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.92		0.0%		33.0%		9.58		0.0%		27.33%
+P2	10.09		0.0%		67.0%		9.8		0.0%		72.67%
+Diablo draw accuracy = 1.0
+EPOCH #56:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.99		0.0%		34.0%		9.59		0.0%		27.6%
+P2	10.11		0.0%		66.0%		9.81		0.0%		72.4%
+Diablo draw accuracy = 1.0
+EPOCH #57:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.44		0.0%		25.0%		9.59		0.0%		27.49%
+P2	9.73		0.0%		75.0%		9.81		0.0%		72.51%
+Diablo draw accuracy = 1.0
+EPOCH #58:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.62		0.0%		23.0%		9.59		0.0%		27.31%
+P2	9.87		0.0%		77.0%		9.81		0.0%		72.69%
+Diablo draw accuracy = 1.0
+EPOCH #59:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.53		0.0%		26.0%		9.58		0.0%		27.26%
+P2	9.69		0.0%		74.0%		9.81		0.0%		72.74%
+Diablo draw accuracy = 1.0
+EPOCH #60:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.57		0.0%		25.0%		9.58		0.0%		27.17%
+P2	9.8		0.0%		75.0%		9.81		0.0%		72.83%
+Diablo draw accuracy = 1.0
+EPOCH #61:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.68		0.0%		31.0%		9.59		0.0%		27.32%
+P2	9.84		0.0%		69.0%		9.81		0.0%		72.68%
+Diablo draw accuracy = 1.0
+EPOCH #62:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.38		0.0%		33.0%		9.58		0.0%		27.55%
+P2	9.51		0.0%		67.0%		9.8		0.0%		72.45%
+Diablo draw accuracy = 1.0
+EPOCH #63:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.5		0.0%		27.0%		9.58		0.0%		27.53%
+P2	9.7		0.0%		73.0%		9.79		0.0%		72.47%
+Diablo draw accuracy = 1.0
+EPOCH #64:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.78		0.0%		28.0%		9.58		0.0%		27.55%
+P2	10.08		0.0%		72.0%		9.8		0.0%		72.45%
+Diablo draw accuracy = 1.0
+EPOCH #65:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.58		0.0%		32.0%		9.58		0.0%		27.72%
+P2	9.69		0.0%		68.0%		9.8		0.0%		72.28%
+Diablo draw accuracy = 1.0
+EPOCH #66:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.84		0.0%		23.0%		9.59		0.0%		27.54%
+P2	10.15		0.0%		77.0%		9.81		0.0%		72.46%
+Diablo draw accuracy = 1.0
+EPOCH #67:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.33		0.0%		24.0%		9.58		0.0%		27.39%
+P2	9.66		0.0%		76.0%		9.81		0.0%		72.61%
+Diablo draw accuracy = 1.0
+EPOCH #68:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.63		0.0%		31.0%		9.59		0.0%		27.54%
+P2	9.8		0.0%		69.0%		9.81		0.0%		72.46%
+Diablo draw accuracy = 1.0
+EPOCH #69:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.8		0.0%		23.0%		9.59		0.0%		27.36%
+P2	10.15		0.0%		77.0%		9.82		0.0%		72.64%
+Diablo draw accuracy = 1.0
+EPOCH #70:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.59		0.0%		30.0%		9.59		0.0%		27.46%
+P2	9.86		0.0%		70.0%		9.82		0.0%		72.54%
+Diablo draw accuracy = 1.0
+EPOCH #71:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.93		0.0%		32.0%		9.61		0.0%		27.64%
+P2	10.12		0.0%		68.0%		9.83		0.0%		72.36%
+Diablo draw accuracy = 1.0
+EPOCH #72:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.41		0.0%		29.0%		9.6		0.0%		27.7%
+P2	9.64		0.0%		71.0%		9.83		0.0%		72.3%
+Diablo draw accuracy = 1.0
+EPOCH #73:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.27		0.0%		30.0%		9.59		0.0%		27.79%
+P2	9.44		0.0%		70.0%		9.81		0.0%		72.21%
+Diablo draw accuracy = 1.0
+EPOCH #74:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.07		0.0%		24.0%		9.61		0.0%		27.64%
+P2	10.34		0.0%		76.0%		9.83		0.0%		72.36%
+Diablo draw accuracy = 1.0
+EPOCH #75:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.48		0.0%		21.0%		9.6		0.0%		27.37%
+P2	9.81		0.0%		79.0%		9.83		0.0%		72.63%
+Diablo draw accuracy = 1.0
+EPOCH #76:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.51		0.0%		27.0%		9.6		0.0%		27.36%
+P2	9.72		0.0%		73.0%		9.83		0.0%		72.64%
+Diablo draw accuracy = 1.0
+EPOCH #77:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.7		0.0%		25.0%		9.6		0.0%		27.26%
+P2	9.9		0.0%		75.0%		9.83		0.0%		72.74%
+Diablo draw accuracy = 1.0
+EPOCH #78:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.36		0.0%		30.0%		9.59		0.0%		27.37%
+P2	9.51		0.0%		70.0%		9.82		0.0%		72.63%
+Diablo draw accuracy = 1.0
+EPOCH #79:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.06		0.0%		26.0%		9.57		0.0%		27.32%
+P2	9.4		0.0%		74.0%		9.8		0.0%		72.68%
+Diablo draw accuracy = 1.0
+EPOCH #80:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.17		0.0%		25.0%		9.59		0.0%		27.23%
+P2	10.35		0.0%		75.0%		9.82		0.0%		72.77%
+Diablo draw accuracy = 1.0
+EPOCH #81:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.41		0.0%		22.0%		9.59		0.0%		27.02%
+P2	9.69		0.0%		78.0%		9.82		0.0%		72.98%
+Diablo draw accuracy = 1.0
+EPOCH #82:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.28		0.0%		22.0%		9.57		0.0%		26.82%
+P2	9.47		0.0%		78.0%		9.8		0.0%		73.18%
+Diablo draw accuracy = 1.0
+EPOCH #83:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.15		0.0%		22.0%		9.56		0.0%		26.62%
+P2	9.37		0.0%		78.0%		9.79		0.0%		73.38%
+Diablo draw accuracy = 1.0
+EPOCH #84:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.47		0.0%		32.0%		9.55		0.0%		26.84%
+P2	9.71		0.0%		68.0%		9.78		0.0%		73.16%
+Diablo draw accuracy = 1.0
+EPOCH #85:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.47		0.0%		32.0%		9.55		0.0%		27.04%
+P2	9.54		0.0%		68.0%		9.77		0.0%		72.96%
+Diablo draw accuracy = 1.0
+EPOCH #86:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.54		0.0%		20.0%		9.55		0.0%		26.76%
+P2	9.87		0.0%		80.0%		9.78		0.0%		73.24%
+Diablo draw accuracy = 1.0
+EPOCH #87:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.51		0.0%		24.0%		9.55		0.0%		26.65%
+P2	9.83		0.0%		76.0%		9.78		0.0%		73.35%
+Diablo draw accuracy = 1.0
+EPOCH #88:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.79		0.0%		26.0%		9.56		0.0%		26.63%
+P2	9.99		0.0%		74.0%		9.79		0.0%		73.37%
+Diablo draw accuracy = 1.0
+EPOCH #89:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.49		0.0%		36.0%		9.56		0.0%		27.0%
+P2	9.58		0.0%		64.0%		9.78		0.0%		73.0%
+Diablo draw accuracy = 1.0
+EPOCH #90:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.38		0.0%		30.0%		9.55		0.0%		27.12%
+P2	9.59		0.0%		70.0%		9.77		0.0%		72.88%
+Diablo draw accuracy = 1.0
+EPOCH #91:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.7		0.0%		29.0%		9.55		0.0%		27.2%
+P2	9.84		0.0%		71.0%		9.77		0.0%		72.8%
+Diablo draw accuracy = 1.0
+EPOCH #92:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.86		0.0%		30.0%		9.57		0.0%		27.31%
+P2	10.09		0.0%		70.0%		9.79		0.0%		72.69%
+Diablo draw accuracy = 1.0
+EPOCH #93:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	10.06		0.0%		31.0%		9.59		0.0%		27.46%
+P2	10.25		0.0%		69.0%		9.81		0.0%		72.54%
+Diablo draw accuracy = 1.0
+EPOCH #94:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.53		0.0%		23.0%		9.58		0.0%		27.28%
+P2	9.74		0.0%		77.0%		9.8		0.0%		72.72%
+Diablo draw accuracy = 1.0
+EPOCH #95:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.55		0.0%		30.0%		9.58		0.0%		27.39%
+P2	9.7		0.0%		70.0%		9.8		0.0%		72.61%
+Diablo draw accuracy = 1.0
+EPOCH #96:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.15		0.0%		27.0%		9.57		0.0%		27.37%
+P2	9.33		0.0%		73.0%		9.78		0.0%		72.63%
+Diablo draw accuracy = 1.0
+EPOCH #97:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.29		0.0%		24.0%		9.55		0.0%		27.24%
+P2	9.48		0.0%		76.0%		9.77		0.0%		72.76%
+Diablo draw accuracy = 1.0
+EPOCH #98:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.53		0.0%		27.0%		9.55		0.0%		27.23%
+P2	9.74		0.0%		73.0%		9.77		0.0%		72.77%
+Diablo draw accuracy = 1.0
+EPOCH #99:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.39		0.0%		24.0%		9.55		0.0%		27.1%
+P2	9.62		0.0%		76.0%		9.76		0.0%		72.9%
+Diablo draw accuracy = 1.0
+EPOCH #100:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.1		0.0%		27.0%		9.53		0.0%		27.09%
+P2	9.27		0.0%		73.0%		9.74		0.0%		72.91%
+Diablo draw accuracy = 1.0
+EPOCH #101:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.44		0.0%		29.0%		9.53		0.0%		27.17%
+P2	9.65		0.0%		71.0%		9.74		0.0%		72.83%
+Diablo draw accuracy = 1.0
+EPOCH #102:
+	Moves:		Random:		Wins:		Moves All:	Random All:	Wins All:
+P1	9.09		0.0%		22.0%		9.51		0.0%		26.96%
+P2	9.45		0.0%		78.0%		9.73		0.0%		73.04%
+BUILD STOPPED (total time: 1 minute 36 seconds)

@@ -342,11 +342,6 @@ public class Rack {
 				//Probability in between this card and the previous
 				else{
 					cur_clump = seq.indexes[cur_clump_idx];
-					if (cur_prob > prob[cur_clump][1]){
-						System.out.println(prob[cur_clump_idx][1]);
-						System.out.println(prob[cur_clump_idx-1][1]);
-						System.out.println(prob[cur_clump][1]+" VS "+cur_prob);
-					}
 					cur_prob = prob[cur_clump][1] - cur_prob;
 				}
 				continue;
@@ -365,6 +360,7 @@ public class Rack {
 	}
 	/**
 	 * Gives a score for the density of clumps in a sequence;
+	 * gives the error between two adjacent cards
 	 * 0: clumps of length 1
 	 * 0-1: clumps that are not in a perfect streak (1,6,8)
 	 * 1: clumps in perfect streak sequence (1,2,3)
@@ -373,7 +369,7 @@ public class Rack {
 	 * @param loner_penalty incur penalty for clumps of length 1 (0=no affect, 1=equivalent to worst density)
 	 * @return density score (average of all clump scores), between 0-1
 	 */
-	public double scoreDensity(LUS seq, Distribution err_weight, int loner_penalty){
+	public double scoreDensityAdjacent(LUS seq, Distribution err_weight, int loner_penalty){
 		//No usable sequences
 		if (seq == null || seq.cards.length == 0)
 			return 0;
@@ -416,13 +412,15 @@ public class Rack {
 		return score;
 	}
 	/**
-	 * Gives a score for the density of clumps, using the absolute error
-	 * to the center of the clump
+	 * Gives a score for the density of clumps in a sequence;
+	 * gives the error between a card and the center of the clump
+	 * 0 = largest error possible
+	 * 1 = perfect streak! no error
 	 * @param seq a sequence to score
 	 * @param err_weight optional error weighting
 	 * @return density score
 	 */
-	public double scoreDensityToCenter(LUS seq, Distribution err_weight){
+	public double scoreDensityCenter(LUS seq, Distribution err_weight){
 		//No usable sequences
 		if (seq == null || seq.cards.length == 0)
 			return 1;
@@ -439,8 +437,8 @@ public class Rack {
 				if (is_clump) clump_len++;
 			}
 			
-			//End of clump, compute 
-			if (!is_clump){
+			//End of clump, compute; clumps of length one have err=0
+			if (!is_clump && clump_len != 0){
 				//If this clump is at the very beginning/end of the rack, we use
 				//the extremes as the center points; this "stretches" out the
 				//unfilled space, so to speak
@@ -452,7 +450,19 @@ public class Rack {
 				else if (is_last && !is_first)
 					center = seq.cards.length-1;
 				else center = i-1-clump_len/2.0;
-				//TODO: Compute error of clump cards to the center of the clump
+				int center_lo = (int) center;
+				double center_card = seq.cards[center_lo];
+				if (center_lo != center)
+					center_card = (center_card + seq.cards[center_lo+1]) / 2.0;
+				
+				//Compute error of clump cards to the center of the clump
+				for (int j=i-1, l=j-1-clump_len; j>l; j--){
+					double err = Math.abs((center_card-seq.cards[j]) - (center-j));
+					//Weight the error
+					if (err_weight != null)
+						err *= err_weight.eval(j);
+					sum += err;
+				}
 				
 				//Reset vars
 				clump_len = 0;
@@ -461,10 +471,13 @@ public class Rack {
 				cur_clump = seq.indexes[i];
 		}
 		
-		//TODO: Normalize error
-		
+		//Normalize error
+		//Max error occurs with rack: [1, ..., (max-2), (max-1), not_part_of_sequence]
+		//This has error: (max-rack_size)*(rack_size-2)
+		sum /= (double) ((game.card_count-cards.length) * (cards.length-2));
 		assert(sum >= 0 && sum <= 1);
-		return sum;
+		//Invert error, so its the same as the other density scorer
+		return 1-sum;
 	}
 
 	//LONGEST USABLE SEQUENCES
@@ -671,10 +684,8 @@ public class Rack {
 		}
 		private void linearize_recursive_single(ArrayList<LUSTree> seq, boolean use_combos){
 			//This is the end of a sequence
-			if (branches.isEmpty()){
+			if (branches.isEmpty())
 				seqs.add(seq);
-				return;
-			}
 			//Otherwise, branch
 			else{
 				int len = branches.size(), i = 0;
