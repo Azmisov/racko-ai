@@ -76,7 +76,6 @@ public class ModelDiablo extends Model {
 		discard_threshold = 1/(double) (game.rack_size*2.8169);
 		learn_rate_decay = LEARN_RATE / (double) (game.rack_size*4);
 		//Diablo works for any game configuration
-		System.out.println(discard_threshold);
 		return true;
 	}
 	@Override

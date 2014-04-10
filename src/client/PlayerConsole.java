@@ -9,15 +9,16 @@ import racko.Rack;
 /**
  * Plays the game as a human
  */
-public class PlayerHuman extends Player{
+public class PlayerConsole extends Player{
 	private double max_points;
 	private Model[] hinters;
 
-	public PlayerHuman(){
+	public PlayerConsole(){
 		super();
 		hinters = new Model[]{
-			new ModelDiablo("weights/diablo/diablo_weights10_2_0frozen.txt", false),
-			new ModelMax()
+			new ModelDiablo("weights/diablo/diablo2_weights.txt", false),
+			new ModelMax(),
+			new ModelKyle(false)
 		};
 	}
 
@@ -73,6 +74,7 @@ public class PlayerHuman extends Player{
 					rack.swap(drawn, i, fromDiscard);
 			}
 		}
+		System.out.println();
 		return discard;
 	}
 

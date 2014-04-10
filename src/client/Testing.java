@@ -29,7 +29,7 @@ public class Testing {
 		
 		//*
 		//SETTINGS
-		int rack_size = 5,			//rack size
+		int rack_size = 10,			//rack size
 			streak_min = 1,			//minimum streak to win
 			train_games = 0,		//if play_human = true, how many games to train the AI's beforehand
 			play_games = 1000000,	//how many games to play (after training, if playing a human)
@@ -37,7 +37,7 @@ public class Testing {
 			move_limit = 5000;		//moves before calling a draw (0 for unlimited)
 		boolean
 			bonus_mode = false,		//use bonus scoring
-			play_human = false;		//play against the AI's in a terminal
+			play_human = true;		//play against the AI's in a terminal
 		
 		/*
 		ModelAI ai_smart = new ModelAI(
@@ -68,7 +68,7 @@ public class Testing {
 		
 		Player[] players = new Player[]{
 			//new PlayerComputer(ensemble),
-			new PlayerComputer(new ModelKyle(false)),
+			//new PlayerComputer(new ModelKyle(false)),
 			new PlayerComputer(diablo2)
 			//new PlayerComputer(new ModelDiablo(diablo2, true))
 			//new PlayerComputer(new ModelKyle(true)),
@@ -77,12 +77,16 @@ public class Testing {
 
 		//TRAINING & TESTING
 		if (play_human){
+			System.out.println("\n--------  RACKO  --------");
+			System.out.println("Cards go from 1 to "+(rack_size*3+rack_size*players.length+"\n"));
 			Game.verbose = true;
+			if (args.length != 0 && args[0].equals("spymode"))
+				Game.spymode = true;
 			players = Arrays.copyOf(players, players.length+1);
-			players[players.length-1] = new PlayerHuman();
+			players[players.length-1] = new PlayerConsole();
 		}
 			
-		Game g = Game.create(players, rack_size, streak_min, bonus_mode);	
+		Game g = Game.create(players, rack_size, streak_min, bonus_mode);
 		g.limitMoves(move_limit);
 		int epochs = 0;
 		for (int i = 0; i < play_games; i++){
@@ -136,8 +140,8 @@ public class Testing {
 		*/
 		int[] hand = new int[]{1,26,27,28,29,30,31,2};
 		Player[] players = new Player[]{
-			new PlayerHuman(),
-			new PlayerHuman()
+			new PlayerConsole(),
+			new PlayerConsole()
 		};
 		Game g = Game.create(players, hand.length, 1, false);
 		Rack r = players[0].rack;

@@ -1,5 +1,6 @@
 package interfaces;
 
+import client.PlayerGUI;
 import racko.Rack;
 
 /**
@@ -26,10 +27,25 @@ public interface GUI {
 	public void discard(int card);
 	/**
 	 * Notifies GUI of the outcome of a round
+	 * @param winner who won the round
+	 * @param player_index their index
 	 */
-	public void scoreRound();
+	public void scoreRound(Player winner, int player_index);
 	/**
 	 * Notifies GUI of the outcome of a game
+	 * @param winner who won the game
+	 * @param player_index their index
 	 */
-	public void scoreGame();
+	public void scoreGame(Player winner, int player_index);
+	/**
+	 * Notifies GUI a new round has begun
+	 */
+	public void beginRound();
+	/**
+	 * Notifies GUI a new game has begun
+	 */
+	public void beginGame();
+	
+	public void requestDiscard(PlayerGUI p);
+	public void requestSlot(PlayerGUI p);
 }

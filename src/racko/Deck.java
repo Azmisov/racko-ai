@@ -1,5 +1,6 @@
 package racko;
 
+import interfaces.GUI;
 import interfaces.Player;
 import java.util.Arrays;
 import java.util.Random;
@@ -12,6 +13,7 @@ public class Deck {
 	//Game constants
 	protected final int cards, rack_size;	//number of cards & the rack size
 	private final Player[] players;			//list of players
+	private GUI gui = null;
 	//Deck variables
 	private int turns;
 	private int draw_count, discard_count;	//cards in draw/discard pile
@@ -20,7 +22,8 @@ public class Deck {
 	private boolean
 		action = false,						//false = expect draw, true = expect discard
 		dealing = false,					//remove assertions if dealing cards
-		has_shuffled = false;				//have we gone through all the cards in the draw pile?
+		has_shuffled = false,				//have we gone through all the cards in the draw pile?
+		shuffling = false;					//are we currently shuffling the deck
 	//Memory variables
 	private final int[] memory,				//keeps track of which cards were drawn last; 0 values should be ignored
 		memory_hash;						//where each card is located in the memory array; -1, if it isn't in memory
@@ -55,6 +58,13 @@ public class Deck {
 		memory_head = 0;
 		memory_count = 0;
 		has_shuffled = false;
+	}
+	/**
+	 * Register a gui
+	 * @param gui the gui to register
+	 */
+	protected void registerGUI(GUI gui){
+		this.gui = gui;
 	}
 	
 	/**
@@ -102,6 +112,7 @@ public class Deck {
 	private void shuffle(){
 		//sanity check...
 		assert(draw_count == 0 && discard_count != 0);
+		shuffling = true;
 		System.arraycopy(discard, 0, draw, 0, discard_count);
 		//Simple Fisher-Yates shuffle
 		for (int i=discard_count-1, idx; i>0; i--){
@@ -114,6 +125,7 @@ public class Deck {
 		draw_count = discard_count;
 		discard_count = 0;
 		discard(draw(false));
+		shuffling = false;
 	}
 	
 	/**
@@ -146,6 +158,8 @@ public class Deck {
 			card = draw[--draw_count];
 		}
 		in_play[card-1]	= true;
+		if (!shuffling && gui != null)
+			gui.draw(card, fromDiscard);
 		return card;
 	}
 	/**
@@ -173,6 +187,8 @@ public class Deck {
 		memory_hash[card-1] = memory_head;
 		memory[memory_head] = card;
 		memory_head = (memory_head + 1) % cards;
+		if (!shuffling && gui != null)
+			gui.discard(card);
 	}
 	
 	/**

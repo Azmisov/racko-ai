@@ -1,8 +1,9 @@
 package racko;
 
-import client.PlayerHuman;
+import client.PlayerConsole;
 import distributions.DistributionFlat;
 import distributions.DistributionSkew;
+import interfaces.GUI;
 import interfaces.Player;
 
 /**
@@ -11,7 +12,7 @@ import interfaces.Player;
  */
 public class Game {
 	//Shows rack output for each move
-	public static boolean verbose = false;
+	public static boolean verbose = false, spymode = false;
 	
 	//Scoring constants
 	public static int
@@ -26,6 +27,7 @@ public class Game {
 	public DistributionFlat dist_flat;
 	
 	//Game management
+	private GUI gui = null;
 	public final int rack_size, min_streak, player_count, card_count;
 	public final boolean bonus_mode;
 	public final Deck deck;
@@ -76,6 +78,14 @@ public class Game {
 		g.register();
 		return g;
 	}
+	/**
+	 * Register a gui for callbacks
+	 * @param gui 
+	 */
+	public void registerGUI(GUI gui){
+		this.gui = gui;
+		deck.registerGUI(gui);
+	}
 	
 	/**
 	 * Limits the number of moves in a game before calling a draw
@@ -90,30 +100,42 @@ public class Game {
 	 * @param start_player who should start the game?
 	 */
 	public void play(int start_player){
-		for (Player player: players)
+		for (Player player: players){
+			player.score = 0;
+			player.wins = 0;
 			player.beginGame();
+		}
+		if (gui != null)
+			gui.beginGame();
 		
 		//Outer loop sets up games for each new round
 		while (true){
 			//Deal out a new deck; setup variables for the game loop
 			deck.deal();
 			active_player = start_player-1;
+			if (gui != null)
+				gui.beginRound();
 			
 			//Inner loop goes through each player, starting with 0
 			while (true){
 				//Get next player to play
 				active_player = (active_player+1) % player_count;
 				Player cur_player = players[active_player];
+				Rack cur_rack = cur_player.rack;
+				if (gui != null)
+					gui.turn(cur_player, active_player, cur_rack);
 				deck.discard(cur_player.play());
 				cur_player.STAT_allmoves++;
-				
-				//Show output for human player
-				Rack cur_rack = cur_player.rack;
-				if (Game.verbose && !(cur_player instanceof PlayerHuman))
-					System.out.println("\tP"+cur_player.playerNumber+": "+cur_rack.toString());
 
 				//Check if this player has won
 				boolean won = cur_rack.isSorted();
+				
+				//Show output for human player
+				if (Game.verbose && !(cur_player instanceof PlayerConsole)){
+					String spy = won || spymode ? cur_rack.toString() : cur_rack.toStringVisible();
+					System.out.println("COMPUTER-P"+cur_player.playerNumber+": "+spy);
+				}
+
 				//If they haven't won, check for a draw
 				boolean draw = move_limit > 0 && cur_player.STAT_allmoves >= move_limit && !won;
 				if (won || draw){
@@ -141,12 +163,16 @@ public class Game {
 								max_idx = i;
 							}
 						}
+						if (gui != null)
+							gui.scoreRound(won ? cur_player : null, won ? active_player : 0);
 						//No one has reached "score_win" points; play next round
 						if (max_score == 0) break;
 						//Notify players that the game has ended
 						else{
 							for (int i=0; i<player_count; i++)
 								players[i].scoreGame(i == max_idx, players[i].score);
+							if (gui != null)
+								gui.scoreGame(players[max_idx], max_idx);
 							return;
 						}
 					}

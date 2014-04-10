@@ -142,6 +142,13 @@ public class Rack {
 	public int getVisibleCardCount(){
 		return exposed_count;
 	}
+	/**
+	 * Gives true, if the card is visible
+	 * @return 
+	 */
+	public boolean isVisible(int slot){
+		return exposed[slot];
+	}
 	
 	/**
 	 * Gets the cards in the rack.
@@ -740,5 +747,15 @@ public class Rack {
 	@Override
 	public String toString(){
 		return Arrays.toString(cards);
+	}
+	public String toStringVisible(){
+		StringBuilder sb = new StringBuilder("[");
+		for (int i=0; i<cards.length; i++){
+			sb.append(exposed[i] ? cards[i] : "?");
+			if (i+1 != cards.length)
+				sb.append(", ");
+		}
+		sb.append("]");
+		return sb.toString();
 	}
 }
