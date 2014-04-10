@@ -36,7 +36,7 @@ public class Network{
 	public Network(String filename) throws Exception{
 		try (FileReader x = new FileReader(filename)){
 			Scanner s = new Scanner(x);
-			String splitter = "[\t\n]";
+			String splitter = "(\r?\n|\t)";
 			s.useDelimiter(splitter);
 			
 			//Frozen layers
