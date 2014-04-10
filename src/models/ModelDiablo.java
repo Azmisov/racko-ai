@@ -236,4 +236,9 @@ public class ModelDiablo extends Model {
 		
 		return max_score;
 	}
+
+	@Override
+	public String toString() {
+		return "Diablo";
+	}
 }

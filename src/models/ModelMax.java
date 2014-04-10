@@ -52,4 +52,9 @@ public class ModelMax extends Model{
 		}
 		return max_score > prev_score || (!forceBetter && max_score == prev_score) ? max_pos : -1;
 	}
+
+	@Override
+	public String toString() {
+		return "Max";
+	}
 }

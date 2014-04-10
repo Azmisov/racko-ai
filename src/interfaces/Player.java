@@ -13,6 +13,7 @@ public abstract class Player {
 	public Rack rack;
 	public static int playerCount = 0;
 	public final int playerNumber;
+	public final String name;
 	public int
 		score,	//score for this particular game
 		wins;	//wins (rounds) for this particular game
@@ -38,6 +39,10 @@ public abstract class Player {
 		MODEL_wins;
 	
 	protected Player(){
+		this("Player");
+	}
+	protected Player(String name){
+		this.name = name;
 		playerNumber = ++playerCount;
 	}
 	

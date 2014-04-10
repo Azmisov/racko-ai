@@ -324,4 +324,9 @@ public class ModelKyle extends Model{
 		public void setNumSlots (int newNumSlots)
 		{ numSlots = newNumSlots; }
 	}
+
+	@Override
+	public String toString() {
+		return "Kyle";
+	}
 }

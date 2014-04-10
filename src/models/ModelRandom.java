@@ -26,4 +26,9 @@ public class ModelRandom extends Model{
 	public int decidePlay(int turn, int drawn, boolean fromDiscard) {
 		return RAND.nextInt(rack_size+1)-1;
 	}
+
+	@Override
+	public String toString() {
+		return "Random";
+	}
 }

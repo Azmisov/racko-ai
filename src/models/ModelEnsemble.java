@@ -19,7 +19,7 @@ public class ModelEnsemble extends Model{
 			new ModelBaltar()
 		};
 	}
-	
+
 	@Override
 	public boolean register(Game g, Rack r) {
 		super.register(g, r);
@@ -51,6 +51,10 @@ public class ModelEnsemble extends Model{
 			}
 		}
 		return max_idx-1;
+	}
+	@Override
+	public String toString() {
+		return "Ensemble";
 	}
 	
 }

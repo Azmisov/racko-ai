@@ -137,6 +137,7 @@ public class Game {
 				}
 
 				//If they haven't won, check for a draw
+				int lowest_score = -1, lowest_score_player = 0;
 				boolean draw = move_limit > 0 && cur_player.STAT_allmoves >= move_limit && !won;
 				if (won || draw){
 					if (draw || min_streak < 2 || cur_rack.maxStreak() >= min_streak){
@@ -149,6 +150,10 @@ public class Game {
 						for (int i=0; i<player_count; i++){
 							Player p = players[i];
 							int score = p.rack.scorePoints(bonus_mode);
+							if (lowest_score == -1 || score < lowest_score){
+								lowest_score = score;
+								lowest_score_player = i;
+							}
 							p.score += score;
 							p.STAT_score += score;
 							p.STAT_rounds++;
@@ -166,7 +171,10 @@ public class Game {
 						if (gui != null)
 							gui.scoreRound(won ? cur_player : null, won ? active_player : 0);
 						//No one has reached "score_win" points; play next round
-						if (max_score == 0) break;
+						if (max_score == 0){
+							start_player = lowest_score_player;
+							break;
+						}
 						//Notify players that the game has ended
 						else{
 							for (int i=0; i<player_count; i++)

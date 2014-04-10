@@ -179,7 +179,7 @@ public class ModelAI extends Model{
 			return ((draw ? USE_PROB_DRAW : USE_PROB_PLAY) ? rack_size*3 : rack_size) + 1;
 		return ((draw ? USE_PROB_DRAW : USE_PROB_PLAY) ? rack_size*2 : rack_size*4);
 	}
-	
+
 	@Override
 	public boolean register(Game g, Rack r){
 		super.register(g, r);
@@ -357,5 +357,10 @@ public class ModelAI extends Model{
 			//if (Game.verbose)
 				System.out.println("PlayerAI: Beginning DEEP LEARNING refinement stage");
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "AI";
 	}
 }

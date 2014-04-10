@@ -50,7 +50,7 @@ public class ModelBaltar extends Model{
 			cylons.add(new ReinforcementLearner(buff));
 		}
 	}
-	
+
 	@Override
 	public boolean register(Game g, Rack r) {
 		super.register(g, r);
@@ -87,5 +87,10 @@ public class ModelBaltar extends Model{
 			}
 		}
 		return pos == game.rack_size ? -1 : pos;
+	}
+
+	@Override
+	public String toString() {
+		return "Baltar";
 	}
 }

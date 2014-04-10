@@ -197,5 +197,10 @@ public class ModelTD extends Player{
 			//if (Game.verbose)
 				System.out.println("PlayerTD: Beginning DEEP LEARNING refinement stage");
 		}
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "TD";
+	}
 }

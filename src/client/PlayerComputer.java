@@ -14,6 +14,7 @@ public class PlayerComputer extends Player{
 	private final Model random, learner;
 	
 	public PlayerComputer(Model learner){
+		super(learner.toString());
 		this.learner = learner;
 		random = new ModelRandom();
 	}

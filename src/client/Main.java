@@ -1,19 +1,12 @@
 package client;
 
-import interfaces.GUI;
-import interfaces.Player;
+import interfaces.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
-import models.ModelDiablo;
+import models.*;
 import racko.*;
 
 /**
@@ -22,12 +15,13 @@ import racko.*;
 public class Main extends JFrame implements GUI{
 	//Window title
 	private static final String title = "Rack-O v0.2";
-	private static final int WIN_WIDTH = 750, WIN_HEIGHT = 700;
+	private static int WIN_WIDTH = 750, WIN_HEIGHT, WIN_DEC_HEIGHT = 26;
 	//GUI items
 	private CardLayout views;
 	private Board board;
 	private boolean spymode_always = false, end_of_game = false;
 	//Game variables
+	private static int rack_size;
 	private final Game game;
 	private GameThread gthread;
 	private final Player player_ai, player_human;
@@ -36,14 +30,16 @@ public class Main extends JFrame implements GUI{
 	private int request_type = 0;	//0=empty, 1=discard, 2=slot
 	private int current_player;
 	
-	private Main(){
-		player_ai = new PlayerComputer(
-			new ModelDiablo("weights/diablo/diablo2_weights10_2_wkyletraining.txt", false)
-		);
+	private Main(int rack_size, Player ai) throws Exception{
+		Main.rack_size = rack_size;
+		WIN_HEIGHT = rack_size*Card.height+(rack_size-1)*Board.card_pad+2*Board.border_pad_ver+50;
+		if (WIN_HEIGHT < 300) WIN_HEIGHT = 400;
+		
+		player_ai = ai;
 		player_human = new PlayerGUI(this);
 		game = Game.create(
 			new Player[]{player_human, player_ai},
-			10, 1, false
+			rack_size, 1, false
 		);
 		Card.card_count = game.card_count;
 		game.registerGUI(this);
@@ -58,14 +54,52 @@ public class Main extends JFrame implements GUI{
 		
 		initGUI();
 	}
-	public static void main(String[] args){
+	public static void main(final String[] args){
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run(){
-				//WebLookAndFeel.install();
-				Main win = new Main();
-				win.setVisible(true);
-				win.startGameThread();
+				Main win;
+				try {
+					int rsize = 0;
+					Player ai = null;
+					try{
+						rsize = Integer.parseInt(args[0]);
+						if (rsize <= 2) throw new Exception("Invalid rack size");
+						Model m;
+						switch(args[1]){
+							case "diablo":
+								m = new ModelDiablo("weights/diablo/diablo2_weights10_2_wkyletraining.txt", false);
+								break;
+							case "baltar":
+								m = new ModelBaltar();
+								break;
+							case "kyle":
+								m = new ModelKyle(false);
+								break;
+							case "max":
+								m = new ModelMax();
+								break;
+							case "random":
+								m = new ModelRandom();
+								break;
+							default:
+								throw new Exception("Invalid AI name");
+						}
+						ai = new PlayerComputer(m);
+					} catch(Exception e){
+						rsize = 0;
+						System.out.println("Error: "+e);
+						System.out.println("Usage: [rack_size] [diablo|baltar|kyle|max|random]");
+					}
+					if (rsize != 0){
+						win = new Main(rsize, ai);
+						win.setVisible(true);
+						win.startGameThread();
+					}
+				} catch (Exception ex) {
+					System.out.println("Exception thrown in Main:");
+					System.out.println(ex.getMessage());
+				}
 			}
 		});
 	}
@@ -76,13 +110,13 @@ public class Main extends JFrame implements GUI{
 		//Switches between Main views (e.g. game mode / settings mode)
 		//views = new CardLayout();
 		setTitle(title);
-		setSize(WIN_WIDTH, WIN_HEIGHT);
+		setSize(WIN_WIDTH, WIN_HEIGHT+WIN_DEC_HEIGHT);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setResizable(false);
 		
-		board = new Board();
+		board = new Board(player_ai.name);
 		add(board, BorderLayout.CENTER);
 		
 		board.addMouseListener(new MouseAdapter(){
@@ -117,6 +151,13 @@ public class Main extends JFrame implements GUI{
 	@Override
 	public void turn(Player p, int player_index, Rack r){
 		current_player = player_index;
+		board.turn(player_index);
+		//Delay, if it is the computer's turn
+		if (player_index == 1){
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException ex) {}
+		}
 	}
 	@Override
 	public void draw(int card, boolean fromDiscard){
@@ -132,16 +173,13 @@ public class Main extends JFrame implements GUI{
 			board.playDiscard(board.animate);
 		else{
 			Card[] arr = current_player == 0 ? board.rack_human : board.rack_ai;
-			for (int i=0; i<10; i++){
+			for (int i=0; i<rack_size; i++){
 				if (card == arr[i].card){
 					board.playDiscard(arr[i]);
 					break;
 				}
 			}
 		}
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException ex) {}
 	}
 	@Override
 	public void scoreRound(Player winner, int player_index){
@@ -202,7 +240,7 @@ public class Main extends JFrame implements GUI{
 						requester.guiSlot = -1;
 					else{
 						int slot = 0;
-						for (; slot<10; slot++){
+						for (; slot<rack_size; slot++){
 							if (board.rack_human[slot].equals(hit))
 								break;
 						}
@@ -219,8 +257,8 @@ public class Main extends JFrame implements GUI{
 	private static class Board extends JPanel{
 		private static final Font title_font = new Font("Sans Serif", Font.BOLD, 25);
 		private static final int
-			border_pad_hor = 50, border_pad_ver = 15, pile_pad = 20,
-			right_offset = 4, score_width = 32, card_pad = 5;
+			border_pad_hor = 50, border_pad_ver = 10, pile_pad = 20, card_pad = 5,
+			right_offset = 4, score_width = 32;
 		private static final long animate_timestep = 50;
 		private static final HashMap<RenderingHints.Key, Object> antialias =
 			new HashMap<RenderingHints.Key, Object>(){{
@@ -229,15 +267,23 @@ public class Main extends JFrame implements GUI{
 				put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 			}};
 		public boolean loaded = false, spymode = false, animate_visible = false, won = false;
-		public final Card[] rack_ai = new Card[10];
-		public final Card[] rack_human = new Card[10];
+		public final Card[] rack_ai;
+		public final Card[] rack_human;
 		public Card pile_discard, pile_draw, animate;
-		public final int pile_start_x, pile_start_y;
+		public final int pile_start_x, pile_start_y, rack_start_y;
 		public Button new_game;
+		private int current_player;
+		private String ai_name;
 		
-		public Board(){
+		public Board(String ai_name){
+			this.ai_name = ai_name;
+			rack_ai = new Card[rack_size];
+			rack_human = new Card[rack_size];
+			
+			//Setup gui items
 			pile_start_x = WIN_WIDTH/2 - Card.width/2;
 			pile_start_y = WIN_HEIGHT/2 - Card.height/2;
+			rack_start_y = WIN_HEIGHT/2 - (Card.height*rack_size + card_pad*(rack_size-1))/2;
 			pile_draw = new Card(0, pile_start_x, pile_start_y, false);
 			pile_discard = new Card(0, pile_start_x, pile_start_y+Card.height+pile_pad, true);
 			animate = new Card(0, 0, 0, true);
@@ -248,24 +294,24 @@ public class Main extends JFrame implements GUI{
 			loaded = ai.rack != null && human != null;
 			if (!loaded) return;
 			
-			for (int i=0; i<10; i++){
+			for (int i=0; i<rack_size; i++){
 				rack_human[i] = new Card(
 					human.rack.getCardAt(i),
 					border_pad_hor,
-					i*(Card.height+card_pad) + border_pad_ver,
+					i*(Card.height+card_pad) + rack_start_y,
 					true
 				);
 				rack_ai[i] = new Card(
 					ai.rack.getCardAt(i),
 					WIN_WIDTH-border_pad_hor-Card.width-right_offset,
-					i*(Card.height+card_pad) + border_pad_ver,
+					i*(Card.height+card_pad) + rack_start_y,
 					ai.rack.isVisible(i)
 				);
 			}
 			repaint();
 		}
 		public Card hitTest(int x, int y){
-			for (int i=0; i<10; i++){
+			for (int i=0; i<rack_size; i++){
 				if (rack_human[i].hitTest(x, y))
 					return rack_human[i];
 			}
@@ -276,6 +322,10 @@ public class Main extends JFrame implements GUI{
 			return null;
 		}
 		
+		public void turn(int player_idx){
+			current_player = player_idx;
+			repaint();
+		}
 		public void playDiscard(Card s){
 			//If we're discarding the drawn card, skip the swap animation
 			if (!s.equals(animate)){
@@ -345,10 +395,11 @@ public class Main extends JFrame implements GUI{
 			g2.setRenderingHints(antialias);
 			
 			//Help & other text
+			g2.setColor(Color.darkGray);
+			g2.setFont(title_font);
+			FontMetrics fm = g2.getFontMetrics(Card.cardfont);
 			if (new_game.visible){
 				String str = won ? "You won the round!" : "You lost the round";
-				g2.setFont(title_font);
-				FontMetrics fm = g2.getFontMetrics(Card.cardfont);
 				Rectangle2D bounds = fm.getStringBounds(str, g);
 				g2.drawString(str,
 					(int) (WIN_WIDTH/2-bounds.getWidth()/2.65),
@@ -356,6 +407,23 @@ public class Main extends JFrame implements GUI{
 				);
 				new_game.y = (int) (bounds.getHeight()+40);
 				new_game.paint(g2);
+			}
+			else{
+				String str = current_player == 0 ? "Human" : ai_name;
+				Rectangle2D bounds = fm.getStringBounds(str, g);
+				int x = (int) (WIN_WIDTH/2-bounds.getWidth()/2.65),
+					y = (int) (bounds.getHeight()+10);
+				g2.drawString(str, x, y);
+				int x_start = x-15 + (int) (current_player == 0 ? 0 : bounds.getWidth()),
+					x_offset = current_player == 0 ? -17 : 17,
+					y_shift = 3,
+					y_start = (int) (y-bounds.getHeight()/2)+y_shift,
+					y_offset = (y-y_start)/2+y_shift;
+				g2.fillPolygon(
+					new int[]{x_start, x_start, x_start+x_offset},
+					new int[]{y_start, y_start+y_offset*2, y_start+y_offset},
+					3
+				);
 			}
 			
 			//Decks
@@ -371,15 +439,15 @@ public class Main extends JFrame implements GUI{
 			g2.fillRect(WIN_WIDTH-score_width-right_offset, 0, score_width, WIN_HEIGHT);
 			g2.setColor(Color.lightGray);
 			g2.setFont(Card.rackofont);
-			for (int i=0; i<10; i++){
-				int y = i*(Card.height+card_pad) + border_pad_ver + (Card.height/2+6);
+			for (int i=0; i<rack_size; i++){
+				int y = i*(Card.height+card_pad) + rack_start_y + (Card.height/2+6);
 				String score = Integer.toString((i+1)*5);
 				g2.drawString(score, 5, y);
 				g2.drawString(score, WIN_WIDTH-Board.right_offset-8*(score.length())-10, y);
 			}
 			
 			//Slots
-			for (int i=0; i<10; i++){
+			for (int i=0; i<rack_size; i++){
 				rack_ai[i].paint(g2, spymode);
 				rack_human[i].paint(g2, spymode);
 			}

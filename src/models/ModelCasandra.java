@@ -197,4 +197,9 @@ public class ModelCasandra extends Model{
 				System.out.println("Casandra: Beginning DEEP LEARNING refinement stage");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Casandra";
+	}
 }

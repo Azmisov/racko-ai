@@ -12,6 +12,13 @@ public abstract class Model {
 	protected Rack rack;
 	
 	/**
+	 * Get this model's name
+	 * @return 
+	 */
+	public String getName(){
+		return "Computer";
+	}
+	/**
 	 * Register this model with a particular game
 	 * @param g game to use
 	 * @param r rack to use
