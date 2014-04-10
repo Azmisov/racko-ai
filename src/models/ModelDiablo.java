@@ -194,6 +194,12 @@ public class ModelDiablo extends Model {
 				- just take output of getLSU()
 				- use probabilities/density/clumpDE as a UsableMetric for getLSU()
 				- use probabilties/... to generate new sequences from getLSU() output
+			
+				TODO:
+				- use other player's visible cards in rack to see if discarding would lose the game
+				- train with deep learning enabled
+				- fix probability calculator
+				- train with bonus_mode & min_streak features
 			*/
 			DataInstance d = new DataInstance(FEATURES);
 			//if closer to one, the game is close to ending; may want to get more points before game ends
