@@ -570,7 +570,10 @@ public class Main extends JFrame implements GUI{
 		}
 		@Override
 		public void run() {
-			game.play(0);
+			//GUI doesn't do anything with scores/games
+			//so, we'll just run this in an infinite loop
+			while (true)
+				game.play(0);
 		}
 	}
 }
