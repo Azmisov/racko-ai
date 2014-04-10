@@ -83,7 +83,7 @@ public class Deck {
 		discard_count = cards;
 		for (int i=0; i<cards; i++)
 			discard[i] = i+1;
-		shuffle();
+		shuffle(true);
 		//Reset memory variables
 		Arrays.fill(memory_hash, -1);
 		memory_head = 0;
@@ -109,7 +109,7 @@ public class Deck {
 	 * with discard pile; sets first card in draw pile
 	 * as the start of the discard pile
 	 */
-	private void shuffle(){
+	private void shuffle(boolean new_discard){
 		//sanity check...
 		assert(draw_count == 0 && discard_count != 0);
 		shuffling = true;
@@ -124,7 +124,8 @@ public class Deck {
 		//Put first draw card in discard pile
 		draw_count = discard_count;
 		discard_count = 0;
-		discard(draw(false));
+		if (new_discard)
+			discard(draw(false));
 		shuffling = false;
 	}
 	
@@ -170,13 +171,13 @@ public class Deck {
 		assert(in_play[card-1] && action);
 		action = false;
 		in_play[card-1] = false;
-		//Push to stack
-		discard[discard_count++] = card;
 		//Reshuffle, if no cards in draw pile
 		if (draw_count == 0){
 			has_shuffled = true;
-			shuffle();
+			shuffle(false);
 		}
+		//Push to stack
+		discard[discard_count++] = card;
 		//Remove old reference to this card in memory
 		int old_loc = memory_hash[card-1];
 		if (old_loc >= 0)
