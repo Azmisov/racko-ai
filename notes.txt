@@ -1,0 +1,108 @@
+Racko Artificial Intelligence
+=============================
+
+RULES:
+- cards in deck = players*10 + 20; min of 2 players (4 max, by official rules)
+- each player starts with 10 random cards
+- first card in deck starts the discard pile
+- turns:
+	- take from top of deck or discard pile
+	- replace a card from your rack
+- first person with all in ascending order wins (75 points)
+- if you didn't win, you get five points for each sorted card, starting from the bottom
+- first to 500 points wins
+
+FEATURES:
+- cards in AI's rack
+- card on top of discard pile
+- probability of drawing a certain card from the top of the deck
+- how many are sorted from the bottom (favor bottom sorted first?)
+	- add extra penalty for unsorted bottom cards?
+	- could run a machine learner to calculate the value of the penalty
+	- does this really matter, or should the AI be a strictly greedy algorithm?
+		- we would need to calculate a probability distribution for how many sorted cards are in a randomly dealt hand
+			- highly dependent on how we represent "sortedness"
+		- "greediness" can be a ratio of the AI hand's percentile in the distribution (where the magic ratio could be trained)
+- distribution of cards in AI's rack
+	- want to maximize probability of getting a card that increases rack's "sortedness"
+	- I assume the AI would want it to be a flat distribution with maximum spread; this can be trained though...
+	- may need to adjust the distribution to account for unsorted numbers; this isn't just a simple histogram
+		- or we could just take the distribution of sorted cards;
+			still not trivial though (e.g 1-5-3, do we use 1-5 or 1-3 ??)
+	- another idea: variance from the line y = 59/9x - 50/9 (where x is slot #)
+		- may need to clump sorted subsequences
+		- could do other distributions, if we don't want a flat distribution with maximum spread
+		- may want a distribution of probabilities of drawing a card above/below a certain number
+- probability of getting cards that increase the rack's "sortedness"
+	- would need to be calculated blindly, meaning, it doesn't know which cards are in the deck or
+		in other player's hands; only the card's it has seen (from the discard pile) and from it's own hand
+	- we should give the AI memory, meaning it remember what cards it's seen in the discard pile and it's own
+		hand; it uses this memory to calculate better probabilities
+	- if we wanted to handicap the AI, we could potentially limit the amount of memory it has, so that it
+		only remembers a couple cards it's seen from the discard pile; if it had a photographic memory, it
+		could potentially know exactly what cards are in the deck
+	- this should account for probabilities; e.g. there is a 0.1% of getting the last sorted card, but a 5%
+		chance of getting the last card if we replace card #9, we should opt for the second option
+		- this strategy may only be optimal in a greedy mode; if there is a high probability that someone will
+			win before you get to the next turn, you may not want to "unsort" your cards
+	- shouldn't ignore cards in discard; need to calculate probability of discard pile cards appearing at the top
+		- could blindly assume there is a 1/2 chance of other players replacing top discard, 1/22 chance they add
+			another card on top; or, we could have a secondary learning algorithm that tries to predict what
+			their move will be; the learning algorithm would probably have to be run during a game, since we don't
+			know what the other player's strategies are (unless we could prove that another player playing less than
+			optimally will never hurt our strategy); probably isn't worth it, unless we're entering this into some
+			Racko competition
+
+EVALUATION CRITERIA: (for training rule)
+- how many moves it takes to sort the entire stack
+	- we may be able to precalculate the "optimal" moves it would take to sort for any hand
+		then, the AI's performance would be a percentage of that number (instead of an ML
+		algorithm that measures % error); here are possible ways to calculate the "optimal" moves:
+			1. how many unsorted cards in a rack
+			2. how many unsorted cards in a rack, adjusting for probability of sorting the rack
+			3. a (non)linear relationship between rack distribution and moves it takes to sort the stack
+	- if we're going to train by playing actual games, we may need some relationship f(x,y,z) where
+		x = moves in game
+		y = distribution/sortedness at start
+		z = distribution/sortedness at end
+- how many points they receive at the end of a round and after the entire game
+	- this criteria would enable training of the "greediness" factor
+	- I'm guessing the points after the entire game will not matter, since optimal play
+		is (intuitively) greedy between rounds (e.g. you never want to get a low scoring round)
+
+TESTING:
+- have the AI play itself; average the weight changes for each AI's performance and use that to update weights
+	- one approach, TD-Gammon's algorithm (Tesauro)
+	- supervised learning, as in Neurogammon
+	- reward system used by Samuel's checkers AI
+- store the AI's weights after each epoch; have the AI's from each epoch have a duel to make sure they're
+	improving (could use this for stopping criteria?)
+
+
+How to measure sortedness?
+ - number of sorted numbers, starting from the bottom
+
+
+RANDOM IDEA...
+- have AI train weights of a scoring function
+	- for skewness, would need: moves_thus_far/rack_size, rack_sortedness
+		I guess, if (longest_sequence < moves_thus_far), you'd want more skew
+		since it takes roughly rack_size moves to sort a rack, optimally (from empirical observation)
+	- need to give bonus_mode and max_streak variables if we want it general purpose
+- do we care about subsets of long sequences?
+	[1,2,10] -> should we score [1,10],[2,10],[1,2] as well? power set = slow
+	[3,9,12], add a 7 somewhere
+		[3,9,  14]
+		[3,9,     12]
+		[3,          5,20]
+	So the question is ... are these equal?
+		score{3,7,14} - score{3,7,20} == max(score{subset{3,7,14}}) - max(score{subset{3,7,20}})
+
+How I trained Diablo:
+	- Diablo vs Diablo
+	- learn rate = 0.1
+	- target 1, if won the game, 0 if lost
+	- move limit = 5000
+	- 100 games per epoch
+	- rack_size = 10
+	
