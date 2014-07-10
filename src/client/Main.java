@@ -68,7 +68,7 @@ public class Main extends JFrame implements GUI{
 						Model m;
 						switch(args[1]){
 							case "diablo":
-								m = new ModelDiablo("weights/diablo/diablo2_weights10_2_wkyletraining.txt", false);
+								m = new ModelDiablo("/home/isaac/Programming/racko-ai/weights/diablo/diablo2_weights10_2_wkyletraining.txt", false);
 								break;
 							case "baltar":
 								m = new ModelBaltar();
